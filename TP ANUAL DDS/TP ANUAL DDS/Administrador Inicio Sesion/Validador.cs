@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 
-namespace DDS_AlgoritmoValidador
+namespace TP_ANUAL_DDS
 {
     static class Validador
     {

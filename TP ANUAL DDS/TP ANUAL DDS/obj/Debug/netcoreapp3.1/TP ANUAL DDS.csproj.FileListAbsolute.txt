@@ -1,0 +1,13 @@
+C:\Users\Manuel\source\repos\TP ANUAL DDS\TP ANUAL DDS\bin\Debug\netcoreapp3.1\TP ANUAL DDS.exe
+C:\Users\Manuel\source\repos\TP ANUAL DDS\TP ANUAL DDS\bin\Debug\netcoreapp3.1\TP ANUAL DDS.deps.json
+C:\Users\Manuel\source\repos\TP ANUAL DDS\TP ANUAL DDS\bin\Debug\netcoreapp3.1\TP ANUAL DDS.runtimeconfig.json
+C:\Users\Manuel\source\repos\TP ANUAL DDS\TP ANUAL DDS\bin\Debug\netcoreapp3.1\TP ANUAL DDS.runtimeconfig.dev.json
+C:\Users\Manuel\source\repos\TP ANUAL DDS\TP ANUAL DDS\bin\Debug\netcoreapp3.1\TP ANUAL DDS.dll
+C:\Users\Manuel\source\repos\TP ANUAL DDS\TP ANUAL DDS\bin\Debug\netcoreapp3.1\TP ANUAL DDS.pdb
+C:\Users\Manuel\source\repos\TP ANUAL DDS\TP ANUAL DDS\obj\Debug\netcoreapp3.1\TP ANUAL DDS.csprojAssemblyReference.cache
+C:\Users\Manuel\source\repos\TP ANUAL DDS\TP ANUAL DDS\obj\Debug\netcoreapp3.1\TP ANUAL DDS.csproj.CoreCompileInputs.cache
+C:\Users\Manuel\source\repos\TP ANUAL DDS\TP ANUAL DDS\obj\Debug\netcoreapp3.1\TP ANUAL DDS.AssemblyInfoInputs.cache
+C:\Users\Manuel\source\repos\TP ANUAL DDS\TP ANUAL DDS\obj\Debug\netcoreapp3.1\TP ANUAL DDS.AssemblyInfo.cs
+C:\Users\Manuel\source\repos\TP ANUAL DDS\TP ANUAL DDS\obj\Debug\netcoreapp3.1\TP ANUAL DDS.dll
+C:\Users\Manuel\source\repos\TP ANUAL DDS\TP ANUAL DDS\obj\Debug\netcoreapp3.1\TP ANUAL DDS.pdb
+C:\Users\Manuel\source\repos\TP ANUAL DDS\TP ANUAL DDS\obj\Debug\netcoreapp3.1\TP ANUAL DDS.genruntimeconfig.cache
