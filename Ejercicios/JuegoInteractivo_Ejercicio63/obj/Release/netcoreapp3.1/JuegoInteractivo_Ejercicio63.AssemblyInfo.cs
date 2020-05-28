@@ -11,12 +11,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("TP ANUAL DDS")]
-[assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("JuegoInteractivo_Ejercicio63")]
+[assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
-[assembly: System.Reflection.AssemblyProductAttribute("TP ANUAL DDS")]
-[assembly: System.Reflection.AssemblyTitleAttribute("TP ANUAL DDS")]
+[assembly: System.Reflection.AssemblyProductAttribute("JuegoInteractivo_Ejercicio63")]
+[assembly: System.Reflection.AssemblyTitleAttribute("JuegoInteractivo_Ejercicio63")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Generado por la clase WriteCodeFragment de MSBuild.

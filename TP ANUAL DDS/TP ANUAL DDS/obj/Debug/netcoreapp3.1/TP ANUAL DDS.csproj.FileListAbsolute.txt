@@ -11,3 +11,16 @@ C:\Users\Manuel\source\repos\TP ANUAL DDS\TP ANUAL DDS\obj\Debug\netcoreapp3.1\T
 C:\Users\Manuel\source\repos\TP ANUAL DDS\TP ANUAL DDS\obj\Debug\netcoreapp3.1\TP ANUAL DDS.dll
 C:\Users\Manuel\source\repos\TP ANUAL DDS\TP ANUAL DDS\obj\Debug\netcoreapp3.1\TP ANUAL DDS.pdb
 C:\Users\Manuel\source\repos\TP ANUAL DDS\TP ANUAL DDS\obj\Debug\netcoreapp3.1\TP ANUAL DDS.genruntimeconfig.cache
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP ANUAL DDS\TP ANUAL DDS\bin\Debug\netcoreapp3.1\TP ANUAL DDS.exe
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP ANUAL DDS\TP ANUAL DDS\bin\Debug\netcoreapp3.1\TP ANUAL DDS.deps.json
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP ANUAL DDS\TP ANUAL DDS\bin\Debug\netcoreapp3.1\TP ANUAL DDS.runtimeconfig.json
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP ANUAL DDS\TP ANUAL DDS\bin\Debug\netcoreapp3.1\TP ANUAL DDS.runtimeconfig.dev.json
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP ANUAL DDS\TP ANUAL DDS\bin\Debug\netcoreapp3.1\TP ANUAL DDS.dll
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP ANUAL DDS\TP ANUAL DDS\bin\Debug\netcoreapp3.1\TP ANUAL DDS.pdb
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP ANUAL DDS\TP ANUAL DDS\obj\Debug\netcoreapp3.1\TP ANUAL DDS.csprojAssemblyReference.cache
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP ANUAL DDS\TP ANUAL DDS\obj\Debug\netcoreapp3.1\TP ANUAL DDS.csproj.CoreCompileInputs.cache
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP ANUAL DDS\TP ANUAL DDS\obj\Debug\netcoreapp3.1\TP ANUAL DDS.AssemblyInfoInputs.cache
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP ANUAL DDS\TP ANUAL DDS\obj\Debug\netcoreapp3.1\TP ANUAL DDS.AssemblyInfo.cs
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP ANUAL DDS\TP ANUAL DDS\obj\Debug\netcoreapp3.1\TP ANUAL DDS.dll
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP ANUAL DDS\TP ANUAL DDS\obj\Debug\netcoreapp3.1\TP ANUAL DDS.pdb
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP ANUAL DDS\TP ANUAL DDS\obj\Debug\netcoreapp3.1\TP ANUAL DDS.genruntimeconfig.cache
