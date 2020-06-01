@@ -8,16 +8,26 @@ namespace TP_ANUAL_DDS
     {
 
         CreadorUsuarios creador = new CreadorUsuarios();
+        string usuarioActual;
 
-        public void inicioDeSesion()
+        public string inicioDeSesion()
         {
             Console.WriteLine("1. Crear Usuario // 2. Ingresar");
             var eleccion = Console.ReadLine();
-            if (eleccion == "1")
+            while(eleccion == "1")
+            {
                 crearUsuario();
+                Console.WriteLine("1. Crear Usuario // 2. Ingresar");
+                eleccion = Console.ReadLine();
+            }
 
             if (eleccion == "2")
+            {
                 ingresarCuenta();
+                return usuarioActual;
+            }
+
+            return "Fin";
         }
 
 
@@ -77,6 +87,8 @@ namespace TP_ANUAL_DDS
             } while (!creador.usuarioYContraseniaCorrecta(nombre, contrasenia));
 
             Console.WriteLine("Bienvenido " + nombre + "!");
+
+            usuarioActual = nombre;
 
         }
 

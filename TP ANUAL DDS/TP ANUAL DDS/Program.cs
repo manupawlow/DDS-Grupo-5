@@ -8,6 +8,7 @@ namespace TP_ANUAL_DDS
         static void Main(string[] args)
         {
             InterfazInicioDeSesion interfaz = new InterfazInicioDeSesion();
+            string usuarioActual;
 
             DateTime fecha = DateTime.Today;
             DocumentoComercial doc = new DocumentoComercial(1, "ticket");
@@ -29,7 +30,9 @@ namespace TP_ANUAL_DDS
             BandejaDeMensajes.agregarMensaje("hola");
             BandejaDeMensajes.mostrarMensajes();
             
-            interfaz.inicioDeSesion();
+            usuarioActual = interfaz.inicioDeSesion();
+            Console.WriteLine(usuarioActual);
+            //con ese usuario, el validador se fija si es el usuario que puede ver la compra
 
         }
     }
