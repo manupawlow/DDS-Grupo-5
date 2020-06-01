@@ -25,6 +25,9 @@ namespace TP_ANUAL_DDS
             egreso.calcularValorTotal();
 
             Console.WriteLine(egreso.valorTotal);
+
+            BandejaDeMensajes.agregarMensaje("hola");
+            BandejaDeMensajes.mostrarMensajes();
             
             interfaz.inicioDeSesion();
 

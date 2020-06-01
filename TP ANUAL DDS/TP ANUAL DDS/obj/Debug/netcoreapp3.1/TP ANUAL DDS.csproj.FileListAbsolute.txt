@@ -24,3 +24,16 @@ C:\Users\Matias\source\repos\DDS-Grupo-5\TP ANUAL DDS\TP ANUAL DDS\obj\Debug\net
 C:\Users\Matias\source\repos\DDS-Grupo-5\TP ANUAL DDS\TP ANUAL DDS\obj\Debug\netcoreapp3.1\TP ANUAL DDS.dll
 C:\Users\Matias\source\repos\DDS-Grupo-5\TP ANUAL DDS\TP ANUAL DDS\obj\Debug\netcoreapp3.1\TP ANUAL DDS.pdb
 C:\Users\Matias\source\repos\DDS-Grupo-5\TP ANUAL DDS\TP ANUAL DDS\obj\Debug\netcoreapp3.1\TP ANUAL DDS.genruntimeconfig.cache
+C:\Users\Manuel\Desktop\DDS Repositorio git\DDS-Grupo-5\TP ANUAL DDS\TP ANUAL DDS\bin\Debug\netcoreapp3.1\TP ANUAL DDS.exe
+C:\Users\Manuel\Desktop\DDS Repositorio git\DDS-Grupo-5\TP ANUAL DDS\TP ANUAL DDS\bin\Debug\netcoreapp3.1\TP ANUAL DDS.deps.json
+C:\Users\Manuel\Desktop\DDS Repositorio git\DDS-Grupo-5\TP ANUAL DDS\TP ANUAL DDS\bin\Debug\netcoreapp3.1\TP ANUAL DDS.runtimeconfig.json
+C:\Users\Manuel\Desktop\DDS Repositorio git\DDS-Grupo-5\TP ANUAL DDS\TP ANUAL DDS\bin\Debug\netcoreapp3.1\TP ANUAL DDS.runtimeconfig.dev.json
+C:\Users\Manuel\Desktop\DDS Repositorio git\DDS-Grupo-5\TP ANUAL DDS\TP ANUAL DDS\bin\Debug\netcoreapp3.1\TP ANUAL DDS.dll
+C:\Users\Manuel\Desktop\DDS Repositorio git\DDS-Grupo-5\TP ANUAL DDS\TP ANUAL DDS\bin\Debug\netcoreapp3.1\TP ANUAL DDS.pdb
+C:\Users\Manuel\Desktop\DDS Repositorio git\DDS-Grupo-5\TP ANUAL DDS\TP ANUAL DDS\obj\Debug\netcoreapp3.1\TP ANUAL DDS.csprojAssemblyReference.cache
+C:\Users\Manuel\Desktop\DDS Repositorio git\DDS-Grupo-5\TP ANUAL DDS\TP ANUAL DDS\obj\Debug\netcoreapp3.1\TP ANUAL DDS.csproj.CoreCompileInputs.cache
+C:\Users\Manuel\Desktop\DDS Repositorio git\DDS-Grupo-5\TP ANUAL DDS\TP ANUAL DDS\obj\Debug\netcoreapp3.1\TP ANUAL DDS.AssemblyInfoInputs.cache
+C:\Users\Manuel\Desktop\DDS Repositorio git\DDS-Grupo-5\TP ANUAL DDS\TP ANUAL DDS\obj\Debug\netcoreapp3.1\TP ANUAL DDS.AssemblyInfo.cs
+C:\Users\Manuel\Desktop\DDS Repositorio git\DDS-Grupo-5\TP ANUAL DDS\TP ANUAL DDS\obj\Debug\netcoreapp3.1\TP ANUAL DDS.dll
+C:\Users\Manuel\Desktop\DDS Repositorio git\DDS-Grupo-5\TP ANUAL DDS\TP ANUAL DDS\obj\Debug\netcoreapp3.1\TP ANUAL DDS.pdb
+C:\Users\Manuel\Desktop\DDS Repositorio git\DDS-Grupo-5\TP ANUAL DDS\TP ANUAL DDS\obj\Debug\netcoreapp3.1\TP ANUAL DDS.genruntimeconfig.cache

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Matias\\source\\repos\\DDS-Grupo-5\\TP ANUAL DDS\\TP ANUAL DDS\\TP ANUAL DDS.csproj": {}
+    "C:\\Users\\Manuel\\Desktop\\DDS Repositorio git\\DDS-Grupo-5\\TP ANUAL DDS\\TP ANUAL DDS\\TP ANUAL DDS.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Matias\\source\\repos\\DDS-Grupo-5\\TP ANUAL DDS\\TP ANUAL DDS\\TP ANUAL DDS.csproj": {
+    "C:\\Users\\Manuel\\Desktop\\DDS Repositorio git\\DDS-Grupo-5\\TP ANUAL DDS\\TP ANUAL DDS\\TP ANUAL DDS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Matias\\source\\repos\\DDS-Grupo-5\\TP ANUAL DDS\\TP ANUAL DDS\\TP ANUAL DDS.csproj",
+        "projectUniqueName": "C:\\Users\\Manuel\\Desktop\\DDS Repositorio git\\DDS-Grupo-5\\TP ANUAL DDS\\TP ANUAL DDS\\TP ANUAL DDS.csproj",
         "projectName": "TP ANUAL DDS",
-        "projectPath": "C:\\Users\\Matias\\source\\repos\\DDS-Grupo-5\\TP ANUAL DDS\\TP ANUAL DDS\\TP ANUAL DDS.csproj",
-        "packagesPath": "C:\\Users\\Matias\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Matias\\source\\repos\\DDS-Grupo-5\\TP ANUAL DDS\\TP ANUAL DDS\\obj\\",
+        "projectPath": "C:\\Users\\Manuel\\Desktop\\DDS Repositorio git\\DDS-Grupo-5\\TP ANUAL DDS\\TP ANUAL DDS\\TP ANUAL DDS.csproj",
+        "packagesPath": "C:\\Users\\Manuel\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Manuel\\Desktop\\DDS Repositorio git\\DDS-Grupo-5\\TP ANUAL DDS\\TP ANUAL DDS\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Matias\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Manuel\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
