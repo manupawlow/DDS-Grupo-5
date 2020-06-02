@@ -15,17 +15,18 @@ namespace TP_ANUAL_DDS.Egresos
         public Proveedor proveedorElegido;
         public float valorTotal;
         public int cantPresupuestos;
-        private string revisorDeCompra;
+        //public string revisorDeCompra;
         public ICriterioDeSeleccion criterioDeSeleccion;
+        public BandejaDeMensajes bandejaDeMensajes;
 
-
-        public Egreso(DateTime Fecha, DocumentoComercial Doc, MedioDePago Medio, int cantidadDePresupuesto, Proveedor proveedor)
+        public Egreso(DateTime Fecha, DocumentoComercial Doc, MedioDePago Medio, int cantidadDePresupuesto, Proveedor proveedor, BandejaDeMensajes Bandeja)
         {
             fecha = Fecha;
             documentoComercial = Doc;
             medioDePago = Medio;
             cantPresupuestos = cantidadDePresupuesto;
             proveedorElegido = proveedor;
+            bandejaDeMensajes = Bandeja;
 
         }
         

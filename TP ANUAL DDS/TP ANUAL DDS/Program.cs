@@ -7,9 +7,9 @@ namespace TP_ANUAL_DDS
     {
         static void Main(string[] args)
         {
-            InterfazInicioDeSesion interfaz = new InterfazInicioDeSesion();
+            //InterfazInicioDeSesion interfaz = new InterfazInicioDeSesion();
+            MenorValor criterioDeMenorValor = new MenorValor();
             string usuarioActual;
-            ValidadorDeEgreso validador = new ValidadorDeEgreso();
 
             DateTime fecha = DateTime.Today;
             DocumentoComercial doc = new DocumentoComercial(1, "ticket");
@@ -18,7 +18,7 @@ namespace TP_ANUAL_DDS
             Proveedor proveedor3 = new Proveedor(20305006503, 12, "razon3");
             MedioDePago medio = new MedioDePago("tarjeta", "debito");
 
-            Egreso egreso = new Egreso(fecha,doc,medio,2,proveedor1);
+            Egreso egreso = new Egreso(fecha,doc,medio,2,proveedor1, new BandejaDeMensajes("Grupo 5"));
 
             Item item1 = new Item("Galaxy s8");
             Item item2 = new Item("Galaxy s9");
@@ -53,7 +53,29 @@ namespace TP_ANUAL_DDS
             egreso.agregarProveedor(proveedor1);
             egreso.agregarProveedor(proveedor2);
 
-            egreso.definirCriterioDeSeleccion(MenorValor);
+            egreso.definirCriterioDeSeleccion(criterioDeMenorValor);
+
+
+            Console.WriteLine("Ingresar usuario: ");
+            usuarioActual = Console.ReadLine();
+
+            while (true)
+            {
+                Console.WriteLine("1. Validar Compra // 2. Ver validacion // 3. Fin");
+                var eleccion = Console.ReadLine();
+
+                if (eleccion == "1")
+                    ValidadorDeEgreso.egresoValido(egreso);
+
+                if (eleccion == "2")
+                    egreso.bandejaDeMensajes.mostrarMensajes(usuarioActual);
+
+                if (eleccion == "3")
+                    break;
+
+            }
+
+            
 
             //Console.WriteLine(egreso.valorTotal);
 

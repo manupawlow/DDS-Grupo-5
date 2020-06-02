@@ -6,18 +6,32 @@ using System.IO;
 
 namespace TP_ANUAL_DDS
 {
-    static class BandejaDeMensajes
+    public class BandejaDeMensajes
     {
-        static public void agregarMensaje(string msg)
+        string mensajes;
+        string revisor;
+
+
+        public BandejaDeMensajes(string Revisor)
         {
-            StreamWriter archivo = File.AppendText("BandejaDeMensajes.txt");
-            archivo.WriteLine(msg + "\n");
-            archivo.Close();
+            revisor = Revisor;
         }
 
 
-        static public void mostrarMensajes()
+
+        public void agregarMensaje(string msg)
+        {/*
+            StreamWriter archivo = File.AppendText("BandejaDeMensajes.txt");
+            archivo.WriteLine(msg + "\n");
+            archivo.Close();*/
+            mensajes = mensajes + "\n" + msg;
+
+        }
+
+
+        public void mostrarMensajes(string usuario)
         {
+            /*
             using (StreamReader archivo = new StreamReader("BandejaDeMensajes.txt"))
             {
                 while (!archivo.EndOfStream)
@@ -26,6 +40,17 @@ namespace TP_ANUAL_DDS
                     Console.WriteLine(line);
                 }
             }
+            */
+
+            if (usuario == revisor)
+            {
+                if (mensajes == null)
+                    Console.WriteLine("No se realizo ninguna validacion a la compra");
+                else
+                    Console.WriteLine(mensajes);
+            }
+            else
+                Console.WriteLine("Usuario no apto para revisar la compra.");
 
         }
 
