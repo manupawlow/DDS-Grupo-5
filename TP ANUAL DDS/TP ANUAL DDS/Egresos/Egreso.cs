@@ -5,23 +5,27 @@ using System.Runtime.CompilerServices;
 
 namespace TP_ANUAL_DDS.Egresos
 {
-    class Egreso
+    public class Egreso
     {
         private DocumentoComercial documentoComercial;
         private DateTime fecha;
-        private List<Item> items = new List<Item>();
+        public List<Item> items = new List<Item>();
         private MedioDePago medioDePago;
-        private Proveedor proveedor;
+        public List<Proveedor> proveedores = new List<Proveedor>();
+        public Proveedor proveedorElegido;
         public float valorTotal;
-        public int cantPresupuesto;
+        public int cantPresupuestos;
+        private string revisorDeCompra;
+        public ICriterioDeSeleccion criterioDeSeleccion;
 
-       
-        public Egreso(DateTime Fecha, DocumentoComercial Doc, Proveedor Prov, MedioDePago Medio)
+
+        public Egreso(DateTime Fecha, DocumentoComercial Doc, MedioDePago Medio, int cantidadDePresupuesto, Proveedor proveedor)
         {
             fecha = Fecha;
             documentoComercial = Doc;
-            proveedor = Prov;
             medioDePago = Medio;
+            cantPresupuestos = cantidadDePresupuesto;
+            proveedorElegido = proveedor;
 
         }
         
@@ -29,11 +33,26 @@ namespace TP_ANUAL_DDS.Egresos
         {
             items.Add(item);
         }
+        public void agregarProveedor(Proveedor Prov)
+        {
+            proveedores.Add(Prov);
+        }
 
-        public void calcularValorTotal()
+        /*public void calcularValorTotal()
         {
             valorTotal = items.Sum(item => item.valor);
 
+        }*/
+
+        public void definirCriterioDeSeleccion(ICriterioDeSeleccion criterioDeSelec)
+        {
+            criterioDeSeleccion = criterioDeSelec;
+
+        }
+
+        public Proveedor Criterio(List<Proveedor> provs)
+        {
+            return criterioDeSeleccion.Criterio(provs);
         }
 
     }

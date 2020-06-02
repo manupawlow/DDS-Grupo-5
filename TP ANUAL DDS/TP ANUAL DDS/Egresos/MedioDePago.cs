@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TP_ANUAL_DDS.Egresos
 {
-    class MedioDePago
+    public class MedioDePago
     {
         private string nombre { get; }
         private string tipoDePago { get; }

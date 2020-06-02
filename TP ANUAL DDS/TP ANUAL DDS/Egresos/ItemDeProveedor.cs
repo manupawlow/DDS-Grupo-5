@@ -4,16 +4,16 @@ using System.Text;
 
 namespace TP_ANUAL_DDS.Egresos
 {
-    public class Item
+    public class ItemDeProveedor
     {
         public string descripcion { get; set; }
-     
-        public Item (string Descipcion)
+
+        public float valor { get; set; }
+
+        public ItemDeProveedor(float Precio, string Descipcion)
         {
             descripcion = Descipcion;
+            valor = Precio;
         }
-
-        
-
     }
 }
