@@ -34,8 +34,9 @@ namespace TP_ANUAL_DDS.Egresos
                 return egreso.cantPresupuestos == egreso.proveedores.Count();
         }
         static private bool presupuestoElegido(Egreso egreso)
-        {            
-            return egreso.proveedores.Any(Proveedor => Proveedor.presupuesto() == egreso.proveedorElegido.presupuesto());
+        {
+            Proveedor x = egreso.proveedorElegido;
+            return egreso.proveedores.Any(Proveedor => Proveedor.presupuesto().valorTotal == x.presupuesto().valorTotal);
         }
         static private bool criterioDeSeleccion(Egreso egreso)
         {

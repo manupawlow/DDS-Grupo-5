@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.Immutable;
+using System.Linq;
 using TP_ANUAL_DDS.Egresos;
 
 namespace TP_ANUAL_DDS
@@ -18,28 +21,24 @@ namespace TP_ANUAL_DDS
             Proveedor proveedor3 = new Proveedor(20305006503, 12, "razon3");
             MedioDePago medio = new MedioDePago("tarjeta", "debito");
 
-            Egreso egreso = new Egreso(fecha,doc,medio,2,proveedor1, new BandejaDeMensajes("Grupo 5"));
+            Egreso egreso = new Egreso(fecha, doc, medio, 2, proveedor1, new BandejaDeMensajes("Grupo 5"));
 
             Item item1 = new Item("Galaxy s8");
             Item item2 = new Item("Galaxy s9");
             Item item3 = new Item("Galaxy s10");
             Item item4 = new Item("Galaxy s11");
 
-            ItemDeProveedor itemp1 = new ItemDeProveedor(500,"Galaxy s8");
+            ItemDeProveedor itemp1 = new ItemDeProveedor(500, "Galaxy s8");
             ItemDeProveedor itemp1d = new ItemDeProveedor(499, "Galaxy s8");
-            ItemDeProveedor itemp2 = new ItemDeProveedor(600,"Galaxy s9");
-            ItemDeProveedor itemp3 = new ItemDeProveedor(700,"Galaxy s10");
-            ItemDeProveedor itemp4 = new ItemDeProveedor(800,"Galaxy s11");
+            ItemDeProveedor itemp2 = new ItemDeProveedor(600, "Galaxy s9");
+            ItemDeProveedor itemp3 = new ItemDeProveedor(700, "Galaxy s10");
+            ItemDeProveedor itemp4 = new ItemDeProveedor(800, "Galaxy s11");
 
             egreso.agregarItem(item1);
             egreso.agregarItem(item2);
             egreso.agregarItem(item3);
+            egreso.agregarItem(item4);
 
-            proveedor1.asignarEgreso(egreso);
-            proveedor2.asignarEgreso(egreso);
-            proveedor3.asignarEgreso(egreso);
-
-            proveedor1.agregarItem(itemp1);
             proveedor1.agregarItem(itemp1d);
             proveedor1.agregarItem(itemp2);
             proveedor1.agregarItem(itemp3);
@@ -53,7 +52,18 @@ namespace TP_ANUAL_DDS
             egreso.agregarProveedor(proveedor1);
             egreso.agregarProveedor(proveedor2);
 
+            proveedor1.asignarEgreso(egreso);
+            proveedor2.asignarEgreso(egreso);
+            proveedor3.asignarEgreso(egreso);
+
             egreso.definirCriterioDeSeleccion(criterioDeMenorValor);
+
+            /*List<Proveedor> list = egreso.proveedores.ToList();
+            Console.WriteLine(list.Count);
+            foreach (Proveedor value in list)
+            {
+                Console.WriteLine(value.presupuesto().valorTotal);
+            }*/
 
 
             Console.WriteLine("Ingresar usuario: ");
