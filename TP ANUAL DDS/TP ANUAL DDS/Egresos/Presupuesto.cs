@@ -6,7 +6,8 @@ namespace TP_ANUAL_DDS.Egresos
 {
     public class Presupuesto
     {
-        public List<ItemDeProveedor> itemsDeProveedor = new List<ItemDeProveedor>();
+        public List<ItemDeProveedor> itemsDePresupuesto = new List<ItemDeProveedor>();
         public float valorTotal;
+        public DocumentoComercial documentoComercial;
     }
 }

@@ -7,25 +7,24 @@ namespace TP_ANUAL_DDS.Egresos
 {
     public class Egreso
     {
-        private DocumentoComercial documentoComercial;
+        public BandejaDeMensajes bandejaDeMensajes;
+        public int cantPresupuestos;
+        public ICriterioDeSeleccion criterioDeSeleccion;
+        public DocumentoComercial documentoComercial;
         private DateTime fecha;
         public List<Item> items = new List<Item>();
         private MedioDePago medioDePago;
-        public List<Proveedor> proveedores = new List<Proveedor>();
         public Proveedor proveedorElegido;
+        public List<Proveedor> proveedores = new List<Proveedor>();
         public float valorTotal;
-        public int cantPresupuestos;
-        //public string revisorDeCompra;
-        public ICriterioDeSeleccion criterioDeSeleccion;
-        public BandejaDeMensajes bandejaDeMensajes;
+        
 
-        public Egreso(DateTime Fecha, DocumentoComercial Doc, MedioDePago Medio, int cantidadDePresupuesto, Proveedor proveedor, BandejaDeMensajes Bandeja)
+        public Egreso(DateTime Fecha, DocumentoComercial Doc, MedioDePago Medio, int cantidadDePresupuesto, BandejaDeMensajes Bandeja)
         {
             fecha = Fecha;
             documentoComercial = Doc;
             medioDePago = Medio;
             cantPresupuestos = cantidadDePresupuesto;
-            proveedorElegido = proveedor;
             bandejaDeMensajes = Bandeja;
 
         }
@@ -34,20 +33,15 @@ namespace TP_ANUAL_DDS.Egresos
         {
             items.Add(item);
         }
+
         public void agregarProveedor(Proveedor Prov)
         {
             proveedores.Add(Prov);
         }
 
-        /*public void calcularValorTotal()
+        public void calcularValorTotal()
         {
-            valorTotal = items.Sum(item => item.valor);
-
-        }*/
-
-        public void definirCriterioDeSeleccion(ICriterioDeSeleccion criterioDeSelec)
-        {
-            criterioDeSeleccion = criterioDeSelec;
+            valorTotal = proveedorElegido.valorSegunEgreso();
 
         }
 
@@ -55,6 +49,18 @@ namespace TP_ANUAL_DDS.Egresos
         {
             return criterioDeSeleccion.Criterio(provs);
         }
+
+        public void definirCriterioDeSeleccion(ICriterioDeSeleccion criterioDeSelec)
+        {
+            criterioDeSeleccion = criterioDeSelec;
+
+        }
+
+        public void elegirProveedor(Proveedor proveedor)
+        {
+            proveedorElegido = proveedor;
+        }
+
 
     }
 }

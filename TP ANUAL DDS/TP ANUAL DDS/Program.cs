@@ -18,7 +18,7 @@ namespace TP_ANUAL_DDS
             Proveedor proveedor3 = new Proveedor(20305006503, 12, "razon3");
             MedioDePago medio = new MedioDePago("tarjeta", "debito");
 
-            Egreso egreso = new Egreso(fecha,doc,medio,2,proveedor1, new BandejaDeMensajes("Grupo 5"));
+            Egreso egreso = new Egreso(fecha,doc,medio,2, new BandejaDeMensajes("Grupo 5"));
 
             Item item1 = new Item("Galaxy s8");
             Item item2 = new Item("Galaxy s9");
@@ -35,10 +35,6 @@ namespace TP_ANUAL_DDS
             egreso.agregarItem(item2);
             egreso.agregarItem(item3);
 
-            proveedor1.asignarEgreso(egreso);
-            proveedor2.asignarEgreso(egreso);
-            proveedor3.asignarEgreso(egreso);
-
             proveedor1.agregarItem(itemp1);
             proveedor1.agregarItem(itemp1d);
             proveedor1.agregarItem(itemp2);
@@ -50,8 +46,14 @@ namespace TP_ANUAL_DDS
             proveedor2.agregarItem(itemp3);
             proveedor2.agregarItem(itemp4);
 
+            proveedor1.asignarEgreso(egreso);
+            proveedor2.asignarEgreso(egreso);
+            proveedor3.asignarEgreso(egreso);
+
             egreso.agregarProveedor(proveedor1);
             egreso.agregarProveedor(proveedor2);
+
+            egreso.elegirProveedor(proveedor3);
 
             egreso.definirCriterioDeSeleccion(criterioDeMenorValor);
 

@@ -9,9 +9,11 @@ namespace TP_ANUAL_DDS.Egresos
     {
         private long cuit;
         private int direccionPostal;
-        private string razonSocial;
         private Egreso egreso;
+        private List<ItemDeProveedor> itemsCoincidentes = new List<ItemDeProveedor>();
         private List<ItemDeProveedor> itemsDeProv = new List<ItemDeProveedor>();
+        private string razonSocial;
+        
         
         public Proveedor(long Cuit, int DireccionPostal, string RazonSocial)
         {
@@ -27,24 +29,30 @@ namespace TP_ANUAL_DDS.Egresos
         public void asignarEgreso(Egreso egres)
         {
             egreso = egres;
+            asignarItemsSegunEgreso();
         }
-
-        public List<ItemDeProveedor> asignarItems()
+        
+        public void asignarItemsSegunEgreso()
         {
-            List<ItemDeProveedor> itemsCoincidentes = new List<ItemDeProveedor>(); ;
-            for (int i=0; i < egreso.items.Count(); i++)
+            for (int i = 0; i < egreso.items.Count(); i++)
             {
                 itemsCoincidentes.Add(itemsDeProv.Find(ItemDeProveedor => ItemDeProveedor.descripcion == egreso.items[i].descripcion));
             }
-            return itemsCoincidentes;
         }
-
+       
         public Presupuesto presupuesto()
         {
             Presupuesto presup = new Presupuesto();
-            presup.itemsDeProveedor = asignarItems();
-            presup.valorTotal = presup.itemsDeProveedor.Sum(itemDeProveedor => itemDeProveedor.valor);
+            presup.itemsDePresupuesto = itemsCoincidentes;
+            presup.valorTotal = valorSegunEgreso();
+            presup.documentoComercial = egreso.documentoComercial;
             return presup;
         }
+
+        public float valorSegunEgreso()
+        {
+            return itemsCoincidentes.Sum(itemDeProveedor => itemDeProveedor.valor);
+        }
+
     }
 }
