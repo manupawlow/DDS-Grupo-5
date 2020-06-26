@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Manuel\\Desktop\\DDS Repositorio git\\DDS-Grupo-5\\TP ANUAL DDS\\TP ANUAL DDS\\TP ANUAL DDS.csproj": {}
+    "C:\\Users\\Juanma\\Desktop\\tp dds grupo5\\DDS-Grupo-5\\TP ANUAL DDS\\TP ANUAL DDS\\TP ANUAL DDS.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Manuel\\Desktop\\DDS Repositorio git\\DDS-Grupo-5\\TP ANUAL DDS\\TP ANUAL DDS\\TP ANUAL DDS.csproj": {
+    "C:\\Users\\Juanma\\Desktop\\tp dds grupo5\\DDS-Grupo-5\\TP ANUAL DDS\\TP ANUAL DDS\\TP ANUAL DDS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Manuel\\Desktop\\DDS Repositorio git\\DDS-Grupo-5\\TP ANUAL DDS\\TP ANUAL DDS\\TP ANUAL DDS.csproj",
+        "projectUniqueName": "C:\\Users\\Juanma\\Desktop\\tp dds grupo5\\DDS-Grupo-5\\TP ANUAL DDS\\TP ANUAL DDS\\TP ANUAL DDS.csproj",
         "projectName": "TP ANUAL DDS",
-        "projectPath": "C:\\Users\\Manuel\\Desktop\\DDS Repositorio git\\DDS-Grupo-5\\TP ANUAL DDS\\TP ANUAL DDS\\TP ANUAL DDS.csproj",
-        "packagesPath": "C:\\Users\\Manuel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Manuel\\Desktop\\DDS Repositorio git\\DDS-Grupo-5\\TP ANUAL DDS\\TP ANUAL DDS\\obj\\",
+        "projectPath": "C:\\Users\\Juanma\\Desktop\\tp dds grupo5\\DDS-Grupo-5\\TP ANUAL DDS\\TP ANUAL DDS\\TP ANUAL DDS.csproj",
+        "packagesPath": "C:\\Users\\Juanma\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Juanma\\Desktop\\tp dds grupo5\\DDS-Grupo-5\\TP ANUAL DDS\\TP ANUAL DDS\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Manuel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Juanma\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -37,6 +37,12 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "Quartz": {
+              "target": "Package",
+              "version": "[3.0.7, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

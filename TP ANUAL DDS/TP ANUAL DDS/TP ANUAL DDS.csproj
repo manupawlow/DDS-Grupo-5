@@ -6,4 +6,8 @@
     <RootNamespace>TP_ANUAL_DDS</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Quartz" Version="3.0.7" />
+  </ItemGroup>
+
 </Project>
