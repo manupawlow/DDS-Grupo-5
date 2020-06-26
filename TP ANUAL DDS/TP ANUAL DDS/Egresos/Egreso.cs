@@ -15,6 +15,7 @@ namespace TP_ANUAL_DDS.Egresos
         public Proveedor proveedorElegido;
         public float valorTotal;
         public int cantPresupuestos;
+        public List<Ingreso> ingresos = new List<Ingreso>();
         //public string revisorDeCompra;
         public ICriterioDeSeleccion criterioDeSeleccion;
         public BandejaDeMensajes bandejaDeMensajes;

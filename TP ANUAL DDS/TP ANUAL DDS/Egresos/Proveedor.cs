@@ -29,7 +29,7 @@ namespace TP_ANUAL_DDS.Egresos
             egreso = egres;
         }
 
-        public List<ItemDeProveedor> asignarItems()
+        private List<ItemDeProveedor> asignarItems()
         {
             List<ItemDeProveedor> itemsCoincidentes = new List<ItemDeProveedor>(); ;
             for (int i=0; i < egreso.items.Count(); i++)

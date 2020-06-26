@@ -10,7 +10,7 @@ namespace TP_ANUAL_DDS
     {
         static void Main(string[] args)
         {
-            //InterfazInicioDeSesion interfaz = new InterfazInicioDeSesion();
+            InterfazInicioDeSesion interfaz = new InterfazInicioDeSesion();
             MenorValor criterioDeMenorValor = new MenorValor();
             string usuarioActual;
 

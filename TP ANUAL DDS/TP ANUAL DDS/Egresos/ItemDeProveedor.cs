@@ -8,6 +8,8 @@ namespace TP_ANUAL_DDS.Egresos
     {
         public string descripcion { get; set; }
 
+        public List<Criterio> criterio = new List<Criterio>();
+
         public float valor { get; set; }
 
         public ItemDeProveedor(float Precio, string Descipcion)
