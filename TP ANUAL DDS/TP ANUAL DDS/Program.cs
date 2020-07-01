@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 using TP_ANUAL_DDS.Egresos;
+using Quartz;
 
 namespace TP_ANUAL_DDS
 {
@@ -13,6 +14,8 @@ namespace TP_ANUAL_DDS
             //InterfazInicioDeSesion interfaz = new InterfazInicioDeSesion();
             MenorValor criterioDeMenorValor = new MenorValor();
             string usuarioActual;
+
+            Scheduler scheduler = Scheduler.getInstance();
 
             DateTime fecha = DateTime.Today;
             DocumentoComercial doc = new DocumentoComercial(1, "ticket");
@@ -65,13 +68,14 @@ namespace TP_ANUAL_DDS
                 Console.WriteLine(value.presupuesto().valorTotal);
             }*/
 
-
             Console.WriteLine("Ingresar usuario: ");
             usuarioActual = Console.ReadLine();
 
+            
+
             while (true)
             {
-                Console.WriteLine("1. Validar Compra // 2. Ver validacion // 3. Fin");
+                Console.WriteLine("1. Validar Compra // 2. Ver validacion // 3.Validar compra con scheduler // 4. Fin");
                 var eleccion = Console.ReadLine();
 
                 if (eleccion == "1")
@@ -80,17 +84,44 @@ namespace TP_ANUAL_DDS
                 if (eleccion == "2")
                     egreso.bandejaDeMensajes.mostrarMensajes(usuarioActual);
 
-                if (eleccion == "3")
+                if(eleccion == "3")
+                    scheduler.run();
+                    jobValidadorEgreso(scheduler);
+
+                if (eleccion == "4")
                     break;
 
             }
 
-            
+            void jobValidadorEgreso(Scheduler sched)
+            {
+                JobDataMap jobData = new JobDataMap();
+                jobData.Add("egreso", egreso);
+
+                IJobDetail jobValidadorEgreso = JobBuilder.Create<JobValidadorEgresos>()
+                    .WithIdentity("trabajoValidacionEgreso", "grupoValidacionEgreso")
+                    .UsingJobData(jobData)
+                    .Build();
+
+                ITrigger triggerValidadorEgreso = TriggerBuilder.Create()
+                    .WithIdentity("tiempoValidacionEgreso", "grupoValidacionEgreso")
+                    .StartNow()
+                    .WithSimpleSchedule(x => x
+                    .WithIntervalInSeconds(10)
+                    .RepeatForever())
+                    .Build();
+
+                sched.agregarTarea(jobValidadorEgreso, triggerValidadorEgreso);
+
+
+            }
+
+
 
             //Console.WriteLine(egreso.valorTotal);
 
             //BandejaDeMensajes.mostrarMensajes();
-            
+
             //usuarioActual = interfaz.inicioDeSesion();
             //Console.WriteLine(usuarioActual);
             //con ese usuario, el validador se fija si es el usuario que puede ver la compra
