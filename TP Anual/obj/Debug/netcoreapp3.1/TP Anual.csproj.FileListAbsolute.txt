@@ -1,0 +1,13 @@
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\obj\Debug\netcoreapp3.1\TP Anual.csprojAssemblyReference.cache
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\obj\Debug\netcoreapp3.1\TP Anual.AssemblyInfoInputs.cache
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\obj\Debug\netcoreapp3.1\TP Anual.AssemblyInfo.cs
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Debug\netcoreapp3.1\TP Anual.exe
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Debug\netcoreapp3.1\TP Anual.deps.json
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Debug\netcoreapp3.1\TP Anual.runtimeconfig.json
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Debug\netcoreapp3.1\TP Anual.runtimeconfig.dev.json
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Debug\netcoreapp3.1\TP Anual.dll
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Debug\netcoreapp3.1\TP Anual.pdb
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\obj\Debug\netcoreapp3.1\TP Anual.dll
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\obj\Debug\netcoreapp3.1\TP Anual.pdb
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\obj\Debug\netcoreapp3.1\TP Anual.genruntimeconfig.cache
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\obj\Debug\netcoreapp3.1\TP Anual.csproj.CoreCompileInputs.cache
