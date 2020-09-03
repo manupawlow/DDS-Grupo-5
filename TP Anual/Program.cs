@@ -9,61 +9,38 @@ namespace TP_Anual
     {
         static void Main(string[] args)
         {
-            InterfazInicioDeSesion interfaz = new InterfazInicioDeSesion();
-            MenorValor criterioDeMenorValor = new MenorValor();
-            string usuarioActual;
-
+           
             DateTime fecha = DateTime.Today;
             DocumentoComercial doc = new DocumentoComercial(1, "ticket");
+            MedioDePago medio = new MedioDePago("tarjeta", "debito");
+            MenorValor criterioDeMenorValor = new MenorValor();
+            Egreso egreso = new Egreso(fecha, doc, medio, 2, new BandejaDeMensajes("Grupo 5"));
+
             Proveedor proveedor1 = new Proveedor(20305006501, 10, "razon1");
             Proveedor proveedor2 = new Proveedor(20305006502, 11, "razon2");
             Proveedor proveedor3 = new Proveedor(20305006503, 12, "razon3");
-            MedioDePago medio = new MedioDePago("tarjeta", "debito");
+            
+            Item item1 = new Item(15000,"Galaxy s8");
+            Item item2 = new Item(20000,"Galaxy s9");
+            Item item3 = new Item(40000,"Galaxy s10");
+            Item item4 = new Item(45000,"Galaxy s11");
 
-            Egreso egreso = new Egreso(fecha, doc, medio, 2, new BandejaDeMensajes("Grupo 5"));
+            Presupuesto presupuesto1 = new Presupuesto(doc, proveedor1);
+            Presupuesto presupuesto2 = new Presupuesto(doc, proveedor2);
+           
+            presupuesto1.agregar_item(item1);
+            presupuesto1.agregar_item(item2);
 
-            Item item1 = new Item("Galaxy s8");
-            Item item2 = new Item("Galaxy s9");
-            Item item3 = new Item("Galaxy s10");
-            Item item4 = new Item("Galaxy s11");
+            presupuesto2.agregar_item(item3);
+            presupuesto2.agregar_item(item4);
 
-            ItemDeProveedor itemp1 = new ItemDeProveedor(500, "Galaxy s8");
-            ItemDeProveedor itemp1d = new ItemDeProveedor(499, "Galaxy s8");
-            ItemDeProveedor itemp2 = new ItemDeProveedor(600, "Galaxy s9");
-            ItemDeProveedor itemp3 = new ItemDeProveedor(700, "Galaxy s10");
-            ItemDeProveedor itemp4 = new ItemDeProveedor(800, "Galaxy s11");
+            egreso.agregarPresupuesto(presupuesto1);
+            egreso.agregarPresupuesto(presupuesto2);
+            egreso.elegirCriterioDeSeleccion(criterioDeMenorValor);
+            egreso.elegirPresupuesto(presupuesto1);
 
-            egreso.agregarItem(item1);
-            egreso.agregarItem(item2);
-            egreso.agregarItem(item3);
-            egreso.agregarItem(item4);
-
-            proveedor1.agregarItem(itemp1d);
-            proveedor1.agregarItem(itemp2);
-            proveedor1.agregarItem(itemp3);
-            proveedor1.agregarItem(itemp4);
-
-            proveedor2.agregarItem(itemp1);
-            proveedor2.agregarItem(itemp2);
-            proveedor2.agregarItem(itemp3);
-            proveedor2.agregarItem(itemp4);
-
-            egreso.agregarProveedor(proveedor1);
-            egreso.agregarProveedor(proveedor2);
-
-            proveedor1.asignarEgreso(egreso);
-            proveedor2.asignarEgreso(egreso);
-            proveedor3.asignarEgreso(egreso);
-
-            egreso.definirCriterioDeSeleccion(criterioDeMenorValor);
-
-            /*List<Proveedor> list = egreso.proveedores.ToList();
-            Console.WriteLine(list.Count);
-            foreach (Proveedor value in list)
-            {
-                Console.WriteLine(value.presupuesto().valorTotal);
-            }*/
-
+            InterfazInicioDeSesion interfaz = new InterfazInicioDeSesion();
+            string usuarioActual;
 
             Console.WriteLine("Ingresar usuario: ");
             usuarioActual = Console.ReadLine();
@@ -84,6 +61,7 @@ namespace TP_Anual
 
             }
 
+            /*
             void jobValidadorEgreso(Scheduler sched)
             {
                 JobDataMap jobData = new JobDataMap();
@@ -107,7 +85,7 @@ namespace TP_Anual
 
             }
 
-
+            */
             //Console.WriteLine(egreso.valorTotal);
 
             //BandejaDeMensajes.mostrarMensajes();

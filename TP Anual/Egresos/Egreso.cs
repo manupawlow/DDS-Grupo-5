@@ -14,7 +14,8 @@ namespace TP_Anual.Egresos
         public List<Item> items = new List<Item>();
         private MedioDePago medioDePago;
         public Proveedor proveedorElegido;
-        public List<Proveedor> proveedores = new List<Proveedor>();
+        public Presupuesto presupuestoElegido;
+        public List<Presupuesto> presupuestos = new List<Presupuesto>();
         public float valorTotal;
 
 
@@ -33,31 +34,23 @@ namespace TP_Anual.Egresos
             items.Add(item);
         }
 
-        public void agregarProveedor(Proveedor Prov)
+        public void agregarPresupuesto(Presupuesto Pres)
         {
-            proveedores.Add(Prov);
+           presupuestos.Add(Pres);
         }
 
-        public void calcularValorTotal()
-        {
-            valorTotal = proveedorElegido.valorSegunEgreso();
 
-        }
-
-        public Proveedor Criterio(List<Proveedor> provs)
-        {
-            return criterioDeSeleccion.Criterio(provs);
-        }
-
-        public void definirCriterioDeSeleccion(ICriterioDeSeleccion criterioDeSelec)
+        public void elegirCriterioDeSeleccion(ICriterioDeSeleccion criterioDeSelec)
         {
             criterioDeSeleccion = criterioDeSelec;
 
         }
 
-        public void elegirProveedor(Proveedor proveedor)
+        public void elegirPresupuesto(Presupuesto Presupuesto)
         {
-            proveedorElegido = proveedor;
+            presupuestoElegido = Presupuesto;
+            proveedorElegido = Presupuesto.proveedor;
+            valorTotal = Presupuesto.valorTotal;
         }
 
 
