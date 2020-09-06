@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "D8w8x9oQjBD8qMdzK7fStPIEoOb910lK5RWxLec9FZ0sy3Y+yW5oJXh19GTpzfhzViL9WmyKY+Ks2N3I7TlJLQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Juanma\\Desktop\\utn\\diseño\\ejercicioAPI\\ejercicioAPI\\ejercicioAPI\\ejercicioAPI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Juanma\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\Juanma\\.nuget\\packages\\restsharp\\106.11.4\\restsharp.106.11.4.nupkg.sha512"
+  ],
+  "logs": []
+}

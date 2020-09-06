@@ -1,0 +1,16 @@
+C:\Users\Juanma\Desktop\utn\diseño\ejercicioAPI\ejercicioAPI\ejercicioAPI\bin\Debug\netcoreapp3.1\ejercicioAPI.exe
+C:\Users\Juanma\Desktop\utn\diseño\ejercicioAPI\ejercicioAPI\ejercicioAPI\obj\Debug\netcoreapp3.1\ejercicioAPI.csprojAssemblyReference.cache
+C:\Users\Juanma\Desktop\utn\diseño\ejercicioAPI\ejercicioAPI\ejercicioAPI\obj\Debug\netcoreapp3.1\ejercicioAPI.AssemblyInfoInputs.cache
+C:\Users\Juanma\Desktop\utn\diseño\ejercicioAPI\ejercicioAPI\ejercicioAPI\obj\Debug\netcoreapp3.1\ejercicioAPI.AssemblyInfo.cs
+C:\Users\Juanma\Desktop\utn\diseño\ejercicioAPI\ejercicioAPI\ejercicioAPI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\Juanma\Desktop\utn\diseño\ejercicioAPI\ejercicioAPI\ejercicioAPI\obj\Debug\netcoreapp3.1\ejercicioAPI.csproj.CopyComplete
+C:\Users\Juanma\Desktop\utn\diseño\ejercicioAPI\ejercicioAPI\ejercicioAPI\bin\Debug\netcoreapp3.1\ejercicioAPI.deps.json
+C:\Users\Juanma\Desktop\utn\diseño\ejercicioAPI\ejercicioAPI\ejercicioAPI\bin\Debug\netcoreapp3.1\ejercicioAPI.runtimeconfig.json
+C:\Users\Juanma\Desktop\utn\diseño\ejercicioAPI\ejercicioAPI\ejercicioAPI\bin\Debug\netcoreapp3.1\ejercicioAPI.runtimeconfig.dev.json
+C:\Users\Juanma\Desktop\utn\diseño\ejercicioAPI\ejercicioAPI\ejercicioAPI\bin\Debug\netcoreapp3.1\ejercicioAPI.dll
+C:\Users\Juanma\Desktop\utn\diseño\ejercicioAPI\ejercicioAPI\ejercicioAPI\bin\Debug\netcoreapp3.1\ejercicioAPI.pdb
+C:\Users\Juanma\Desktop\utn\diseño\ejercicioAPI\ejercicioAPI\ejercicioAPI\bin\Debug\netcoreapp3.1\RestSharp.dll
+C:\Users\Juanma\Desktop\utn\diseño\ejercicioAPI\ejercicioAPI\ejercicioAPI\obj\Debug\netcoreapp3.1\ejercicioAPI.csproj.CoreCompileInputs.cache
+C:\Users\Juanma\Desktop\utn\diseño\ejercicioAPI\ejercicioAPI\ejercicioAPI\obj\Debug\netcoreapp3.1\ejercicioAPI.dll
+C:\Users\Juanma\Desktop\utn\diseño\ejercicioAPI\ejercicioAPI\ejercicioAPI\obj\Debug\netcoreapp3.1\ejercicioAPI.pdb
+C:\Users\Juanma\Desktop\utn\diseño\ejercicioAPI\ejercicioAPI\ejercicioAPI\obj\Debug\netcoreapp3.1\ejercicioAPI.genruntimeconfig.cache
