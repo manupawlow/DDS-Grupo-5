@@ -7,7 +7,7 @@ namespace TP_Anual.Egresos
     public class Criterio
     {
         public string descripcion;
-        public string jerarquia;
+        public int jerarquia;
         public Categoria categoria;
     }
 }
