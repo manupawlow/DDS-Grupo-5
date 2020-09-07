@@ -16,7 +16,8 @@ namespace Biblioteca_Ejercicio_34
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySQL("server=localhost;database=biblioteca;user=root;password=;");
+            //optionsBuilder.UseMySQL("server=localhost;database=biblioteca;user=root;password=;"); 
+            optionsBuilder.UseMySQL("server=database-1.cow3ly6mxmir.sa-east-1.rds.amazonaws.com;database=biblioteca;user=admin;password=pepepepe;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
