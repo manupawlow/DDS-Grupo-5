@@ -11,7 +11,7 @@ namespace Biblioteca_Ejercicio_34.Modelo
     {
         [Key]
         [Column("id_autor")]
-        public int id { get; set; }
+        public int id_autor { get; set; }
 
         [Column("nombre")]
         public string nombre { get; set; }

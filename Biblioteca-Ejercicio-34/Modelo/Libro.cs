@@ -23,14 +23,17 @@ namespace Biblioteca_Ejercicio_34.Modelo
         [Column("categoria")]
         public string categoria { get; set; }
 
-       //[Column("editorial")]
-        //public Editorial editorial { get; set; }
+        [Column("editorial")]
+        public string editorial { get; set; }
 
         [Column("en_biblioteca")]
         public bool en_biblioteca { get; set; }
 
         [Column("en_reparacion")]
         public bool en_reparacion { get; set; }
+
+        [Column("fecha_prestamo")]
+        public int fecha_prestamo { get; set; }
 
         [Column("nombre")]
         public string nombre { get; set; }
@@ -40,7 +43,7 @@ namespace Biblioteca_Ejercicio_34.Modelo
 
         public Libro() 
         {
-
+            fecha_prestamo = 0;
             prestado = false;
             en_reparacion = false;
             en_biblioteca = true;
@@ -48,19 +51,30 @@ namespace Biblioteca_Ejercicio_34.Modelo
         }
 
 
-        public void estaEnBiblioteca()
+        public void ingresar_libro()
         {
             en_biblioteca = true;
         }
 
-        public void estaPrestado()
+        public void prestar_libro(int fecha)
         {
             prestado = true;
+            en_biblioteca = false;
+            fecha_prestamo = fecha;
         }
 
-        public void estaEnReparacion() 
+        public void reparar() 
         {
             en_reparacion = true;
+            en_biblioteca = false;
+        }
+
+        public bool esta_demorado(int fecha_actual) 
+        {
+            if (prestado)
+                return fecha_actual - fecha_prestamo > 30;
+            else
+                return false;
         }
 
     }

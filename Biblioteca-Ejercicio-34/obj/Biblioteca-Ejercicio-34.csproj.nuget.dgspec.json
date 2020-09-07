@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Matias\\source\\repos\\Biblioteca-Ejercicio-34\\Biblioteca-Ejercicio-34.csproj": {}
+    "C:\\Users\\Matias\\source\\repos\\DDS-Grupo-5\\Biblioteca-Ejercicio-34\\Biblioteca-Ejercicio-34.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Matias\\source\\repos\\Biblioteca-Ejercicio-34\\Biblioteca-Ejercicio-34.csproj": {
+    "C:\\Users\\Matias\\source\\repos\\DDS-Grupo-5\\Biblioteca-Ejercicio-34\\Biblioteca-Ejercicio-34.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Matias\\source\\repos\\Biblioteca-Ejercicio-34\\Biblioteca-Ejercicio-34.csproj",
+        "projectUniqueName": "C:\\Users\\Matias\\source\\repos\\DDS-Grupo-5\\Biblioteca-Ejercicio-34\\Biblioteca-Ejercicio-34.csproj",
         "projectName": "Biblioteca-Ejercicio-34",
-        "projectPath": "C:\\Users\\Matias\\source\\repos\\Biblioteca-Ejercicio-34\\Biblioteca-Ejercicio-34.csproj",
+        "projectPath": "C:\\Users\\Matias\\source\\repos\\DDS-Grupo-5\\Biblioteca-Ejercicio-34\\Biblioteca-Ejercicio-34.csproj",
         "packagesPath": "C:\\Users\\Matias\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Matias\\source\\repos\\Biblioteca-Ejercicio-34\\obj\\",
+        "outputPath": "C:\\Users\\Matias\\source\\repos\\DDS-Grupo-5\\Biblioteca-Ejercicio-34\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Matias\\AppData\\Roaming\\NuGet\\NuGet.Config",

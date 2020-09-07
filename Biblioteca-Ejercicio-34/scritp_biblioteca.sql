@@ -7,8 +7,10 @@ CREATE TABLE IF NOT EXISTS libros(
     nombre VARCHAR(45) NOT NULL,
     anio INT NOT NULL,
     categoria VARCHAR(45) NOT NULL,
+    editorial VARCHAR(45) NOT NULL,
     en_biblioteca BOOLEAN NOT NULL,
     en_reparacion BOOLEAN NOT NULL,
+    fecha_prestamo INT NOT NULL,
     en_prestamo BOOLEAN NOT NULL,
     PRIMARY KEY(id_libro),
     id_autor INT NOT NULL
@@ -25,8 +27,9 @@ ALTER TABLE libros ADD CONSTRAINT fk_autor FOREIGN KEY(id_autor) REFERENCES auto
 
 CREATE TABLE IF NOT EXISTS lectores(
 	id_lector INT NOT NULL AUTO_INCREMENT,
-    multado BOOLEAN NOT NULL,
+    dias_multado INT NOT NULL,
     nombre VARCHAR(45) NOT NULL,
+    cant_libros INT NOT NULL,
     PRIMARY KEY (id_lector)
 );
 
@@ -35,6 +38,7 @@ CREATE TABLE IF NOT EXISTS prestamos(
     fecha INT NOT NULL,
     id_lector INT NOT NULL,
     id_libro INT NOT NULL,
+    activo INT NOT NULL,
     PRIMARY KEY(id_prestamo),
     
 	CONSTRAINT fk_lector FOREIGN KEY(id_lector) REFERENCES lectores(id_lector),

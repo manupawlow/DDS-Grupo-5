@@ -11,7 +11,6 @@ namespace Biblioteca_Ejercicio_34
     {
         public DbSet<Libro> libros { get; set; }
         public DbSet<Lector> lectores { get; set; }
-        //public DbSet<Editorial> editoriales { get; set; }
         public DbSet<Autor> autores { get; set; }
         public DbSet<Prestamo> prestamos { get; set; }
 

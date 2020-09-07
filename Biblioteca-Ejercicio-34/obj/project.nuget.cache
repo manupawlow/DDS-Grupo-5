@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lyb1lvldQzqhb47M5D2ClpZPrSCZyHsy9O4voHiwF38Lg0WqtFAjzusYlhmLL7pCaEngpa5+PRcdWMA6JJXn1Q==",
+  "dgSpecHash": "Aco+YiFCkWY7hCqPEMp3KLexzW9AIbhgq5c9nrmzp0lZcbvC5xgIWibBsuw5NYBTryZagj6jaEPXEpaj49z9ZQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Matias\\source\\repos\\Biblioteca-Ejercicio-34\\Biblioteca-Ejercicio-34.csproj",
+  "projectFilePath": "C:\\Users\\Matias\\source\\repos\\DDS-Grupo-5\\Biblioteca-Ejercicio-34\\Biblioteca-Ejercicio-34.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Matias\\.nuget\\packages\\bouncycastle.netcore\\1.8.3\\bouncycastle.netcore.1.8.3.nupkg.sha512",
     "C:\\Users\\Matias\\.nuget\\packages\\google.protobuf\\3.6.1\\google.protobuf.3.6.1.nupkg.sha512",

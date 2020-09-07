@@ -24,29 +24,27 @@ namespace Biblioteca_Ejercicio_34.Modelo
         [Column("id_libro")]
         public int id_libro { get; set; }
 
+        [Column("activo")]
+        public int activo { get; set; }
+
         public Libro libro { get; set; }
-        
-        /*
-        public Prestamo(int Fecha_Inicio, Lector Lector, Libro Libro) 
+
+        public Prestamo() 
         {
-                fecha = Fecha_Inicio;
-                lector = Lector;
-                libro = Libro;
-                libro.estaPrestado();
+            activo = 1;
         }
-        */
 
         public void calcular_multa(int fecha_actual)
         {
             if (fecha_actual - fecha > 30)
-                lector.multar();
+                lector.multar((fecha_actual - fecha - 30) * 2);
         }
 
         public void libro_devuelto(int fecha_actual) 
         {
-            libro.estaEnBiblioteca();
+            libro.ingresar_libro();
+            activo = 0;
             calcular_multa(fecha_actual);
-
         }
 
 
