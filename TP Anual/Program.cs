@@ -9,25 +9,46 @@ namespace TP_Anual
     {
         static void Main(string[] args)
         {
-           
-            DateTime fecha = DateTime.Today;
-            DocumentoComercial doc = new DocumentoComercial(1, "ticket");
-            MedioDePago medio = new MedioDePago("tarjeta", "debito");
-            MenorValor criterioDeMenorValor = new MenorValor();
-            Egreso egreso = new Egreso(fecha, doc, medio, 2, new BandejaDeMensajes("Grupo 5"));
 
-            Proveedor proveedor1 = new Proveedor(20305006501, 10, "razon1");
-            Proveedor proveedor2 = new Proveedor(20305006502, 11, "razon2");
-            Proveedor proveedor3 = new Proveedor(20305006503, 12, "razon3");
+            DocumentoComercial doc = new DocumentoComercial();
+            doc.tipo ="ticket";
+
+            Egreso egreso = new Egreso();
+            egreso.fecha = DateTime.Today;
+            egreso.cantPresupuestos = 2;
+            egreso.documentoComercial = doc;
+            egreso.medioDePago = new MedioDePago("tarjeta", "debito");
+            egreso.bandejaDeMensajes = new BandejaDeMensajes("Grupo 5");
+            egreso.criterioDeSeleccion = new MenorValor();
+
+            Proveedor proveedor1 = new Proveedor();
+            //proveedor1.CUIT = 20305006501;
+            proveedor1.razon_social = "razon1";
+            Proveedor proveedor2 = new Proveedor();
+            //proveedor2.CUIT = 20305006502;
+            proveedor2.razon_social= "razon2";
+           
             
-            Item item1 = new Item(15000,"Galaxy s8");
-            Item item2 = new Item(20000,"Galaxy s9");
-            Item item3 = new Item(40000,"Galaxy s10");
-            Item item4 = new Item(45000,"Galaxy s11");
+            Item item1 = new Item();
+            item1.valor = 20000;
+            item1.descripcion = "Galaxy 8";
+            Item item2 = new Item();
+            item2.valor = 25000;
+            item2.descripcion = "Galaxy 9";
+            Item item3 = new Item();
+            item3.valor = 35000;
+            item3.descripcion = "Galaxy 10";
+            Item item4 = new Item();
+            item4.valor = 42000;
+            item4.descripcion = "Galaxy 10 Plus";
 
-            Presupuesto presupuesto1 = new Presupuesto(doc, proveedor1);
-            Presupuesto presupuesto2 = new Presupuesto(doc, proveedor2);
-           
+            Presupuesto presupuesto1 = new Presupuesto();
+            presupuesto1.documentoComercial = doc;
+            presupuesto1.proveedor = proveedor1;
+            Presupuesto presupuesto2 = new Presupuesto();
+            presupuesto2.documentoComercial = doc;
+            presupuesto2.proveedor = proveedor2;
+
             presupuesto1.agregar_item(item1);
             presupuesto1.agregar_item(item2);
 
@@ -36,7 +57,6 @@ namespace TP_Anual
 
             egreso.agregarPresupuesto(presupuesto1);
             egreso.agregarPresupuesto(presupuesto2);
-            egreso.elegirCriterioDeSeleccion(criterioDeMenorValor);
             egreso.elegirPresupuesto(presupuesto1);
 
             InterfazInicioDeSesion interfaz = new InterfazInicioDeSesion();

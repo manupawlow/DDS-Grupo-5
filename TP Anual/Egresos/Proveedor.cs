@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using System.Text;
 using System.Data;
 using System.Linq;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TP_Anual.Egresos
 {
+    [Table("proveedor")]
     public class Proveedor
     {
-        private long cuit;
-        private int direccionPostal;
-        private string razonSocial;
+        [Column("id_prov")]
+        public int id_prov { get; set; }
 
+        [Column("CUIT")]
+        public int CUIT { get; set; }
 
-        public Proveedor(long Cuit, int DireccionPostal, string RazonSocial)
-        {
-            cuit = Cuit;
-            direccionPostal = DireccionPostal;
-            razonSocial = RazonSocial;
-        }
+        [Column("razon_social")]
+        public string razon_social { get; set; }
 
     }
 }

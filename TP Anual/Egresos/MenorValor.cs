@@ -15,7 +15,7 @@ namespace TP_Anual.Egresos
 
             for (int i = 1; i < Presupuestos.Count(); i++)
             {
-                if (Presupuestos[i].valorTotal < menorValor.valorTotal )
+                if (Presupuestos[i].valor_total < menorValor.valor_total )
                     menorValor = Presupuestos[i];
             }
             return menorValor;
