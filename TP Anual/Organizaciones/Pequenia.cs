@@ -6,10 +6,10 @@ namespace TP_Anual.Organizaciones
 {
     class Pequenia : Empresa
     {
-        private readonly string categoria = "Pequeña";
-
         public Pequenia()
         {
+            categoria = "Pequeña";
+
             topeVentasPorActividad = new Dictionary<string, float>()
             {
                 {"Construcción", 90310000},
@@ -29,6 +29,6 @@ namespace TP_Anual.Organizaciones
             };
         }
 
-        public override string Categoria { get => categoria; }
+        
     }
 }

@@ -80,8 +80,8 @@ namespace TP_Anual.Organizaciones
             categoriaVenta = categoriaSegunPromedioVentasAnuales(actividad, promedioVentas);
 
             int iPersonal, iVenta;
-            iPersonal = categorias.FindIndex(categoria => categoria.Tipo == categoriaPersonal.Tipo);
-            iVenta = categorias.FindIndex(categoria => categoria.Tipo == categoriaVenta.Tipo);
+            iPersonal = categorias.FindIndex(categoria => categoria.tipo == categoriaPersonal.tipo);
+            iVenta = categorias.FindIndex(categoria => categoria.tipo == categoriaVenta.tipo);
 
             if (iVenta > iPersonal)
             {

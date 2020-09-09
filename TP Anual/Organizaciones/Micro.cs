@@ -5,11 +5,11 @@ using System.Text;
 namespace TP_Anual.Organizaciones
 {
     class Micro : Empresa
-    {
-        private readonly string categoria = "Micro";
-
+    { 
         public Micro()
         {
+            categoria = "Micro";
+
             topeVentasPorActividad = new Dictionary<string, float>()
             {
                 {"Construcción", 15230000},
@@ -29,6 +29,5 @@ namespace TP_Anual.Organizaciones
             };
         }
 
-        public override string Categoria { get => categoria; }
     }
 }

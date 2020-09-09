@@ -1,12 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TP_Anual.Organizaciones
 {
-    public abstract class TipoOrganizacion
+    [Table("tipo_organizacion")]
+    public class TipoOrganizacion
     {
-        public abstract string Tipo { get; }
-        public abstract string Categoria { get; }
+        [Key]
+        [Column("id_tipo")]
+        public int id_tipo { get; set; }
+
+        [Column("tipo")]
+        public string tipo { get; set; }
+
     }
 }

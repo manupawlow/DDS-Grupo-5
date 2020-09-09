@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using TP_Anual.Egresos;
 
 namespace TP_Anual.Organizaciones
 {
@@ -13,7 +16,7 @@ namespace TP_Anual.Organizaciones
         private TipoOrganizacion tipoOrganizacion;
         private char comisionista;
         private string tipo;
-
+        private List<Egreso> egresos;
 
         public Organizacion()
         {
@@ -49,8 +52,7 @@ namespace TP_Anual.Organizaciones
             Console.Write("Ingrese tipo de organizacion: ");
             tipo = Console.ReadLine();
         }
-        public string Actividad { get => actividad; }
-        public TipoOrganizacion TipoOrganizacion { get => tipoOrganizacion; }
+ 
 
     }
 }

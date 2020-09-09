@@ -6,9 +6,10 @@ namespace TP_Anual.Organizaciones
 {
     class OSC : TipoOrganizacion
     {
-        public override string Tipo => "OSC";
-
-        public override string Categoria => "No Tiene";
+        public OSC() 
+        {
+            tipo = "OSC";
+        }
 
     }
 }

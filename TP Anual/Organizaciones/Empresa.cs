@@ -4,14 +4,12 @@ using System.Text;
 
 namespace TP_Anual.Organizaciones
 {
-    public abstract class Empresa : TipoOrganizacion
+    public class Empresa : TipoOrganizacion
     {
-        private readonly string tipo = "Empresa";
-        protected Dictionary<string, float> topeVentasPorActividad;
-        protected Dictionary<string, int> topePersonalPorActividad;
-
-
-        public override string Tipo { get => tipo; }
+        public string categoria;
+        public Dictionary<string, float> topeVentasPorActividad;
+        public Dictionary<string, int> topePersonalPorActividad;
+       
         public float TopeVentasPorActividad(string actividad)
         {
             return topeVentasPorActividad[actividad];

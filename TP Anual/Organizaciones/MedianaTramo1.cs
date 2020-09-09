@@ -6,10 +6,10 @@ namespace TP_Anual.Organizaciones
 {
     class MedianaTramo1 : Empresa
     {
-        private readonly string categoria = "Mediana - Tramo 1";
-
         public MedianaTramo1()
         {
+            categoria = "Mediana - Tramo 1";
+
             topeVentasPorActividad = new Dictionary<string, float>()
             {
                 {"Construcción", 503880000},
@@ -29,6 +29,5 @@ namespace TP_Anual.Organizaciones
             };
         }
 
-        public override string Categoria { get => categoria; }
     }
 }
