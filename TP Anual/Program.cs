@@ -3,6 +3,7 @@ using TP_Anual.Egresos;
 using TP_Anual.Administrador_Inicio_Sesion;
 using Quartz;
 using TP_Anual.Organizaciones;
+using System.Linq;
 
 namespace TP_Anual
 {
@@ -12,6 +13,11 @@ namespace TP_Anual
         {
             using(var context = new BaseDeDatos())
             {
+                DocumentoComercial doc = new DocumentoComercial();
+                doc.tipo = "ticket";
+                doc.numero = 1;
+                context.documentos.Add(doc);
+                context.SaveChanges();
 
                 Item item1 = new Item();
                 item1.valor = 20000;
@@ -19,13 +25,52 @@ namespace TP_Anual
                 context.items.Add(item1);
                 context.SaveChanges();
 
+                Item item2 = new Item();
+                item2.valor = 25000;
+                item2.descripcion = "Galaxy 9";
+                context.items.Add(item2);
+                context.SaveChanges();
+
+                Criterio criterio = new Criterio();
+
+                Categoria categoria = new Categoria();
+
+                Ingreso ingreso = new Ingreso();
+                ingreso.descripcion = "pepe";
+                ingreso.total = 5000;
+                context.ingresos.Add(ingreso);
+                context.SaveChanges();
+
+                Proveedor proveedor1 = new Proveedor();
+                proveedor1.CUIT = 203050065;
+                proveedor1.razon_social = "proveedor";
+                context.proveedores.Add(proveedor1);
+                context.SaveChanges();
+
+                proveedor1 = context.proveedores.Single(p => p.id_prov == 1);
+                Presupuesto presupuesto1 = new Presupuesto();
+                doc = context.documentos.Single(d => d.id_documento == 1);
+                presupuesto1.documentosComerciales.Add(doc);
+                presupuesto1.proveedor = proveedor1;
+
+                context.presupuestos.Add(presupuesto1);
+                context.SaveChanges();
+
+                presupuesto1.agregar_item(item1);
+                presupuesto1.agregar_item(item2);
+
+                context.SaveChanges();
+
+                Egreso egreso = new Egreso();
+                ingreso = context.ingresos.Single(i => i.id_ingreso == 1);
+                //ingreso.egresos.Add(egreso);
+                context.egresos.Add(egreso);
+                context.SaveChanges();
+
                 EntidadJuridica entidad = new EntidadJuridica();
                 Console.WriteLine($"Categoria: {entidad.tipoOrganizacion.categoria}");
 
-                DocumentoComercial doc = new DocumentoComercial();
-                doc.tipo = "ticket";
-
-                Egreso egreso = new Egreso();
+               
                 egreso.fecha = DateTime.Today;
                 egreso.cantPresupuestos = 2;
                 egreso.documentoComercial = doc;
@@ -33,17 +78,14 @@ namespace TP_Anual
                 egreso.bandejaDeMensajes = new BandejaDeMensajes("Grupo 5");
                 egreso.criterioDeSeleccion = new MenorValor();
 
-                Proveedor proveedor1 = new Proveedor();
-                //proveedor1.CUIT = 20305006501;
+                
                 proveedor1.razon_social = "razon1";
                 Proveedor proveedor2 = new Proveedor();
                 //proveedor2.CUIT = 20305006502;
                 proveedor2.razon_social = "razon2";
 
 
-                Item item2 = new Item();
-                item2.valor = 25000;
-                item2.descripcion = "Galaxy 9";
+                
                 Item item3 = new Item();
                 item3.valor = 35000;
                 item3.descripcion = "Galaxy 10";
@@ -51,15 +93,13 @@ namespace TP_Anual
                 item4.valor = 42000;
                 item4.descripcion = "Galaxy 10 Plus";
 
-                Presupuesto presupuesto1 = new Presupuesto();
-                presupuesto1.documentoComercial = doc;
+                
                 presupuesto1.proveedor = proveedor1;
                 Presupuesto presupuesto2 = new Presupuesto();
-                presupuesto2.documentoComercial = doc;
+                presupuesto2.documentosComerciales.Add(doc);
                 presupuesto2.proveedor = proveedor2;
 
-                presupuesto1.agregar_item(item1);
-                presupuesto1.agregar_item(item2);
+                
 
                 presupuesto2.agregar_item(item3);
                 presupuesto2.agregar_item(item4);

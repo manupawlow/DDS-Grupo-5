@@ -19,6 +19,5 @@ namespace TP_Anual.Egresos
 
         [Column("descripcion")]
         public string descripcion { get; set; }
-        
     }
 }

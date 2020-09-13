@@ -19,9 +19,18 @@ namespace TP_Anual.Egresos
 
         [Column("descripcion")]
         public string descripcion { get; set; }
-        
+
+        public List<Presupuesto> presupuesto { get; set; }
+
+
+
         public List<Criterio> criterio = new List<Criterio>();
 
+
+        public Item() 
+        {
+            presupuesto = new List<Presupuesto>();
+        }
 
     }
 }

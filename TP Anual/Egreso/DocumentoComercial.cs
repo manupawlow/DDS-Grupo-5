@@ -22,5 +22,11 @@ namespace TP_Anual.Egresos
         [Column("tipo")]
         public string tipo  { get; set; }
 
+        [Column("numero")]
+        public int numero { get; set; }
+
+        public Presupuesto presupuesto { get; set; }
+
+       
     }
 }

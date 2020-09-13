@@ -31,8 +31,11 @@ namespace TP_Anual.Egresos
         [Column("id_entidad_juridica")]
         public int id_entidad_juridica { get; set; }
 
-        [Column("id_bandeja")]
+    
         public int id_bandeja { get; set; }
+
+        [Column("id_ingreso")]
+        public int id_ingreso { get; set; }
 
         public BandejaDeMensajes bandejaDeMensajes;
         public ICriterioDeSeleccion criterioDeSeleccion;
@@ -42,6 +45,7 @@ namespace TP_Anual.Egresos
         public Proveedor proveedorElegido;
         public Presupuesto presupuestoElegido;
         public List<Presupuesto> presupuestos = new List<Presupuesto>();
+        public Ingreso ingreso { get; set; }
 
         /*
         public Egreso(DateTime Fecha, DocumentoComercial Doc, MedioDePago Medio, int cantidadDePresupuesto, BandejaDeMensajes Bandeja)

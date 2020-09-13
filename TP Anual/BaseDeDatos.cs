@@ -14,7 +14,10 @@ namespace TP_Anual
         public DbSet<Ingreso> ingresos { get; set; }
         public DbSet<Item> items { get; set; }
         public DbSet<Presupuesto> presupuestos { get; set; }
-        public DbSet<Proveedor> proveedor { get; set; }
+        public DbSet<Proveedor> proveedores { get; set; }
+        public DbSet<Categoria> categorias { get; set; }
+        public DbSet<Criterio> criterios { get; set; }
+        public DbSet<DocumentoComercial> documentos { get; set; }
 
         public BaseDeDatos() : base("dbConn")
         {
@@ -27,11 +30,27 @@ namespace TP_Anual
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            // configures one-to-many relationship
-            //modelBuilder.Entity<Post>()
-              //  .HasRequired<Usuario>(s => s.creador)
-                //.WithMany(g => g.posts)
-                //.HasForeignKey<int>(s => s.creador_id);
+
+            modelBuilder.Entity<Presupuesto>()
+                .HasMany<Item>(i => i.itemsDePresupuesto)
+                .WithMany(i => i.presupuesto)
+                .Map(ip =>
+                {
+                    ip.ToTable("item_por_presupuesto");
+                    ip.MapLeftKey("id_presupuesto");
+                    ip.MapRightKey("id_item");
+                });
+
+            modelBuilder.Entity<Egreso>()
+                .HasRequired<Ingreso>(e => e.ingreso)
+                .WithMany(i => i.egresos)
+                .HasForeignKey(e => e.id_ingreso);
+
+            modelBuilder.Entity<DocumentoComercial>()
+                .HasRequired<Presupuesto>(d => d.presupuesto)
+                .WithMany(p => p.documentosComerciales)
+                .HasForeignKey(d => d.id_presupuesto);
+
         }
 
     }

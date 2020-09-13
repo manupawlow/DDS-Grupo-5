@@ -18,11 +18,17 @@ namespace TP_Anual.Egresos
         public int valor_total { get; set; }
 
         [Column("id_prov")]
-        public int id_prove { get; set; }
+        public int id_prov { get; set; }
 
-        public List<Item> itemsDePresupuesto = new List<Item>();
-        public DocumentoComercial documentoComercial;
+        public List<Item> itemsDePresupuesto { get; set; }
+        public List<DocumentoComercial> documentosComerciales { get; set; }
         public Proveedor proveedor;
+
+        public Presupuesto()
+        {
+            itemsDePresupuesto = new List<Item>();
+            documentosComerciales = new List<DocumentoComercial>();
+        }
 
         public void agregar_item(Item Item)
         {
