@@ -20,7 +20,7 @@ namespace TP_Anual.Egresos
         public DateTime fecha { get; set; }
         
         [Column("valor_total")]
-        public float valorTotal { get; set; }
+        public int valorTotal { get; set; }
 
         [Column("id_prov")]
         public int id_prov { get; set; }
@@ -31,9 +31,6 @@ namespace TP_Anual.Egresos
         [Column("id_entidad_juridica")]
         public int id_entidad_juridica { get; set; }
 
-    
-        public int id_bandeja { get; set; }
-
         [Column("id_ingreso")]
         public int id_ingreso { get; set; }
 
@@ -42,7 +39,7 @@ namespace TP_Anual.Egresos
         public DocumentoComercial documentoComercial;
         public List<Item> items = new List<Item>();
         public MedioDePago medioDePago;
-        public Proveedor proveedorElegido;
+        public Proveedor proveedorElegido { get; set; }
         public Presupuesto presupuestoElegido;
         public List<Presupuesto> presupuestos = new List<Presupuesto>();
         public Ingreso ingreso { get; set; }

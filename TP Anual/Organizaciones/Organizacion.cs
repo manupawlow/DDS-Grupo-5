@@ -9,10 +9,16 @@ namespace TP_Anual.Organizaciones
 {
     public abstract class Organizacion
     {
-        public string actividad;
-        public int cantidadPersonal;
-        public string nombreFicticio;
-        public float promedioVentasAnuales;
+        [Key]
+        [Column("id_organizacion")]
+        public int id_organizacion { get; set; }
+
+        public string actividad { get; set; }
+        public int cantidadPersonal { get; set; }
+        public string nombreFicticio { get; set; }
+        public float promedioVentasAnuales { get; set; }
+        
+        
         public TipoOrganizacion tipoOrganizacion;
         public char comisionista;
         public string tipo;

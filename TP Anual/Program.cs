@@ -13,10 +13,17 @@ namespace TP_Anual
         {
             using(var context = new BaseDeDatos())
             {
-                DocumentoComercial doc = new DocumentoComercial();
-                doc.tipo = "ticket";
-                doc.numero = 1;
-                context.documentos.Add(doc);
+
+                Ingreso ingreso = new Ingreso();
+                ingreso.descripcion = "pepe";
+                ingreso.total = 5000;
+                context.ingresos.Add(ingreso);
+                context.SaveChanges();
+
+                Proveedor proveedor1 = new Proveedor();
+                proveedor1.CUIT = 203050065;
+                proveedor1.razon_social = "proveedor";
+                context.proveedores.Add(proveedor1);
                 context.SaveChanges();
 
                 Item item1 = new Item();
@@ -31,44 +38,50 @@ namespace TP_Anual
                 context.items.Add(item2);
                 context.SaveChanges();
 
+                EntidadJuridica entidad_juridica = new EntidadJuridica();
+                entidad_juridica.razon_social = "ManuMati";
+                context.organizaciones.Add(entidad_juridica);
+                context.SaveChanges();
+
+                EntidadBase entidad_base = new EntidadBase();
+                context.organizaciones.Add(entidad_base);
+                context.SaveChanges();
+
+                Presupuesto presupuesto1 = new Presupuesto();
+                presupuesto1.agregar_item(item1);
+                presupuesto1.agregar_item(item2);
+                //doc = context.documentos.Single(d => d.id_documento == 1);
+                proveedor1 = context.proveedores.Single(p => p.id_prov == 1);
+                presupuesto1.proveedor = proveedor1;
+                //presupuesto1.documentosComerciales.Add(doc);
+                context.presupuestos.Add(presupuesto1);
+                context.SaveChanges();
+                
+                DocumentoComercial doc = new DocumentoComercial();
+                doc.tipo = "ticket";
+                doc.numero = 1;
+                context.documentos.Add(doc);
+                context.SaveChanges();
+
+                Egreso egreso = new Egreso();
+                egreso.fecha = DateTime.Today;
+                egreso.cantPresupuestos = 2;
+                ingreso.egresos.Add(egreso);
+                egreso.proveedorElegido = proveedor1;
+                context.egresos.Add(egreso);
+                context.SaveChanges();
+
+                //ingreso = context.ingresos.Single(i => i.id_ingreso == 1);
+                //proveedor1 = context.proveedores.Single(p => p.id_prov == 1);
+                //egreso.proveedorElegido = proveedor1;
+
+                //ingreso.egresos.Add(egreso);
+                
                 Criterio criterio = new Criterio();
 
                 Categoria categoria = new Categoria();
 
-                Ingreso ingreso = new Ingreso();
-                ingreso.descripcion = "pepe";
-                ingreso.total = 5000;
-                context.ingresos.Add(ingreso);
-                context.SaveChanges();
-
-                Proveedor proveedor1 = new Proveedor();
-                proveedor1.CUIT = 203050065;
-                proveedor1.razon_social = "proveedor";
-                context.proveedores.Add(proveedor1);
-                context.SaveChanges();
-
-                proveedor1 = context.proveedores.Single(p => p.id_prov == 1);
-                Presupuesto presupuesto1 = new Presupuesto();
-                doc = context.documentos.Single(d => d.id_documento == 1);
-                presupuesto1.documentosComerciales.Add(doc);
-                presupuesto1.proveedor = proveedor1;
-
-                context.presupuestos.Add(presupuesto1);
-                context.SaveChanges();
-
-                presupuesto1.agregar_item(item1);
-                presupuesto1.agregar_item(item2);
-
-                context.SaveChanges();
-
-                Egreso egreso = new Egreso();
-                ingreso = context.ingresos.Single(i => i.id_ingreso == 1);
-                //ingreso.egresos.Add(egreso);
-                context.egresos.Add(egreso);
-                context.SaveChanges();
-
-                EntidadJuridica entidad = new EntidadJuridica();
-                Console.WriteLine($"Categoria: {entidad.tipoOrganizacion.categoria}");
+                Console.WriteLine($"Categoria: {entidad_base.tipoOrganizacion.categoria}");
 
                
                 egreso.fecha = DateTime.Today;
