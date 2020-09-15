@@ -11,8 +11,19 @@ namespace TP_Anual
     {
         static void Main(string[] args)
         {
-            using(var context = new BaseDeDatos())
+            using (var context = new BaseDeDatos())
             {
+
+                //var hola = context.presupuestos.Single(p => p.id_presupuesto == 1);
+                //Console.WriteLine($"{hola.documentoComercial.id_documento}");
+
+                var presupuesto = context.presupuestos.Single(p => p.id_presupuesto == 1);
+
+                Console.WriteLine($"{presupuesto.egreso.cantPresupuestos}");
+                foreach(Item i in presupuesto.itemsDePresupuesto)
+                {
+                    Console.WriteLine($"{i.descripcion}");
+                }
 
                 Ingreso ingreso = new Ingreso();
                 ingreso.descripcion = "pepe";
@@ -38,67 +49,78 @@ namespace TP_Anual
                 context.items.Add(item2);
                 context.SaveChanges();
 
+                
                 EntidadJuridica entidad_juridica = new EntidadJuridica();
                 entidad_juridica.razon_social = "ManuMati";
-                context.organizaciones.Add(entidad_juridica);
+                entidad_juridica.nombreFicticio = "ManuMati";
+                entidad_juridica.actividad = "Servicios";
+                entidad_juridica.comisionista = 'N';
+                entidad_juridica.promedioVentasAnuales = 50000000 ;
+                entidad_juridica.cantidadPersonal = 30;
+                entidad_juridica.tipo = "Empresa";
+                entidad_juridica.AsignarTipoOrganizacion();
+                context.entidades_juridicas.Add(entidad_juridica);
                 context.SaveChanges();
 
                 EntidadBase entidad_base = new EntidadBase();
-                context.organizaciones.Add(entidad_base);
+                entidad_base.nombreFicticio = "Seguridad";
+                entidad_base.actividad = "Servicios";
+                entidad_base.comisionista = 'N';
+                entidad_base.promedioVentasAnuales = 100000;
+                entidad_base.cantidadPersonal = 3;
+                entidad_base.tipo = "Empresa";
+                entidad_base.AsignarTipoOrganizacion();
+                context.entidades_base.Add(entidad_base);
                 context.SaveChanges();
 
-                Presupuesto presupuesto1 = new Presupuesto();
-                presupuesto1.agregar_item(item1);
-                presupuesto1.agregar_item(item2);
-                //doc = context.documentos.Single(d => d.id_documento == 1);
-                proveedor1 = context.proveedores.Single(p => p.id_prov == 1);
-                presupuesto1.proveedor = proveedor1;
-                //presupuesto1.documentosComerciales.Add(doc);
-                context.presupuestos.Add(presupuesto1);
+                entidad_juridica.entidades_base.Add(entidad_base);
                 context.SaveChanges();
-                
+
                 DocumentoComercial doc = new DocumentoComercial();
                 doc.tipo = "ticket";
                 doc.numero = 1;
                 context.documentos.Add(doc);
                 context.SaveChanges();
 
+                Presupuesto presupuesto1 = new Presupuesto();
+                presupuesto1.agregar_item(item1);
+                presupuesto1.agregar_item(item2);
+                presupuesto1.proveedor = proveedor1;
+                presupuesto1.documentoComercial = doc;
+                context.presupuestos.Add(presupuesto1);
+                context.SaveChanges();
+
                 Egreso egreso = new Egreso();
                 egreso.fecha = DateTime.Today;
                 egreso.cantPresupuestos = 2;
-                ingreso.egresos.Add(egreso);
+                egreso.documentosComerciales.Add(doc);
+                egreso.presupuestos.Add(presupuesto1);
                 egreso.proveedorElegido = proveedor1;
                 context.egresos.Add(egreso);
                 context.SaveChanges();
 
-                //ingreso = context.ingresos.Single(i => i.id_ingreso == 1);
-                //proveedor1 = context.proveedores.Single(p => p.id_prov == 1);
-                //egreso.proveedorElegido = proveedor1;
+                ingreso = context.ingresos.Single(i => i.id_ingreso == 1);
 
-                //ingreso.egresos.Add(egreso);
-                
+                ingreso.egresos.Add(egreso);
+                context.SaveChanges();
+
                 Criterio criterio = new Criterio();
 
                 Categoria categoria = new Categoria();
 
-                Console.WriteLine($"Categoria: {entidad_base.tipoOrganizacion.categoria}");
+                MedioDePago medio_de_pago = new MedioDePago();
+                medio_de_pago.nombre = "tarjeta";
+                medio_de_pago.tipoDePago = "debito";
 
-               
-                egreso.fecha = DateTime.Today;
-                egreso.cantPresupuestos = 2;
-                egreso.documentoComercial = doc;
-                egreso.medioDePago = new MedioDePago("tarjeta", "debito");
+                egreso.medioDePago = medio_de_pago;
                 egreso.bandejaDeMensajes = new BandejaDeMensajes("Grupo 5");
                 egreso.criterioDeSeleccion = new MenorValor();
 
-                
                 proveedor1.razon_social = "razon1";
                 Proveedor proveedor2 = new Proveedor();
                 //proveedor2.CUIT = 20305006502;
                 proveedor2.razon_social = "razon2";
 
-
-                
                 Item item3 = new Item();
                 item3.valor = 35000;
                 item3.descripcion = "Galaxy 10";
@@ -109,16 +131,14 @@ namespace TP_Anual
                 
                 presupuesto1.proveedor = proveedor1;
                 Presupuesto presupuesto2 = new Presupuesto();
-                presupuesto2.documentosComerciales.Add(doc);
+                presupuesto2.documentoComercial =doc;
                 presupuesto2.proveedor = proveedor2;
 
-                
 
                 presupuesto2.agregar_item(item3);
                 presupuesto2.agregar_item(item4);
 
-                egreso.agregarPresupuesto(presupuesto1);
-                egreso.agregarPresupuesto(presupuesto2);
+                egreso.presupuestos.Add(presupuesto2);
                 egreso.elegirPresupuesto(presupuesto1);
 
                 InterfazInicioDeSesion interfaz = new InterfazInicioDeSesion();

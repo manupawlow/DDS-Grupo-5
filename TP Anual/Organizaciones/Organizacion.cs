@@ -9,10 +9,6 @@ namespace TP_Anual.Organizaciones
 {
     public abstract class Organizacion
     {
-        [Key]
-        [Column("id_organizacion")]
-        public int id_organizacion { get; set; }
-
         public string actividad { get; set; }
         public int cantidadPersonal { get; set; }
         public string nombreFicticio { get; set; }
@@ -26,11 +22,11 @@ namespace TP_Anual.Organizaciones
         
         public Organizacion()
         {
-            OrganizacionInterfaz();
-            AsignarTipoOrganizacion();
+            //OrganizacionInterfaz();
+            //AsignarTipoOrganizacion();
         }
 
-        private void AsignarTipoOrganizacion()
+        public void AsignarTipoOrganizacion()
         {
             tipoOrganizacion =
                 AsignarCategoria.Asignar(tipo, cantidadPersonal, actividad, promedioVentasAnuales, comisionista);

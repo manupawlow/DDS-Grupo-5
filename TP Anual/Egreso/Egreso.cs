@@ -32,39 +32,34 @@ namespace TP_Anual.Egresos
         public int id_entidad_juridica { get; set; }
 
         [Column("id_ingreso")]
+       
+
         public int id_ingreso { get; set; }
+        public List<DocumentoComercial> documentosComerciales { get; set; }
+        public Proveedor proveedorElegido { get; set; }
+        public Ingreso ingreso { get; set; }
+        public List<Presupuesto> presupuestos { get; set; }
+       
 
         public BandejaDeMensajes bandejaDeMensajes;
         public ICriterioDeSeleccion criterioDeSeleccion;
-        public DocumentoComercial documentoComercial;
         public List<Item> items = new List<Item>();
         public MedioDePago medioDePago;
-        public Proveedor proveedorElegido { get; set; }
         public Presupuesto presupuestoElegido;
-        public List<Presupuesto> presupuestos = new List<Presupuesto>();
-        public Ingreso ingreso { get; set; }
 
-        /*
-        public Egreso(DateTime Fecha, DocumentoComercial Doc, MedioDePago Medio, int cantidadDePresupuesto, BandejaDeMensajes Bandeja)
+        
+        public Egreso()
         {
-            fecha = Fecha;
-            documentoComercial = Doc;
-            medioDePago = Medio;
-            cantPresupuestos = cantidadDePresupuesto;
-            bandejaDeMensajes = Bandeja;
-
+            presupuestos = new List<Presupuesto>();
+            documentosComerciales = new List<DocumentoComercial>();
         }
-        */
+        
 
         public void agregarItem(Item item)
         {
             items.Add(item);
         }
 
-        public void agregarPresupuesto(Presupuesto Pres)
-        {
-           presupuestos.Add(Pres);
-        }
 
         public void elegirPresupuesto(Presupuesto Presupuesto)
         {

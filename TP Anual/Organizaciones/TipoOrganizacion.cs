@@ -19,5 +19,7 @@ namespace TP_Anual.Organizaciones
         [Column("categoria")]
         public string categoria { get; set; }
 
+        public string discriminador { get; set; }
+
     }
 }

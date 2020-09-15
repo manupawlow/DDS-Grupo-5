@@ -9,7 +9,11 @@ namespace TP_Anual.Organizaciones
     [Table("entidad_juridica")]
     class EntidadJuridica : Organizacion
     {
-        
+
+        [Key]
+        [Column("id_juridica")]
+        public int id_juridica { get; set; }
+
         [Column("codigo_IGJ")]
         public int codigo_IGJ { get; set; }
 

@@ -6,7 +6,7 @@ namespace TP_Anual.Organizaciones
 {
     public abstract class Empresa : TipoOrganizacion
     {
-        public string categoria;
+
         public Dictionary<string, float> topeVentasPorActividad;
         public Dictionary<string, int> topePersonalPorActividad;
        

@@ -6,13 +6,8 @@ namespace TP_Anual.Egresos
 {
     public class MedioDePago
     {
-        private string nombre { get; }
-        private string tipoDePago { get; }
+        public string nombre { get; set; }
+        public string tipoDePago { get; set; }
 
-        public MedioDePago(string Nombre, string TipoDePago)
-        {
-            nombre = Nombre;
-            tipoDePago = TipoDePago;
-        }
     }
 }

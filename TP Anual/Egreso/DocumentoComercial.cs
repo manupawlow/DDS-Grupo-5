@@ -27,6 +27,8 @@ namespace TP_Anual.Egresos
 
         public Presupuesto presupuesto { get; set; }
 
+        public Egreso egreso { get; set; }
+
        
     }
 }

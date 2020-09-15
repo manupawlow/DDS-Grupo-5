@@ -20,14 +20,20 @@ namespace TP_Anual.Egresos
         [Column("id_prov")]
         public int id_prov { get; set; }
 
+        [Column("id_egreso")]
+        public int id_egreso { get; set; }
+
+
         public List<Item> itemsDePresupuesto { get; set; }
-        public List<DocumentoComercial> documentosComerciales { get; set; }
-        public Proveedor proveedor;
+        public DocumentoComercial documentoComercial { get; set; }
+        
+        public Egreso egreso { get; set; }
+
+        public Proveedor proveedor { get; set; }
 
         public Presupuesto()
         {
             itemsDePresupuesto = new List<Item>();
-            documentosComerciales = new List<DocumentoComercial>();
         }
 
         public void agregar_item(Item Item)
