@@ -18,6 +18,7 @@ namespace TP_Anual
         public DbSet<Proveedor> proveedores { get; set; }
         public DbSet<Categoria> categorias { get; set; }
         public DbSet<Criterio> criterios { get; set; }
+        public DbSet<CriterioPorItem> criterios_por_item { get; set; }
         public DbSet<DocumentoComercial> documentos { get; set; }
         public DbSet<EntidadBase> entidades_base  { get; set; }
         public DbSet<EntidadJuridica> entidades_juridicas { get; set; }
@@ -34,7 +35,7 @@ namespace TP_Anual
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
 
-            modelBuilder.Entity<Presupuesto>()
+            /*modelBuilder.Entity<Presupuesto>()
                 .HasMany<Item>(i => i.itemsDePresupuesto)
                 .WithMany(i => i.presupuesto)
                 .Map(ip =>
@@ -43,6 +44,9 @@ namespace TP_Anual
                     ip.MapLeftKey("id_presupuesto");
                     ip.MapRightKey("id_item");
                 });
+                */
+
+
 
             modelBuilder.Entity<Egreso>()
                  .HasRequired<Ingreso>(e => e.ingreso)
@@ -74,6 +78,58 @@ namespace TP_Anual
                 .WithMany(e => e.documentosComerciales)
                 .HasForeignKey(d => d.id_egreso);
 
+
+            #region ITEMS
+
+            modelBuilder.Entity<ItemPorEgreso>()
+                .HasRequired<Item>(ie => ie.item)
+                .WithMany()
+                .HasForeignKey(ie => ie.id_item);
+
+            modelBuilder.Entity<ItemPorEgreso>()
+                .HasRequired<Egreso>(ie => ie.egreso)
+                .WithMany(e => e.items)
+                .HasForeignKey(ie => ie.id_egreso);
+
+
+            modelBuilder.Entity<ItemPorPresupuesto>()
+                .HasRequired<Item>(ip => ip.item)
+                .WithMany()
+                .HasForeignKey(ip => ip.id_item);
+
+            modelBuilder.Entity<ItemPorPresupuesto>()
+                .HasRequired<Presupuesto>(ip => ip.presupuesto)
+                .WithMany(p => p.itemsDePresupuesto)
+                .HasForeignKey(ip => ip.id_presupuesto);
+
+
+            #endregion
+
+            #region CRITERIOS Y CATEGORIAS
+
+            modelBuilder.Entity<Categoria>()
+                .HasRequired<Criterio>(cat => cat.criterio)
+                .WithMany(crit => crit.categorias)
+                .HasForeignKey(cat => cat.id_criterio);
+
+            modelBuilder.Entity<CriterioPorItem>()
+                .HasRequired<Criterio>(ci => ci.criterio)
+                .WithMany()
+                .HasForeignKey(ci => ci.id_criterio);
+
+            modelBuilder.Entity<CriterioPorItem>()
+                .HasRequired<Item>(ci => ci.item)
+                .WithMany(i => i.criteriosDeItem)
+                .HasForeignKey(ci => ci.id_item);
+
+            modelBuilder.Entity<CriterioPorItem>()
+                .HasRequired<Categoria>(ci => ci.categoria_item)
+                .WithMany()
+                .HasForeignKey(ci => ci.id_categoria_item);
+
+            #endregion
+
+            #region ORGANIZACIONES
 
             modelBuilder.Entity<EntidadJuridica>()
                 .Property(j => j.actividad)
@@ -114,18 +170,39 @@ namespace TP_Anual
                 .HasRequired<EntidadJuridica>(b => b.entidad_juridica)
                 .WithMany(j => j.entidades_base)
                 .HasForeignKey(b => b.id_juridica);
-            
-            /*
-            modelBuilder.Entity<TipoOrganizacion>()
+
+
+            /*modelBuilder.Entity<TipoOrganizacion>()
                 .Map<OSC>(m => m.Requires("discriminador").HasValue("OSC"))
                 .Map<MedianaTramo2>(m => m.Requires("discriminador").HasValue("Mediana Tramo - 2"))
                 .Map<MedianaTramo1>(m => m.Requires("discriminador").HasValue("Mediana Tramo - 1"))
                 .Map<Pequenia>(m => m.Requires("discriminador").HasValue("Pequenia"))
                 .Map<Micro>(m => m.Requires("discriminador").HasValue("Micro"));
+                */
+
+            modelBuilder.Entity<OSC>()
+                .Property(o => o.tipo)
+                .HasColumnName("tipo");
 
             modelBuilder.Entity<OSC>()
                 .Property(o => o.categoria)
                 .HasColumnName("categoria");
+
+
+            modelBuilder.Entity<Empresa>()
+                .Property(o => o.tipo)
+                .HasColumnName("tipo");
+
+            modelBuilder.Entity<Empresa>()
+                .Property(o => o.categoria)
+                .HasColumnName("categoria");
+
+            modelBuilder.Entity<Empresa>()
+                .Map<MedianaTramo2>(m => m.Requires("discriminador").HasValue("Mediana Tramo - 2"))
+                .Map<MedianaTramo1>(m => m.Requires("discriminador").HasValue("Mediana Tramo - 1"))
+                .Map<Pequenia>(m => m.Requires("discriminador").HasValue("Pequenia"))
+                .Map<Micro>(m => m.Requires("discriminador").HasValue("Micro"));
+
 
             modelBuilder.Entity<OSC>()
                 .Property(o => o.tipo)
@@ -162,9 +239,11 @@ namespace TP_Anual
             modelBuilder.Entity<Micro>()
                 .Property(o => o.tipo)
                 .HasColumnName("tipo");
-            */
+            
 
-            /*
+
+
+            /* ESTO NO LO USAMOS MAS
             modelBuilder.Entity<EntidadJuridica>()
                 .Map(m =>
                 {
@@ -193,10 +272,10 @@ namespace TP_Anual
 
             modelBuilder.Entity<EntidadBase>()
             .HasKey(j => j.id_organizacion);
-
-
             */
 
+            
+            #endregion
 
 
 

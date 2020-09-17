@@ -23,8 +23,7 @@ namespace TP_Anual.Egresos
         [Column("id_egreso")]
         public int id_egreso { get; set; }
 
-
-        public List<Item> itemsDePresupuesto { get; set; }
+        public List<ItemPorPresupuesto> itemsDePresupuesto { get; set; }
         public DocumentoComercial documentoComercial { get; set; }
         
         public Egreso egreso { get; set; }
@@ -33,10 +32,10 @@ namespace TP_Anual.Egresos
 
         public Presupuesto()
         {
-            itemsDePresupuesto = new List<Item>();
+            itemsDePresupuesto = new List<ItemPorPresupuesto>();
         }
 
-        public void agregar_item(Item Item)
+        public void agregar_item(ItemPorPresupuesto Item)
         {
             itemsDePresupuesto.Add(Item);
             valor_total = itemsDePresupuesto.Sum(items => items.valor);

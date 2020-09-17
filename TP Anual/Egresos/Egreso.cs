@@ -18,32 +18,30 @@ namespace TP_Anual.Egresos
 
         [Column("fecha")]
         public DateTime fecha { get; set; }
-        
+
         [Column("valor_total")]
         public int valorTotal { get; set; }
 
         [Column("id_prov")]
         public int id_prov { get; set; }
-        
+
         [Column("id_entidad_base")]
-        public int id_entidad_base  { get; set; }
+        public int id_entidad_base { get; set; }
 
         [Column("id_entidad_juridica")]
         public int id_entidad_juridica { get; set; }
 
         [Column("id_ingreso")]
-       
-
         public int id_ingreso { get; set; }
+        public Ingreso ingreso { get; set; }
         public List<DocumentoComercial> documentosComerciales { get; set; }
         public Proveedor proveedorElegido { get; set; }
-        public Ingreso ingreso { get; set; }
         public List<Presupuesto> presupuestos { get; set; }
-       
+
+        public List<ItemPorEgreso> items { get; set;}
 
         public BandejaDeMensajes bandejaDeMensajes;
         public ICriterioDeSeleccion criterioDeSeleccion;
-        public List<Item> items = new List<Item>();
         public MedioDePago medioDePago;
         public Presupuesto presupuestoElegido;
 

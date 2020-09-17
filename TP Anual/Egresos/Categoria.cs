@@ -16,6 +16,7 @@ namespace TP_Anual.Egresos
 
         [Column("id_criterio")]
         public int id_criterio { get; set; }
+        public Criterio criterio { get; set; }
 
         [Column("descripcion")]
         public string descripcion { get; set; }

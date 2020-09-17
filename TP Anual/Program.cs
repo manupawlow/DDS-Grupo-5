@@ -17,13 +17,13 @@ namespace TP_Anual
                 //var hola = context.presupuestos.Single(p => p.id_presupuesto == 1);
                 //Console.WriteLine($"{hola.documentoComercial.id_documento}");
 
-                var presupuesto = context.presupuestos.Single(p => p.id_presupuesto == 1);
+                /*var presupuesto = context.presupuestos.Single(p => p.id_presupuesto == 1);
 
                 Console.WriteLine($"{presupuesto.egreso.cantPresupuestos}");
                 foreach(Item i in presupuesto.itemsDePresupuesto)
                 {
                     Console.WriteLine($"{i.descripcion}");
-                }
+                }*/
 
                 Ingreso ingreso = new Ingreso();
                 ingreso.descripcion = "pepe";
@@ -38,19 +38,37 @@ namespace TP_Anual
                 context.SaveChanges();
 
                 Item item1 = new Item();
-                item1.valor = 20000;
+                //item1.valor = 20000;
                 item1.descripcion = "Galaxy 8";
                 context.items.Add(item1);
                 context.SaveChanges();
 
                 Item item2 = new Item();
-                item2.valor = 25000;
+                //item2.valor = 25000;
                 item2.descripcion = "Galaxy 9";
                 context.items.Add(item2);
                 context.SaveChanges();
 
+                Criterio crit = new Criterio();
+                crit.descripcion = "soy un criterio";
+                context.criterios.Add(crit);
                 
-                EntidadJuridica entidad_juridica = new EntidadJuridica();
+                Categoria categoria1 = new Categoria();
+                categoria1.descripcion = "Precio cuidado";
+                categoria1.criterio = crit;
+                context.categorias.Add(categoria1);
+
+                Categoria categoria2 = new Categoria();
+                categoria2.descripcion = "Precio no cuidado";
+                categoria2.criterio = crit;
+                context.categorias.Add(categoria2);
+
+                CriterioPorItem ci = new CriterioPorItem();
+                ci.criterio = crit;
+                ci.categoria_item = categoria1;
+                item1.criteriosDeItem.Add(ci);
+
+                /*EntidadJuridica entidad_juridica = new EntidadJuridica();
                 entidad_juridica.razon_social = "ManuMati";
                 entidad_juridica.nombreFicticio = "ManuMati";
                 entidad_juridica.actividad = "Servicios";
@@ -75,7 +93,7 @@ namespace TP_Anual
 
                 entidad_juridica.entidades_base.Add(entidad_base);
                 context.SaveChanges();
-
+                */
                 DocumentoComercial doc = new DocumentoComercial();
                 doc.tipo = "ticket";
                 doc.numero = 1;
@@ -122,10 +140,10 @@ namespace TP_Anual
                 proveedor2.razon_social = "razon2";
 
                 Item item3 = new Item();
-                item3.valor = 35000;
+                //item3.valor = 35000;
                 item3.descripcion = "Galaxy 10";
                 Item item4 = new Item();
-                item4.valor = 42000;
+                //item4.valor = 42000;
                 item4.descripcion = "Galaxy 10 Plus";
 
                 
