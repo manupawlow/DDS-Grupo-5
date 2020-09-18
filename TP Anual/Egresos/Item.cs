@@ -15,22 +15,13 @@ namespace TP_Anual.Egresos
         [Column("id_item")]
         public int id_item { get; set; }
 
-        //[Column("valor")]
-        //public int valor { get; set; }
-
         [Column("descripcion")]
         public string descripcion { get; set; }
 
-        public List<Presupuesto> presupuesto { get; set; }
-
-
-        //public List<Criterio> criterio = new List<Criterio>();
         public List<CriterioPorItem> criteriosDeItem { get; set; }
-
         
         public Item() 
         {
-            presupuesto = new List<Presupuesto>();
            criteriosDeItem = new List<CriterioPorItem>();
         }
 

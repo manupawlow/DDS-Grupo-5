@@ -13,11 +13,14 @@ namespace TP_Anual.Egresos
         [Column("id_documento")]
         public int id_documento { get; set; }
 
-        [Column("id_egreso")]
+       /* [Column("id_egreso")]
         public int id_egreso { get; set; }
+        public Egreso egreso { get; set; }
 
         [Column("id_presupuesto")]
         public int id_presupuesto { get; set; }
+        public Presupuesto presupuesto { get; set; }
+        */
 
         [Column("tipo")]
         public string tipo  { get; set; }
@@ -25,9 +28,7 @@ namespace TP_Anual.Egresos
         [Column("numero")]
         public int numero { get; set; }
 
-        public Presupuesto presupuesto { get; set; }
 
-        public Egreso egreso { get; set; }
 
        
     }

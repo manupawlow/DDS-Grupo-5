@@ -38,13 +38,11 @@ namespace TP_Anual
                 context.SaveChanges();
 
                 Item item1 = new Item();
-                //item1.valor = 20000;
                 item1.descripcion = "Galaxy 8";
                 context.items.Add(item1);
                 context.SaveChanges();
 
                 Item item2 = new Item();
-                //item2.valor = 25000;
                 item2.descripcion = "Galaxy 9";
                 context.items.Add(item2);
                 context.SaveChanges();
@@ -67,64 +65,53 @@ namespace TP_Anual
                 ci.criterio = crit;
                 ci.categoria_item = categoria1;
                 item1.criteriosDeItem.Add(ci);
-
-                /*EntidadJuridica entidad_juridica = new EntidadJuridica();
-                entidad_juridica.razon_social = "ManuMati";
-                entidad_juridica.nombreFicticio = "ManuMati";
-                entidad_juridica.actividad = "Servicios";
-                entidad_juridica.comisionista = 'N';
-                entidad_juridica.promedioVentasAnuales = 50000000 ;
-                entidad_juridica.cantidadPersonal = 30;
-                entidad_juridica.tipo = "Empresa";
-                entidad_juridica.AsignarTipoOrganizacion();
-                context.entidades_juridicas.Add(entidad_juridica);
+                context.criterios_por_item.Add(ci);
                 context.SaveChanges();
 
-                EntidadBase entidad_base = new EntidadBase();
-                entidad_base.nombreFicticio = "Seguridad";
-                entidad_base.actividad = "Servicios";
-                entidad_base.comisionista = 'N';
-                entidad_base.promedioVentasAnuales = 100000;
-                entidad_base.cantidadPersonal = 3;
-                entidad_base.tipo = "Empresa";
-                entidad_base.AsignarTipoOrganizacion();
-                context.entidades_base.Add(entidad_base);
-                context.SaveChanges();
 
-                entidad_juridica.entidades_base.Add(entidad_base);
-                context.SaveChanges();
-                */
                 DocumentoComercial doc = new DocumentoComercial();
                 doc.tipo = "ticket";
                 doc.numero = 1;
                 context.documentos.Add(doc);
                 context.SaveChanges();
 
-                Presupuesto presupuesto1 = new Presupuesto();
-                presupuesto1.agregar_item(item1);
-                presupuesto1.agregar_item(item2);
-                presupuesto1.proveedor = proveedor1;
-                presupuesto1.documentoComercial = doc;
-                context.presupuestos.Add(presupuesto1);
-                context.SaveChanges();
-
                 Egreso egreso = new Egreso();
                 egreso.fecha = DateTime.Today;
                 egreso.cantPresupuestos = 2;
-                egreso.documentosComerciales.Add(doc);
-                egreso.presupuestos.Add(presupuesto1);
+                //egreso.documentosComerciales.Add(doc);
                 egreso.proveedorElegido = proveedor1;
                 context.egresos.Add(egreso);
                 context.SaveChanges();
+
+                Presupuesto presupuesto1 = new Presupuesto();
+                presupuesto1.egreso = egreso;
+                presupuesto1.proveedor = proveedor1;
+                //presupuesto1.documentoComercial = doc;
+                context.presupuestos.Add(presupuesto1);
+                context.SaveChanges();
+
+                ItemPorPresupuesto itemPresupuesto1 = new ItemPorPresupuesto();
+                itemPresupuesto1.item = item1;
+                itemPresupuesto1.valor = 1000;
+                context.items_por_presupuesto.Add(itemPresupuesto1);
+
+                ItemPorPresupuesto itemPresupuesto2 = new ItemPorPresupuesto();
+                itemPresupuesto2.item = item2;
+                itemPresupuesto2.valor = 2000;
+                context.items_por_presupuesto.Add(itemPresupuesto1);
+
+                presupuesto1.agregar_item(itemPresupuesto1);
+                presupuesto1.agregar_item(itemPresupuesto2);
+                context.SaveChanges();
+
+                egreso.presupuestos.Add(presupuesto1);
+                context.SaveChanges();
+
 
                 ingreso = context.ingresos.Single(i => i.id_ingreso == 1);
 
                 ingreso.egresos.Add(egreso);
                 context.SaveChanges();
-
-                Criterio criterio = new Criterio();
-
-                Categoria categoria = new Categoria();
 
                 MedioDePago medio_de_pago = new MedioDePago();
                 medio_de_pago.nombre = "tarjeta";
@@ -140,24 +127,70 @@ namespace TP_Anual
                 proveedor2.razon_social = "razon2";
 
                 Item item3 = new Item();
-                //item3.valor = 35000;
                 item3.descripcion = "Galaxy 10";
+                context.items.Add(item3);
                 Item item4 = new Item();
-                //item4.valor = 42000;
                 item4.descripcion = "Galaxy 10 Plus";
-
+                context.items.Add(item4);
+                context.SaveChanges();
                 
                 presupuesto1.proveedor = proveedor1;
+                
                 Presupuesto presupuesto2 = new Presupuesto();
-                presupuesto2.documentoComercial =doc;
+                //presupuesto2.documentoComercial =doc;
                 presupuesto2.proveedor = proveedor2;
+                context.presupuestos.Add(presupuesto2);
+                context.SaveChanges();
 
+                ItemPorPresupuesto itemPorPresupuesto3 = new ItemPorPresupuesto();
+                itemPorPresupuesto3.item = item3;
+                itemPorPresupuesto3.valor = 3000;
+                ItemPorPresupuesto itemPorPresupuesto4 = new ItemPorPresupuesto();
+                itemPorPresupuesto4.item = item4;
+                itemPorPresupuesto4.valor = 4000;
+                context.items_por_presupuesto.Add(itemPorPresupuesto3);
+                context.items_por_presupuesto.Add(itemPorPresupuesto4);
+                context.SaveChanges();
 
-                presupuesto2.agregar_item(item3);
-                presupuesto2.agregar_item(item4);
+                presupuesto2.agregar_item(itemPorPresupuesto3);
+                presupuesto2.agregar_item(itemPorPresupuesto4);
+                context.SaveChanges();
 
                 egreso.presupuestos.Add(presupuesto2);
                 egreso.elegirPresupuesto(presupuesto1);
+
+
+
+
+
+
+                /*EntidadJuridica entidad_juridica = new EntidadJuridica();
+ entidad_juridica.razon_social = "ManuMati";
+ entidad_juridica.nombreFicticio = "ManuMati";
+ entidad_juridica.actividad = "Servicios";
+ entidad_juridica.comisionista = 'N';
+ entidad_juridica.promedioVentasAnuales = 50000000 ;
+ entidad_juridica.cantidadPersonal = 30;
+ entidad_juridica.tipo = "Empresa";
+ entidad_juridica.AsignarTipoOrganizacion();
+ context.entidades_juridicas.Add(entidad_juridica);
+ context.SaveChanges();
+
+ EntidadBase entidad_base = new EntidadBase();
+ entidad_base.nombreFicticio = "Seguridad";
+ entidad_base.actividad = "Servicios";
+ entidad_base.comisionista = 'N';
+ entidad_base.promedioVentasAnuales = 100000;
+ entidad_base.cantidadPersonal = 3;
+ entidad_base.tipo = "Empresa";
+ entidad_base.AsignarTipoOrganizacion();
+ context.entidades_base.Add(entidad_base);
+ context.SaveChanges();
+
+ entidad_juridica.entidades_base.Add(entidad_base);
+ context.SaveChanges();
+ */
+
 
                 InterfazInicioDeSesion interfaz = new InterfazInicioDeSesion();
                 string usuarioActual;

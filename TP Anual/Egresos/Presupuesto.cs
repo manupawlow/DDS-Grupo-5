@@ -19,16 +19,16 @@ namespace TP_Anual.Egresos
 
         [Column("id_prov")]
         public int id_prov { get; set; }
+        public Proveedor proveedor { get; set; }
 
         [Column("id_egreso")]
         public int id_egreso { get; set; }
-
-        public List<ItemPorPresupuesto> itemsDePresupuesto { get; set; }
-        public DocumentoComercial documentoComercial { get; set; }
-        
         public Egreso egreso { get; set; }
 
-        public Proveedor proveedor { get; set; }
+        public List<ItemPorPresupuesto> itemsDePresupuesto { get; set; }
+        //public DocumentoComercial documentoComercial { get; set; }
+        
+
 
         public Presupuesto()
         {

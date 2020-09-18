@@ -22,6 +22,8 @@ namespace TP_Anual
         public DbSet<DocumentoComercial> documentos { get; set; }
         public DbSet<EntidadBase> entidades_base  { get; set; }
         public DbSet<EntidadJuridica> entidades_juridicas { get; set; }
+        public DbSet<ItemPorPresupuesto> items_por_presupuesto { get; set; }
+        public DbSet<ItemPorEgreso> items_por_egreso { get; set; }
 
         public BaseDeDatos() : base("dbConn")
         {
@@ -34,17 +36,6 @@ namespace TP_Anual
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-
-            /*modelBuilder.Entity<Presupuesto>()
-                .HasMany<Item>(i => i.itemsDePresupuesto)
-                .WithMany(i => i.presupuesto)
-                .Map(ip =>
-                {
-                    ip.ToTable("item_por_presupuesto");
-                    ip.MapLeftKey("id_presupuesto");
-                    ip.MapRightKey("id_item");
-                });
-                */
 
 
 
@@ -69,14 +60,14 @@ namespace TP_Anual
                  .HasForeignKey(pres => pres.id_prov);
 
 
-            modelBuilder.Entity<DocumentoComercial>()
+            /*modelBuilder.Entity<DocumentoComercial>()
                 .HasRequired<Presupuesto>(d => d.presupuesto)
                 .WithRequiredPrincipal(p => p.documentoComercial);
 
             modelBuilder.Entity<DocumentoComercial>()
                 .HasRequired<Egreso>(d => d.egreso)
                 .WithMany(e => e.documentosComerciales)
-                .HasForeignKey(d => d.id_egreso);
+                .HasForeignKey(d => d.id_egreso);*/
 
 
             #region ITEMS
@@ -180,6 +171,7 @@ namespace TP_Anual
                 .Map<Micro>(m => m.Requires("discriminador").HasValue("Micro"));
                 */
 
+            /*TERMINAR ESTO
             modelBuilder.Entity<OSC>()
                 .Property(o => o.tipo)
                 .HasColumnName("tipo");
@@ -239,7 +231,7 @@ namespace TP_Anual
             modelBuilder.Entity<Micro>()
                 .Property(o => o.tipo)
                 .HasColumnName("tipo");
-            
+            */
 
 
 

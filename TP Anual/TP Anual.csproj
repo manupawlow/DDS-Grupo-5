@@ -132,6 +132,8 @@
     <Compile Include="Egresos\Egreso.cs" />
     <Compile Include="Egresos\Ingreso.cs" />
     <Compile Include="Egresos\Item.cs" />
+    <Compile Include="Egresos\ItemPorEgreso.cs" />
+    <Compile Include="Egresos\ItemPorPresupuesto.cs" />
     <Compile Include="Egresos\JobValidadorEgresos.cs" />
     <Compile Include="Egresos\MedioDePago.cs" />
     <Compile Include="Egresos\Presupuesto.cs" />

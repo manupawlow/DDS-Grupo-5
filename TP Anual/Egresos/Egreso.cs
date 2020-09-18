@@ -34,7 +34,7 @@ namespace TP_Anual.Egresos
         [Column("id_ingreso")]
         public int id_ingreso { get; set; }
         public Ingreso ingreso { get; set; }
-        public List<DocumentoComercial> documentosComerciales { get; set; }
+        //public DocumentoComercial documentoComercial { get; set; }
         public Proveedor proveedorElegido { get; set; }
         public List<Presupuesto> presupuestos { get; set; }
 
@@ -48,12 +48,12 @@ namespace TP_Anual.Egresos
         
         public Egreso()
         {
+            items = new List<ItemPorEgreso>();
             presupuestos = new List<Presupuesto>();
-            documentosComerciales = new List<DocumentoComercial>();
         }
         
 
-        public void agregarItem(Item item)
+        public void agregarItem(ItemPorEgreso item)
         {
             items.Add(item);
         }
