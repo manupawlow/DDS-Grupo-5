@@ -6,13 +6,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TP_Anual.Organizaciones
 {
-    [Table("OSC")]
+    //[Table("OSC")]
     class OSC : TipoOrganizacion
     {
-        [Key]
+      /*  [Key]
         [Column("id_osc")]
         public int id_osc { get; set; }
-
+        */
 
         public OSC() 
         {

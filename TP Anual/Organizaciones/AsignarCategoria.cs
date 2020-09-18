@@ -14,19 +14,18 @@ namespace TP_Anual.Organizaciones
             new MedianaTramo2()
         };
 
-        public static TipoOrganizacion Asignar(string tipo, int cantidadPersonal,
-            string actividad, float promedioVentasAnuales, char comisionista)
+        public static TipoOrganizacion Asignar(Organizacion organizacion)
         {
-            if (tipo == "Empresa")
+            if (organizacion.tipo == "Empresa")
             {
                 Empresa categoria;
-                if (comisionista == 'S')
+                if (organizacion.comisionista == 'S')
                 {
-                    categoria = categoriaSegunPersonal(actividad, cantidadPersonal);
+                    categoria = categoriaSegunPersonal(organizacion.actividad, organizacion.cantidadPersonal);
                 }
                 else
                 {
-                    categoria = mayorCategoriaEntrePersonalVenta(actividad, cantidadPersonal, promedioVentasAnuales);
+                    categoria = mayorCategoriaEntrePersonalVenta(organizacion.actividad, organizacion.cantidadPersonal, organizacion.promedioVentasAnuales);
                 }
 
                 switch (categoria.GetType().Name)

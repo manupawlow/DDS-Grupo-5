@@ -9,18 +9,17 @@ namespace TP_Anual.Organizaciones
     [Table("tipo_organizacion")]
     public abstract class TipoOrganizacion
     {
-        //[Key]
-        //[Column("id_tipo")]
-        //public int id_tipo { get; set; }
+        [Key]
+        [Column("id_tipo")]
+        public int id_tipo { get; set; }
 
-        //[Column("tipo")]
-        //public string tipo { get; set; }
+        [Column("tipo")]
+        public string tipo { get; set; }
 
-        //[Column("categoria")]
-        public string categoria;
+        [Column("categoria")]
+        public string categoria { get; set; }
 
-        public string tipo;
-
+        
         //public string discriminador { get; set; }
 
     }

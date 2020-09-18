@@ -14,6 +14,29 @@ namespace TP_Anual
             using (var context = new BaseDeDatos())
             {
 
+                var e = context.tipos_organizacion.Single(x => x.id_tipo == 1);
+                Console.WriteLine(e.GetType().Name);
+
+                var e2 = context.tipos_organizacion.Single(x => x.id_tipo == 2);
+                Console.WriteLine(e2.GetType().Name);
+                Console.WriteLine(e2.categoria);
+
+                var e3 = context.tipos_organizacion.Single(x => x.id_tipo == 3);
+                Console.WriteLine(e3.GetType().Name);
+
+
+                MedianaTramo1 mt1 = new MedianaTramo1();
+                mt1.tipo = "Empresa";
+                Micro m = new Micro();
+                m.tipo = "Empresa";
+                OSC o = new OSC();
+                o.tipo = "OSC";
+                context.tipos_organizacion.Add(mt1);
+                context.tipos_organizacion.Add(m);
+                context.tipos_organizacion.Add(o);
+                context.SaveChanges();
+                
+
                 //var hola = context.presupuestos.Single(p => p.id_presupuesto == 1);
                 //Console.WriteLine($"{hola.documentoComercial.id_documento}");
 

@@ -24,7 +24,9 @@ namespace TP_Anual
         public DbSet<EntidadJuridica> entidades_juridicas { get; set; }
         public DbSet<ItemPorPresupuesto> items_por_presupuesto { get; set; }
         public DbSet<ItemPorEgreso> items_por_egreso { get; set; }
-
+       // public DbSet<Empresa> empresas { get; set; }
+       // public DbSet<OSC> oscs { get; set; }
+       public DbSet<TipoOrganizacion> tipos_organizacion { get; set; }
         public BaseDeDatos() : base("dbConn")
         {
 
@@ -171,35 +173,39 @@ namespace TP_Anual
                 .Map<Micro>(m => m.Requires("discriminador").HasValue("Micro"));
                 */
 
-            /*TERMINAR ESTO
-            modelBuilder.Entity<OSC>()
-                .Property(o => o.tipo)
-                .HasColumnName("tipo");
+            /*TERMINAR ESTO*/
+            /* modelBuilder.Entity<OSC>()
+                 .Property(o => o.tipo)
+                 .HasColumnName("tipo");
 
-            modelBuilder.Entity<OSC>()
-                .Property(o => o.categoria)
-                .HasColumnName("categoria");
-
-
-            modelBuilder.Entity<Empresa>()
-                .Property(o => o.tipo)
-                .HasColumnName("tipo");
-
-            modelBuilder.Entity<Empresa>()
-                .Property(o => o.categoria)
-                .HasColumnName("categoria");
-
-            modelBuilder.Entity<Empresa>()
-                .Map<MedianaTramo2>(m => m.Requires("discriminador").HasValue("Mediana Tramo - 2"))
-                .Map<MedianaTramo1>(m => m.Requires("discriminador").HasValue("Mediana Tramo - 1"))
-                .Map<Pequenia>(m => m.Requires("discriminador").HasValue("Pequenia"))
-                .Map<Micro>(m => m.Requires("discriminador").HasValue("Micro"));
+             modelBuilder.Entity<OSC>()
+                 .Property(o => o.categoria)
+                 .HasColumnName("categoria");
 
 
-            modelBuilder.Entity<OSC>()
-                .Property(o => o.tipo)
-                .HasColumnName("tipo");
+             modelBuilder.Entity<Empresa>()
+                 .Property(o => o.tipo)
+                 .HasColumnName("tipo");
 
+             modelBuilder.Entity<Empresa>()
+                 .Property(o => o.categoria)
+                 .HasColumnName("categoria");
+
+             modelBuilder.Entity<Empresa>()
+                 .Map<MedianaTramo2>(m => m.Requires("discriminador").HasValue("Mediana Tramo - 2"))
+                 .Map<MedianaTramo1>(m => m.Requires("discriminador").HasValue("Mediana Tramo - 1"))
+                 .Map<Pequenia>(m => m.Requires("discriminador").HasValue("Pequenia"))
+                 .Map<Micro>(m => m.Requires("discriminador").HasValue("Micro"));
+                 */
+            modelBuilder.Entity<TipoOrganizacion>()
+            .Map<MedianaTramo2>(m => m.Requires("discriminador").HasValue("Mediana Tramo - 2"))
+            .Map<MedianaTramo1>(m => m.Requires("discriminador").HasValue("Mediana Tramo - 1"))
+            .Map<Pequenia>(m => m.Requires("discriminador").HasValue("Pequenia"))
+            .Map<Micro>(m => m.Requires("discriminador").HasValue("Micro"))
+            .Map<OSC>(m => m.Requires("discriminador").HasValue("OSC"));
+
+
+            /*
             modelBuilder.Entity<MedianaTramo2>()
                 .Property(o => o.categoria)
                 .HasColumnName("categoria");
@@ -266,7 +272,7 @@ namespace TP_Anual
             .HasKey(j => j.id_organizacion);
             */
 
-            
+
             #endregion
 
 

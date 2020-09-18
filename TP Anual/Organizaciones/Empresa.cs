@@ -6,13 +6,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TP_Anual.Organizaciones
 {
-    [Table("empresa")]
+    //[Table("empresa")]
     public abstract class Empresa : TipoOrganizacion
     {
-        [Key]
+      /*  [Key]
         [Column("id_empresa")]
         public int id_empresa { get; set; }
-
+        */
 
         public Dictionary<string, float> topeVentasPorActividad;
         public Dictionary<string, int> topePersonalPorActividad;

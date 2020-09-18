@@ -4,6 +4,9 @@ using System.Text;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using TP_Anual.Egresos;
+using System.Runtime.Remoting.Contexts;
+using System.Security.Cryptography.X509Certificates;
+using System.Linq;
 
 namespace TP_Anual.Organizaciones
 {
@@ -28,8 +31,14 @@ namespace TP_Anual.Organizaciones
 
         public void AsignarTipoOrganizacion()
         {
-            tipoOrganizacion =
-                AsignarCategoria.Asignar(tipo, cantidadPersonal, actividad, promedioVentasAnuales, comisionista);
+            using( var context = new BaseDeDatos() ){
+
+                tipoOrganizacion = AsignarCategoria.Asignar(this);
+                //var tipo = AsignarCategoria.Asignar(this);
+
+                //tipoOrganizacion = context.empresas.Single(e => e.categoria == tipo.categoria);
+            }
+            
         }
 
         private void OrganizacionInterfaz()

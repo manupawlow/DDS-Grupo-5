@@ -175,3 +175,62 @@ C:\Users\Manuel\Desktop\DDS Repositorio git\DDS-Grupo-5\TP Anual\bin\Debug\ru\Mi
 C:\Users\Manuel\Desktop\DDS Repositorio git\DDS-Grupo-5\TP Anual\bin\Debug\zh-Hans\Microsoft.Data.SqlClient.resources.dll
 C:\Users\Manuel\Desktop\DDS Repositorio git\DDS-Grupo-5\TP Anual\bin\Debug\zh-Hant\Microsoft.Data.SqlClient.resources.dll
 C:\Users\Manuel\Desktop\DDS Repositorio git\DDS-Grupo-5\TP Anual\obj\Debug\TP Anual.csproj.CopyComplete
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\TP Anual.exe.config
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\TP Anual.exe
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\TP Anual.pdb
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\EntityFramework.dll
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\Microsoft.Data.SqlClient.dll
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\Microsoft.Identity.Client.dll
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\Microsoft.IdentityModel.Logging.dll
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\MySql.Data.dll
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\Quartz.dll
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\System.Buffers.dll
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\System.Memory.dll
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\EntityFramework.xml
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\Microsoft.Data.SqlClient.pdb
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\Microsoft.Data.SqlClient.xml
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\Microsoft.Identity.Client.xml
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.xml
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\Microsoft.IdentityModel.Logging.xml
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\Microsoft.IdentityModel.Protocols.xml
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\Microsoft.IdentityModel.Protocols.OpenIdConnect.xml
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\Microsoft.IdentityModel.Tokens.xml
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\MySql.Data.xml
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\MySql.Data.Entity.EF6.xml
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\Quartz.xml
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\System.Buffers.xml
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\System.Memory.xml
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\de\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\es\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\fr\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\it\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\ja\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\ko\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\pt-BR\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\ru\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\zh-Hans\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\bin\Debug\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\obj\Debug\TP Anual.csprojAssemblyReference.cache
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\obj\Debug\TP Anual.csproj.CoreCompileInputs.cache
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\obj\Debug\TP Anual.csproj.CopyComplete
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\obj\Debug\TP Anual.exe
+C:\Users\Manuel\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\obj\Debug\TP Anual.pdb
