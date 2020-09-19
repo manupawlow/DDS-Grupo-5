@@ -10,6 +10,8 @@ namespace TP_Anual.Organizaciones
         {
             categoria = "Pequeña";
 
+            tipo = "Empresa";
+
             topeVentasPorActividad = new Dictionary<string, float>()
             {
                 {"Construcción", 90310000},

@@ -14,28 +14,31 @@ namespace TP_Anual
             using (var context = new BaseDeDatos())
             {
 
-                var e = context.tipos_organizacion.Single(x => x.id_tipo == 1);
-                Console.WriteLine(e.GetType().Name);
-
-                var e2 = context.tipos_organizacion.Single(x => x.id_tipo == 2);
-                Console.WriteLine(e2.GetType().Name);
-                Console.WriteLine(e2.categoria);
-
-                var e3 = context.tipos_organizacion.Single(x => x.id_tipo == 3);
-                Console.WriteLine(e3.GetType().Name);
-
-
-                MedianaTramo1 mt1 = new MedianaTramo1();
-                mt1.tipo = "Empresa";
-                Micro m = new Micro();
-                m.tipo = "Empresa";
-                OSC o = new OSC();
-                o.tipo = "OSC";
-                context.tipos_organizacion.Add(mt1);
-                context.tipos_organizacion.Add(m);
-                context.tipos_organizacion.Add(o);
+                EntidadJuridica entidad_juridica = new EntidadJuridica();
+                entidad_juridica.razon_social = "ManuMati";
+                entidad_juridica.nombreFicticio = "ManuMati";
+                entidad_juridica.actividad = "Servicios";
+                entidad_juridica.comisionista = 'N';
+                entidad_juridica.promedioVentasAnuales = 50000000;
+                entidad_juridica.cantidadPersonal = 30;
+                entidad_juridica.tipo = "Empresa";
+                entidad_juridica.AsignarTipoOrganizacion();
+                context.entidades_juridicas.Add(entidad_juridica);
                 context.SaveChanges();
-                
+
+                EntidadBase entidad_base = new EntidadBase();
+                entidad_base.nombreFicticio = "Seguridad";
+                entidad_base.actividad = "Servicios";
+                entidad_base.comisionista = 'N';
+                entidad_base.promedioVentasAnuales = 100000;
+                entidad_base.cantidadPersonal = 3;
+                entidad_base.tipo = "Empresa";
+                entidad_base.AsignarTipoOrganizacion();
+                context.entidades_base.Add(entidad_base);
+                context.SaveChanges();
+
+                entidad_juridica.entidades_base.Add(entidad_base);
+                context.SaveChanges();
 
                 //var hola = context.presupuestos.Single(p => p.id_presupuesto == 1);
                 //Console.WriteLine($"{hola.documentoComercial.id_documento}");
@@ -182,37 +185,6 @@ namespace TP_Anual
                 egreso.presupuestos.Add(presupuesto2);
                 egreso.elegirPresupuesto(presupuesto1);
 
-
-
-
-
-
-                /*EntidadJuridica entidad_juridica = new EntidadJuridica();
- entidad_juridica.razon_social = "ManuMati";
- entidad_juridica.nombreFicticio = "ManuMati";
- entidad_juridica.actividad = "Servicios";
- entidad_juridica.comisionista = 'N';
- entidad_juridica.promedioVentasAnuales = 50000000 ;
- entidad_juridica.cantidadPersonal = 30;
- entidad_juridica.tipo = "Empresa";
- entidad_juridica.AsignarTipoOrganizacion();
- context.entidades_juridicas.Add(entidad_juridica);
- context.SaveChanges();
-
- EntidadBase entidad_base = new EntidadBase();
- entidad_base.nombreFicticio = "Seguridad";
- entidad_base.actividad = "Servicios";
- entidad_base.comisionista = 'N';
- entidad_base.promedioVentasAnuales = 100000;
- entidad_base.cantidadPersonal = 3;
- entidad_base.tipo = "Empresa";
- entidad_base.AsignarTipoOrganizacion();
- context.entidades_base.Add(entidad_base);
- context.SaveChanges();
-
- entidad_juridica.entidades_base.Add(entidad_base);
- context.SaveChanges();
- */
 
 
                 InterfazInicioDeSesion interfaz = new InterfazInicioDeSesion();

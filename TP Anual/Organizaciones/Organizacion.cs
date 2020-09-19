@@ -17,8 +17,11 @@ namespace TP_Anual.Organizaciones
         public string nombreFicticio { get; set; }
         public float promedioVentasAnuales { get; set; }
         
-        
-        public TipoOrganizacion tipoOrganizacion;
+        [Column("id_tipo_organizacion")]
+        public int id_tipo_organizacion { get; set; }
+        public TipoOrganizacion tipoOrganizacion { get; set; }
+
+
         public char comisionista;
         public string tipo;
         public List<Egreso> egresos;
@@ -31,12 +34,11 @@ namespace TP_Anual.Organizaciones
 
         public void AsignarTipoOrganizacion()
         {
+
             using( var context = new BaseDeDatos() ){
-
-                tipoOrganizacion = AsignarCategoria.Asignar(this);
-                //var tipo = AsignarCategoria.Asignar(this);
-
-                //tipoOrganizacion = context.empresas.Single(e => e.categoria == tipo.categoria);
+                tipoOrganizacion = AsignarCategoria.Asignar(this);               
+                context.tipos_organizacion.Add(tipoOrganizacion);
+                context.SaveChanges();
             }
             
         }

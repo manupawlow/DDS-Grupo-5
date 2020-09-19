@@ -24,9 +24,9 @@ namespace TP_Anual
         public DbSet<EntidadJuridica> entidades_juridicas { get; set; }
         public DbSet<ItemPorPresupuesto> items_por_presupuesto { get; set; }
         public DbSet<ItemPorEgreso> items_por_egreso { get; set; }
-       // public DbSet<Empresa> empresas { get; set; }
-       // public DbSet<OSC> oscs { get; set; }
        public DbSet<TipoOrganizacion> tipos_organizacion { get; set; }
+
+
         public BaseDeDatos() : base("dbConn")
         {
 
@@ -139,7 +139,6 @@ namespace TP_Anual
             modelBuilder.Entity<EntidadJuridica>()
                 .Property(j => j.promedioVentasAnuales)
                 .HasColumnName("promedio_ventas_anuales");
-
            
 
             modelBuilder.Entity<EntidadBase>()
@@ -163,115 +162,25 @@ namespace TP_Anual
                 .HasRequired<EntidadJuridica>(b => b.entidad_juridica)
                 .WithMany(j => j.entidades_base)
                 .HasForeignKey(b => b.id_juridica);
+            
 
-
-            /*modelBuilder.Entity<TipoOrganizacion>()
-                .Map<OSC>(m => m.Requires("discriminador").HasValue("OSC"))
+            modelBuilder.Entity<TipoOrganizacion>()
                 .Map<MedianaTramo2>(m => m.Requires("discriminador").HasValue("Mediana Tramo - 2"))
                 .Map<MedianaTramo1>(m => m.Requires("discriminador").HasValue("Mediana Tramo - 1"))
                 .Map<Pequenia>(m => m.Requires("discriminador").HasValue("Pequenia"))
-                .Map<Micro>(m => m.Requires("discriminador").HasValue("Micro"));
-                */
+                .Map<Micro>(m => m.Requires("discriminador").HasValue("Micro"))
+                .Map<OSC>(m => m.Requires("discriminador").HasValue("OSC"));
 
-            /*TERMINAR ESTO*/
-            /* modelBuilder.Entity<OSC>()
-                 .Property(o => o.tipo)
-                 .HasColumnName("tipo");
-
-             modelBuilder.Entity<OSC>()
-                 .Property(o => o.categoria)
-                 .HasColumnName("categoria");
-
-
-             modelBuilder.Entity<Empresa>()
-                 .Property(o => o.tipo)
-                 .HasColumnName("tipo");
-
-             modelBuilder.Entity<Empresa>()
-                 .Property(o => o.categoria)
-                 .HasColumnName("categoria");
-
-             modelBuilder.Entity<Empresa>()
-                 .Map<MedianaTramo2>(m => m.Requires("discriminador").HasValue("Mediana Tramo - 2"))
-                 .Map<MedianaTramo1>(m => m.Requires("discriminador").HasValue("Mediana Tramo - 1"))
-                 .Map<Pequenia>(m => m.Requires("discriminador").HasValue("Pequenia"))
-                 .Map<Micro>(m => m.Requires("discriminador").HasValue("Micro"));
-                 */
-            modelBuilder.Entity<TipoOrganizacion>()
-            .Map<MedianaTramo2>(m => m.Requires("discriminador").HasValue("Mediana Tramo - 2"))
-            .Map<MedianaTramo1>(m => m.Requires("discriminador").HasValue("Mediana Tramo - 1"))
-            .Map<Pequenia>(m => m.Requires("discriminador").HasValue("Pequenia"))
-            .Map<Micro>(m => m.Requires("discriminador").HasValue("Micro"))
-            .Map<OSC>(m => m.Requires("discriminador").HasValue("OSC"));
-
-
-            /*
-            modelBuilder.Entity<MedianaTramo2>()
-                .Property(o => o.categoria)
-                .HasColumnName("categoria");
-
-            modelBuilder.Entity<MedianaTramo2>()
-                .Property(o => o.tipo)
-                .HasColumnName("tipo");
-
-            modelBuilder.Entity<MedianaTramo1>()
-                .Property(o => o.categoria)
-                .HasColumnName("categoria");
-
-            modelBuilder.Entity<MedianaTramo1>()
-                .Property(o => o.tipo)
-                .HasColumnName("tipo");
-
-            modelBuilder.Entity<Pequenia>()
-                .Property(o => o.categoria)
-                .HasColumnName("categoria");
-
-            modelBuilder.Entity<Pequenia>()
-                .Property(o => o.tipo)
-                .HasColumnName("tipo");
-
-            modelBuilder.Entity<Micro>()
-                .Property(o => o.categoria)
-                .HasColumnName("categoria");
-
-            modelBuilder.Entity<Micro>()
-                .Property(o => o.tipo)
-                .HasColumnName("tipo");
-            */
-
-
-
-            /* ESTO NO LO USAMOS MAS
-            modelBuilder.Entity<EntidadJuridica>()
-                .Map(m =>
-                {
-                m.MapInheritedProperties();
-                m.ToTable("entidad_juridica");
-                });
 
             modelBuilder.Entity<EntidadJuridica>()
-                .Property(j => j.id_organizacion)
-                .HasColumnName("id_juridica");
-
-            modelBuilder.Entity<EntidadJuridica>()
-            .HasKey(j => j.id_organizacion); 
-              
-            
-            modelBuilder.Entity<EntidadBase>()
-            .Map(m =>
-            {
-                m.MapInheritedProperties();
-                m.ToTable("entidad_base");
-            });
+                .HasRequired<TipoOrganizacion>(eb => eb.tipoOrganizacion)
+                .WithMany()
+                .HasForeignKey(eb => eb.id_tipo_organizacion);
 
             modelBuilder.Entity<EntidadBase>()
-                .Property(j => j.id_organizacion)
-                .HasColumnName("id_base");
-
-            modelBuilder.Entity<EntidadBase>()
-            .HasKey(j => j.id_organizacion);
-            */
-
+                .HasRequired<TipoOrganizacion>(eb => eb.tipoOrganizacion)
+                .WithMany()
+                .HasForeignKey(eb => eb.id_tipo_organizacion);
 
             #endregion
 
