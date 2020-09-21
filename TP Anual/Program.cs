@@ -104,7 +104,7 @@ namespace TP_Anual
                 Egreso egreso = new Egreso();
                 egreso.fecha = DateTime.Today;
                 egreso.cantPresupuestos = 2;
-                //egreso.documentosComerciales.Add(doc);
+                //egreso.documentoComercial = doc;
                 egreso.proveedorElegido = proveedor1;
                 context.egresos.Add(egreso);
                 context.SaveChanges();
@@ -112,7 +112,7 @@ namespace TP_Anual
                 Presupuesto presupuesto1 = new Presupuesto();
                 presupuesto1.egreso = egreso;
                 presupuesto1.proveedor = proveedor1;
-                //presupuesto1.documentoComercial = doc;
+                presupuesto1.documentoComercial = doc;
                 context.presupuestos.Add(presupuesto1);
                 context.SaveChanges();
 

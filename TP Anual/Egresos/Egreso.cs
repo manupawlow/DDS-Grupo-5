@@ -34,7 +34,11 @@ namespace TP_Anual.Egresos
         [Column("id_ingreso")]
         public int id_ingreso { get; set; }
         public Ingreso ingreso { get; set; }
-        //public DocumentoComercial documentoComercial { get; set; }
+        
+        [Column("id_documento_comercial")]
+        public int id_documento_comercial { get; set; }
+        public DocumentoComercial documentoComercial { get; set; }
+
         public Proveedor proveedorElegido { get; set; }
         public List<Presupuesto> presupuestos { get; set; }
 

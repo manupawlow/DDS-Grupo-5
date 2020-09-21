@@ -26,7 +26,10 @@ namespace TP_Anual.Egresos
         public Egreso egreso { get; set; }
 
         public List<ItemPorPresupuesto> itemsDePresupuesto { get; set; }
-        //public DocumentoComercial documentoComercial { get; set; }
+       
+        [Column("id_documento_comercial")]
+        public int id_documento_comercial { get; set; }
+        public DocumentoComercial documentoComercial { get; set; }
         
 
 

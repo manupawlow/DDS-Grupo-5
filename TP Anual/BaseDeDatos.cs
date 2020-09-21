@@ -62,14 +62,15 @@ namespace TP_Anual
                  .HasForeignKey(pres => pres.id_prov);
 
 
-            /*modelBuilder.Entity<DocumentoComercial>()
-                .HasRequired<Presupuesto>(d => d.presupuesto)
-                .WithRequiredPrincipal(p => p.documentoComercial);
+            modelBuilder.Entity<Presupuesto>()
+                .HasRequired<DocumentoComercial>(p => p.documentoComercial)
+                .WithMany()
+                .HasForeignKey(p => p.id_documento_comercial);
 
-            modelBuilder.Entity<DocumentoComercial>()
-                .HasRequired<Egreso>(d => d.egreso)
-                .WithMany(e => e.documentosComerciales)
-                .HasForeignKey(d => d.id_egreso);*/
+            modelBuilder.Entity<Egreso>()
+                .HasRequired<DocumentoComercial>(e => e.documentoComercial)
+                .WithMany()
+                .HasForeignKey(e => e.id_documento_comercial);
 
 
             #region ITEMS
