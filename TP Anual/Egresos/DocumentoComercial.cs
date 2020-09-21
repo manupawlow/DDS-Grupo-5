@@ -27,10 +27,6 @@ namespace TP_Anual.Egresos
         public int id_presupuesto { get; set; }
         public Presupuesto presupuesto { get; set; }
         */
-
-
-
-
        
     }
 }

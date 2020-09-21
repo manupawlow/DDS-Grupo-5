@@ -7,7 +7,7 @@ using System.Text;
 
 namespace TP_Anual.Egresos
 {
-    [Table("Criterio")]
+    [Table("criterio")]
     public class Criterio
     {
         [Key]

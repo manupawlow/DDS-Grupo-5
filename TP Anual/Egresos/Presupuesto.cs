@@ -14,24 +14,25 @@ namespace TP_Anual.Egresos
         [Column("id_presupuesto")]
         public int id_presupuesto { get; set; }
 
-        [Column("valor_total")]
-        public int valor_total { get; set; }
+        [Column("id_documento_comercial")]
+        public int id_documento_comercial { get; set; }
+        public DocumentoComercial documentoComercial { get; set; }
+        public List<ItemPorPresupuesto> itemsDePresupuesto { get; set; }
 
         [Column("id_prov")]
         public int id_prov { get; set; }
         public Proveedor proveedor { get; set; }
+        
+        [Column("valor_total")]
+        public int valor_total { get; set; }
 
+        
+        //Agregado para ORM
         [Column("id_egreso")]
         public int id_egreso { get; set; }
         public Egreso egreso { get; set; }
 
-        public List<ItemPorPresupuesto> itemsDePresupuesto { get; set; }
-       
-        [Column("id_documento_comercial")]
-        public int id_documento_comercial { get; set; }
-        public DocumentoComercial documentoComercial { get; set; }
-        
-
+     
 
         public Presupuesto()
         {

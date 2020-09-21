@@ -76,16 +76,21 @@ namespace TP_Anual
                 Criterio crit = new Criterio();
                 crit.descripcion = "soy un criterio";
                 context.criterios.Add(crit);
-                
+                context.SaveChanges();
+
                 Categoria categoria1 = new Categoria();
                 categoria1.descripcion = "Precio cuidado";
                 categoria1.criterio = crit;
                 context.categorias.Add(categoria1);
+                context.SaveChanges();
+
 
                 Categoria categoria2 = new Categoria();
                 categoria2.descripcion = "Precio no cuidado";
                 categoria2.criterio = crit;
                 context.categorias.Add(categoria2);
+                context.SaveChanges();
+
 
                 CriterioPorItem ci = new CriterioPorItem();
                 ci.criterio = crit;

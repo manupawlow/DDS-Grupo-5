@@ -13,43 +13,46 @@ namespace TP_Anual.Egresos
         [Column("id_egreso")]
         public int id_egreso { get; set; }
 
+        public BandejaDeMensajes bandejaDeMensajes;
+
         [Column("cant_presupuestos_requeridos")]
         public int cantPresupuestos { get; set; }
+        
+        public ICriterioDeSeleccion criterioDeSeleccion;
+        public DocumentoComercial documentoComercial { get; set; }
+        [Column("id_documento_comercial")]
+        public int id_documento_comercial { get; set; }
 
         [Column("fecha")]
         public DateTime fecha { get; set; }
 
-        [Column("valor_total")]
-        public int valorTotal { get; set; }
+        public Ingreso ingreso { get; set; }
+        [Column("id_ingreso")]
+        public int id_ingreso { get; set; }
+        
+        public List<ItemPorEgreso> items { get; set;}
 
+        public MedioDePago medioDePago;
+        
+        public Presupuesto presupuestoElegido;
+       
+        public List<Presupuesto> presupuestos { get; set; }
+        
+        public Proveedor proveedorElegido { get; set; }
         [Column("id_prov")]
         public int id_prov { get; set; }
 
+        [Column("valor_total")]
+        public int valorTotal { get; set; }
+
+
+        //Agregado para ORM
         [Column("id_entidad_base")]
         public int id_entidad_base { get; set; }
 
         [Column("id_entidad_juridica")]
         public int id_entidad_juridica { get; set; }
 
-        [Column("id_ingreso")]
-        public int id_ingreso { get; set; }
-        public Ingreso ingreso { get; set; }
-        
-        [Column("id_documento_comercial")]
-        public int id_documento_comercial { get; set; }
-        public DocumentoComercial documentoComercial { get; set; }
-
-        public Proveedor proveedorElegido { get; set; }
-        public List<Presupuesto> presupuestos { get; set; }
-
-        public List<ItemPorEgreso> items { get; set;}
-
-        public BandejaDeMensajes bandejaDeMensajes;
-        public ICriterioDeSeleccion criterioDeSeleccion;
-        public MedioDePago medioDePago;
-        public Presupuesto presupuestoElegido;
-
-        
         public Egreso()
         {
             items = new List<ItemPorEgreso>();
