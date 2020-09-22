@@ -4,6 +4,7 @@ using TP_Anual.Administrador_Inicio_Sesion;
 using Quartz;
 using TP_Anual.Organizaciones;
 using System.Linq;
+using TP_Anual.APImercadolibre;
 
 namespace TP_Anual
 {
@@ -50,6 +51,12 @@ namespace TP_Anual
                 {
                     Console.WriteLine($"{i.descripcion}");
                 }*/
+                ApimercadoLibre api = new ApimercadoLibre();
+                /*api.provincias();
+                api.paises();
+                api.ciudades();
+                api.monedas();*/
+                Organizacion organizacion = new Organizacion();
 
                 Ingreso ingreso = new Ingreso();
                 ingreso.descripcion = "pepe";
@@ -190,6 +197,112 @@ namespace TP_Anual
                 egreso.presupuestos.Add(presupuesto2);
                 egreso.elegirPresupuesto(presupuesto1);
 
+                //EGRESOS DE PRUEBA PARA VINCULACION-----------------------------------
+
+                Egreso egresoPrueba1 = new Egreso();
+                egresoPrueba1.valorTotal = 126312;
+                egresoPrueba1.descripcion = "egreso 1";
+                organizacion.egresosPrueba.Add(egresoPrueba1);
+
+                Egreso egresoPrueba2 = new Egreso();
+                egresoPrueba2.valorTotal = 1263;
+                egresoPrueba2.descripcion = "egreso 2";
+                organizacion.egresosPrueba.Add(egresoPrueba2);
+
+                Egreso egresoPrueba3 = new Egreso();
+                egresoPrueba3.valorTotal = 4365;
+                egresoPrueba3.descripcion = "egreso 3";
+                organizacion.egresosPrueba.Add(egresoPrueba3);
+
+                Egreso egresoPrueba4 = new Egreso();
+                egresoPrueba4.valorTotal = 126;
+                egresoPrueba4.descripcion = "egreso 4";
+                organizacion.egresosPrueba.Add(egresoPrueba4);
+
+                Egreso egresoPrueba5 = new Egreso();
+                egresoPrueba5.valorTotal = 1248;
+                egresoPrueba5.descripcion = "egreso 5";
+                organizacion.egresosPrueba.Add(egresoPrueba5);
+
+                Egreso egresoPrueba6 = new Egreso();
+                egresoPrueba6.valorTotal = 12687;
+                egresoPrueba6.descripcion = "egreso 6";
+                organizacion.egresosPrueba.Add(egresoPrueba6);
+
+                Egreso egresoPrueba7 = new Egreso();
+                egresoPrueba7.valorTotal = 16348;
+                egresoPrueba7.descripcion = "egreso 7";
+                organizacion.egresosPrueba.Add(egresoPrueba7);
+
+                Egreso egresoPrueba8 = new Egreso();
+                egresoPrueba8.valorTotal = 1267;
+                egresoPrueba8.descripcion = "egreso 8";
+                organizacion.egresosPrueba.Add(egresoPrueba8);
+
+                Egreso egresoPrueba9 = new Egreso();
+                egresoPrueba9.valorTotal = 13;
+                egresoPrueba9.descripcion = "egreso 9";
+                egresoPrueba9.fecha = new DateTime(2020, 1, 4, 0, 0, 0);
+                organizacion.egresosPrueba.Add(egresoPrueba9);
+
+                Egreso egresoPrueba10 = new Egreso();
+                egresoPrueba10.valorTotal = 48;
+                egresoPrueba10.descripcion = "egreso 10";
+                organizacion.egresosPrueba.Add(egresoPrueba10);
+
+                //INGRESOS DE PRUEBA PARA VINCULACION-------------------------------
+
+                Ingreso ingresoPrueba1 = new Ingreso();
+                ingresoPrueba1.total = 7842;
+                ingresoPrueba1.descripcion = "ingreso 1";
+                organizacion.ingresosPrueba.Add(ingresoPrueba1);
+
+                Ingreso ingresoPrueba2 = new Ingreso();
+                ingresoPrueba2.total = 23734;
+                ingresoPrueba2.descripcion = "ingreso 2";
+                organizacion.ingresosPrueba.Add(ingresoPrueba2);
+
+                Ingreso ingresoPrueba3 = new Ingreso();
+                ingresoPrueba3.total = 127623;
+                ingresoPrueba3.descripcion = "ingreso 3";
+                organizacion.ingresosPrueba.Add(ingresoPrueba3);
+
+                Ingreso ingresoPrueba4 = new Ingreso();
+                ingresoPrueba4.total = 1273;
+                ingresoPrueba4.descripcion = "ingreso 4";
+                organizacion.ingresosPrueba.Add(ingresoPrueba4);
+
+                Ingreso ingresoPrueba5 = new Ingreso();
+                ingresoPrueba5.total = 12673;
+                ingresoPrueba5.descripcion = "ingreso 5";
+                organizacion.ingresosPrueba.Add(ingresoPrueba5);
+
+                Ingreso ingresoPrueba6 = new Ingreso();
+                ingresoPrueba6.total = 27;
+                ingresoPrueba6.descripcion = "ingreso 6";
+                ingresoPrueba6.fecha = new DateTime(2020, 1, 15, 0, 0, 0);
+                organizacion.ingresosPrueba.Add(ingresoPrueba6);
+
+                Ingreso ingresoPrueba7 = new Ingreso();
+                ingresoPrueba7.total = 1632;
+                ingresoPrueba7.descripcion = "ingreso 7";
+                organizacion.ingresosPrueba.Add(ingresoPrueba7);
+
+                Ingreso ingresoPrueba8 = new Ingreso();
+                ingresoPrueba8.total = 1554;
+                ingresoPrueba8.descripcion = "ingreso 8";
+                organizacion.ingresosPrueba.Add(ingresoPrueba8);
+
+                Ingreso ingresoPrueba9 = new Ingreso();
+                ingresoPrueba9.total = 16327;
+                ingresoPrueba9.descripcion = "ingreso 9";
+                organizacion.ingresosPrueba.Add(ingresoPrueba9);
+
+                Ingreso ingresoPrueba10 = new Ingreso();
+                ingresoPrueba10.total = 1563;
+                ingresoPrueba10.descripcion = "ingreso 10";
+                organizacion.ingresosPrueba.Add(ingresoPrueba10);
+
 
 
                 InterfazInicioDeSesion interfaz = new InterfazInicioDeSesion();
@@ -200,7 +313,7 @@ namespace TP_Anual
 
                 while (true)
                 {
-                    Console.WriteLine("1. Validar Compra // 2. Ver validacion // 3. Fin");
+                    Console.WriteLine("1. Validar Compra // 2. Ver validacion // 3.Vincular ingresos con egresos // 4. Fin");
                     var eleccion = Console.ReadLine();
 
                     if (eleccion == "1")
@@ -209,7 +322,10 @@ namespace TP_Anual
                     if (eleccion == "2")
                         egreso.bandejaDeMensajes.mostrarMensajes(usuarioActual);
 
-                    if (eleccion == "3")
+                    if (eleccion =="3")
+                        organizacion.vincular();
+
+                    if (eleccion == "4")
                         break;
 
                 }

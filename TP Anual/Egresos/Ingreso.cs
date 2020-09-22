@@ -20,6 +20,7 @@ namespace TP_Anual.Egresos
         public int total { get; set; }
 
         public List<Egreso> egresos { get; set; }
+        public DateTime fecha;
 
         public Ingreso() 
         {
