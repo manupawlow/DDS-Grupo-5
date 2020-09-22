@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MongoDB.Bson.Serialization;
+using MongoDB.Driver;
+using System;
 using TP_Anual.Egresos;
 using TP_Anual.Administrador_Inicio_Sesion;
 using Quartz;
@@ -12,6 +14,12 @@ namespace TP_Anual
     {
         static void Main(string[] args)
         {
+            BsonClassMap.RegisterClassMap<BandejaDeMensajes>();
+            BsonClassMap.RegisterClassMap<Log>();
+
+            var client = new MongoClient("mongodb://localhost:27017");
+            var database = client.GetDatabase("mydb");
+
             using (var context = new BaseDeDatos())
             {
 
@@ -156,7 +164,8 @@ namespace TP_Anual
                 medio_de_pago.tipoDePago = "debito";
 
                 egreso.medioDePago = medio_de_pago;
-                egreso.bandejaDeMensajes = new BandejaDeMensajes("Grupo 5");
+                //egreso.bandejaDeMensajes = new BandejaDeMensajes("Grupo 5");
+                registrarBandejaDeMensajes(database, "Grupo 5", egreso);
                 egreso.criterioDeSeleccion = new MenorValor();
 
                 proveedor1.razon_social = "razon1";
@@ -313,19 +322,20 @@ namespace TP_Anual
 
                 while (true)
                 {
-                    Console.WriteLine("1. Validar Compra // 2. Ver validacion // 3.Vincular ingresos con egresos // 4. Fin");
+                    Console.WriteLine("1. Validar Compra // 2. Ver validacion // 3. Fin");
                     var eleccion = Console.ReadLine();
 
                     if (eleccion == "1")
+                    {
                         ValidadorDeEgreso.egresoValido(egreso);
-
+                        actualizarBaseDeDatosNoSQL(database, egreso);
+                    }
                     if (eleccion == "2")
+                    {
                         egreso.bandejaDeMensajes.mostrarMensajes(usuarioActual);
-
-                    if (eleccion =="3")
-                        organizacion.vincular();
-
-                    if (eleccion == "4")
+                        actualizarBaseDeDatosNoSQL(database, egreso);
+                    }
+                    if (eleccion == "3")
                         break;
 
                 }
@@ -367,5 +377,51 @@ namespace TP_Anual
             //con ese usuario, el validador se fija si es el usuario que puede ver la compra
 
         }
+        public static void actualizarBaseDeDatosNoSQL(IMongoDatabase database, Egreso egreso)
+        {
+            // Construyo filtro de busqueda
+            var builder = Builders<BandejaDeMensajes>.Filter;
+            var filter = builder.Where(bandeja => bandeja.revisor == egreso.bandejaDeMensajes.revisor);
+
+            // Traigo la coleccion
+            var coleccionBandejaDeMensajes = database.GetCollection<BandejaDeMensajes>("coleccionBandejaDeMensajes");
+
+            // Busco usando el filtro y convierto los resultados a lista
+            var bandejasDeMensajesEncontradas = coleccionBandejaDeMensajes.Find<BandejaDeMensajes>(filter);
+            var listaBandejaDeMensajes = bandejasDeMensajesEncontradas.ToList<BandejaDeMensajes>();
+            var bandejaDeMensajes = listaBandejaDeMensajes[0];
+            egreso.bandejaDeMensajes.ID = bandejaDeMensajes.ID;
+
+            // Creo una bandeja de mensajes y la inserto
+            coleccionBandejaDeMensajes.ReplaceOne(filter, egreso.bandejaDeMensajes);
+        }
+        public static void registrarBandejaDeMensajes(IMongoDatabase database, string revisor, Egreso egreso)
+        {
+            // Agrego bandeja de mensajes a egreso
+            egreso.bandejaDeMensajes = new BandejaDeMensajes("Grupo 5");
+
+            // Traigo la coleccion
+            var coleccionBandejaDeMensajes = database.GetCollection<BandejaDeMensajes>("coleccionBandejaDeMensajes");
+
+            // Creo una bandeja de mensajes y la inserto
+            var bandejaDeMensajes = new BandejaDeMensajes(revisor);
+            coleccionBandejaDeMensajes.InsertOne(bandejaDeMensajes);
+        }
+
+        /*  public static void mostrarBandejaDeMensajesDeEgreso(IMongoDatabase database, Egreso egreso)
+          {
+             // var builder = Builders<BandejaDeMensajes>.Filter;
+             // var filter = builder.Where(bandeja => bandeja.ID == egreso.bandejaDeMensajes.ID);
+            //  var filter = builder.Where(bandeja => bandeja.revisor == egreso.bandejaDeMensajes.revisor);
+
+              var coleccionBandejaDeMensajes = database.GetCollection<BandejaDeMensajes>("coleccionBandejaDeMensajes");
+             //  var bandejasDeMensajesEncontradas = coleccionBandejaDeMensajes.Find<BandejaDeMensajes>(filter);
+             // var listaBandejaDeMensajes = bandejasDeMensajesEncontradas.ToList<BandejaDeMensajes>();
+              var bandejaDeMensajes = coleccionBandejaDeMensajes.Find<BandejaDeMensajes>(bandeja => bandeja.revisor == egreso.bandejaDeMensajes.revisor);
+             // var bandejaDeMensajes = coleccionBandejaDeMensajes.Find<BandejaDeMensajes>(bandeja => bandeja.revisor == egreso.bandejaDeMensajes.revisor);
+              // var bandejaDeMensajes = coleccionBandejaDeMensajes.find();
+
+              Console.WriteLine(bandejaDeMensajes);
+          }*/
     }
 }
