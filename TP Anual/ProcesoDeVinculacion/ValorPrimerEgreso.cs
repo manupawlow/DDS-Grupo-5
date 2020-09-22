@@ -29,8 +29,9 @@ namespace TP_Anual.ProcesoDeVinculacion
 					{
 						asociar(ingreso, egresosFinal[i]);
 
-						i++;
+						
 					}
+					i++;
 				}
 
 			}

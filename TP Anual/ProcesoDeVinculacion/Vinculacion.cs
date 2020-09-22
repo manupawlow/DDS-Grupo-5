@@ -6,14 +6,11 @@ using TP_Anual.Egresos;
 namespace TP_Anual.ProcesoDeVinculacion
 {
 
-	public class Vinculacion
+	public abstract class Vinculacion
 	{
 		public List<Condicion> condiciones = new List<Condicion>();
 
-		public virtual void vincular(List<Ingreso> ingresos, List<Egreso> egresos)
-		{
-
-		}
+		public abstract void vincular(List<Ingreso> ingresos, List<Egreso> egresos);
 
 		public void asociar(Ingreso ingreso, Egreso egreso)
 		{

@@ -49,7 +49,7 @@ namespace TP_Anual
                 entidad_juridica.entidades_base.Add(entidad_base);
                 context.SaveChanges();
 
-                //var hola = context.presupuestos.Single(p => p.id_presupuesto == 1);
+                var hola = context.presupuestos.Single(p => p.id_presupuesto == 1);
                 //Console.WriteLine($"{hola.documentoComercial.id_documento}");
 
                 /*var presupuesto = context.presupuestos.Single(p => p.id_presupuesto == 1);
@@ -60,8 +60,8 @@ namespace TP_Anual
                     Console.WriteLine($"{i.descripcion}");
                 }*/
                 ApimercadoLibre api = new ApimercadoLibre();
-                api.obtenerProvincias();
-                /*api.paises();
+                /*api.obtenerProvincias();
+                api.paises();
                 api.ciudades();
                 api.monedas();*/
                 Organizacion organizacion = new Organizacion();
@@ -322,7 +322,7 @@ namespace TP_Anual
 
                 while (true)
                 {
-                    Console.WriteLine("1. Validar Compra // 2. Ver validacion // 3. Fin");
+                    Console.WriteLine("1. Validar Compra // 2. Ver validacion // 3.Vincular ingresos con egresos // 4. Fin");
                     var eleccion = Console.ReadLine();
 
                     if (eleccion == "1")
@@ -335,7 +335,10 @@ namespace TP_Anual
                         egreso.bandejaDeMensajes.mostrarMensajes(usuarioActual);
                         actualizarBaseDeDatosNoSQL(database, egreso);
                     }
-                    if (eleccion == "3")
+                    if(eleccion == "3")
+                        organizacion.vincular();
+
+                    if (eleccion == "4")
                         break;
 
                 }

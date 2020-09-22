@@ -110,14 +110,17 @@ namespace TP_Anual.Organizaciones
             {
                 case 1:
                     procesoDeVinculacion = new ValorPrimerEgreso();
+                    procesoDeVinculacion.condiciones = condiciones;
                     procesoDeVinculacion.vincular(ingresosPrueba, egresosPrueba);
                     break;
                 case 2:
                     procesoDeVinculacion = new ValorPrimerIngreso();
+                    procesoDeVinculacion.condiciones = condiciones;
                     procesoDeVinculacion.vincular(ingresosPrueba, egresosPrueba);
                     break;
                 case 3:
                     procesoDeVinculacion = new FechaPrimerEgreso();
+                    procesoDeVinculacion.condiciones = condiciones;
                     procesoDeVinculacion.vincular(ingresosPrueba, egresosPrueba);
                     break;
                 case 4:
