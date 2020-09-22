@@ -21,7 +21,7 @@ namespace TP_Anual.Organizaciones
         public int CUIT { get; set; }
 
         [Column("direccion_postal")]
-        public string direccion_postal { get; set; }
+        public DireccionPostal direccion_postal { get; set; }
 
         [Column("razon_social")]
         public string razon_social { get; set; }

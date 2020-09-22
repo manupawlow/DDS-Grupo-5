@@ -128,6 +128,10 @@
     <Compile Include="Administrador Inicio Sesion\Usuario.cs" />
     <Compile Include="Administrador Inicio Sesion\Validador.cs" />
     <Compile Include="APImercadolibre\ApimercadoLibre.cs" />
+    <Compile Include="APImercadolibre\Ciudad.cs" />
+    <Compile Include="APImercadolibre\Moneda.cs" />
+    <Compile Include="APImercadolibre\Pais.cs" />
+    <Compile Include="APImercadolibre\Provincia.cs" />
     <Compile Include="BaseDeDatos.cs" />
     <Compile Include="Egresos\BandejaDeMensajes.cs" />
     <Compile Include="Egresos\Categoria.cs" />
@@ -148,6 +152,7 @@
     <Compile Include="Egresos\SeleccionDePresupuestos\MenorValor.cs" />
     <Compile Include="Egresos\ValidadorDeEgreso.cs" />
     <Compile Include="Organizaciones\AsignarCategoria.cs" />
+    <Compile Include="Organizaciones\DireccionPostal.cs" />
     <Compile Include="Organizaciones\Empresa.cs" />
     <Compile Include="Organizaciones\EntidadBase.cs" />
     <Compile Include="Organizaciones\EntidadJuridica.cs" />

@@ -52,8 +52,8 @@ namespace TP_Anual
                     Console.WriteLine($"{i.descripcion}");
                 }*/
                 ApimercadoLibre api = new ApimercadoLibre();
-                /*api.provincias();
-                api.paises();
+                api.obtenerProvincias();
+                /*api.paises();
                 api.ciudades();
                 api.monedas();*/
                 Organizacion organizacion = new Organizacion();

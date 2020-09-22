@@ -9,40 +9,56 @@ namespace TP_Anual.APImercadolibre
 {
     class ApimercadoLibre
     {
-        public void provincias()
+        public List<Provincia> provincias = new List<Provincia>();
+        public List<Pais> paises = new List<Pais>();
+        public List<Ciudad> ciudades = new List<Ciudad>();
+        public List<Moneda> monedas = new List<Moneda>();
+
+        
+        public void obtenerProvincias()
         {
+
             Console.Out.WriteLine("PROVINCIAS SEGUN API DE MERCADO LIBRE\n");
             var clientML = new RestClient("https://api.mercadolibre.com/");
             var requestMLprovincias = new RestRequest("classified_locations/countries/AR");
             var responseMLprovincias = clientML.Get(requestMLprovincias).Content;
             dynamic listadoMLprovincias = JsonConvert.DeserializeObject(responseMLprovincias);
             dynamic provinciasSegunML = listadoMLprovincias["states"];
-            JArray nombresProvinciasML = new JArray();
-            for (int i = 0; i < provinciasSegunML.Count; i++)
+            JArray arrayProvinciasML = provinciasSegunML;
+            List<Provincia> provinciasML = arrayProvinciasML.Select(x => new Provincia
             {
-                nombresProvinciasML.Add(provinciasSegunML[i]["name"]);
-            }
+                nombreProvincia = (string)x["name"],
+                idProvincia = (string)x["id"]
 
-            Console.Out.WriteLine(listadoMLprovincias);
+            }).ToList();
+
+            provincias = provinciasML;
+           
+            Console.Out.WriteLine(provinciasML[0].nombreProvincia);
         }
 
-        public void paises()
+        public void obtenerPaises()
         {
             Console.Out.WriteLine("PAISES SEGUN API DE MERCADO LIBRE\n");
             var clientML = new RestClient("https://api.mercadolibre.com/");
             var requestMLpaises = new RestRequest("classified_locations/countries");
             var responseMLpaises = clientML.Get(requestMLpaises).Content;
             dynamic listadoMLpaises = JsonConvert.DeserializeObject(responseMLpaises);
-            JArray nombresPaisesML = new JArray();
-            for (int i = 0; i < listadoMLpaises.Count; i++)
+            JArray arrayPaisesML = listadoMLpaises;
+            List<Pais> paisesML = arrayPaisesML.Select(x => new Pais
             {
-                nombresPaisesML.Add(listadoMLpaises[i]["name"]);
-            }
+                nombre = (string)x["name"],
+                id = (string)x["id"],
+                locale = (string)x["locale"],
+                currency_id = (string)x["currency_id"]
 
-            Console.Out.WriteLine(listadoMLpaises);
+            }).ToList();
+           
+            paises = paisesML;
+            
         }
 
-        public void ciudades()
+        public void ObtenerCiudades()
         {
             Console.Out.WriteLine("CIUDADES SEGUN API DE MERCADO LIBRE\n");
             var clientML = new RestClient("https://api.mercadolibre.com/");
@@ -57,32 +73,41 @@ namespace TP_Anual.APImercadolibre
             }
 
 
-            JArray ciudadesML = new JArray();
+            JArray arrayCiudadesML = new JArray();
             for (int j = 0; j < idProvinciasML.Count; j++)
             {
                 var requestMLciudades = new RestRequest("classified_locations/states/" + idProvinciasML[j]);
                 var responseMLciudades = clientML.Get(requestMLciudades).Content;
                 dynamic listadoMLciudades = JsonConvert.DeserializeObject(responseMLciudades);
-                ciudadesML.Add(listadoMLciudades["cities"]);
+                arrayCiudadesML.Add(listadoMLciudades["cities"]);
             }
+            List<Ciudad> ciudadesML = arrayCiudadesML.Select(x => new Ciudad
+            {
+                id = (string)x["id"],
+                nombre = (string)x["name"]
 
-            Console.Out.WriteLine(ciudadesML);
+            }).ToList();
+            ciudades = ciudadesML;
+
         }
 
-        public void monedas()
+        public void ObtenerMonedas()
         {
             Console.Out.WriteLine("MONEDAS SEGUN API DE MERCADO LIBRE\n");
             var clientML = new RestClient("https://api.mercadolibre.com/");
             var requestMLmonedas = new RestRequest("currencies/");
             var responseMLmonedas = clientML.Get(requestMLmonedas).Content;
             dynamic listadoMLmonedas = JsonConvert.DeserializeObject(responseMLmonedas);
-            JArray nombresmonedasML = new JArray();
-            for (int i = 0; i < listadoMLmonedas.Count; i++)
+            JArray arrayMonedasML = new JArray();
+            List<Moneda> monedasML = arrayMonedasML.Select(x => new Moneda
             {
-                nombresmonedasML.Add(listadoMLmonedas[i]["name"]);
-            }
+                id = (string)x["id"],
+                descripcion = (string)x["description"],
+                simbolo = (string)x["symbol"],
+                decimales = (string)x["decimal_places"]
 
-            Console.Out.WriteLine(listadoMLmonedas);
+            }).ToList();
+            monedas = monedasML;
         }
 
 
