@@ -206,6 +206,17 @@ namespace TP_Anual
                 egreso.presupuestos.Add(presupuesto2);
                 egreso.elegirPresupuesto(presupuesto1);
 
+                var presupuesto = context.presupuestos
+                .Include("itemsDePresupuesto")
+                .Include("egreso").Single(p => p.id_presupuesto == 1);
+
+                Console.WriteLine($"{presupuesto.egreso.cantPresupuestos}");
+                foreach (ItemPorPresupuesto i in presupuesto.itemsDePresupuesto)
+                {
+                    Console.WriteLine($"{i.item.descripcion}");
+                }
+
+
                 //EGRESOS DE PRUEBA PARA VINCULACION-----------------------------------
 
                 Egreso egresoPrueba1 = new Egreso();
