@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>GEOC - DDS - Grupo 5</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/scrolling-nav.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">GEOC</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#about">OC</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#services">Stock</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#contact">Git</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="bg-primary text-white">
+    <div class="container text-center">
+      <h1>GEOC</h1>
+      <p class="lead">Ejercicio GEOC del grupo 5</p>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2>Envio de orden de compra</h2>
+          
+          <p class="lead">Seleccione una forma de envio:</p>
+
+            <div class="funkyradio-success">
+              <input type="radio" name="radio" id="radio3" />
+              <label for="radio3">Mediador</label>
+            </div>
+            <div class="funkyradio-success">
+              <input type="radio" name="radio" id="radio3" />
+              <label for="radio3">Directo</label>
+            </div>
+            <div class="funkyradio-success">
+            <input type="radio" name="radio" id="radio3" />
+            <label for="radio3">Manual</label>
+            </div>
+            <div class="funkyradio-success">
+            <button class="button button1">Enviar</button>
+            </div>
+            
+            
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2>STOCK</h2>          
+          
+          <p class="lead">Seleccione el producto al que le desea editar el stock</p>
+
+          <select id="mounth">
+              <option value="hide">Producto</option>
+              <option value="january" rel="icon-temperature">Producto 1</option>
+              <option value="february">Producto 2</option>
+              <option value="march">Producto 3</option>
+              <option value="april">Producto 4</option>
+              <option value="may">Etc...</option>
+          </select> 
+            
+          <button class="button button3" onclick="contar(1)">Agregar</button>
+          |  
+          <button class="button button2" onclick="contar(-1)">Quitar</button>
+          <div>  
+              <p class="lead" id="contador">Cantidad: 0</p>
+          </div>
+          <button class="button button1">Editar</button>
+
+
+          <script>
+              var tiempo = document.getElementById("tiempo");
+              var tiempo_restante = 100;
+              var clicks = 0;
+              var corriendo = false;
+              var contador = document.getElementById("contador");
+              function inicio() {
+                  corriendo = true;
+                  clicks = 0;
+                  tiempo_restante = 100;
+                  tiempo.innerText = 100;
+                  var cronometro = setInterval(() => {
+                      tiempo_restante = tiempo_restante - 1;
+                      tiempo.innerText = tiempo_restante
+                      if (tiempo_restante < 1) {
+                          clearInterval(cronometro)
+                      }
+                  }, 1000);
+                  }
+
+              function contar(numero) {
+                  if (corriendo) inicio();
+                  clicks = clicks + numero;
+                  contador.innerText = "Cantidad: " + clicks;
+              }
+          </script>
+
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2>Repositorio GitHub</h2>
+          <!-- <p class="lead"></p> -->
+          <a href="https://github.com/manupawlow/DDS-Grupo-5" target="_blank">Repositorio Grupo 5</a> 
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Integrantes: Manuel Pawlow - Matias Goñi - Genaro Ciruzzi - Juan Manuel Brea</p>
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom JavaScript for this theme -->
+  <script src="js/scrolling-nav.js"></script>
+
+</body>
+
+</html>
