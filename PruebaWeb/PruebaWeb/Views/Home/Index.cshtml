@@ -1,0 +1,188 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<meta name="viewport" content="width=device-width" />
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>TP ANUAL DDS 2020 GRUPO 5</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/boostrap/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="~/Content/scrolling-nav.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">GeSoc</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#about">EGRESOS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#services">INGRESOS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#contact">Git</a>
+                    </li>
+                    <li class="nav-item">
+                        <a onclick="myFunction(0)" class="nav-link js-scroll-trigger">@Session["UserName"]</a>
+                        <div id="0">
+                            <a class="nav-link js-scroll-trigger" style="display:none;">Cerrar sesion</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-primary text-white">
+        <div class="container text-center">
+            <h1>GeSoc</h1>
+            <p class="lead">Gestion de Proyectos Sociales</p>
+        </div>
+    </header>
+
+    <section id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2>EGRESOS</h2>
+                    <p class="lead">Seleccione una opcion:</p>
+                    <button onclick="myFunction(1)" target="_blank" class="button button2">Buscar Usuario</button>
+
+                    <div id="1" style="display:none;">
+                        @using (Html.BeginForm("BuscarUsuarioSinAjax", "Home", FormMethod.Post))
+                        {
+                            <input type="text" name="usuario" placeholder="Usuario" class="button button3">
+                            <input type="submit" value="Buscar usuario" class="button button3">
+                        }
+                        @{
+
+                            if (ViewBag.usuario != null)
+                            {
+
+                                <p><h3>Usuario encontrado sin AJAX</h3></p>
+                                <p><b>ID: </b>@ViewBag.usuario.id</p>
+                                <p><b>NOMBRE: </b>@ViewBag.usuario.nombre</p>
+
+                                foreach (var t in ViewBag.usuario.twits)
+                                {
+                                    <p><b>TWEET: </b>@t.texto</p>
+                                }
+                            }
+                        }
+                        <h6>Buscar usuario CON AJAX</h6>
+                        <input type="text" id="usuarioIdConAjax" placeholder="Usuario ID" />
+                        <button id="buscarUsuario">Buscar usuario</button>
+
+                        <div id="usuario"></div>
+
+                    </div>
+
+                    <script>
+                        function myFunction(id) {
+                            var x = document.getElementById(id);
+                            if (x.style.display === "none") {
+                                x.style.display = "block";
+                            } else {
+                                x.style.display = "none";
+                            }
+                        }
+                    </script>
+
+                    <h6></h6>
+                    <button onclick="myFunction(2)" target="_blank" class="button button2">Cargar Usuario</button>
+                    <div id="2" style="display:none;">
+                        @using (Html.BeginForm("CrearUsuario", "Home", FormMethod.Post))
+                        {
+                            <input type="text" name="usuarioId" placeholder="Usuario ID" class="button button3">
+                            <input type="text" name="nombre" placeholder="Nombre" class="button button3">
+                            <input type="text" name="contrasenia" placeholder="Contraseña" class="button button3">
+                            <input type="submit" value="Cargar usuario" class="button button3">
+                        }
+                    </div>
+                    <h6></h6>
+                    <button onclick="myFunction(3)" target="_blank" class="button button2">Agregar Tweet de Usuario</button>
+                    <div id="3" style="display:none;">
+                        @using (Html.BeginForm("Tweetear", "Home", FormMethod.Post))
+                        {
+                            <input type="text" name="usuarioId" placeholder="Usuario ID" class="button button3"><h6></h6>
+                            <!--<input type="textarea" name="texto" placeholder="Twit" rows="4" cols="50">-->
+                            <textarea id="textar" name="texto" placeholder="Tweet" rows="4" cols="50" class="button button3"></textarea><h6></h6>
+                            <input type="submit" value="Tweetear" class="button button3">
+                        }
+                    </div>
+                    <h6></h6>
+                    <a href="https://github.com/manupawlow/DDS-Grupo-5" target="_blank" class="button button2">Cargar presupuesto</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2>INGRESOS</h2>
+
+                    <p class="lead">Seleccione el producto al que le desea editar el stock</p>
+
+                    <a href="https://github.com/manupawlow/DDS-Grupo-5" target="_blank" class="button button2">Cargar ingreso</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2>Repositorio GitHub</h2>
+                    <!-- <p class="lead"></p> -->
+                    <a href="https://github.com/manupawlow/DDS-Grupo-5" target="_blank">Repositorio Grupo 5</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Integrantes: Manuel Pawlow - Matias Goñi - Genaro Ciruzzi - Juan Manuel Brea</p>
+            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
+        </div>
+        <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="~/Scripts/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Scripts/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="~/Scripts/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom JavaScript for this theme -->
+    <script src="~/Scripts/scrolling-nav.js"></script>
+
+</body>
+
+</html>
