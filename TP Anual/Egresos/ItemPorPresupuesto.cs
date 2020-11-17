@@ -25,5 +25,18 @@ namespace TP_Anual.Egresos
 
         [Column("valor")]
         public int valor { get; set; }
+
+        //TODO
+        public int cantidad { get; set; }
+
+        public ItemPorPresupuesto() { }
+
+        public ItemPorPresupuesto(Presupuesto p, Item i, int _cantidad, int _precio)
+        {
+            presupuesto = p;
+            item = i;
+            cantidad = _cantidad;
+            valor = _precio;
+        }
     }
 }

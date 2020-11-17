@@ -5,7 +5,7 @@ using System.IO;
 
 namespace TP_Anual.Administrador_Inicio_Sesion
 {
-    static class Validador
+    public static class Validador
     {
         private static bool caracteresRepetidos(string palabra)
         {

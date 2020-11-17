@@ -26,5 +26,15 @@ namespace TP_Anual.Egresos
         [Column("valor")]
         public int valor { get; set; }
 
+        //Hacer en BD
+        public int cantidad { get; set; }
+
+
+        public ItemPorEgreso(Egreso e, Item i, int c)
+        {
+            egreso = e;
+            item = i;
+            cantidad = c;
+        }
     }
 }

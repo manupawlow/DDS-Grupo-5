@@ -5,11 +5,12 @@ using TP_Anual.Egresos;
 using MySql.Data.Entity;
 using System.Data.Entity;
 using TP_Anual.Organizaciones;
+using TP_Anual.Administrador_Inicio_Sesion;
 
 namespace TP_Anual
 {
     [DbConfigurationType(typeof(MySqlEFConfiguration))]
-    class BaseDeDatos : DbContext
+    public class BaseDeDatos : DbContext
     {
         public DbSet<Egreso> egresos { get; set; }
         public DbSet<Ingreso> ingresos { get; set; }
@@ -24,7 +25,8 @@ namespace TP_Anual
         public DbSet<EntidadJuridica> entidades_juridicas { get; set; }
         public DbSet<ItemPorPresupuesto> items_por_presupuesto { get; set; }
         public DbSet<ItemPorEgreso> items_por_egreso { get; set; }
-       public DbSet<TipoOrganizacion> tipos_organizacion { get; set; }
+        public DbSet<TipoOrganizacion> tipos_organizacion { get; set; }
+        public DbSet<Usuario> usuarios { get; set; } //<-----------------------------------TODO
 
 
         public BaseDeDatos() : base("dbConn")

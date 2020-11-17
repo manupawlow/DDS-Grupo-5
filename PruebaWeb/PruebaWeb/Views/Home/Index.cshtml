@@ -65,37 +65,6 @@
             <div class="row">
                 <div class="col-lg-8 mx-auto">
                     <h2>EGRESOS</h2>
-                    <p class="lead">Seleccione una opcion:</p>
-                    <button onclick="myFunction(1)" target="_blank" class="button button2">Buscar Usuario</button>
-
-                    <div id="1" style="display:none;">
-                        @using (Html.BeginForm("BuscarUsuarioSinAjax", "Home", FormMethod.Post))
-                        {
-                            <input type="text" name="usuario" placeholder="Usuario" class="button button3">
-                            <input type="submit" value="Buscar usuario" class="button button3">
-                        }
-                        @{
-
-                            if (ViewBag.usuario != null)
-                            {
-
-                                <p><h3>Usuario encontrado sin AJAX</h3></p>
-                                <p><b>ID: </b>@ViewBag.usuario.id</p>
-                                <p><b>NOMBRE: </b>@ViewBag.usuario.nombre</p>
-
-                                foreach (var t in ViewBag.usuario.twits)
-                                {
-                                    <p><b>TWEET: </b>@t.texto</p>
-                                }
-                            }
-                        }
-                        <h6>Buscar usuario CON AJAX</h6>
-                        <input type="text" id="usuarioIdConAjax" placeholder="Usuario ID" />
-                        <button id="buscarUsuario">Buscar usuario</button>
-
-                        <div id="usuario"></div>
-
-                    </div>
 
                     <script>
                         function myFunction(id) {
@@ -108,30 +77,74 @@
                         }
                     </script>
 
-                    <h6></h6>
-                    <button onclick="myFunction(2)" target="_blank" class="button button2">Cargar Usuario</button>
-                    <div id="2" style="display:none;">
-                        @using (Html.BeginForm("CrearUsuario", "Home", FormMethod.Post))
+                    <p class="lead">Seleccione una opcion:</p>
+                    <button onclick="myFunction(1)" target="_blank" class="button button2">Buscar Usuario</button>
+
+                    <div id="1" style="display:none;">
+
+                        <input type="text" id="usuarioNombre" placeholder="Nombre de usuario"  class="button button3" />
+                        <button id="buscarUsuario"  class="button button3">Buscar usuario</button>
+
+                        <div id="usuarioInfo"></div>
+
+
+                        @using (Html.BeginForm("usuarios", "Home", FormMethod.Post))
                         {
-                            <input type="text" name="usuarioId" placeholder="Usuario ID" class="button button3">
-                            <input type="text" name="nombre" placeholder="Nombre" class="button button3">
-                            <input type="text" name="contrasenia" placeholder="Contraseña" class="button button3">
-                            <input type="submit" value="Cargar usuario" class="button button3">
+                            <input type="submit" value="Mostrar todos los usuarios" class="button button3">
+                        }
+                        @{
+                            if (ViewBag.usuarios != null)
+                            {
+
+                                foreach (var u in ViewBag.usuarios)
+                                {
+                                    <p><h3>Usuario encontrado sin AJAX</h3></p>
+                                    <p><b>ID: </b>@u.id</p>
+                                    <p><b>NOMBRE: </b>@u.nombre</p>
+
+                                    foreach (var t in @u.tweets)
+                                    {
+                                        <p><b>TWEET: </b>@t.texto</p>
+                                    }
+                                }
+                            }
+
                         }
                     </div>
+
+                    <h6></h6>
+                    <button onclick="myFunction(2)" target="_blank" class="button button2">Crear Usuario</button>
+                    <div id="2" style="display:none;">
+
+                        <p><input type="text" id="nuevoNombre" placeholder="Nombre" class="button button3"></p>
+                        <p><input type="text" id="nuevoContrasenia" placeholder="Contraseña" class="button button3"></p>
+
+                        <p><button id="crearUsuario" class="button button3">Crear nuevo usuario</button></p>
+
+                        <div id="creacionInfo"></div>
+                    </div>
+
                     <h6></h6>
                     <button onclick="myFunction(3)" target="_blank" class="button button2">Agregar Tweet de Usuario</button>
                     <div id="3" style="display:none;">
+
+                        <!--<form name="items" id="items">
+                        <div id="itemsInput"></div>
+                        </form>
+                        <p><button id="addInput" class="button button3"> + </button></p>
+                        <p><input type="button" id="tweetear" placeholder="Publicar" class="button button3"></p>
+                        <div id="tweetearInfo"></div>
+                            -->
+
+                        <p><button id="addInput" class="button button3"> + </button></p>
                         @using (Html.BeginForm("Tweetear", "Home", FormMethod.Post))
                         {
-                            <input type="text" name="usuarioId" placeholder="Usuario ID" class="button button3"><h6></h6>
-                            <!--<input type="textarea" name="texto" placeholder="Twit" rows="4" cols="50">-->
-                            <textarea id="textar" name="texto" placeholder="Tweet" rows="4" cols="50" class="button button3"></textarea><h6></h6>
-                            <input type="submit" value="Tweetear" class="button button3">
+                            <div id="itemsInput"></div>
+                            <p><input type="text" name="tweeteador" placeholder="Usuario" class="button button3"></p>
+                            <p><input type="submit" id="tweetear" value="Publicar" class="button button3"></p>
                         }
+
                     </div>
-                    <h6></h6>
-                    <a href="https://github.com/manupawlow/DDS-Grupo-5" target="_blank" class="button button2">Cargar presupuesto</a>
                 </div>
             </div>
         </div>
@@ -182,6 +195,9 @@
 
     <!-- Custom JavaScript for this theme -->
     <script src="~/Scripts/scrolling-nav.js"></script>
+
+
+    <script src="~/Scripts/ajax.js"></script>
 
 </body>
 

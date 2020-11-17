@@ -7,7 +7,7 @@ using TP_Anual.APImercadolibre;
 
 namespace TP_Anual.Organizaciones
 {
-    class DireccionPostal
+    public class DireccionPostal
     {
         public String calle;
         public int altura;

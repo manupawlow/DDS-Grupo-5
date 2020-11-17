@@ -3,6 +3,7 @@ using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using TP_Anual.Administrador_Inicio_Sesion;
 
 namespace TP_Anual.Egresos
 {
@@ -15,13 +16,13 @@ namespace TP_Anual.Egresos
         string mensajes { get; set; }
 
         [BsonElement("revisor")]
-        public string revisor { get; set; }
+        public Usuario revisor { get; set; }
 
         [BsonElement("logs")]
         public List<Log> logs = new List<Log>();
 
 
-        public BandejaDeMensajes(string Revisor)
+        public BandejaDeMensajes(Usuario Revisor)
         {
             revisor = Revisor;
             this.logs.Add(new Log("Se ha creado una nueva bandeja de mensajes", DateTime.UtcNow));
@@ -41,18 +42,8 @@ namespace TP_Anual.Egresos
 
         public void mostrarMensajes(string usuario)
         {
-            /*
-            using (StreamReader archivo = new StreamReader("BandejaDeMensajes.txt"))
-            {
-                while (!archivo.EndOfStream)
-                {
-                    string line = archivo.ReadLine();
-                    Console.WriteLine(line);
-                }
-            }
-            */
 
-            if (usuario == revisor)
+            if (usuario == revisor.nombre)
             {
                 if (mensajes == null)
                 {

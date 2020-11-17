@@ -16,7 +16,7 @@ namespace TP_Anual.Egresos
         public int id_prov { get; set; }
 
         [Column("CUIT")]
-        public int CUIT { get; set; }
+        public string CUIT { get; set; }
 
         [Column("razon_social")]
         public string razon_social { get; set; }

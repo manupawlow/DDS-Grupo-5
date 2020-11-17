@@ -11,15 +11,14 @@ namespace PruebaCodigo
         public int id { get; set; }
         public string nombre { get; set; }
         public string contrasenia { get; set; }
-
-        public List<Tweet> twits;
+        public List<Tweet> tweets { get; set; }
 
         public Usuario(int _id, string _nombre, string _contrasenia)
         {
             id = _id;
             nombre = _nombre;
             contrasenia = _contrasenia;
-            twits = new List<Tweet>();
+            tweets = new List<Tweet>();
         }
 
         public Usuario(int _id, string _nombre, string _contrasenia, List<Tweet> _twits)
@@ -27,7 +26,7 @@ namespace PruebaCodigo
             id = _id;
             nombre = _nombre;
             contrasenia = _contrasenia;
-            twits = _twits;
+            tweets = _twits;
         }
 
     }

@@ -4,8 +4,9 @@ using System.Text;
 
 namespace TP_Anual.Administrador_Inicio_Sesion
 {
-    class Usuario
+    public class Usuario
     {
+        public int id;
         public string nombre;
         public string contrasenia;
         public bool esAdministrador;

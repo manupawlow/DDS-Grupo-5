@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace TP_Anual.Organizaciones
 {
     [Table("entidad_juridica")]
-    class EntidadJuridica : Organizacion
+    public class EntidadJuridica : Organizacion
     {
 
         [Key]

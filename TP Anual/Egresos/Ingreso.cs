@@ -27,6 +27,13 @@ namespace TP_Anual.Egresos
             egresos = new List<Egreso>();
         }
 
+        public Ingreso(string _descripcion, int _total)
+        {
+            egresos = new List<Egreso>();
+            descripcion = _descripcion;
+            total = _total;
+        }
+
 
     }
 }

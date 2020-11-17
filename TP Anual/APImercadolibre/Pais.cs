@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TP_Anual.APImercadolibre
 {
-    class Pais
+    public class Pais
     {
         public String id;
         public String nombre;

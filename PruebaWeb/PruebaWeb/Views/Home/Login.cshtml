@@ -23,12 +23,8 @@
                 }
             </div>
             <div id="formFooter">
-                @using (Html.BeginForm("Register", "Home", FormMethod.Post))
-                {
-                    <input type="submit" value="Crear una nueva cuenta">
-                }
-                <h6></h6>
-                <a class="underlineHover" href="#">Olvido su contraseña?</a>
+
+                <div class="underlineHover">@Html.ActionLink("Crear una nueva cuenta", "Register", "Home")</div>
             </div>
         </div>
     </div>

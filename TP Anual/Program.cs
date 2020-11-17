@@ -73,7 +73,7 @@ namespace TP_Anual
                 context.SaveChanges();
 
                 Proveedor proveedor1 = new Proveedor();
-                proveedor1.CUIT = 203050065;
+                proveedor1.CUIT = "203050065";
                 proveedor1.razon_social = "proveedor";
                 context.proveedores.Add(proveedor1);
                 context.SaveChanges();
@@ -165,7 +165,7 @@ namespace TP_Anual
 
                 egreso.medioDePago = medio_de_pago;
                 //egreso.bandejaDeMensajes = new BandejaDeMensajes("Grupo 5");
-                registrarBandejaDeMensajes(database, "Grupo 5", egreso);
+                registrarBandejaDeMensajes(database, new Usuario("Grupo 5", "1234", true), egreso);
                 egreso.criterioDeSeleccion = new MenorValor();
 
                 proveedor1.razon_social = "razon1";
@@ -409,10 +409,10 @@ namespace TP_Anual
             // Creo una bandeja de mensajes y la inserto
             coleccionBandejaDeMensajes.ReplaceOne(filter, egreso.bandejaDeMensajes);
         }
-        public static void registrarBandejaDeMensajes(IMongoDatabase database, string revisor, Egreso egreso)
+        public static void registrarBandejaDeMensajes(IMongoDatabase database, Usuario revisor, Egreso egreso)
         {
             // Agrego bandeja de mensajes a egreso
-            egreso.bandejaDeMensajes = new BandejaDeMensajes("Grupo 5");
+            egreso.bandejaDeMensajes = new BandejaDeMensajes(revisor);
 
             // Traigo la coleccion
             var coleccionBandejaDeMensajes = database.GetCollection<BandejaDeMensajes>("coleccionBandejaDeMensajes");

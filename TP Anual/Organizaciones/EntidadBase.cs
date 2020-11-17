@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace TP_Anual.Organizaciones
 {
     [Table("entidad_base")]
-    class EntidadBase : Organizacion
+    public class EntidadBase : Organizacion
     {
         [Key]
         [Column("id_base")]

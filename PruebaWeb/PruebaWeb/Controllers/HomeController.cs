@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using System.Web.Http;
 using HttpPostAttribute = System.Web.Mvc.HttpPostAttribute;
 using PruebaCodigo;
+using Microsoft.Ajax.Utilities;
 
 namespace PruebaWeb.Controllers
 {
@@ -18,43 +19,76 @@ namespace PruebaWeb.Controllers
             return View();
         }
 
+        /*[HttpPost]
+        public JsonResult Tweetear([FromBody] FormCollection jsonTweets)
+        {
+            var usuario = UsuarioDAO.getInstancia().getUsuarioById(3);
+            //var t = Request.Form["nuevoTweet1"];
+            var t = jsonTweets["nuevoTweet1"];
+            usuario.tweets.Add(new Tweet(t));
 
+            //foreach (JsonTweet t in jsonTweets)
+            //{
+            //    usuario.tweets.Add(new Tweet(t.texto));
+            //}
+
+            return Json(JsonConvert.SerializeObject(usuario));
+
+        }*/
         [HttpPost]
-        public ActionResult BuscarUsuarioSinAjax(string usuario)
+        public ActionResult Tweetear(string tweeteador, FormCollection tweets)
         {
 
-            ViewBag.usuario = UsuarioDAO.getInstancia().usuarios.Find(u => u.nombre == usuario);
+            var usuario = UsuarioDAO.getInstancia().usuarios.Find(u => u.nombre == tweeteador);
+
+            var a = tweets["nuevoTweet"];
+            var b = a.Split(',');
+
+            foreach (var t in b)
+            {
+                usuario.tweets.Add(new Tweet(t));
+            }
 
             return View("Index");
+        }
+
+
+        [HttpPost]
+        public JsonResult BuscarUsuario([FromBody] JsonUsuario jsonUsuario)
+        {
+
+            var usuario = UsuarioDAO.getInstancia().usuarios.Find(u => u.nombre == jsonUsuario.nombre);
+
+            return Json(JsonConvert.SerializeObject(usuario));
 
         }
 
-        [HttpPost]
-        public ActionResult CrearUsuario(int usuarioId, string nombre, string contrasenia)
+        public class JsonUsuario
         {
-            Usuario nuevo = new Usuario(usuarioId, nombre, contrasenia);
+            public int id { get; set; } 
+            public string nombre { get; set; }
+            public string contrasenia { get; set; }
+        }
+
+        public class JsonTweet
+        {
+            public string texto { get; set; }
+        }
+
+        [HttpPost]
+        public JsonResult CrearUsuario([FromBody] JsonUsuario jsonUsuario)
+        {
+            var rnd = new Random();
+            int usuarioId = rnd.Next(4, 200);
+            Usuario nuevo = new Usuario(usuarioId, jsonUsuario.nombre, jsonUsuario.contrasenia);
             UsuarioDAO.getInstancia().add(nuevo);
 
-            ViewBag.usuario = UsuarioDAO.getInstancia().getUsuarioById(usuarioId);
-
-            return View("Index");
-
+            return Json(JsonConvert.SerializeObject(nuevo));
         }
 
-        [HttpPost]
-        public ActionResult Tweetear(int usuarioId, string texto)
-        {
-            Tweet nuevo = new Tweet(texto);
-            var usuario = UsuarioDAO.getInstancia().getUsuarioById(usuarioId);
-            usuario.twits.Add(nuevo);
 
-            //ViewBag.usuario = UsuarioDAO.getInstancia().getUsuarioById(usuarioId);
 
-            return View("Index");
-
-        }
-
-        //LOGIN
+        //LOGIN----------------------------------------------
         public ActionResult Login()
         {
             return View();
@@ -101,6 +135,14 @@ namespace PruebaWeb.Controllers
             UsuarioDAO.getInstancia().add(nuevo);
 
             return View("Login");
+        }
+
+
+        [HttpPost]
+        public ActionResult usuarios()
+        {
+            ViewBag.usuarios = UsuarioDAO.getInstancia().usuarios;
+            return View("Index");
         }
 
     }
