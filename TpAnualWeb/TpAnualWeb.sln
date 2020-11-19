@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TpAnualWeb", "TpAnualWeb\TpAnualWeb.csproj", "{863B9F6A-D94D-4935-9BDC-B3ABC8EE3734}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP Anual", "..\..\..\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\TP Anual.csproj", "{39CA7744-3BBB-4FEA-AC8F-6EF71FB33DA6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP Anual", "..\TP Anual\TP Anual.csproj", "{39CA7744-3BBB-4FEA-AC8F-6EF71FB33DA6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

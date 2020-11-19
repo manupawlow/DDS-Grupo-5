@@ -56,14 +56,14 @@
             <div class="row">
                 <div class="col-lg-8 mx-auto">
                     @{
-                        <h2>ViewBag.mostrar</h2>
+                        <h2>@ViewBag.mostrar</h2>
 
                         if (ViewBag.mostrar == "EGRESOS")
                         {
                             if (ViewBag.egresos != null)
                             {
 
-                                foreach (TP_Anual.Egresos.Egreso u in ViewBag.egresos)
+                                foreach (var u in ViewBag.egresos)
                                 {
                                     <p><b>EGRESO ID: </b>@u.id_egreso</p>
                                     <p><b>FECHA: </b>@u.fecha</p>
@@ -88,7 +88,7 @@
 
 
                                     <p><b>ITEMS: Descripcion | Cantidad | Precio </p>
-                                    foreach (TP_Anual.Egresos.ItemPorEgreso t in @u.items)
+                                    foreach (var t in @u.items)
                                     {
                                         <p>@t.item.descripcion | @t.cantidad | @t.valor</p>
                                     }
@@ -110,7 +110,7 @@
                             }
                             else
                             {
-                                <h2>ViewBag.msg</h2>
+                                <h2>@ViewBag.msg</h2>
                             }
                         }
 
@@ -118,7 +118,7 @@
                         {
                             if (ViewBag.ingresos != null)
                             {
-                                foreach (TP_Anual.Egresos.Ingreso i in ViewBag.ingresos)
+                                foreach (var i in ViewBag.ingresos)
                                 {
                                     <p><b>INGRESO ID: </b>@i.id_ingreso</p>
                                     <p><b>DESCRIPCION: </b>@i.descripcion</p>

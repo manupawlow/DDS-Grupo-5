@@ -38,7 +38,7 @@ namespace TP_Anual.DAOs
         {
             using (var context = new BaseDeDatos())
             {
-                return context.proveedores.Single(e => e.CUIT == CUIT);
+                return context.proveedores.SingleOrDefault(e => e.CUIT == CUIT);
             }
         }
 

@@ -42,8 +42,11 @@ namespace TpAnualWeb.Controllers
             nuevo.fecha = System.DateTime.Now;
 
             var user = UsuarioDAO.getInstancia().getUsuarioByUserName(revisor);
+            //TODO: ver con genaro como crear una nueva bandeja
             nuevo.bandejaDeMensajes = new BandejaDeMensajes(user);
-            
+          
+            EgresoDAO.getInstancia().Add(nuevo);
+
             var items = inputs["nuevoItem"].Split(',');
             var cantidades = inputs["cantidad"].Split(',');
 
@@ -53,7 +56,6 @@ namespace TpAnualWeb.Controllers
                 ItemDAO.getInstancia().AddItemPorEgreso( new ItemPorEgreso(nuevo, item, Int32.Parse(cantidades[i])) );
             }
 
-            EgresoDAO.getInstancia().Add(nuevo);
             return View("Index");
         }
 
@@ -72,6 +74,8 @@ namespace TpAnualWeb.Controllers
             ViewBag.mostrar = "BANDEJA DE MENSAJES";
 
             ViewBag.msg = "No existe el egreso";
+
+            //TODO: ver como agarrar la bandeja de mensajes de un egreso con genaro
             if (Session["UserName"].ToString() == egreso.bandejaDeMensajes.revisor.nombre)
                 ViewBag.msg = "No esta configurado como revisor de la bandeja de mensajes";
 
@@ -114,11 +118,16 @@ namespace TpAnualWeb.Controllers
         public ActionResult AgregarPresupuesto(int id_egreso, string CUIT, FormCollection inputs)
         {
             //TODO: checkear que exista el proveedro y el egreso antes de cargarlo a la BD
-
+            ViewBag.notificar = "No existe el egreso con ese id";
             Presupuesto nuevo = new Presupuesto();
             nuevo.egreso = EgresoDAO.getInstancia().getEgresoById(id_egreso);
             nuevo.proveedor = ProveedorDAO.getInstancia().getProveedorByCUIT(CUIT);
+           
+            if (nuevo.proveedor == null && nuevo.egreso == null)
+                return View("Index");
 
+            PresupuestoDAO.getInstancia().Add(nuevo);
+            
             var items = inputs["nuevoItemPresupuesto"].Split(',');
             var cantidades = inputs["cantidad"].Split(',');
             var precios = inputs["precio"].Split(',');
@@ -129,7 +138,6 @@ namespace TpAnualWeb.Controllers
                 ItemDAO.getInstancia().AddItemPorPresupuesto(new ItemPorPresupuesto(nuevo, item, Int32.Parse(cantidades[i]), Int32.Parse(precios[i]) ) );
             }
 
-            PresupuestoDAO.getInstancia().Add(nuevo);
             return View("Index");
         }
 

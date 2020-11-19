@@ -164,7 +164,7 @@
     <Content Include="Views\Home\Mostrar.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Desktop\DDS Repositorio\DDS-Grupo-5\TP Anual\TP Anual.csproj">
+    <ProjectReference Include="..\..\TP Anual\TP Anual.csproj">
       <Project>{39ca7744-3bbb-4fea-ac8f-6ef71fb33da6}</Project>
       <Name>TP Anual</Name>
     </ProjectReference>

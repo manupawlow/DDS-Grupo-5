@@ -216,4 +216,3 @@ $("#asignarCriterio").click(function () {
 
 });
 
-

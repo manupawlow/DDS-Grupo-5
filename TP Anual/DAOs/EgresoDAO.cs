@@ -30,7 +30,7 @@ namespace TP_Anual.DAOs
         {
             using (var context = new BaseDeDatos())
             {
-                return context.egresos.Single(e => e.id_egreso == id);
+                return context.egresos.SingleOrDefault(e => e.id_egreso == id);
             }
         }
 
