@@ -276,6 +276,7 @@ C:\Users\Win10\Desktop\Repositorio DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\ros
 C:\Users\Win10\Desktop\Repositorio DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\roslyn\vbc.rsp
 C:\Users\Win10\Desktop\Repositorio DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\roslyn\VBCSCompiler.exe
 C:\Users\Win10\Desktop\Repositorio DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\obj\Debug\TpAnualWeb.csproj.CoreCompileInputs.cache
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\mongocrypt.dll
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\snappy32.dll
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\snappy64.dll
@@ -347,29 +348,11 @@ C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\TP Anual.exe
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\WebGrease.dll
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\MySql.Data.Entity.EF6.dll
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\EntityFramework.dll
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\MongoDB.Driver.dll
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\MongoDB.Bson.dll
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\Quartz.dll
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\RestSharp.dll
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\MongoDB.Driver.Core.dll
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\MySql.Data.dll
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\MongoDB.Libmongocrypt.dll
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\Microsoft.Extensions.Logging.Abstractions.dll
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\System.Diagnostics.DiagnosticSource.dll
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\Microsoft.Data.SqlClient.dll
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\DnsClient.dll
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\SharpCompress.dll
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\System.Buffers.dll
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\Microsoft.Identity.Client.dll
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\Microsoft.IdentityModel.Protocols.dll
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\Microsoft.IdentityModel.Tokens.dll
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\System.IdentityModel.Tokens.Jwt.dll
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\Microsoft.IdentityModel.JsonWebTokens.dll
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\Microsoft.IdentityModel.Logging.dll
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\TP Anual.pdb
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\TP Anual.exe.config
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\System.Web.Http.xml
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\System.Web.Helpers.xml
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\System.Web.Mvc.xml
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\System.Web.Optimization.xml
@@ -382,36 +365,10 @@ C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\Antlr3.Runtim
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\MySql.Data.Entity.EF6.xml
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\EntityFramework.xml
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\MongoDB.Driver.xml
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\MongoDB.Bson.xml
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\Quartz.xml
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\RestSharp.xml
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\MongoDB.Driver.Core.xml
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\MySql.Data.xml
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\Microsoft.Extensions.Logging.Abstractions.xml
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\System.Diagnostics.DiagnosticSource.xml
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\Microsoft.Data.SqlClient.pdb
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\Microsoft.Data.SqlClient.xml
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\DnsClient.xml
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\Microsoft.Identity.Client.xml
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\Microsoft.IdentityModel.Protocols.OpenIdConnect.xml
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\Microsoft.IdentityModel.Protocols.xml
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\Microsoft.IdentityModel.Tokens.xml
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\System.IdentityModel.Tokens.Jwt.xml
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\Microsoft.IdentityModel.JsonWebTokens.xml
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\Microsoft.IdentityModel.Logging.xml
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\de\Microsoft.Data.SqlClient.resources.dll
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\es\Microsoft.Data.SqlClient.resources.dll
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\fr\Microsoft.Data.SqlClient.resources.dll
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\it\Microsoft.Data.SqlClient.resources.dll
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\ja\Microsoft.Data.SqlClient.resources.dll
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\ko\Microsoft.Data.SqlClient.resources.dll
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\pt-BR\Microsoft.Data.SqlClient.resources.dll
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\ru\Microsoft.Data.SqlClient.resources.dll
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\zh-Hans\Microsoft.Data.SqlClient.resources.dll
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\zh-Hant\Microsoft.Data.SqlClient.resources.dll
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\obj\Debug\TpAnualWeb.csprojAssemblyReference.cache
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\obj\Debug\TpAnualWeb.csproj.CoreCompileInputs.cache
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\obj\Debug\TpAnualWeb.csproj.CopyComplete
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\obj\Debug\TpAnualWeb.dll
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\obj\Debug\TpAnualWeb.pdb

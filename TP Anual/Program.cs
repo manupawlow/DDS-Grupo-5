@@ -1,9 +1,9 @@
 ﻿using MongoDB.Bson.Serialization;
-using MongoDB.Driver;
+//using MongoDB.Driver;
 using System;
 using TP_Anual.Egresos;
 using TP_Anual.Administrador_Inicio_Sesion;
-using Quartz;
+//using Quartz;
 using TP_Anual.Organizaciones;
 using System.Linq;
 using TP_Anual.APImercadolibre;
@@ -210,11 +210,13 @@ namespace TP_Anual
                 .Include("itemsDePresupuesto")
                 .Include("egreso").Single(p => p.id_presupuesto == 1);
 
+                /*
                 Console.WriteLine($"{presupuesto.egreso.cantPresupuestos}");
                 foreach (ItemPorPresupuesto i in presupuesto.itemsDePresupuesto)
                 {
                     Console.WriteLine($"{i.item.descripcion}");
                 }
+                */
 
 
                 //EGRESOS DE PRUEBA PARA VINCULACION-----------------------------------
@@ -391,6 +393,8 @@ namespace TP_Anual
             //con ese usuario, el validador se fija si es el usuario que puede ver la compra
 
         }
+
+        /*
         public static void actualizarBaseDeDatosNoSQL(IMongoDatabase database, Egreso egreso)
         {
             // Construyo filtro de busqueda
@@ -409,6 +413,8 @@ namespace TP_Anual
             // Creo una bandeja de mensajes y la inserto
             coleccionBandejaDeMensajes.ReplaceOne(filter, egreso.bandejaDeMensajes);
         }
+        */
+        /*
         public static void registrarBandejaDeMensajes(IMongoDatabase database, Usuario revisor, Egreso egreso)
         {
             // Agrego bandeja de mensajes a egreso
@@ -421,7 +427,7 @@ namespace TP_Anual
             var bandejaDeMensajes = new BandejaDeMensajes(revisor);
             coleccionBandejaDeMensajes.InsertOne(bandejaDeMensajes);
         }
-
+        */
         /*  public static void mostrarBandejaDeMensajesDeEgreso(IMongoDatabase database, Egreso egreso)
           {
              // var builder = Builders<BandejaDeMensajes>.Filter;

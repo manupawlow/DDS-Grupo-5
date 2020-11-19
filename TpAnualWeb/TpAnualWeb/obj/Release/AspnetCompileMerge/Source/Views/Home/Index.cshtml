@@ -1,0 +1,262 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<meta name="viewport" content="width=device-width" />
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>TP ANUAL DDS 2020 GRUPO 5</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/boostrap/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="~/Content/scrolling-nav.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">GeSoc</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#about">EGRESOS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#services">INGRESOS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#registrar">REGISTRAR</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#contact">GitHub</a>
+                    </li>
+                    <li class="nav-item">
+                        <a onclick="myFunction(0)" class="nav-link js-scroll-trigger"></a>
+                        <div id="0">
+                            <a class="nav-link js-scroll-trigger" style="display:none;">Cerrar sesion</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-primary text-white">
+        <div class="container text-center">
+            <h1>GeSoc</h1>
+            <p class="lead">Gestion de Proyectos Sociales</p>
+        </div>
+    </header>
+ 
+    <section id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2>EGRESOS</h2>
+
+                    <p class="lead">Seleccione una opcion:</p>
+                    <button onclick="myFunction(1)" target="_blank" class="button button2">Buscar Egreso</button>
+
+                    <div id="1" style="display:none;">
+                        <p>Busque egreso por id o vea todos los egresos en el sistema:</p>
+                        <div>
+                            <input type="text" id="id_egreso" placeholder="ID del egreso" class="button button3" />
+                            <button id="buscarEgreso" class="button button3">Buscar egreso</button>
+
+                            <div id="egresoInfo"></div>
+                        </div>
+                        <p></p>
+                        <h4></h4>
+                        @using (Html.BeginForm("MostrarEgresos", "Home", FormMethod.Post))
+                        {
+                            <input type="submit" value="Mostrar todos los egresos" class="button button3">
+                        }
+                    </div>
+
+                    <h6></h6>
+                    <button onclick="myFunction(3)" target="_blank" class="button button2">Cargar nuevo egreso</button>
+                    <div id="3" style="display:none;">
+
+                        <p><button id="addInput" class="button button3"> + </button></p>
+                        @using (Html.BeginForm("CargarEgreso", "Home", FormMethod.Post))
+                        {
+                            <div id="itemsInput"></div>
+                            <p><input type="text" name="revisor" placeholder="Usuario revisor" class="button button3"></p>
+                            <p><input type="number" name="cantPresup" placeholder="Cantidad presupuestos requeridos" class="button button3"></p>
+                            <p><input type="submit" id="cargarEgreso" value="Cargar" class="button button3"></p>
+                        }
+
+                    </div>
+
+                    <h6></h6>
+                    <button onclick="myFunction(9)" target="_blank" class="button button2">Agregar presupuesto</button>
+                    <div id="9" style="display:none;">
+                        <p><button id="addInputPresupuesto" class="button button3"> + </button></p>
+                        @using (Html.BeginForm("AgregarPresupuesto", "Home", FormMethod.Post))
+                        {
+                            <div id="itemsInputPresupuesto"></div>
+                            <p><input type="number" name="id_egreso" placeholder="Egreso ID" class="button button3"></p>
+                            <p><input type="text" name="CUIT" placeholder="CUIT Proveedor" class="button button3"></p>
+                            <p><input type="submit" id="agregarPresupuesto" value="Agregar presupuesto" class="button button3"></p>
+
+                        }
+
+                    </div>
+
+                    <h6></h6>
+                    <button onclick="myFunction(4)" target="_blank" class="button button2">Bandeja de Mensajes de Egreso</button>
+                    <div id="4" style="display:none;">
+
+                        @using (Html.BeginForm("BandejaDeMensajesDeEgreso", "Home", FormMethod.Post))
+                        {
+                        <p>
+                            <input type="number" name="id_egreso" placeholder="Egreso ID" class="button button3">
+                            <input type="submit" value="Mostrar bandeja" class="button button3">
+                        </p>
+                        }
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+
+                    <h2>INGRESOS</h2>
+                    <p class="lead">Seleccione una opcion:</p>
+
+                    <button onclick="myFunction(5)" target="_blank" class="button button2">Cargar nuevo ingreso</button>
+                    <div id="5" style="display:none;">
+
+                        <p><input type="text" id="descripcion" placeholder="Descripcion" class="button button3"></p>
+                        <p><input type="text" id="total" placeholder="Total" class="button button3"></p>
+
+                        <p><button id="cargarIngreso" class="button button3">Cargar ingreso</button></p>
+
+                        <div id="ingresoInfo"></div>
+                    </div>
+
+                    <h6></h6>
+                    <button onclick="myFunction(6)" target="_blank" class="button button2">Buscar Ingreso</button>
+
+                    <div id="6" style="display:none;">
+
+                        <input type="text" id="id_ingreso" placeholder="ID del ingreso" class="button button3" />
+                        <button id="buscarIngreso" class="button button3">Buscar ingreso</button>
+
+                        <div id="ingresoInfo"></div>
+
+                    </div>
+                    <h6></h6>
+                    <button onclick="myFunction(7)" target="_blank" class="button button2">Asociar ingresos y egresos</button>
+
+                    <div id="7" style="display:none;">
+                        <p>Seleccione el proceso de vinculacion</p>
+                        <!--Mirar con juan-->
+                        <button id="fechaPrimerEgreso" class="button button3">Fecha primer egreso</button>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section id="registrar" class="bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+
+                    <h2>REGISTRAR</h2>
+                    <p class="lead">Seleccione una opcion:</p>
+
+                    <button onclick="myFunction(41)" target="_blank" class="button button2">Registrar Proveedor</button>
+                    <div id="41" style="display:none;">
+
+                        <p><input type="text" id="CUIT" placeholder="CUIT" class="button button3"></p>
+                        <p><input type="text" id="razon" placeholder="Razon Social" class="button button3"></p>
+
+                        <p><button id="registrarProveedor" class="button button3">Cargar ingreso</button></p>
+
+                        <div id="proveedorInfo"></div>
+                    </div>
+
+                    <h6></h6>
+                    <button onclick="myFunction(42)" target="_blank" class="button button2">Agregar criterio a item</button>
+                    <div id="42" style="display:none;">
+
+                        <p><input type="text" id="descripcion" placeholder="Descripcion item" class="button button3"></p>
+                        <p><input type="text" id="criterio" placeholder="Criterio" class="button button3"></p>
+                        <p><input type="text" id="categoria" placeholder="Categoria" class="button button3"></p>
+
+                        <p><button id="asignarCriterio" class="button button3">Asignar</button></p>
+
+                        <div id="criterioInfo"></div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2>Repositorio GitHub</h2>
+                    <!-- <p class="lead"></p> -->
+                    <a href="https://github.com/manupawlow/DDS-Grupo-5" target="_blank">Repositorio Grupo 5</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Integrantes: Manuel Pawlow - Matias Goñi - Genaro Ciruzzi - Juan Manuel Brea</p>
+            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
+        </div>
+        <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="~/Scripts/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Scripts/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="~/Scripts/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom JavaScript for this theme -->
+    <script src="~/Scripts/scrolling-nav.js"></script>
+
+
+    <script src="~/Scripts/ajax.js"></script>
+
+</body>
+
+</html>

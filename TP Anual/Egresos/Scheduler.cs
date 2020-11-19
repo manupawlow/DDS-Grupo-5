@@ -1,4 +1,5 @@
-﻿using System;
+﻿/*
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Quartz;
@@ -47,3 +48,4 @@ namespace TP_Anual.Egresos
 
     }
 }
+*/
