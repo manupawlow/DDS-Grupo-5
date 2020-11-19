@@ -26,7 +26,7 @@ namespace TP_Anual.Egresos
         [Column("valor")]
         public int valor { get; set; }
 
-        //TODO
+        [Column("cantidad")]
         public int cantidad { get; set; }
 
         public ItemPorPresupuesto() { }

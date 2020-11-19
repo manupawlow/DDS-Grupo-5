@@ -215,14 +215,14 @@ namespace TpAnualWeb.Controllers
         }
 
         [HttpPost]
-        public ActionResult RegisterTry(string username, string password, bool esAdmin)
+        public ActionResult RegisterTry(string username, string password)// bool esAdmin)
         {
             if (UsuarioDAO.getInstancia().getUsuarioByUserName(username) != null)
                 ViewBag.msg = "Ya existe un usuario con ese nombre";
-            else if( !Validador.validarContrasenia(password) )
+            else if (!Validador.validarContrasenia(password))
                 ViewBag.msg = "Esa contraseña es insegura, intentelo denuevo";
             else
-                UsuarioDAO.getInstancia().Add(new Usuario(username, password, esAdmin));
+                UsuarioDAO.getInstancia().Add(new Usuario(username, password, true));//, esAdmin));
 
             return View("Login");
         }

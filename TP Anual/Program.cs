@@ -14,15 +14,15 @@ namespace TP_Anual
     {
         static void Main(string[] args)
         {
-            BsonClassMap.RegisterClassMap<BandejaDeMensajes>();
-            BsonClassMap.RegisterClassMap<Log>();
+            //BsonClassMap.RegisterClassMap<BandejaDeMensajes>();
+            //BsonClassMap.RegisterClassMap<Log>();
 
-            var client = new MongoClient("mongodb://localhost:27017");
-            var database = client.GetDatabase("mydb");
+            //var client = new MongoClient("mongodb://localhost:27017");
+            //var database = client.GetDatabase("mydb");
 
             using (var context = new BaseDeDatos())
             {
-
+                
                 EntidadJuridica entidad_juridica = new EntidadJuridica();
                 entidad_juridica.razon_social = "ManuMati";
                 entidad_juridica.nombreFicticio = "ManuMati";
@@ -48,8 +48,8 @@ namespace TP_Anual
 
                 entidad_juridica.entidades_base.Add(entidad_base);
                 context.SaveChanges();
-
-                var hola = context.presupuestos.Single(p => p.id_presupuesto == 1);
+                
+                //var hola = context.presupuestos.Single(p => p.id_presupuesto == 1);
                 //Console.WriteLine($"{hola.documentoComercial.id_documento}");
 
                 /*var presupuesto = context.presupuestos.Single(p => p.id_presupuesto == 1);
@@ -59,7 +59,7 @@ namespace TP_Anual
                 {
                     Console.WriteLine($"{i.descripcion}");
                 }*/
-                ApimercadoLibre api = new ApimercadoLibre();
+                //ApimercadoLibre api = new ApimercadoLibre();
                 /*api.obtenerProvincias();
                 api.paises();
                 api.ciudades();
@@ -165,7 +165,7 @@ namespace TP_Anual
 
                 egreso.medioDePago = medio_de_pago;
                 //egreso.bandejaDeMensajes = new BandejaDeMensajes("Grupo 5");
-                registrarBandejaDeMensajes(database, new Usuario("Grupo 5", "1234", true), egreso);
+                //registrarBandejaDeMensajes(database, new Usuario("Grupo 5", "1234", true), egreso);
                 egreso.criterioDeSeleccion = new MenorValor();
 
                 proveedor1.razon_social = "razon1";
@@ -339,12 +339,12 @@ namespace TP_Anual
                     if (eleccion == "1")
                     {
                         ValidadorDeEgreso.egresoValido(egreso);
-                        actualizarBaseDeDatosNoSQL(database, egreso);
+                        //actualizarBaseDeDatosNoSQL(database, egreso);
                     }
                     if (eleccion == "2")
                     {
                         egreso.bandejaDeMensajes.mostrarMensajes(usuarioActual);
-                        actualizarBaseDeDatosNoSQL(database, egreso);
+                        //actualizarBaseDeDatosNoSQL(database, egreso);
                     }
                     if(eleccion == "3")
                         organizacion.vincular();

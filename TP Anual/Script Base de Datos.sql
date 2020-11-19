@@ -4,6 +4,15 @@ CREATE DATABASE DDS_TP_ANUAL;
 
 USE DDS_TP_ANUAL;
 
+CREATE TABLE IF NOT EXISTS usuario(
+    usuario_id INT NOT NULL AUTO_INCREMENT,
+    usuario_nombre varchar(50) NULL,
+    usuario_contrasenia varchar(50) NULL,
+    usuario_admin bool NULL,
+    
+    PRIMARY KEY(usuario_id)
+)ENGINE=INNODB;
+
 CREATE TABLE IF NOT EXISTS egreso(
 	id_egreso INT NOT NULL AUTO_INCREMENT,
     cant_presupuestos_requeridos INT NOT NULL,
@@ -29,8 +38,8 @@ CREATE TABLE IF NOT EXISTS ingreso(
 
 CREATE TABLE IF NOT EXISTS proveedor(
 	id_prov INT NOT NULL AUTO_INCREMENT,
-    CUIT INT NOT NULL,
-    razon_social VARCHAR(45) NOT NULL,
+    CUIT INT NULL,
+    razon_social VARCHAR(45) NULL,
     
     PRIMARY KEY(id_prov)
 )ENGINE=INNODB;
@@ -74,7 +83,7 @@ CREATE TABLE IF NOT EXISTS entidad_juridica(
 	id_juridica INT NOT NULL AUTO_INCREMENT,
     codigo_IGJ INT NULL,
     CUIT INT NULL,
-    direccion_postal VARCHAR(45),
+    direccion_postal VARCHAR(45) NULL,
     razon_social VARCHAR(45) NOT NULL,
 
 	actividad VARCHAR(90) NOT NULL,
@@ -130,6 +139,7 @@ CREATE TABLE IF NOT EXISTS item_por_egreso(
     id_egreso INT NOT NULL,
     id_item INT NOT NULL,
     valor INT NULL,
+    cantidad INT NULL,
     
     PRIMARY KEY(id_item_por_egreso)
 )ENGINE=INNODB;
@@ -139,6 +149,7 @@ CREATE TABLE IF NOT EXISTS item_por_presupuesto(
     id_presupuesto INT NOT NULL,
     id_item INT NOT NULL,
     valor INT NOT NULL,
+    cantidad INT NULL,
     
     PRIMARY KEY(id_item_por_presupuesto)
 )ENGINE=INNODB;
@@ -163,8 +174,8 @@ CREATE TABLE IF NOT EXISTS criterio_por_item(
 
 CREATE TABLE IF NOT EXISTS categoria(
 	id_categoria INT NOT NULL AUTO_INCREMENT,
-    descripcion VARCHAR(90) NOT NULL,
-    id_criterio INT NOT NULL,
+    descripcion VARCHAR(90) NULL,
+    id_criterio INT NULL,
     
     PRIMARY KEY(id_categoria)
 )ENGINE=INNODB;

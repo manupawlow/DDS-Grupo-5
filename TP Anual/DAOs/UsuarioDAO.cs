@@ -9,6 +9,7 @@ namespace TP_Anual.DAOs
 {
     public class UsuarioDAO
     {
+        
         public static UsuarioDAO instancia = null;
         //public List<Usuario> usuarios = new List<Usuario>();
 
@@ -20,17 +21,7 @@ namespace TP_Anual.DAOs
             if (instancia == null)
             {
                 instancia = new UsuarioDAO();
-                /*Tweet t1 = new Tweet("Soy un twit");
-                Tweet t2 = new Tweet("Soy un twit2");
-                Tweet t3 = new Tweet("Soy un twit3");
 
-                List<Tweet> twits = new List<Tweet>();
-                twits.Add(t1); twits.Add(t2); twits.Add(t3); 
-
-                instancia
-                    .add(new Usuario(1, "pepe", "lola", twits))
-                    .add(new Usuario(2, "pepe2", "lola", twits))
-                    .add(new Usuario(3, "carlos", "lola"));*/
             }
             return instancia;
         }
@@ -57,12 +48,12 @@ namespace TP_Anual.DAOs
         {
             using (var context = new BaseDeDatos())
             {
-                return context.usuarios.Single(p => p.nombre == username);
+                return context.usuarios.SingleOrDefault(p => p.nombre == username);
             }
         }
 
 
         #endregion
-
+        
     }
 }

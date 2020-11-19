@@ -26,7 +26,7 @@ namespace TP_Anual
         public DbSet<ItemPorPresupuesto> items_por_presupuesto { get; set; }
         public DbSet<ItemPorEgreso> items_por_egreso { get; set; }
         public DbSet<TipoOrganizacion> tipos_organizacion { get; set; }
-        public DbSet<Usuario> usuarios { get; set; } //<-----------------------------------TODO
+        public DbSet<Usuario> usuarios { get; set; }
 
 
         public BaseDeDatos() : base("dbConn")
