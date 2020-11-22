@@ -25,5 +25,11 @@ namespace TP_Anual.Egresos
            criteriosDeItem = new List<CriterioPorItem>();
         }
 
+        public Item(string _descripcion)
+        {
+            criteriosDeItem = new List<CriterioPorItem>();
+            descripcion = _descripcion;
+        }
+
     }
 }

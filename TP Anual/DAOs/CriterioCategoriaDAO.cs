@@ -47,6 +47,7 @@ namespace TP_Anual.DAOs
             using (var context = new BaseDeDatos())
             {
                 context.criterios.Add(e);
+                context.SaveChanges();
             }
             return this;
         }
@@ -56,6 +57,7 @@ namespace TP_Anual.DAOs
             using (var context = new BaseDeDatos())
             {
                 context.categorias.Add(e);
+                context.SaveChanges();
             }
             return this;
         }
@@ -65,6 +67,7 @@ namespace TP_Anual.DAOs
             using (var context = new BaseDeDatos())
             {
                 context.criterios_por_item.Add(e);
+                context.SaveChanges();
             }
             return this;
         }

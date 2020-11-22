@@ -39,6 +39,11 @@ namespace TP_Anual.Egresos
             itemsDePresupuesto = new List<ItemPorPresupuesto>();
         }
 
+        public void calcular_total()
+        {
+            valor_total = itemsDePresupuesto.Sum(items => items.valor);
+        }
+
         public void agregar_item(ItemPorPresupuesto Item)
         {
             itemsDePresupuesto.Add(Item);

@@ -46,7 +46,7 @@
                         <a class="nav-link js-scroll-trigger" href="#contact">GitHub</a>
                     </li>
                     <li class="nav-item">
-                        <a onclick="myFunction(0)" class="nav-link js-scroll-trigger"></a>
+                        <a onclick="myFunction(0)" class="nav-link js-scroll-trigger">@Session["UserName"]</a>
                         <div id="0">
                             <a class="nav-link js-scroll-trigger" style="display:none;">Cerrar sesion</a>
                         </div>
@@ -68,7 +68,7 @@
             <div class="row">
                 <div class="col-lg-8 mx-auto">
                     <h2>EGRESOS</h2>
-
+                    @ViewBag.aa
                     <p class="lead">Seleccione una opcion:</p>
                     <button onclick="myFunction(1)" target="_blank" class="button button2">Buscar Egreso</button>
 
@@ -145,28 +145,39 @@
                     <h2>INGRESOS</h2>
                     <p class="lead">Seleccione una opcion:</p>
 
-                    <button onclick="myFunction(5)" target="_blank" class="button button2">Cargar nuevo ingreso</button>
-                    <div id="5" style="display:none;">
-
-                        <p><input type="text" id="descripcion" placeholder="Descripcion" class="button button3"></p>
-                        <p><input type="text" id="total" placeholder="Total" class="button button3"></p>
-
-                        <p><button id="cargarIngreso" class="button button3">Cargar ingreso</button></p>
-
-                        <div id="ingresoInfo"></div>
-                    </div>
-
                     <h6></h6>
                     <button onclick="myFunction(6)" target="_blank" class="button button2">Buscar Ingreso</button>
 
                     <div id="6" style="display:none;">
-
+                        
                         <input type="text" id="id_ingreso" placeholder="ID del ingreso" class="button button3" />
                         <button id="buscarIngreso" class="button button3">Buscar ingreso</button>
 
                         <div id="ingresoInfo"></div>
+                        <p></p>
+                        <h4></h4>
+                        @using (Html.BeginForm("MostrarIngresos", "Home", FormMethod.Post))
+                        {
+                            <input type="submit" value="Mostrar todos los ingresos" class="button button3">
+                        }
 
                     </div>
+
+                    <h6></h6>
+                    <button onclick="myFunction(5)" target="_blank" class="button button2">Cargar nuevo ingreso</button>
+                    <div id="5" style="display:none;">
+
+                        @using (Html.BeginForm("CargarIngreso", "Home", FormMethod.Post))
+                        {
+                            <p><input type="text" name="descripcion" placeholder="Descripcion" class="button button3"></p>
+                            <p><input type="text" name="total" placeholder="Total" class="button button3"></p>
+
+                            <p><button id="cargarIngreso" class="button button3">Cargar ingreso</button></p>
+
+                            <div id="ingresoInfo"></div>
+                        }
+                    </div>
+
                     <h6></h6>
                     <button onclick="myFunction(7)" target="_blank" class="button button2">Asociar ingresos y egresos</button>
 

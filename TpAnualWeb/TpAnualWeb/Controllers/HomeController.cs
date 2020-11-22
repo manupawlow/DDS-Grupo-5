@@ -16,7 +16,7 @@ namespace TpAnualWeb.Controllers
 {
     public class HomeController : Controller
     {
-        
+
         public ActionResult Index()
         {
             return View();
@@ -35,26 +35,15 @@ namespace TpAnualWeb.Controllers
 
 
         [HttpPost]
-        public ActionResult CargarEgreso(string revisor, int cantPresup, FormCollection inputs)
+        public ActionResult CargarEgreso(string revisor, int cantPresup, FormCollection inputs = null)
         {
-            Egreso nuevo = new Egreso();
-            nuevo.cantPresupuestos = cantPresup;
-            nuevo.fecha = System.DateTime.Now;
-
-            var user = UsuarioDAO.getInstancia().getUsuarioByUserName(revisor);
-            //TODO: ver con genaro como crear una nueva bandeja
-            nuevo.bandejaDeMensajes = new BandejaDeMensajes(user);
-          
-            EgresoDAO.getInstancia().Add(nuevo);
 
             var items = inputs["nuevoItem"].Split(',');
             var cantidades = inputs["cantidad"].Split(',');
 
-            for (int i=0; i<items.Length; i++)
-            {
-                var item = ItemDAO.getInstancia().getItemByDescripcion(items[i]);
-                ItemDAO.getInstancia().AddItemPorEgreso( new ItemPorEgreso(nuevo, item, Int32.Parse(cantidades[i])) );
-            }
+            //TODO: Siempre crea un nuevo item en la BD, hacer que se fije si ya existe ese item
+            
+            EgresoDAO.getInstancia().cargarEgreso(revisor, cantPresup, items, cantidades);
 
             return View("Index");
         }
@@ -88,13 +77,13 @@ namespace TpAnualWeb.Controllers
         #region Ingresos
 
         [HttpPost]
-        public JsonResult CargarIngreso([FromBody] JsonIngreso jsonIngreso)
+        public ActionResult CargarIngreso(string descripcion, int total)
         {
-            Ingreso nuevo = new Ingreso(jsonIngreso.descripcion, jsonIngreso.total);
-            nuevo.fecha = System.DateTime.Now;
+            Ingreso nuevo = new Ingreso(descripcion, total);
+
             IngresoDAO.getInstancia().Add(nuevo);
 
-            return Json(JsonConvert.SerializeObject(nuevo));
+            return View("Index");
         }
 
         [HttpPost]
@@ -111,45 +100,61 @@ namespace TpAnualWeb.Controllers
             ViewBag.ingresos = IngresoDAO.getInstancia().getAllIngreso();
             return View("Mostrar");
         }
+
+
+        [HttpPost]
+        public ActionResult FechaPrimerEgreso()
+        {
+            IngresoDAO.getInstancia().asociarFechaPrimerEgreso();
+            return View("Index");
+        }
+
+        [HttpPost]
+        public ActionResult ValorPrimerEgreso()
+        {
+            IngresoDAO.getInstancia().asociarValorPrimerEgreso();
+            return View("Index");
+        }
+
+        [HttpPost]
+        public ActionResult ValorPrimerIngreso()
+        {
+            IngresoDAO.getInstancia().asociarValorPrimerIngreso();
+            return View("Index");
+        }
+
+
         #endregion
 
         #region Presupuestos
+
         [HttpPost]
         public ActionResult AgregarPresupuesto(int id_egreso, string CUIT, FormCollection inputs)
         {
             //TODO: checkear que exista el proveedro y el egreso antes de cargarlo a la BD
-            ViewBag.notificar = "No existe el egreso con ese id";
-            Presupuesto nuevo = new Presupuesto();
-            nuevo.egreso = EgresoDAO.getInstancia().getEgresoById(id_egreso);
-            nuevo.proveedor = ProveedorDAO.getInstancia().getProveedorByCUIT(CUIT);
-           
-            if (nuevo.proveedor == null && nuevo.egreso == null)
-                return View("Index");
+            //ViewBag.notificar = "No existe el egreso con ese id";
 
-            PresupuestoDAO.getInstancia().Add(nuevo);
-            
+
             var items = inputs["nuevoItemPresupuesto"].Split(',');
             var cantidades = inputs["cantidad"].Split(',');
             var precios = inputs["precio"].Split(',');
 
-            for (int i = 0; i < items.Length; i++)
-            {
-                var item = ItemDAO.getInstancia().getItemByDescripcion(items[i]);
-                ItemDAO.getInstancia().AddItemPorPresupuesto(new ItemPorPresupuesto(nuevo, item, Int32.Parse(cantidades[i]), Int32.Parse(precios[i]) ) );
-            }
+
+            PresupuestoDAO.getInstancia().cargarPresupuesto(id_egreso, CUIT, items, cantidades, precios);
 
             return View("Index");
         }
 
         [HttpPost]
-        public JsonResult RegistrarProveedor([FromBody] JsonProveedor jsonProv)
+        public ActionResult CargarProveedor(string razon, string CUIT)
         {
             Proveedor nuevo = new Proveedor();
-            nuevo.CUIT = jsonProv.CUIT;
-            nuevo.razon_social = jsonProv.razon;
+            nuevo.CUIT = CUIT;
+            nuevo.razon_social = razon;
             ProveedorDAO.getInstancia().Add(nuevo);
 
-            return Json(JsonConvert.SerializeObject(nuevo));
+
+            return View("Index");
         }
 
         #endregion
@@ -191,14 +196,16 @@ namespace TpAnualWeb.Controllers
         public ActionResult LoginTry(string usuario, string contrasenia)
         {
             var obj = UsuarioDAO.getInstancia().getUsuarioByUserName(usuario);
+
             if (obj != null && obj.contrasenia == contrasenia)
             {
                 Session["UserID"] = obj.id.ToString();
                 Session["UserName"] = obj.nombre;
                 return RedirectToAction("UserDashBoard");
             }
-            else
-                return View("Login");
+
+
+            return View("Login");
         }
 
         public ActionResult UserDashBoard()
@@ -217,12 +224,15 @@ namespace TpAnualWeb.Controllers
         [HttpPost]
         public ActionResult RegisterTry(string username, string password)// bool esAdmin)
         {
-            if (UsuarioDAO.getInstancia().getUsuarioByUserName(username) != null)
+            /*if (UsuarioDAO.getInstancia().getUsuarioByUserName(username) != null)
                 ViewBag.msg = "Ya existe un usuario con ese nombre";
             else if (!Validador.validarContrasenia(password))
+            {
                 ViewBag.msg = "Esa contraseña es insegura, intentelo denuevo";
-            else
-                UsuarioDAO.getInstancia().Add(new Usuario(username, password, true));//, esAdmin));
+                return View("Register");
+            }
+            else*/
+            UsuarioDAO.getInstancia().Add(new Usuario(username, password, true));//, esAdmin));
 
             return View("Login");
         }

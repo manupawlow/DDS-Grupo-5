@@ -31,15 +31,41 @@ namespace TP_Anual.DAOs
             using (var context = new BaseDeDatos())
             {
                 //TODO: Si no existe el item que lo cree en la BD
-                return context.items.Single(i => i.descripcion == descripcion);
+                //return context.items.Single(i => i.descripcion == descripcion);
+                var nn = context.items.Any(i => i.descripcion == descripcion);
+                if (nn) {
+                    var jj =  context.items.First(i => i.descripcion == descripcion);
+                    return jj;
+                }
+                else
+                {
+                    var item = new Item();
+                    item.descripcion = descripcion;
+                    ItemDAO.getInstancia().AddItem(item);
+                    return context.items.First(i => i.descripcion == item.descripcion);
+                }
+
+                /*try
+                {
+                    var item = context.items.First(i => i.descripcion == descripcion);
+                    return item;
+                }
+                catch (InvalidOperationException)
+                {
+                    var item = new Item(descripcion);
+                    ItemDAO.getInstancia().AddItem(item);
+                    return item;
+                }*/
             }
         }
 
-        public ItemDAO AddItemPorEgreso(ItemPorEgreso e)
+        public ItemDAO AddItemPorEgreso(ItemPorEgreso i)
         {
             using (var context = new BaseDeDatos())
             {
-                context.items_por_egreso.Add(e);
+                //Cuando entra un nuevo item me lo carga dos veces aca ?)
+                context.items_por_egreso.Add(i);
+                context.SaveChanges();
             }
             return this;
         }
@@ -49,6 +75,17 @@ namespace TP_Anual.DAOs
             using (var context = new BaseDeDatos())
             {
                 context.items_por_presupuesto.Add(p);
+                context.SaveChanges();
+            }
+            return this;
+        }
+
+        public ItemDAO AddItem(Item i)
+        {
+            using (var context = new BaseDeDatos())
+            {
+                context.items.Add(i);
+                context.SaveChanges();
             }
             return this;
         }

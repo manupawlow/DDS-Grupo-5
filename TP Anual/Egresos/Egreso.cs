@@ -59,13 +59,15 @@ namespace TP_Anual.Egresos
             items = new List<ItemPorEgreso>();
             presupuestos = new List<Presupuesto>();
         }
-        
 
-        public void agregarItem(ItemPorEgreso item)
+        public Egreso(int _cantidad, BandejaDeMensajes _bandeja)
         {
-            items.Add(item);
+            items = new List<ItemPorEgreso>();
+            presupuestos = new List<Presupuesto>();
+            cantPresupuestos = _cantidad;
+            fecha = DateTime.Today;
+            bandejaDeMensajes = _bandeja;
         }
-
 
         public void elegirPresupuesto(Presupuesto Presupuesto)
         {

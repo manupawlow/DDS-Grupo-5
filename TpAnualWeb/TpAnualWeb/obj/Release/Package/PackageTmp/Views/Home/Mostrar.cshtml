@@ -87,7 +87,7 @@
                                     }
 
 
-                                    <p><b>ITEMS: Descripcion | Cantidad | Precio </p>
+                                    <p><b>ITEMS: Descripcion | Cantidad | Precio</b></p>
                                     foreach (var t in @u.items)
                                     {
                                         <p>@t.item.descripcion | @t.cantidad | @t.valor</p>
@@ -124,6 +124,7 @@
                                     <p><b>DESCRIPCION: </b>@i.descripcion</p>
                                     <p><b>TOTAL: </b>@i.total</p>
                                     <p><b>EGRESOS ASIGNADOS: </b>@i.egresos.Count</p>
+                                    <p><b>-----------------------------------------</b></p>
                                 }
                             }
                             else

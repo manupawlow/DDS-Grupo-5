@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TP_Anual.Egresos;
+using TP_Anual.ProcesoDeVinculacion;
 
 namespace TP_Anual.DAOs
 {
@@ -47,9 +48,56 @@ namespace TP_Anual.DAOs
             using (var context = new BaseDeDatos())
             {
                 context.ingresos.Add(e);
+                context.SaveChanges();
             }
             return this;
         }
+
+        public IngresoDAO asociarFechaPrimerEgreso()
+        {
+            using (var context = new BaseDeDatos())
+            {
+                var ingresos = context.ingresos.ToList<Ingreso>();
+                var egresos = context.egresos.ToList<Egreso>();
+
+                new FechaPrimerEgreso().vincular(ingresos, egresos);
+                
+                context.SaveChanges();
+            }
+            return this;
+
+        }
+
+        public IngresoDAO asociarValorPrimerEgreso()
+        {
+            using (var context = new BaseDeDatos())
+            {
+                var ingresos = context.ingresos.ToList<Ingreso>();
+                var egresos = context.egresos.ToList<Egreso>();
+
+                new ValorPrimerEgreso().vincular(ingresos, egresos);
+
+                context.SaveChanges();
+            }
+            return this;
+
+        }
+
+        public IngresoDAO asociarValorPrimerIngreso()
+        {
+            using (var context = new BaseDeDatos())
+            {
+                var ingresos = context.ingresos.ToList<Ingreso>();
+                var egresos = context.egresos.ToList<Egreso>();
+
+                new ValorPrimerIngreso().vincular(ingresos, egresos);
+
+                context.SaveChanges();
+            }
+            return this;
+
+        }
+
 
         #endregion
 

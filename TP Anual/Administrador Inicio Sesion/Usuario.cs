@@ -22,6 +22,7 @@ namespace TP_Anual.Administrador_Inicio_Sesion
         [Column("usuario_admin")]
         public bool esAdministrador { get; set; }
 
+        public Usuario() { }
 
         public Usuario(string name, string pasword, bool type)
         {

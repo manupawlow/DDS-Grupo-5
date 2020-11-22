@@ -87,11 +87,13 @@
                                     }
 
 
-                                    <p><b>ITEMS: Descripcion | Cantidad | Precio </p>
-                                    foreach (var t in @u.items)
+                                    <p><b>ITEMS: Descripcion | Cantidad | Precio @u.items.Count</b></p>
+
+                                    @*foreach (var i in u.items)
                                     {
-                                        <p>@t.item.descripcion | @t.cantidad | @t.valor</p>
-                                    }
+                                        <p>@i.item.descripcion | @i.cantidad | @i.valor </p>
+                                    }*@
+
 
                                     <p><b>-----------------------------------------</b></p>
                                 }
@@ -124,6 +126,7 @@
                                     <p><b>DESCRIPCION: </b>@i.descripcion</p>
                                     <p><b>TOTAL: </b>@i.total</p>
                                     <p><b>EGRESOS ASIGNADOS: </b>@i.egresos.Count</p>
+                                    <p><b>-----------------------------------------</b></p>
                                 }
                             }
                             else

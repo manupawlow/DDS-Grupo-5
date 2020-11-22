@@ -29,10 +29,10 @@ namespace TP_Anual.Egresos
         [Column("cantidad")]
         public int cantidad { get; set; }
 
+        public ItemPorEgreso() { }
 
-        public ItemPorEgreso(Egreso e, Item i, int c)
+        public ItemPorEgreso(Item i, int c)
         {
-            egreso = e;
             item = i;
             cantidad = c;
         }

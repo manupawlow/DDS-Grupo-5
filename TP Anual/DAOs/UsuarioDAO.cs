@@ -32,6 +32,7 @@ namespace TP_Anual.DAOs
             using (var context = new BaseDeDatos())
             {
                 context.usuarios.Add(user);
+                context.SaveChanges();
             }
             return this;
         }

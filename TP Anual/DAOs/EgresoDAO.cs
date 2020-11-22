@@ -30,7 +30,7 @@ namespace TP_Anual.DAOs
         {
             using (var context = new BaseDeDatos())
             {
-                return context.egresos.SingleOrDefault(e => e.id_egreso == id);
+                return context.egresos.Include("items").Single(e => e.id_egreso == id);
             }
         }
 
@@ -38,19 +38,74 @@ namespace TP_Anual.DAOs
         {
             using (var context = new BaseDeDatos())
             {
-                return context.egresos.ToList<Egreso>();
+                return context.egresos.Include("items").Include("presupuestos").ToList<Egreso>();
             }
         }
 
-        public EgresoDAO Add(Egreso e)
+        public Egreso Add(Egreso e)
         {
             using (var context = new BaseDeDatos())
             {
                 context.egresos.Add(e);
+                context.SaveChanges();
+                return e;
             }
-            return this;
         }
 
+        public Egreso agregarItemPorEgreso(Egreso e, ItemPorEgreso i)
+        {
+            using (var context = new BaseDeDatos())
+            {
+                //getEgresoById(id).items.Add(i);
+                e.items.Add(i);
+                context.SaveChanges();
+                return e;
+            }
+        }
+
+
+        public EgresoDAO cargarEgreso(string revisor, int cantPresup, string[] items = null, string[] cantidades = null)
+        {
+            using (var context = new BaseDeDatos())
+            {
+                var user = UsuarioDAO.getInstancia().getUsuarioByUserName(revisor);
+
+                Egreso nuevo = new Egreso();
+                nuevo.cantPresupuestos = 1;
+                nuevo.fecha = DateTime.Today;
+                nuevo.bandejaDeMensajes = new BandejaDeMensajes(user);
+
+                context.egresos.Add(nuevo);
+
+                try
+                {
+
+                    for (int i = 0; i < items.Length; i++)
+                    {
+                        //var item = ItemDAO.getInstancia().getItemByDescripcion(items[i]);
+                        Item item = new Item();
+                        item.descripcion = items[i];
+                        context.items.Add(item);
+                        context.SaveChanges();
+
+                        //ItemDAO.getInstancia().AddItemPorEgreso(ie);
+                        ItemPorEgreso ie = new ItemPorEgreso();
+                        ie.item = item;
+                        ie.cantidad = Int32.Parse(cantidades[i]);
+                        context.items_por_egreso.Add(ie);
+                        context.SaveChanges();
+
+                        nuevo.items.Add(ie);
+                        context.SaveChanges();
+
+                    }
+
+                }
+                catch (NullReferenceException) { }
+            }
+
+            return this;
+        }
         #endregion
 
 

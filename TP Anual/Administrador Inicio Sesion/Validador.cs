@@ -51,7 +51,7 @@ namespace TP_Anual.Administrador_Inicio_Sesion
 
         public static bool validarContrasenia(string contrasenia)
         {
-            return contrasenia.Length > 8 && contrasenia.Length <= 64 && !(caracteresRepetidos(contrasenia)) && !(esPeroresContrasenias(contrasenia)) && !(tieneConsecutivos(contrasenia));
+            return contrasenia.Length > 8 && contrasenia.Length <= 64 && !(caracteresRepetidos(contrasenia)) /*&& !(esPeroresContrasenias(contrasenia))*/ && !(tieneConsecutivos(contrasenia));
         }
 
     }

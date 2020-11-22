@@ -67,7 +67,7 @@ $("#addInputPresupuesto").click(function () {
     $("#itemsInputPresupuesto").html(nuevosItemsPresupuesto);
 });
 
-
+/*
 $("#cargarIngreso").click(function () {
 
     var descripcion = $("#descripcion").val();
@@ -84,7 +84,7 @@ $("#cargarIngreso").click(function () {
 
     $.ajax({
         type: "POST",
-        url: "/Home/CrearUsuario",
+        url: "/Home/CargarIngreso",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         data: JSON.stringify(json),
@@ -103,6 +103,7 @@ $("#cargarIngreso").click(function () {
     })
 
 });
+*/
 
 $("#buscarIngreso").click(function () {
 
@@ -140,7 +141,7 @@ $("#buscarIngreso").click(function () {
 
 
 
-$("#cargarIngreso").click(function () {
+$("#-cargarProveedor").click(function () {
 
     var CUIT = $("#CUIT").val();
     var razon = ParseInt($("#razon").val());
@@ -156,7 +157,7 @@ $("#cargarIngreso").click(function () {
 
     $.ajax({
         type: "POST",
-        url: "/Home/CargarIngreso",
+        url: "/Home/CargarProveedor",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         data: JSON.stringify(json),
