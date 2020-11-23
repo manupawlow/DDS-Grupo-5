@@ -90,6 +90,21 @@ namespace TP_Anual.DAOs
             return this;
         }
 
+        public List<ItemPorEgreso> getItemsDeEgreso(int id_egreso)
+        {
+            using (var context = new BaseDeDatos())
+            {
+                return context.items_por_egreso.Where(i => i.id_egreso == id_egreso).ToList<ItemPorEgreso>();
+            }
+        }
+        public List<ItemPorPresupuesto> getItemsPorPresupuesto(int id_presupuesto)
+        {
+            using (var context = new BaseDeDatos())
+            {
+                return context.items_por_presupuesto.Where(i => i.id_presupuesto == id_presupuesto).ToList<ItemPorPresupuesto>();
+            }
+        }
+
         #endregion
     }
 }

@@ -41,7 +41,7 @@ namespace TP_Anual.Egresos
 
         public void calcular_total()
         {
-            valor_total = itemsDePresupuesto.Sum(items => items.valor);
+            valor_total = itemsDePresupuesto.Sum(item => item.valor * item.cantidad);
         }
 
         public void agregar_item(ItemPorPresupuesto Item)

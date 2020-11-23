@@ -101,10 +101,33 @@ namespace TP_Anual.DAOs
 
                     }
 
+                    nuevo.calcular_total();
+                    context.SaveChanges();
+
                 }
                 catch (NullReferenceException) { }
             }
 
+            return this;
+        }
+
+        public PresupuestoDAO elegirPresupuesto(int id_egreso, int id_presupuesto)
+        {
+            using (var context = new BaseDeDatos())
+            {
+                var egreso = context.egresos
+                                        .Include("items")
+                                        .Include("presupuestos")
+                                        .Single(e => e.id_egreso == id_egreso);
+
+                var presupuesto = context.presupuestos.Include("itemsDePresupuesto").Include("proveedor").Single(e => e.id_presupuesto == id_presupuesto);
+
+                egreso.proveedorElegido = presupuesto.proveedor;
+
+                egreso.valorTotal = presupuesto.valor_total;
+
+                context.SaveChanges();
+            }
             return this;
         }
 

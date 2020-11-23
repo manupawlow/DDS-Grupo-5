@@ -17,7 +17,7 @@ namespace TP_Anual.Egresos
 
         [Column("cant_presupuestos_requeridos")]
         public int cantPresupuestos { get; set; }
-        
+
         public ICriterioDeSeleccion criterioDeSeleccion;
         public DocumentoComercial documentoComercial { get; set; }
         [Column("id_documento_comercial")]
@@ -29,15 +29,15 @@ namespace TP_Anual.Egresos
         public Ingreso ingreso { get; set; }
         [Column("id_ingreso")]
         public int id_ingreso { get; set; }
-        
-        public List<ItemPorEgreso> items { get; set;}
+
+        public List<ItemPorEgreso> items { get; set; }
 
         public MedioDePago medioDePago;
-        
+
         public Presupuesto presupuestoElegido;
-       
+
         public List<Presupuesto> presupuestos { get; set; }
-        
+
         public Proveedor proveedorElegido { get; set; }
         [Column("id_prov")]
         public int id_prov { get; set; }

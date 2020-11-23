@@ -100,3 +100,54 @@ C:\Users\Win10\Desktop\Repositorio DDS\DDS-Grupo-5\TP Anual\obj\Release\TP Anual
 C:\Users\Win10\Desktop\Repositorio DDS\DDS-Grupo-5\TP Anual\obj\Release\TP Anual.csproj.CopyComplete
 C:\Users\Win10\Desktop\Repositorio DDS\DDS-Grupo-5\TP Anual\obj\Release\TP Anual.exe
 C:\Users\Win10\Desktop\Repositorio DDS\DDS-Grupo-5\TP Anual\obj\Release\TP Anual.pdb
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\mongocrypt.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\snappy32.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\snappy64.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\libzstd.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\TP Anual.exe.config
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\TP Anual.exe
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\TP Anual.pdb
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\EntityFramework.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\Microsoft.Identity.Client.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\MongoDB.Bson.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\MongoDB.Libmongocrypt.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\MySql.Data.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\MySql.Data.Entity.EF6.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\Newtonsoft.Json.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\RestSharp.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\SharpCompress.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\System.Buffers.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\System.IO.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\System.Memory.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\System.Net.Http.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\System.Numerics.Vectors.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\System.Runtime.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\System.Security.Cryptography.Algorithms.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\System.Security.Cryptography.Encoding.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\System.Security.Cryptography.Primitives.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\EntityFramework.xml
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\MongoDB.Bson.xml
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\Microsoft.Identity.Client.xml
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\MySql.Data.xml
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\MySql.Data.Entity.EF6.xml
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\Newtonsoft.Json.xml
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\RestSharp.xml
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\System.Buffers.xml
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\System.Diagnostics.DiagnosticSource.xml
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\System.Memory.xml
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\System.Numerics.Vectors.xml
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\bin\Release\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\obj\Release\TP Anual.csprojAssemblyReference.cache
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\obj\Release\TP Anual.exe.config
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\obj\Release\TP Anual.csproj.CoreCompileInputs.cache
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\obj\Release\TP Anual.csproj.CopyComplete
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\obj\Release\TP Anual.exe
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TP Anual\obj\Release\TP Anual.pdb

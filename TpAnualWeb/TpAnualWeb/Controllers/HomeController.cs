@@ -37,13 +37,19 @@ namespace TpAnualWeb.Controllers
         [HttpPost]
         public ActionResult CargarEgreso(string revisor, int cantPresup, FormCollection inputs = null)
         {
+            if(inputs["nuevoItem"] != null || inputs["cantidad"] != null)
+            {
+                var items = inputs["nuevoItem"].Split(',');
+                var cantidades = inputs["cantidad"].Split(',');
 
-            var items = inputs["nuevoItem"].Split(',');
-            var cantidades = inputs["cantidad"].Split(',');
+                //TODO: Siempre crea un nuevo item en la BD, hacer que se fije si ya existe ese item
 
-            //TODO: Siempre crea un nuevo item en la BD, hacer que se fije si ya existe ese item
-            
-            EgresoDAO.getInstancia().cargarEgreso(revisor, cantPresup, items, cantidades);
+                EgresoDAO.getInstancia().cargarEgreso(revisor, cantPresup, items, cantidades);
+            }
+            else
+            {
+                EgresoDAO.getInstancia().cargarEgreso(revisor, cantPresup);
+            }
 
             return View("Index");
         }
@@ -52,7 +58,8 @@ namespace TpAnualWeb.Controllers
         public ActionResult MostrarEgresos()
         {
             ViewBag.mostrar = "EGRESOS";
-            ViewBag.egresos = EgresoDAO.getInstancia().getAllEgreso();
+            var a = EgresoDAO.getInstancia().getAllEgreso();
+            ViewBag.egresos = a;
             return View("Mostrar");
         }
 
@@ -153,6 +160,22 @@ namespace TpAnualWeb.Controllers
             nuevo.razon_social = razon;
             ProveedorDAO.getInstancia().Add(nuevo);
 
+
+            return View("Index");
+        }
+
+        public ActionResult MostrarPresupuestosDeEgreso(int id_egreso)
+        {
+            ViewBag.mostrar = "PRESUPUESTOS DE EGRESO";
+            var a = EgresoDAO.getInstancia().getEgresoById(id_egreso).presupuestos;
+            ViewBag.presupuestos = a;
+            ViewBag.msg = id_egreso;
+            return View("Mostrar");
+        }
+
+        public ActionResult ElegirPresupuesto(int id_egreso, int id_presupuesto)
+        {
+            PresupuestoDAO.getInstancia().elegirPresupuesto(id_egreso, id_presupuesto);
 
             return View("Index");
         }

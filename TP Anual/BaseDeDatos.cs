@@ -41,8 +41,6 @@ namespace TP_Anual
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
 
-
-
             modelBuilder.Entity<Egreso>()
                  .HasRequired<Ingreso>(e => e.ingreso)
                  .WithMany(i => i.egresos)
