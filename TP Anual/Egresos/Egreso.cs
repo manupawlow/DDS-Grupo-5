@@ -36,6 +36,8 @@ namespace TP_Anual.Egresos
 
         public Presupuesto presupuestoElegido;
 
+        public ProyectoDeFinanciamiento proyecto;
+
         public List<Presupuesto> presupuestos { get; set; }
 
         public Proveedor proveedorElegido { get; set; }

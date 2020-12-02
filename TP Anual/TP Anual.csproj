@@ -199,6 +199,9 @@
     <Compile Include="DAOs\UsuarioDAO.cs" />
     <Compile Include="Egresos\BandejaDeMensajes.cs" />
     <Compile Include="Egresos\Categoria.cs" />
+    <Compile Include="Egresos\BitacoraDeOperaciones.cs" />
+    <Compile Include="Egresos\GeneradorDeLogs.cs" />
+    <Compile Include="Egresos\ProyectoDeFinanciamiento.cs" />
     <Compile Include="Egresos\Log.cs" />
     <Compile Include="Egresos\Criterio.cs" />
     <Compile Include="Egresos\CriterioPorItem.cs" />

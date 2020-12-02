@@ -504,3 +504,54 @@ C:\Users\Win10\Desktop\Repositorio DDS\DDS-Grupo-5\TP Anual\bin\Debug\System.Sec
 C:\Users\Win10\Desktop\Repositorio DDS\DDS-Grupo-5\TP Anual\bin\Debug\System.Security.Cryptography.Primitives.dll
 C:\Users\Win10\Desktop\Repositorio DDS\DDS-Grupo-5\TP Anual\bin\Debug\System.Security.Cryptography.X509Certificates.dll
 C:\Users\Win10\Desktop\Repositorio DDS\DDS-Grupo-5\TP Anual\obj\Debug\TP Anual.exe.config
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\mongocrypt.dll
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\snappy32.dll
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\snappy64.dll
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\libzstd.dll
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\TP Anual.exe.config
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\TP Anual.exe
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\TP Anual.pdb
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\EntityFramework.dll
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\Microsoft.Identity.Client.dll
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\MongoDB.Bson.dll
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\MongoDB.Libmongocrypt.dll
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\MySql.Data.dll
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\RestSharp.dll
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\SharpCompress.dll
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\System.Buffers.dll
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\System.IO.dll
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\System.Memory.dll
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\System.Net.Http.dll
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\System.Runtime.dll
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\System.Security.Cryptography.Algorithms.dll
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\System.Security.Cryptography.Encoding.dll
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\System.Security.Cryptography.Primitives.dll
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\EntityFramework.xml
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\MongoDB.Bson.xml
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\Microsoft.Identity.Client.xml
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\MySql.Data.xml
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\MySql.Data.Entity.EF6.xml
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\RestSharp.xml
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\System.Buffers.xml
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\System.Memory.xml
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\obj\Debug\TP Anual.csprojAssemblyReference.cache
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\obj\Debug\TP Anual.exe.config
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\obj\Debug\TP Anual.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\obj\Debug\TP Anual.csproj.CopyComplete
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\obj\Debug\TP Anual.exe
+C:\Users\Usuario\source\repos\tp-dds-2020\TP Anual\obj\Debug\TP Anual.pdb
