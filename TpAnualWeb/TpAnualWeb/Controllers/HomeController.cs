@@ -164,6 +164,7 @@ namespace TpAnualWeb.Controllers
             return View("Index");
         }
 
+        [HttpPost]
         public ActionResult MostrarPresupuestosDeEgreso(int id_egreso)
         {
             ViewBag.mostrar = "PRESUPUESTOS DE EGRESO";
@@ -173,9 +174,38 @@ namespace TpAnualWeb.Controllers
             return View("Mostrar");
         }
 
+        [HttpPost]
         public ActionResult ElegirPresupuesto(int id_egreso, int id_presupuesto)
         {
             PresupuestoDAO.getInstancia().elegirPresupuesto(id_egreso, id_presupuesto);
+
+            return View("Index");
+        }
+
+        #endregion
+
+        #region Proyectos
+
+        [HttpPost]
+        public ActionResult CargarProyecto(int monto, int cant_presupuestos)
+        {
+            //TODO
+
+            return View("Index");
+        }
+
+        [HttpPost]
+        public ActionResult VincularIngresoConProyecto(int id_ingreso, int id_proyecto)
+        {
+            //TODO
+
+            return View("Index");
+        }
+
+        [HttpPost]
+        public ActionResult BajaProyecto(int id_proyecto)
+        {
+            //TODO
 
             return View("Index");
         }

@@ -249,9 +249,58 @@
 
                 </div>
             </div>
-        </div>
     </section>
 
+
+    
+    <section id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+
+                    <h2>PROYECTOS</h2>
+                    <p class="lead">Seleccione una opcion:</p>
+
+                    <p></p>
+                    <button onclick="myFunction(31)" target="_blank" class="button button2">Cargar proyecto:</button>
+                    <div id="31" style="display:none;">
+                        @using (Html.BeginForm("CargarProyecto", "Home", FormMethod.Post))
+                        {
+                            <input type="number" name="monto" placeholder="Monto" class="button button3">
+                            <input type="number" name="cant_presupuestos" placeholder="Cantidad presupuestos minimos" class="button button3">
+                            <input type="submit" value="Cargar" class="button button3">
+                        }
+
+                    </div>
+
+                    <p></p>
+                    <button onclick="myFunction(32)" target="_blank" class="button button2">Vincular ingreso a proyecto:</button>
+                    <div id="32" style="display:none;">
+                        @using (Html.BeginForm("VincularIngresoConProyecto", "Home", FormMethod.Post))
+                        {
+                            <input type="number" name="id_ingreso" placeholder="ID Ingreso" class="button button3">
+                            <input type="number" name="id_proyecto" placeholder="ID Proyecto" class="button button3">
+                            <input type="submit" value="Vincular" class="button button3">
+                        }
+
+                    </div>
+
+
+                    <p></p>
+                    <button onclick="myFunction(33)" target="_blank" class="button button2">Dar de baja proyecto:</button>
+                    <div id="33" style="display:none;">
+                        @using (Html.BeginForm("BajaProyecto", "Home", FormMethod.Post))
+                        {
+                            <input type="number" name="id_proyecto" placeholder="ID Proyecto" class="button button3">
+                            <input type="submit" value="Borrar" class="button button3">
+                        }
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
 
 
     <section id="registrar" class="bg-light">

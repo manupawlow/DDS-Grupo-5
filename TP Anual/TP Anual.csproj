@@ -195,6 +195,7 @@
     <Compile Include="DAOs\ItemDAO.cs" />
     <Compile Include="DAOs\PresupuestoDAO.cs" />
     <Compile Include="DAOs\ProveedorDAO.cs" />
+    <Compile Include="DAOs\ProyectoDAO.cs" />
     <Compile Include="DAOs\UsuarioDAO.cs" />
     <Compile Include="Egresos\BandejaDeMensajes.cs" />
     <Compile Include="Egresos\Categoria.cs" />
