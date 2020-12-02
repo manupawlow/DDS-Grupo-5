@@ -33,6 +33,7 @@ namespace TP_Anual.Egresos
             descripcion = _descripcion;
             total = _total;
             fecha = System.DateTime.Now;
+            
         }
 
 

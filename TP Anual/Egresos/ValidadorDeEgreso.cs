@@ -10,14 +10,14 @@ namespace TP_Anual.Egresos
     {
         static public bool egresoValido(Egreso egreso)
         {
-           
 
-            if (egreso.cantPresupuestos == 0)
+
+            if (egreso.proyecto.cantPresupuestosExigibles == 0)
             {
                 egreso.bandejaDeMensajes.agregarMensaje("La compra no requiere presupuestos!");
                 return true;
             }
-            else 
+            else
             {
                 if (cantidadCorrecta(egreso))
                     egreso.bandejaDeMensajes.agregarMensaje("Se encuentra cargada la cantidad indicada de presupuestos");
@@ -33,18 +33,26 @@ namespace TP_Anual.Egresos
                     egreso.bandejaDeMensajes.agregarMensaje("La eleccion del presupuesto coincide con el criterio de seleccion");
                 else
                     egreso.bandejaDeMensajes.agregarMensaje("La eleccion del presupuesto no coincide con el criterio de seleccion");
-            }
-            
+                if (cumpleCantidadDePresupuestosExigibles(egreso))
+                    egreso.bandejaDeMensajes.agregarMensaje("El egreso cumple con los presupuestos necesarios");
+                else
+                    egreso.bandejaDeMensajes.agregarMensaje("El egreso no posee la cantidad de presupuestos exigibles");
 
-            return cantidadCorrecta(egreso) && presupuestoCoincidente(egreso) && criterioDeSeleccion(egreso);
+            }
+
+
+            return cantidadCorrecta(egreso) &&
+                   presupuestoCoincidente(egreso) &&
+                   criterioDeSeleccion(egreso) &&
+                   cumpleCantidadDePresupuestosExigibles(egreso);
         }
 
         static private bool cantidadCorrecta(Egreso egreso)
         {
-                return egreso.cantPresupuestos == egreso.presupuestos.Count();
+            return egreso.cantPresupuestos == egreso.presupuestos.Count();
         }
         static private bool presupuestoCoincidente(Egreso egreso)
-        { 
+        {
             Presupuesto presupuesto_elegido = egreso.presupuestoElegido;
             return egreso.presupuestos.Any(Presupuesto => presupuesto_elegido == Presupuesto);
         }
@@ -52,5 +60,11 @@ namespace TP_Anual.Egresos
         {
             return egreso.criterioDeSeleccion.Criterio(egreso.presupuestos) == egreso.presupuestoElegido;
         }
+
+        static private bool cumpleCantidadDePresupuestosExigibles(Egreso egreso)
+        {
+            return egreso.proyecto.cantPresupuestosExigibles <= egreso.presupuestos.Count;
+        }
+
     }
 }

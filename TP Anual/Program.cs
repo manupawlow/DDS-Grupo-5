@@ -8,6 +8,7 @@ using TP_Anual.Organizaciones;
 using System.Linq;
 using TP_Anual.APImercadolibre;
 using MongoDB.Bson;
+using Newtonsoft.Json;
 
 namespace TP_Anual
 {
@@ -17,6 +18,7 @@ namespace TP_Anual
         {
             BsonClassMap.RegisterClassMap<BandejaDeMensajes>();
             BsonClassMap.RegisterClassMap<Log>();
+            BsonClassMap.RegisterClassMap<BitacoraDeOperaciones>();
 
             var client = new MongoClient("mongodb://localhost:27017");
             var database = client.GetDatabase("mydb");
@@ -326,6 +328,8 @@ namespace TP_Anual
                 proyecto1.agregarIngreso(ingresoPrueba9);
                 actualizarBitacoraNoSQL(database, GeneradorDeLogs.bitacora.ID);
 
+                proyecto1.cerrarProyecto();
+
                 InterfazInicioDeSesion interfaz = new InterfazInicioDeSesion();
                 string usuarioActual;
 
@@ -346,6 +350,7 @@ namespace TP_Anual
                     {
                         egreso.bandejaDeMensajes.mostrarMensajes(usuarioActual);
                         actualizarBaseDeDatosNoSQL(database, egreso);
+                        mostrarBandejaDeMensajesDeEgreso(database, egreso);
                     }
                     if (eleccion == "3")
                         organizacion.vincular();
@@ -355,34 +360,15 @@ namespace TP_Anual
 
                 }
 
-            }
-
-
-            /*
-            void jobValidadorEgreso(Scheduler sched)
-            {
-                JobDataMap jobData = new JobDataMap();
-                jobData.Add("egreso", egreso);
-
-                IJobDetail jobValidadorEgreso = JobBuilder.Create<JobValidadorEgresos>()
-                    .WithIdentity("trabajoValidacionEgreso", "grupoValidacionEgreso")
-                    .UsingJobData(jobData)
-                    .Build();
-
-                ITrigger triggerValidadorEgreso = TriggerBuilder.Create()
-                    .WithIdentity("tiempoValidacionEgreso", "grupoValidacionEgreso")
-                    .StartNow()
-                    .WithSimpleSchedule(x => x
-                    .WithIntervalInSeconds(10)
-                    .RepeatForever())
-                    .Build();
-
-                sched.agregarTarea(jobValidadorEgreso, triggerValidadorEgreso);
-
+   
 
             }
 
-            */
+
+            
+            
+
+            
             //Console.WriteLine(egreso.valorTotal);
 
             //BandejaDeMensajes.mostrarMensajes();
@@ -392,11 +378,35 @@ namespace TP_Anual
             //con ese usuario, el validador se fija si es el usuario que puede ver la compra
 
         }
+
+        void jobValidadorEgreso(Scheduler sched,Egreso egreso)
+        {
+            
+            JobDataMap jobData = new JobDataMap();
+            jobData.Add("egreso", egreso);
+
+            IJobDetail jobValidadorEgresos = JobBuilder.Create<JobValidadorEgresos>()
+                .WithIdentity("trabajoValidacionEgreso", "grupoValidacionEgreso")
+                .UsingJobData(jobData)
+                .Build();
+
+            ITrigger triggerValidadorEgreso = TriggerBuilder.Create()
+                .WithIdentity("tiempoValidacionEgreso", "grupoValidacionEgreso")
+                .StartNow()
+                .WithSimpleSchedule(x => x
+                .WithIntervalInSeconds(10)
+                .RepeatForever())
+                .Build();
+
+            sched.agregarTarea(jobValidadorEgresos, triggerValidadorEgreso);
+
+
+        }
         public static void actualizarBaseDeDatosNoSQL(IMongoDatabase database, Egreso egreso)
         {
             // Construyo filtro de busqueda
             var builder = Builders<BandejaDeMensajes>.Filter;
-            var filter = builder.Where(bandeja => bandeja.revisor == egreso.bandejaDeMensajes.revisor);
+            var filter = builder.Where(bandeja => bandeja.revisor.nombre == egreso.bandejaDeMensajes.revisor.nombre);
 
             // Traigo la coleccion
             var coleccionBandejaDeMensajes = database.GetCollection<BandejaDeMensajes>("coleccionBandejaDeMensajes");
@@ -469,5 +479,17 @@ namespace TP_Anual
 
               Console.WriteLine(bandejaDeMensajes);
           }*/
+
+            public static void mostrarBandejaDeMensajesDeEgreso(IMongoDatabase database, Egreso egreso)
+            {
+
+                var coleccionBandejaDeMensajes = database.GetCollection<BsonDocument>("coleccionBandejaDeMensajes");
+                var filter = Builders<BsonDocument>.Filter.Eq(bandeja => bandeja["revisor"]["nombre"], egreso.bandejaDeMensajes.revisor.nombre);//Where(bandeja => bandeja.revisor.nombre == egreso.bandejaDeMensajes.revisor.nombre);
+                var bandejaDeMensajes = coleccionBandejaDeMensajes.Find<BsonDocument>(filter).ToList();//(bandeja => bandeja.revisor.nombre == egreso.bandejaDeMensajes.revisor.nombre).ToList();
+                
+                String listado = bandejaDeMensajes[0]["mensajes"].ToString();
+
+                Console.WriteLine(listado);    
+            }
     }
 }
