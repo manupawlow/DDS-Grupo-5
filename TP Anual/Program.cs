@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
+using MongoDB.Bson;
 using System;
 using TP_Anual.Egresos;
 using TP_Anual.Administrador_Inicio_Sesion;
@@ -7,7 +8,6 @@ using Quartz;
 using TP_Anual.Organizaciones;
 using System.Linq;
 using TP_Anual.APImercadolibre;
-using MongoDB.Bson;
 using Newtonsoft.Json;
 
 namespace TP_Anual
@@ -169,7 +169,7 @@ namespace TP_Anual
                 egreso.medioDePago = medio_de_pago;
                 //egreso.bandejaDeMensajes = new BandejaDeMensajes("Grupo 5");
                 var revisor = new Usuario("Grupo 5", "pepe", false);
-                registrarBandejaDeMensajes(database, revisor, egreso);
+                //registrarBandejaDeMensajes(database, revisor, egreso);
                 egreso.criterioDeSeleccion = new MenorValor();
 
                 proveedor1.razon_social = "razon1";
@@ -319,14 +319,14 @@ namespace TP_Anual
 
                 var usuario = new Usuario("pepe", "dds2020", false);
                 ProyectoDeFinanciamiento proyecto1 = new ProyectoDeFinanciamiento(15, 12000, usuario);
-                registrarBitacoraDeOperaciones(database);
+                //registrarBitacoraDeOperaciones(database);
                 egreso.proyecto = proyecto1;
 
                 proyecto1.agregarIngreso(ingresoPrueba8);
-                actualizarBitacoraNoSQL(database, GeneradorDeLogs.bitacora.ID);
+                //actualizarBitacoraNoSQL(database, GeneradorDeLogs.bitacora.ID);
 
                 proyecto1.agregarIngreso(ingresoPrueba9);
-                actualizarBitacoraNoSQL(database, GeneradorDeLogs.bitacora.ID);
+                //actualizarBitacoraNoSQL(database, GeneradorDeLogs.bitacora.ID);
 
                 proyecto1.cerrarProyecto();
 
@@ -344,13 +344,13 @@ namespace TP_Anual
                     if (eleccion == "1")
                     {
                         ValidadorDeEgreso.egresoValido(egreso);
-                        actualizarBaseDeDatosNoSQL(database, egreso);
+                        //actualizarBaseDeDatosNoSQL(database, egreso);
                     }
                     if (eleccion == "2")
                     {
                         egreso.bandejaDeMensajes.mostrarMensajes(usuarioActual);
-                        actualizarBaseDeDatosNoSQL(database, egreso);
-                        mostrarBandejaDeMensajesDeEgreso(database, egreso);
+                        //actualizarBaseDeDatosNoSQL(database, egreso);
+                        //mostrarBandejaDeMensajesDeEgreso(database, egreso);
                     }
                     if (eleccion == "3")
                         organizacion.vincular();
@@ -402,94 +402,6 @@ namespace TP_Anual
 
 
         }
-        public static void actualizarBaseDeDatosNoSQL(IMongoDatabase database, Egreso egreso)
-        {
-            // Construyo filtro de busqueda
-            var builder = Builders<BandejaDeMensajes>.Filter;
-            var filter = builder.Where(bandeja => bandeja.revisor.nombre == egreso.bandejaDeMensajes.revisor.nombre);
 
-            // Traigo la coleccion
-            var coleccionBandejaDeMensajes = database.GetCollection<BandejaDeMensajes>("coleccionBandejaDeMensajes");
-
-            // Busco usando el filtro y convierto los resultados a lista
-            var bandejasDeMensajesEncontradas = coleccionBandejaDeMensajes.Find<BandejaDeMensajes>(filter);
-            var listaBandejaDeMensajes = bandejasDeMensajesEncontradas.ToList<BandejaDeMensajes>();
-            var bandejaDeMensajes = listaBandejaDeMensajes[0];
-            egreso.bandejaDeMensajes.ID = bandejaDeMensajes.ID;
-
-            // Creo una bandeja de mensajes y la inserto
-            coleccionBandejaDeMensajes.ReplaceOne(filter, egreso.bandejaDeMensajes);
-        }
-        public static void registrarBandejaDeMensajes(IMongoDatabase database, Usuario revisor, Egreso egreso)
-        {
-            // Agrego bandeja de mensajes a egreso
-            egreso.bandejaDeMensajes = new BandejaDeMensajes(revisor);
-
-            // Traigo la coleccion
-            var coleccionBandejaDeMensajes = database.GetCollection<BandejaDeMensajes>("coleccionBandejaDeMensajes");
-
-            // Creo una bandeja de mensajes y la inserto
-            var bandejaDeMensajes = new BandejaDeMensajes(revisor);
-            coleccionBandejaDeMensajes.InsertOne(bandejaDeMensajes);
-        }
-
-        public static void actualizarBitacoraNoSQL(IMongoDatabase database, ObjectId bitacoraID)
-        {
-            // Construyo filtro de busqueda
-            var builder = Builders<BitacoraDeOperaciones>.Filter;
-            var filter = builder.Eq(bitacora => bitacora.ID, bitacoraID);
-
-            // Traigo la coleccion
-            var coleccionBitacoraDeOperaciones = database.GetCollection<BitacoraDeOperaciones>("coleccionBitacoraDeOperaciones");
-
-            // Busco usando el filtro y convierto los resultados a lista
-            var BitacoraDeOperacionesEncontradas = coleccionBitacoraDeOperaciones.Find<BitacoraDeOperaciones>(filter);
-            var listaBitacoraDeOperaciones = BitacoraDeOperacionesEncontradas.ToList<BitacoraDeOperaciones>();
-            var BitacoraDeOperaciones = listaBitacoraDeOperaciones[0];
-            GeneradorDeLogs.bitacora.ID = BitacoraDeOperaciones.ID;
-
-            // Creo una BitacoraDeOperaciones y la inserto
-            coleccionBitacoraDeOperaciones.ReplaceOne(filter, GeneradorDeLogs.bitacora);
-        }
-
-        public static void registrarBitacoraDeOperaciones(IMongoDatabase database)
-        {
-            // Agrego BitacoraDeOperaciones a egreso
-            GeneradorDeLogs.bitacora = new BitacoraDeOperaciones();
-
-            // Traigo la coleccion
-            var coleccionBitacoraDeOperaciones = database.GetCollection<BitacoraDeOperaciones>("coleccionBitacoraDeOperaciones");
-
-            // Creo una BitacoraDeOperaciones y la inserto
-            coleccionBitacoraDeOperaciones.InsertOne(GeneradorDeLogs.bitacora);
-        }
-
-        /*  public static void mostrarBandejaDeMensajesDeEgreso(IMongoDatabase database, Egreso egreso)
-          {
-             // var builder = Builders<BandejaDeMensajes>.Filter;
-             // var filter = builder.Where(bandeja => bandeja.ID == egreso.bandejaDeMensajes.ID);
-            //  var filter = builder.Where(bandeja => bandeja.revisor == egreso.bandejaDeMensajes.revisor);
-
-              var coleccionBandejaDeMensajes = database.GetCollection<BandejaDeMensajes>("coleccionBandejaDeMensajes");
-             //  var bandejasDeMensajesEncontradas = coleccionBandejaDeMensajes.Find<BandejaDeMensajes>(filter);
-             // var listaBandejaDeMensajes = bandejasDeMensajesEncontradas.ToList<BandejaDeMensajes>();
-              var bandejaDeMensajes = coleccionBandejaDeMensajes.Find<BandejaDeMensajes>(bandeja => bandeja.revisor == egreso.bandejaDeMensajes.revisor);
-             // var bandejaDeMensajes = coleccionBandejaDeMensajes.Find<BandejaDeMensajes>(bandeja => bandeja.revisor == egreso.bandejaDeMensajes.revisor);
-              // var bandejaDeMensajes = coleccionBandejaDeMensajes.find();
-
-              Console.WriteLine(bandejaDeMensajes);
-          }*/
-
-            public static void mostrarBandejaDeMensajesDeEgreso(IMongoDatabase database, Egreso egreso)
-            {
-
-                var coleccionBandejaDeMensajes = database.GetCollection<BsonDocument>("coleccionBandejaDeMensajes");
-                var filter = Builders<BsonDocument>.Filter.Eq(bandeja => bandeja["revisor"]["nombre"], egreso.bandejaDeMensajes.revisor.nombre);//Where(bandeja => bandeja.revisor.nombre == egreso.bandejaDeMensajes.revisor.nombre);
-                var bandejaDeMensajes = coleccionBandejaDeMensajes.Find<BsonDocument>(filter).ToList();//(bandeja => bandeja.revisor.nombre == egreso.bandejaDeMensajes.revisor.nombre).ToList();
-                
-                String listado = bandejaDeMensajes[0]["mensajes"].ToString();
-
-                Console.WriteLine(listado);    
-            }
     }
 }

@@ -226,6 +226,7 @@
     <Compile Include="Egresos\SeleccionDePresupuestos\ICriterioDeSeleccion.cs" />
     <Compile Include="Egresos\SeleccionDePresupuestos\MenorValor.cs" />
     <Compile Include="Egresos\ValidadorDeEgreso.cs" />
+    <Compile Include="MongoDB.cs" />
     <Compile Include="Organizaciones\AsignarCategoria.cs" />
     <Compile Include="Organizaciones\DireccionPostal.cs" />
     <Compile Include="Organizaciones\Empresa.cs" />

@@ -262,12 +262,13 @@
                     <p class="lead">Seleccione una opcion:</p>
 
                     <p></p>
-                    <button onclick="myFunction(31)" target="_blank" class="button button2">Cargar proyecto:</button>
+                    <button onclick="myFunction(31)" target="_blank" class="button button2">Cargar proyecto</button>
                     <div id="31" style="display:none;">
                         @using (Html.BeginForm("CargarProyecto", "Home", FormMethod.Post))
                         {
                             <input type="number" name="monto" placeholder="Monto" class="button button3">
                             <input type="number" name="cant_presupuestos" placeholder="Cantidad presupuestos minimos" class="button button3">
+                            <input type="text" name="usuario" placeholder="Director de proyecto" class="button button3">
                             <input type="submit" value="Cargar" class="button button3">
                         }
 

@@ -19,6 +19,10 @@ namespace TP_Anual.Egresos
         [Column("total")]
         public int total { get; set; }
 
+        [Column("id_proyecto")]
+        public int id_proyecto { get; set; }
+        public ProyectoDeFinanciamiento proyecto { get; set; }
+
         public List<Egreso> egresos { get; set; }
         public DateTime fecha;
 

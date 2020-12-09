@@ -27,6 +27,7 @@ namespace TP_Anual
         public DbSet<ItemPorEgreso> items_por_egreso { get; set; }
         public DbSet<TipoOrganizacion> tipos_organizacion { get; set; }
         public DbSet<Usuario> usuarios { get; set; }
+        public DbSet<ProyectoDeFinanciamiento> proyectos { get; set; }
 
 
         public BaseDeDatos() : base("dbConn")
@@ -61,7 +62,6 @@ namespace TP_Anual
                  .WithMany()
                  .HasForeignKey(pres => pres.id_prov);
 
-
             modelBuilder.Entity<Presupuesto>()
                 .HasRequired<DocumentoComercial>(p => p.documentoComercial)
                 .WithMany()
@@ -71,6 +71,16 @@ namespace TP_Anual
                 .HasRequired<DocumentoComercial>(e => e.documentoComercial)
                 .WithMany()
                 .HasForeignKey(e => e.id_documento_comercial);
+
+            modelBuilder.Entity<Ingreso>()
+                .HasRequired<ProyectoDeFinanciamiento>(i => i.proyecto)
+                .WithMany()
+                .HasForeignKey(i => i.id_proyecto);
+
+            modelBuilder.Entity<ProyectoDeFinanciamiento>()
+                .HasRequired<Usuario>(p => p.director)
+                .WithMany()
+                .HasForeignKey(p => p.id_director);
 
 
             #region ITEMS

@@ -32,6 +32,7 @@ CREATE TABLE IF NOT EXISTS ingreso(
 	id_ingreso INT NOT NULL AUTO_INCREMENT,
     descripcion VARCHAR(90) NOT NULL,
 	total INT NOT NULL,
+    id_proyecto INT NULL,
     
     PRIMARY KEY(id_ingreso)
 )ENGINE=INNODB;
@@ -178,4 +179,13 @@ CREATE TABLE IF NOT EXISTS categoria(
     id_criterio INT NULL,
     
     PRIMARY KEY(id_categoria)
+)ENGINE=INNODB;
+
+CREATE TABLE IF NOT EXISTS proyecto_financiamiento(
+	id_proyecto INT NOT NULL AUTO_INCREMENT,
+    presupuestos_exigibles INT NULL,
+    monto_total INT NULL,
+    id_director INT NULL,
+    
+    PRIMARY KEY(id_proyecto)
 )ENGINE=INNODB;

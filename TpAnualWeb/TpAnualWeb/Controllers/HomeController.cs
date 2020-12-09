@@ -187,9 +187,9 @@ namespace TpAnualWeb.Controllers
         #region Proyectos
 
         [HttpPost]
-        public ActionResult CargarProyecto(int monto, int cant_presupuestos)
+        public ActionResult CargarProyecto(int monto, int cant_presupuestos, string usuario)
         {
-            //TODO
+            ProyectoDAO.getInstancia().cargarProyecto(cant_presupuestos, monto, usuario);
 
             return View("Index");
         }
@@ -197,7 +197,7 @@ namespace TpAnualWeb.Controllers
         [HttpPost]
         public ActionResult VincularIngresoConProyecto(int id_ingreso, int id_proyecto)
         {
-            //TODO
+            ProyectoDAO.getInstancia().vincularIngresoConProyecto(id_proyecto, id_ingreso);
 
             return View("Index");
         }
@@ -205,7 +205,7 @@ namespace TpAnualWeb.Controllers
         [HttpPost]
         public ActionResult BajaProyecto(int id_proyecto)
         {
-            //TODO
+            ProyectoDAO.getInstancia().bajaProyecto(id_proyecto);
 
             return View("Index");
         }

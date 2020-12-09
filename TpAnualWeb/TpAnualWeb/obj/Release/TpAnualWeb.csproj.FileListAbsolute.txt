@@ -286,3 +286,12 @@ C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\obj\Re
 C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\obj\Release\TpAnualWeb.csproj.CopyComplete
 C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\obj\Release\TpAnualWeb.dll
 C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\obj\Release\TpAnualWeb.pdb
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\MongoDB.Driver.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\Quartz.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\MongoDB.Driver.Core.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\MongoDB.Libmongocrypt.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\MongoDB.Driver.xml
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\Quartz.pdb
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\Quartz.xml
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\MongoDB.Driver.Core.xml

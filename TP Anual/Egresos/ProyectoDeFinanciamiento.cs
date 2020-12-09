@@ -14,15 +14,24 @@ namespace TP_Anual.Egresos
 	{
 		[Key]
 		[Column("id_proyecto")]
-		public int id;
+		public int id { get; set; }
 
-		public int cantPresupuestosExigibles;
+		[Column("presupuestos_exigibles")]
+		public int cantPresupuestosExigibles { get; set; }
 
-		public int montoTotal;
+		[Column("monto_total")]
+		public int montoTotal { get; set; }
 
-		public Usuario director;
+		[Column("id_director")]
+		public int id_director { get; set; }
+		public Usuario director { get; set; }
 
 		public List<Ingreso> ingresos = new List<Ingreso>();
+
+		public ProyectoDeFinanciamiento()
+        {
+			ingresos = new List<Ingreso>();
+		}
 
 		public ProyectoDeFinanciamiento(int CantPresupuestosExigibles, int MontoTotal, Usuario Director)
 		{

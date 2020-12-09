@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TP_Anual.Egresos
 {
-    static class GeneradorDeLogs
+    public static class GeneradorDeLogs
     {
         public static BitacoraDeOperaciones bitacora;
 
