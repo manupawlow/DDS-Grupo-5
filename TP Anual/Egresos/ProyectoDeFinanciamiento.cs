@@ -45,20 +45,20 @@ namespace TP_Anual.Egresos
 		public void agregarIngreso(Ingreso ingreso)
 		{
 			ingresos.Add(ingreso);
-			GeneradorDeLogs.agregarLogABitacora($"Se ha agregado un nuevo ingreso de id: {ingreso.id_ingreso} al proyecto de id:{id} ");
+			//GeneradorDeLogs.agregarLogABitacora($"Se ha agregado un nuevo ingreso de id: {ingreso.id_ingreso} al proyecto de id:{id} ");
 		}
 
 		public void cerrarProyecto()
 		{
-			GeneradorDeLogs.agregarLogABitacora($"El proyecto de id:{id} se ha dado de baja " );
+			//GeneradorDeLogs.agregarLogABitacora($"El proyecto de id:{id} se ha dado de baja");
 		}
 
 		public void evaluar(bool resultado)
 		{
-			if (resultado)
-				GeneradorDeLogs.agregarLogABitacora("Se ha dado de alta el proyecto");
-			else
-				GeneradorDeLogs.agregarLogABitacora("Se ha rechazado el proyecto");
+			//if (resultado)
+				//GeneradorDeLogs.agregarLogABitacora("Se ha dado de alta el proyecto");
+			//else
+				//GeneradorDeLogs.agregarLogABitacora("Se ha rechazado el proyecto");
 
 		}
 

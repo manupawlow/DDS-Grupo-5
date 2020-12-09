@@ -39,24 +39,13 @@ namespace TP_Anual.DAOs
                 context.proyectos.Add(nuevo);
 
                 context.SaveChanges();
-                
-                
-                var client = new MongoClient("mongodb://localhost:27017");
-                
-                var database = client.GetDatabase("mydb");
 
-                GeneradorDeLogs.agregarLogABitacora($"Se ha creado un proyecto de financiamiento de id:{nuevo.id}");
+                MongoDB.getInstancia().agregarLogABitacora($"Se ha creado un proyecto de financiamiento de id:{nuevo.id}");
 
-                actualizarBitacoraNoSQL(database, GeneradorDeLogs.bitacora.ID);
             }
 
 
             return this;
-        }
-
-        private void actualizarBitacoraNoSQL(IMongoDatabase database, ObjectId iD)
-        {
-            throw new NotImplementedException();
         }
 
         public ProyectoDAO vincularIngresoConProyecto(int id_proyecto, int id_ingreso)
@@ -73,14 +62,8 @@ namespace TP_Anual.DAOs
 
                 context.SaveChanges();
 
+                MongoDB.getInstancia().agregarLogABitacora($"Se ha agregado un nuevo ingreso de id: {i.id_ingreso} al proyecto de id:{p.id} ");
 
-                var client = new MongoClient("mongodb://localhost:27017");
-
-                var database = client.GetDatabase("mydb");
-
-                GeneradorDeLogs.agregarLogABitacora($"Se ha agregado un nuevo ingreso de id: {i.id_ingreso} al proyecto de id:{p.id} ");
-
-                actualizarBitacoraNoSQL(database, GeneradorDeLogs.bitacora.ID);
             }
 
             return this;
@@ -98,16 +81,7 @@ namespace TP_Anual.DAOs
 
                 context.SaveChanges();
 
-
-                var client = new MongoClient("mongodb://localhost:27017");
-
-                var database = client.GetDatabase("mydb");
-
-                GeneradorDeLogs.agregarLogABitacora($"El proyecto de id:{p.id} se ha dado de baja ");
-
-                actualizarBitacoraNoSQL(database, GeneradorDeLogs.bitacora.ID);
-
-
+                MongoDB.getInstancia().agregarLogABitacora($"El proyecto de id:{p.id} se ha dado de baja");
             }
 
             return this;

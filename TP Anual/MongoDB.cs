@@ -33,7 +33,7 @@ namespace TP_Anual
             return instancia;
         }
 
-        public static void actualizarBaseDeDatosNoSQL(IMongoDatabase database, Egreso egreso)
+        public void actualizarBaseDeDatosNoSQL(IMongoDatabase database, Egreso egreso)
         {
             // Construyo filtro de busqueda
             var builder = Builders<BandejaDeMensajes>.Filter;
@@ -52,7 +52,7 @@ namespace TP_Anual
             coleccionBandejaDeMensajes.ReplaceOne(filter, egreso.bandejaDeMensajes);
         }
 
-        public static void registrarBandejaDeMensajes(IMongoDatabase database, Usuario revisor, Egreso egreso)
+        public void registrarBandejaDeMensajes(IMongoDatabase database, Usuario revisor, Egreso egreso)
         {
             // Agrego bandeja de mensajes a egreso
             egreso.bandejaDeMensajes = new BandejaDeMensajes(revisor);
@@ -65,7 +65,7 @@ namespace TP_Anual
             coleccionBandejaDeMensajes.InsertOne(bandejaDeMensajes);
         }
 
-        public static void actualizarBitacoraNoSQL(IMongoDatabase database, ObjectId bitacoraID)
+        public void actualizarBitacoraNoSQL(IMongoDatabase database, ObjectId bitacoraID)
         {
             // Construyo filtro de busqueda
             var builder = Builders<BitacoraDeOperaciones>.Filter;
@@ -84,42 +84,64 @@ namespace TP_Anual
             coleccionBitacoraDeOperaciones.ReplaceOne(filter, GeneradorDeLogs.bitacora);
         }
 
-        public static void registrarBitacoraDeOperaciones(IMongoDatabase database)
+        public void verificarSiExisteBitacoraPosterior(IMongoDatabase database)
         {
-            // Agrego BitacoraDeOperaciones a egreso
-
-            // Traigo la coleccion
             var coleccionBitacoraDeOperaciones = database.GetCollection<BitacoraDeOperaciones>("coleccionBitacoraDeOperaciones");
             var listaBitacoras = coleccionBitacoraDeOperaciones.Find(bitacora => bitacora.ID != null).ToList();
             GeneradorDeLogs.bitacora = listaBitacoras[0];
-            GeneradorDeLogs.bitacora = BitacoraDeOperaciones.GetInstance;
+        }
 
-            // Creo una BitacoraDeOperaciones y la inserto
+        public void traerBitacora(IMongoDatabase database)
+        {
+            GeneradorDeLogs.bitacora = BitacoraDeOperaciones.GetInstance;
+            var coleccionBitacoraDeOperaciones = database.GetCollection<BitacoraDeOperaciones>("coleccionBitacoraDeOperaciones");
             coleccionBitacoraDeOperaciones.InsertOne(GeneradorDeLogs.bitacora);
         }
 
-        public static void mostrarBandejaDeMensajesDeEgreso(IMongoDatabase database, Egreso egreso)
+        public void registrarBitacoraDeOperaciones(IMongoDatabase database)
+        {
+            // Agrego BitacoraDeOperaciones a egreso
+            
+            var listaDocumentos = database.ListCollections();
+
+            // Traigo la coleccion
+            if (listaDocumentos.FirstOrDefault() == null)
+            {
+                traerBitacora(database);
+            }
+            else
+            {
+                verificarSiExisteBitacoraPosterior(database);
+            }
+
+            // Creo una BitacoraDeOperaciones y la inserto
+
+        }
+
+        public void mostrarBandejaDeMensajesDeEgreso(IMongoDatabase database, Egreso egreso)
         {
 
             var coleccionBandejaDeMensajes = database.GetCollection<BsonDocument>("coleccionBandejaDeMensajes");
-            var filter = Builders<BsonDocument>.Filter.Eq(bandeja => bandeja["revisor"]["nombre"], egreso.bandejaDeMensajes.revisor.nombre);//Where(bandeja => bandeja.revisor.nombre == egreso.bandejaDeMensajes.revisor.nombre);
-            var bandejaDeMensajes = coleccionBandejaDeMensajes.Find<BsonDocument>(filter).ToList();//(bandeja => bandeja.revisor.nombre == egreso.bandejaDeMensajes.revisor.nombre).ToList();
+            var filter = Builders<BsonDocument>.Filter.Eq(bandeja => bandeja["revisor"]["nombre"], egreso.bandejaDeMensajes.revisor.nombre);
+            var bandejaDeMensajes = coleccionBandejaDeMensajes.Find<BsonDocument>(filter).ToList();
 
             String listado = bandejaDeMensajes[0]["mensajes"].ToString();
 
             Console.WriteLine(listado);
         }
 
-        /*public static void agregarLogABitacora()
+        public void agregarLogABitacora(string log)
         {
-            var client = new MongoClient("mongodb://localhost:27017");
+            var client = new MongoClient();
 
             var database = client.GetDatabase("mydb");
 
-            GeneradorDeLogs.agregarLogABitacora($"Se ha creado un proyecto de financiamiento de id:{nuevo.id}");
+            registrarBitacoraDeOperaciones(database);
+
+            GeneradorDeLogs.agregarLogABitacora(log);
 
             actualizarBitacoraNoSQL(database, GeneradorDeLogs.bitacora.ID);
-        }*/
+        }
 
     }
 }
