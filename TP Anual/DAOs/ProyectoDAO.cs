@@ -87,6 +87,23 @@ namespace TP_Anual.DAOs
             return this;
         }
 
+        public void vincularEgresoConProyecto(int id_proyecto,int id_egreso)
+        {
+            using (var context = new BaseDeDatos())
+            {
+                var i = context.egresos.Single(ing => ing.id_egreso == id_egreso);
+
+                var p = context.proyectos.Single(pr => pr.id == id_proyecto);
+
+                i.proyecto = p;
+
+                context.SaveChanges();
+
+                MongoDB.getInstancia().agregarLogABitacora($"Se ha agregado un nuevo proyecto de id: {p.id} al egreso de id:{i.id_egreso} ");
+
+            }
+        }
+
         #endregion
     }
 }

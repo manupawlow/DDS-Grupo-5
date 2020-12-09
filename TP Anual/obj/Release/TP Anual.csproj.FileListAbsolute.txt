@@ -391,3 +391,100 @@ C:\Users\Family C\source\repos\DDS-Grupo-5-ultimate-2.0\TP Anual\obj\Release\TP 
 C:\Users\Family C\source\repos\DDS-Grupo-5-ultimate-2.0\TP Anual\obj\Release\TP Anual.csproj.CopyComplete
 C:\Users\Family C\source\repos\DDS-Grupo-5-ultimate-2.0\TP Anual\obj\Release\TP Anual.exe
 C:\Users\Family C\source\repos\DDS-Grupo-5-ultimate-2.0\TP Anual\obj\Release\TP Anual.pdb
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\mongocrypt.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\snappy32.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\snappy64.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\libzstd.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\TP Anual.exe.config
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\TP Anual.exe
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\TP Anual.pdb
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\BouncyCastle.Crypto.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\DnsClient.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\EntityFramework.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\Google.Protobuf.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\K4os.Compression.LZ4.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\K4os.Compression.LZ4.Legacy.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\K4os.Compression.LZ4.Streams.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\K4os.Hash.xxHash.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\Microsoft.Data.SqlClient.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\Microsoft.Identity.Client.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\Microsoft.IdentityModel.Logging.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\MongoDB.Bson.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\MongoDB.Driver.Core.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\MongoDB.Driver.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\MongoDB.Libmongocrypt.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\MySql.Data.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\MySql.Data.Entity.EF6.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\Newtonsoft.Json.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\Quartz.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\Renci.SshNet.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\RestSharp.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\SharpCompress.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\System.Buffers.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\System.Memory.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\System.Net.Http.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\System.Numerics.Vectors.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\System.Security.Cryptography.Algorithms.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\System.Security.Cryptography.Encoding.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\System.Security.Cryptography.Primitives.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\Ubiety.Dns.Core.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\Zstandard.Net.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\System.Runtime.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\DnsClient.xml
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\EntityFramework.xml
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\Google.Protobuf.pdb
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\Google.Protobuf.xml
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\K4os.Compression.LZ4.xml
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\K4os.Compression.LZ4.Legacy.xml
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\K4os.Compression.LZ4.Streams.xml
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\K4os.Hash.xxHash.xml
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\Microsoft.Data.SqlClient.pdb
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\Microsoft.Data.SqlClient.xml
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\Microsoft.Identity.Client.xml
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\Microsoft.IdentityModel.JsonWebTokens.xml
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\Microsoft.IdentityModel.Logging.xml
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\Microsoft.IdentityModel.Protocols.xml
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\Microsoft.IdentityModel.Protocols.OpenIdConnect.xml
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\Microsoft.IdentityModel.Tokens.xml
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\MongoDB.Bson.xml
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\MongoDB.Driver.xml
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\MongoDB.Driver.Core.xml
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\MySql.Data.xml
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\MySql.Data.Entity.EF6.xml
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\Newtonsoft.Json.xml
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\Quartz.pdb
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\Quartz.xml
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\Renci.SshNet.xml
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\RestSharp.xml
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\System.Buffers.xml
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\System.Diagnostics.DiagnosticSource.xml
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\System.Memory.xml
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\System.Numerics.Vectors.xml
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\de\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\es\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\fr\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\it\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\ja\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\ko\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\pt-BR\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\ru\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\zh-Hans\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\bin\Release\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\obj\Release\TP Anual.csprojAssemblyReference.cache
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\obj\Release\TP Anual.csproj.CoreCompileInputs.cache
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\obj\Release\TP Anual.csproj.CopyComplete
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\obj\Release\TP Anual.exe
+C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\obj\Release\TP Anual.pdb

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Driver;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -50,26 +51,26 @@ namespace TP_Anual.DAOs
             }
         }
 
-        public Egreso Add(Egreso e)
-        {
-            using (var context = new BaseDeDatos())
-            {
-                context.egresos.Add(e);
-                context.SaveChanges();
-                return e;
-            }
-        }
+        //public Egreso Add(Egreso e)
+        //{
+        //    using (var context = new BaseDeDatos())
+        //    {
+        //        context.egresos.Add(e);
+        //        context.SaveChanges();
+        //        return e;
+        //    }
+        //}
 
-        public Egreso agregarItemPorEgreso(Egreso e, ItemPorEgreso i)
-        {
-            using (var context = new BaseDeDatos())
-            {
-                //getEgresoById(id).items.Add(i);
-                e.items.Add(i);
-                context.SaveChanges();
-                return e;
-            }
-        }
+        //public Egreso agregarItemPorEgreso(Egreso e, ItemPorEgreso i)
+        //{
+        //    using (var context = new BaseDeDatos())
+        //    {
+        //        //getEgresoById(id).items.Add(i);
+        //        e.items.Add(i);
+        //        context.SaveChanges();
+        //        return e;
+        //    }
+        //}
 
 
         public EgresoDAO cargarEgreso(string revisor, int cantPresup, string[] items = null, string[] cantidades = null)
@@ -86,6 +87,13 @@ namespace TP_Anual.DAOs
                 context.egresos.Add(nuevo);
                 context.SaveChanges();
 
+                nuevo.bandejaDeMensajes.id_egreso = nuevo.id_egreso;
+
+                var client = new MongoClient(/*"mongodb+srv://disenio2020:pepepepe@cluster0.unla6.mongodb.net/disenio2020?retryWrites=true&w=majority"*/);
+                var database = client.GetDatabase("mydb");
+                MongoDB.getInstancia().registrarBandejaDeMensajes(database, user, nuevo);
+                MongoDB.getInstancia().agregarLogABitacora($"Se ha creado un egreso de id:{nuevo.id_egreso}");
+
                 try
                 {
                     if(items != null && cantidades != null)
@@ -96,6 +104,8 @@ namespace TP_Anual.DAOs
                             item.descripcion = items[i];
                             context.items.Add(item);
                             context.SaveChanges();
+
+                            MongoDB.getInstancia().agregarLogABitacora($"Se ha agregado un item de id:{item.id_item} al egreso de id:{nuevo.id_egreso}");
 
                             //ItemDAO.getInstancia().AddItemPorEgreso(ie);
                             ItemPorEgreso ie = new ItemPorEgreso();
@@ -113,6 +123,32 @@ namespace TP_Anual.DAOs
             }
 
             return this;
+        }
+
+        public void validarEgreso(int id_egreso)
+        {
+            using (var context = new BaseDeDatos())
+            {
+                var egreso = context.egresos
+                    .Include("items")
+                    .Include("presupuestos")
+                    .Include("proyecto")
+                    .Single(e => e.id_egreso == id_egreso);
+
+                egreso.criterioDeSeleccion = new MenorValor();
+
+                var client = new MongoClient(/*"mongodb+srv://disenio2020:pepepepe@cluster0.unla6.mongodb.net/disenio2020?retryWrites=true&w=majority"*/);
+                var database = client.GetDatabase("mydb");
+                var coleccionBandejaDeMensajes = database.GetCollection<BandejaDeMensajes>("coleccionBandejaDeMensajes");
+                var listaBandeja = coleccionBandejaDeMensajes.Find(bandeja => bandeja.id_egreso == egreso.id_egreso).ToList();
+                egreso.bandejaDeMensajes = listaBandeja[0];
+
+                ValidadorDeEgreso.egresoValido(egreso);
+
+                MongoDB.getInstancia().actualizarBandejaDeMensajesNoSQL(database, egreso);
+
+                context.SaveChanges();
+            }
         }
         #endregion
 

@@ -56,6 +56,8 @@ namespace TP_Anual.DAOs
             {
                 context.proveedores.Add(e);
                 context.SaveChanges();
+
+                MongoDB.getInstancia().agregarLogABitacora($"Se ha creado un proveedor de id:{e.id_prov}");
             }
             return this;
         }

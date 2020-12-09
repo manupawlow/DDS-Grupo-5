@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using MongoDB.Driver;
 
 namespace TP_Anual.Egresos
 {
@@ -36,7 +37,9 @@ namespace TP_Anual.Egresos
 
         public Presupuesto presupuestoElegido;
 
-        public ProyectoDeFinanciamiento proyecto;
+        [Column("id_proyecto")]
+        public int id_proyecto { get; set; }
+        public ProyectoDeFinanciamiento proyecto { get; set; }
 
         public List<Presupuesto> presupuestos { get; set; }
 
@@ -78,6 +81,9 @@ namespace TP_Anual.Egresos
             valorTotal = Presupuesto.valor_total;
         }
 
-
+        public string mostrarBandejaDeMensajes()
+        {
+            return MongoDB.getInstancia().mostrarBandejaDeMensajesDeEgreso(this);
+        }
     }
 }

@@ -11,7 +11,7 @@ using TP_Anual.Administrador_Inicio_Sesion;
 
 namespace TP_Anual
 {
-    class MongoDB
+    public class MongoDB
     {
         public static MongoDB instancia = null;
 
@@ -33,7 +33,7 @@ namespace TP_Anual
             return instancia;
         }
 
-        public void actualizarBaseDeDatosNoSQL(IMongoDatabase database, Egreso egreso)
+        public void actualizarBandejaDeMensajesNoSQL(IMongoDatabase database, Egreso egreso)
         {
             // Construyo filtro de busqueda
             var builder = Builders<BandejaDeMensajes>.Filter;
@@ -55,14 +55,14 @@ namespace TP_Anual
         public void registrarBandejaDeMensajes(IMongoDatabase database, Usuario revisor, Egreso egreso)
         {
             // Agrego bandeja de mensajes a egreso
-            egreso.bandejaDeMensajes = new BandejaDeMensajes(revisor);
+            //egreso.bandejaDeMensajes = new BandejaDeMensajes(revisor);
 
             // Traigo la coleccion
             var coleccionBandejaDeMensajes = database.GetCollection<BandejaDeMensajes>("coleccionBandejaDeMensajes");
 
             // Creo una bandeja de mensajes y la inserto
-            var bandejaDeMensajes = new BandejaDeMensajes(revisor);
-            coleccionBandejaDeMensajes.InsertOne(bandejaDeMensajes);
+            //var bandejaDeMensajes = new BandejaDeMensajes(revisor);
+            coleccionBandejaDeMensajes.InsertOne(egreso.bandejaDeMensajes);
         }
 
         public void actualizarBitacoraNoSQL(IMongoDatabase database, ObjectId bitacoraID)
@@ -98,42 +98,56 @@ namespace TP_Anual
             coleccionBitacoraDeOperaciones.InsertOne(GeneradorDeLogs.bitacora);
         }
 
+        public bool verificarSiContieneColeccion(List<string> lista,string coleccion)
+        {
+            for(int i = 0; i < lista.Count(); i++)
+            {
+                if (lista[i] == coleccion)
+                    return true;
+            }
+            return false;
+        }
+
         public void registrarBitacoraDeOperaciones(IMongoDatabase database)
         {
             // Agrego BitacoraDeOperaciones a egreso
-            
-            var listaDocumentos = database.ListCollections();
+
+            var listaDocumentos = database.ListCollectionNames().ToList();
 
             // Traigo la coleccion
-            if (listaDocumentos.FirstOrDefault() == null)
+            if (verificarSiContieneColeccion(listaDocumentos,"coleccionBitacoraDeOperaciones"))
             {
-                traerBitacora(database);
+                verificarSiExisteBitacoraPosterior(database);
             }
             else
             {
-                verificarSiExisteBitacoraPosterior(database);
+                traerBitacora(database);
             }
 
             // Creo una BitacoraDeOperaciones y la inserto
 
         }
 
-        public void mostrarBandejaDeMensajesDeEgreso(IMongoDatabase database, Egreso egreso)
+        public string mostrarBandejaDeMensajesDeEgreso(Egreso egreso)
         {
+            var client = new MongoClient();
+            var database = client.GetDatabase("mydb");
 
-            var coleccionBandejaDeMensajes = database.GetCollection<BsonDocument>("coleccionBandejaDeMensajes");
-            var filter = Builders<BsonDocument>.Filter.Eq(bandeja => bandeja["revisor"]["nombre"], egreso.bandejaDeMensajes.revisor.nombre);
-            var bandejaDeMensajes = coleccionBandejaDeMensajes.Find<BsonDocument>(filter).ToList();
+            var coleccionBandejaDeMensajes = database.GetCollection<BandejaDeMensajes>("coleccionBandejaDeMensajes");
+            var filter = Builders<BandejaDeMensajes>.Filter.Eq(bandeja => bandeja.id_egreso, egreso.bandejaDeMensajes.id_egreso);
+            var bandejaDeMensajes = coleccionBandejaDeMensajes.Find<BandejaDeMensajes>(filter).ToList();
 
-            String listado = bandejaDeMensajes[0]["mensajes"].ToString();
+            //var listado = bandejaDeMensajes[0]["mensajes"].ToString();
 
-            Console.WriteLine(listado);
+            //Console.WriteLine(listado);
+
+            return bandejaDeMensajes[0].mensajes;
         }
 
         public void agregarLogABitacora(string log)
         {
-            var client = new MongoClient();
 
+            var client = new MongoClient(/*"mongodb+srv://disenio2020:pepepepe@cluster0.unla6.mongodb.net/disenio2020?retryWrites=true&w=majority"*/);
             var database = client.GetDatabase("mydb");
 
             registrarBitacoraDeOperaciones(database);
@@ -142,6 +156,5 @@ namespace TP_Anual
 
             actualizarBitacoraNoSQL(database, GeneradorDeLogs.bitacora.ID);
         }
-
     }
 }

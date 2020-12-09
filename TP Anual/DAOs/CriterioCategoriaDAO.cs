@@ -68,6 +68,8 @@ namespace TP_Anual.DAOs
             {
                 context.criterios_por_item.Add(e);
                 context.SaveChanges();
+
+                MongoDB.getInstancia().agregarLogABitacora($"Se ha creado un criterio_por_item de id:{e.id_crit_por_item}");
             }
             return this;
         }

@@ -49,6 +49,8 @@ namespace TP_Anual.DAOs
             {
                 context.ingresos.Add(e);
                 context.SaveChanges();
+
+                MongoDB.getInstancia().agregarLogABitacora($"Se ha creado un ingreso de id:{e.id_ingreso}");
             }
             return this;
         }
@@ -63,6 +65,7 @@ namespace TP_Anual.DAOs
                 new FechaPrimerEgreso().vincular(ingresos, egresos);
                 
                 context.SaveChanges();
+
             }
             return this;
 

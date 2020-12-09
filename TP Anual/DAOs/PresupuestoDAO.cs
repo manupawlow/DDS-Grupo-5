@@ -48,6 +48,8 @@ namespace TP_Anual.DAOs
             {
                 context.presupuestos.Add(e);
                 context.SaveChanges();
+
+                MongoDB.getInstancia().agregarLogABitacora($"Se ha creado un presupuesto de id:{e.id_presupuesto}");
             }
             return this;
         }
@@ -77,6 +79,8 @@ namespace TP_Anual.DAOs
                 context.presupuestos.Add(nuevo);
                 context.SaveChanges();
 
+                MongoDB.getInstancia().agregarLogABitacora($"Se ha agregado un presupuesto de id:{nuevo.id_presupuesto} al egreso de id:{egreso.id_egreso}");
+
                 try
                 {
 
@@ -87,6 +91,8 @@ namespace TP_Anual.DAOs
                         item.descripcion = items[i];
                         context.items.Add(item);
                         context.SaveChanges();
+
+                        MongoDB.getInstancia().agregarLogABitacora($"Se ha agregado un item de id:{item.id_item} al presupuesto de id:{nuevo.id_egreso}");
 
                         //ItemDAO.getInstancia().AddItemPorEgreso(ie);
                         ItemPorPresupuesto ip = new ItemPorPresupuesto();
@@ -127,6 +133,8 @@ namespace TP_Anual.DAOs
                 egreso.valorTotal = presupuesto.valor_total;
 
                 context.SaveChanges();
+
+                MongoDB.getInstancia().agregarLogABitacora($"Se ha seleccionado un proveedorElegido de id:{egreso.proveedorElegido.id_prov} al egreso de id:{egreso.id_egreso}");
             }
             return this;
         }

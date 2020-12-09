@@ -86,6 +86,8 @@ namespace TP_Anual.DAOs
             {
                 context.items.Add(i);
                 context.SaveChanges();
+
+                MongoDB.getInstancia().agregarLogABitacora($"Se ha creado un item de id:{i.id_item}");
             }
             return this;
         }

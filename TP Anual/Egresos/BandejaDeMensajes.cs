@@ -13,7 +13,10 @@ namespace TP_Anual.Egresos
         public ObjectId ID { get; set; }
 
         [BsonElement("mensajes")]
-        string mensajes { get; set; }
+        public string mensajes { get; set; }
+
+        [BsonElement("id_egreso")]
+        public int id_egreso { get; set; }
 
         [BsonElement("revisor")]
         public Usuario revisor { get; set; }

@@ -69,15 +69,25 @@ namespace TpAnualWeb.Controllers
             var egreso = EgresoDAO.getInstancia().getEgresoById(id_egreso);
             ViewBag.mostrar = "BANDEJA DE MENSAJES";
 
-            ViewBag.msg = "No existe el egreso";
+            //ViewBag.msg = "No existe el egreso";
 
             //TODO: ver como agarrar la bandeja de mensajes de un egreso con genaro
-            if (Session["UserName"].ToString() == egreso.bandejaDeMensajes.revisor.nombre)
-                ViewBag.msg = "No esta configurado como revisor de la bandeja de mensajes";
+            //if (Session["UserName"].ToString() != egreso.bandejaDeMensajes.revisor.nombre)
+            //    ViewBag.msg = "No esta configurado como revisor de la bandeja de mensajes";
 
             ViewBag.bandeja = egreso.bandejaDeMensajes;
 
+            ViewBag.mensajes = egreso.mostrarBandejaDeMensajes();
+
             return View("Mostrar");
+        }
+
+        [HttpPost]
+        public ActionResult ValidarEgreso(int id_egreso)
+        {
+            EgresoDAO.getInstancia().validarEgreso(id_egreso);
+
+            return View("Index");
         }
         #endregion
 
@@ -198,6 +208,14 @@ namespace TpAnualWeb.Controllers
         public ActionResult VincularIngresoConProyecto(int id_ingreso, int id_proyecto)
         {
             ProyectoDAO.getInstancia().vincularIngresoConProyecto(id_proyecto, id_ingreso);
+
+            return View("Index");
+        }
+
+        [HttpPost]
+        public ActionResult VincularEgresoConProyecto(int id_egreso, int id_proyecto)
+        {
+            ProyectoDAO.getInstancia().vincularEgresoConProyecto(id_proyecto, id_egreso);
 
             return View("Index");
         }

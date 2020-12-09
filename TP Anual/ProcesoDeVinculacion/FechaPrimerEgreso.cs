@@ -24,6 +24,7 @@ namespace TP_Anual.ProcesoDeVinculacion
 					if (this.cumplirCondiciones(ingreso, egresosFinal[i]))
 					{
 						asociar(ingreso, egresosFinal[i]);
+						MongoDB.getInstancia().agregarLogABitacora($"Se ha asociado el ingreso de id:{ingreso.id_ingreso} al egreso de id:{egresosFinal[i].id_egreso}");
 						i++;
 					}
 				}

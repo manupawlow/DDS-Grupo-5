@@ -113,6 +113,20 @@
                     </div>
 
                     <h6></h6>
+                    <button onclick="myFunction(6)" target="_blank" class="button button2">Validar Egreso</button>
+                    <div id="6" style="display:none;">
+
+                        @using (Html.BeginForm("ValidarEgreso", "Home", FormMethod.Post))
+                        {
+                            <p>
+                                <input type="number" name="id_egreso" placeholder="Egreso ID" class="button button3">
+                                <input type="submit" value="Validar Egreso" class="button button3">
+                            </p>
+                        }
+
+                    </div>
+
+                    <h6></h6>
                     <button onclick="myFunction(4)" target="_blank" class="button button2">Bandeja de Mensajes de Egreso</button>
                     <div id="4" style="display:none;">
 
@@ -280,6 +294,19 @@
                         @using (Html.BeginForm("VincularIngresoConProyecto", "Home", FormMethod.Post))
                         {
                             <input type="number" name="id_ingreso" placeholder="ID Ingreso" class="button button3">
+                            <input type="number" name="id_proyecto" placeholder="ID Proyecto" class="button button3">
+                            <input type="submit" value="Vincular" class="button button3">
+                        }
+
+                    </div>
+
+
+                    <p></p>
+                    <button onclick="myFunction(34)" target="_blank" class="button button2">Vincular egreso a proyecto:</button>
+                    <div id="34" style="display:none;">
+                        @using (Html.BeginForm("VincularEgresoConProyecto", "Home", FormMethod.Post))
+                        {
+                            <input type="number" name="id_egreso" placeholder="ID Egreso" class="button button3">
                             <input type="number" name="id_proyecto" placeholder="ID Proyecto" class="button button3">
                             <input type="submit" value="Vincular" class="button button3">
                         }
