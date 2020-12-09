@@ -87,10 +87,12 @@ namespace TP_Anual
         public static void registrarBitacoraDeOperaciones(IMongoDatabase database)
         {
             // Agrego BitacoraDeOperaciones a egreso
-            GeneradorDeLogs.bitacora = BitacoraDeOperaciones.GetInstance;
 
             // Traigo la coleccion
             var coleccionBitacoraDeOperaciones = database.GetCollection<BitacoraDeOperaciones>("coleccionBitacoraDeOperaciones");
+            var listaBitacoras = coleccionBitacoraDeOperaciones.Find(bitacora => bitacora.ID != null).ToList();
+            GeneradorDeLogs.bitacora = listaBitacoras[0];
+            GeneradorDeLogs.bitacora = BitacoraDeOperaciones.GetInstance;
 
             // Creo una BitacoraDeOperaciones y la inserto
             coleccionBitacoraDeOperaciones.InsertOne(GeneradorDeLogs.bitacora);
@@ -107,6 +109,17 @@ namespace TP_Anual
 
             Console.WriteLine(listado);
         }
+
+        /*public static void agregarLogABitacora()
+        {
+            var client = new MongoClient("mongodb://localhost:27017");
+
+            var database = client.GetDatabase("mydb");
+
+            GeneradorDeLogs.agregarLogABitacora($"Se ha creado un proyecto de financiamiento de id:{nuevo.id}");
+
+            actualizarBitacoraNoSQL(database, GeneradorDeLogs.bitacora.ID);
+        }*/
 
     }
 }
