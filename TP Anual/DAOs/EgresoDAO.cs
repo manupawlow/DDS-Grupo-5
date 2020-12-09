@@ -150,6 +150,11 @@ namespace TP_Anual.DAOs
                 context.SaveChanges();
             }
         }
+
+        public string mostrarBandejaDeMensajes(Egreso egreso)
+        {
+            return MongoDB.getInstancia().mostrarBandejaDeMensajesDeEgreso(egreso);
+        }
         #endregion
 
 

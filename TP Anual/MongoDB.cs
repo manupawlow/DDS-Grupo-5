@@ -131,11 +131,13 @@ namespace TP_Anual
         public string mostrarBandejaDeMensajesDeEgreso(Egreso egreso)
         {
             var client = new MongoClient();
+            //var listaDatabases = client.ListDatabaseNames().ToList();
+            // var database = client.GetDatabase(listaDatabases[3]);
             var database = client.GetDatabase("mydb");
 
             var coleccionBandejaDeMensajes = database.GetCollection<BandejaDeMensajes>("coleccionBandejaDeMensajes");
-            var filter = Builders<BandejaDeMensajes>.Filter.Eq(bandeja => bandeja.id_egreso, egreso.bandejaDeMensajes.id_egreso);
-            var bandejaDeMensajes = coleccionBandejaDeMensajes.Find<BandejaDeMensajes>(filter).ToList();
+            //var filter = Builders<BandejaDeMensajes>.Filter.Eq(bandeja => bandeja.id_egreso, egreso.bandejaDeMensajes.id_egreso);
+            var bandejaDeMensajes = coleccionBandejaDeMensajes.Find(bandeja => bandeja.id_egreso == egreso.id_egreso).ToList();
 
             //var listado = bandejaDeMensajes[0]["mensajes"].ToString();
 
@@ -149,6 +151,7 @@ namespace TP_Anual
 
             var client = new MongoClient(/*"mongodb+srv://disenio2020:pepepepe@cluster0.unla6.mongodb.net/disenio2020?retryWrites=true&w=majority"*/);
             var database = client.GetDatabase("mydb");
+
 
             registrarBitacoraDeOperaciones(database);
 

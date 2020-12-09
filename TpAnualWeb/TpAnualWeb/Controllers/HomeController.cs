@@ -77,7 +77,7 @@ namespace TpAnualWeb.Controllers
 
             ViewBag.bandeja = egreso.bandejaDeMensajes;
 
-            ViewBag.mensajes = egreso.mostrarBandejaDeMensajes();
+            ViewBag.mensajes = EgresoDAO.getInstancia().mostrarBandejaDeMensajes(egreso);
 
             return View("Mostrar");
         }
