@@ -24,6 +24,7 @@ CREATE TABLE IF NOT EXISTS egreso(
 #    id_bandeja INT NOT NULL,
     id_ingreso INT NULL,
     id_documento_comercial INT NULL,
+    id_proyecto INT NULL,
     
     PRIMARY KEY(id_egreso)
 )ENGINE=INNODB;
