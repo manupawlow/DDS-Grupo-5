@@ -30,7 +30,7 @@ namespace TP_Anual.DAOs
         #region Funciones
         public ProyectoDAO cargarProyecto(int cant, int monto, string usuario)
         {
-            using (var context = new BaseDeDatos())
+            using (var context = new MySql())
             {
                 var u = context.usuarios.Single(us => us.nombre == usuario);
 
@@ -50,7 +50,7 @@ namespace TP_Anual.DAOs
 
         public ProyectoDAO vincularIngresoConProyecto(int id_proyecto, int id_ingreso)
         {
-            using (var context = new BaseDeDatos())
+            using (var context = new MySql())
             {
                 var i = context.ingresos.Single(ing => ing.id_ingreso == id_ingreso);
                 
@@ -71,7 +71,7 @@ namespace TP_Anual.DAOs
 
         public ProyectoDAO bajaProyecto(int id_proyecto)
         {
-            using (var context = new BaseDeDatos())
+            using (var context = new MySql())
             {
                 var p = context.proyectos.Single(pr => pr.id == id_proyecto);
 
@@ -89,7 +89,7 @@ namespace TP_Anual.DAOs
 
         public void vincularEgresoConProyecto(int id_proyecto,int id_egreso)
         {
-            using (var context = new BaseDeDatos())
+            using (var context = new MySql())
             {
                 var i = context.egresos.Single(ing => ing.id_egreso == id_egreso);
 

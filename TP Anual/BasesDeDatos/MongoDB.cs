@@ -15,7 +15,7 @@ namespace TP_Anual
     {
         public static MongoDB instancia = null;
 
-        private MongoDB() 
+        private MongoDB()
         {
             //BsonClassMap.RegisterClassMap<BandejaDeMensajes>();
             //BsonClassMap.RegisterClassMap<Log>();
@@ -98,9 +98,9 @@ namespace TP_Anual
             coleccionBitacoraDeOperaciones.InsertOne(GeneradorDeLogs.bitacora);
         }
 
-        public bool verificarSiContieneColeccion(List<string> lista,string coleccion)
+        public bool verificarSiContieneColeccion(List<string> lista, string coleccion)
         {
-            for(int i = 0; i < lista.Count(); i++)
+            for (int i = 0; i < lista.Count(); i++)
             {
                 if (lista[i] == coleccion)
                     return true;
@@ -115,7 +115,7 @@ namespace TP_Anual
             var listaDocumentos = database.ListCollectionNames().ToList();
 
             // Traigo la coleccion
-            if (verificarSiContieneColeccion(listaDocumentos,"coleccionBitacoraDeOperaciones"))
+            if (verificarSiContieneColeccion(listaDocumentos, "coleccionBitacoraDeOperaciones"))
             {
                 verificarSiExisteBitacoraPosterior(database);
             }

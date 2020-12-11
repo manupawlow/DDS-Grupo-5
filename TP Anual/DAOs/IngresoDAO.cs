@@ -29,7 +29,7 @@ namespace TP_Anual.DAOs
         #region Funciones
         public Ingreso getIngresoById(int id)
         {
-            using (var context = new BaseDeDatos())
+            using (var context = new MySql())
             {
                 return context.ingresos.Single(e => e.id_ingreso == id);
             }
@@ -37,7 +37,7 @@ namespace TP_Anual.DAOs
 
         public List<Ingreso> getAllIngreso()
         {
-            using (var context = new BaseDeDatos())
+            using (var context = new MySql())
             {
                 return context.ingresos.ToList<Ingreso>();
             }
@@ -45,7 +45,7 @@ namespace TP_Anual.DAOs
 
         public IngresoDAO Add(Ingreso e)
         {
-            using (var context = new BaseDeDatos())
+            using (var context = new MySql())
             {
                 context.ingresos.Add(e);
                 context.SaveChanges();
@@ -57,7 +57,7 @@ namespace TP_Anual.DAOs
 
         public IngresoDAO asociarFechaPrimerEgreso()
         {
-            using (var context = new BaseDeDatos())
+            using (var context = new MySql())
             {
                 var ingresos = context.ingresos.ToList<Ingreso>();
                 var egresos = context.egresos.ToList<Egreso>();
@@ -73,7 +73,7 @@ namespace TP_Anual.DAOs
 
         public IngresoDAO asociarValorPrimerEgreso()
         {
-            using (var context = new BaseDeDatos())
+            using (var context = new MySql())
             {
                 var ingresos = context.ingresos.ToList<Ingreso>();
                 var egresos = context.egresos.ToList<Egreso>();
@@ -88,7 +88,7 @@ namespace TP_Anual.DAOs
 
         public IngresoDAO asociarValorPrimerIngreso()
         {
-            using (var context = new BaseDeDatos())
+            using (var context = new MySql())
             {
                 var ingresos = context.ingresos.ToList<Ingreso>();
                 var egresos = context.egresos.ToList<Egreso>();

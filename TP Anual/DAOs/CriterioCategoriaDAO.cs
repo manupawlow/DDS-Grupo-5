@@ -28,7 +28,7 @@ namespace TP_Anual.DAOs
         #region Funciones
         public Criterio getCriterioByDescripcion(string descripcion)
         {
-            using (var context = new BaseDeDatos())
+            using (var context = new MySql())
             {
                 return context.criterios.Single(e => e.descripcion == descripcion);
             }
@@ -36,7 +36,7 @@ namespace TP_Anual.DAOs
 
         public Categoria getCategoriaByDescripcion(string descripcion)
         {
-            using (var context = new BaseDeDatos())
+            using (var context = new MySql())
             {
                 return context.categorias.Single(e => e.descripcion == descripcion);
             }
@@ -44,7 +44,7 @@ namespace TP_Anual.DAOs
 
         public CriterioCategoriaDAO AddCriterio(Criterio e)
         {
-            using (var context = new BaseDeDatos())
+            using (var context = new MySql())
             {
                 context.criterios.Add(e);
                 context.SaveChanges();
@@ -54,7 +54,7 @@ namespace TP_Anual.DAOs
 
         public CriterioCategoriaDAO AddCategoria(Categoria e)
         {
-            using (var context = new BaseDeDatos())
+            using (var context = new MySql())
             {
                 context.categorias.Add(e);
                 context.SaveChanges();
@@ -64,7 +64,7 @@ namespace TP_Anual.DAOs
 
         public CriterioCategoriaDAO AddCriterioPorItem(CriterioPorItem e)
         {
-            using (var context = new BaseDeDatos())
+            using (var context = new MySql())
             {
                 context.criterios_por_item.Add(e);
                 context.SaveChanges();

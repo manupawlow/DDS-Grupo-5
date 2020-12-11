@@ -610,3 +610,12 @@ C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TpAnualWeb\TpAnualWeb\bin\R
 C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TpAnualWeb\TpAnualWeb\bin\MongoDB.Driver.Core.xml
 C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TpAnualWeb\TpAnualWeb\bin\MySql.Data.xml
 C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TpAnualWeb\TpAnualWeb\obj\Release\TpAnualWeb.csproj.CopyComplete
+C:\Users\Matias\source\repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\MongoDB.Driver.dll
+C:\Users\Matias\source\repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\Quartz.dll
+C:\Users\Matias\source\repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\MongoDB.Driver.Core.dll
+C:\Users\Matias\source\repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\MongoDB.Libmongocrypt.dll
+C:\Users\Matias\source\repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\Matias\source\repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\MongoDB.Driver.xml
+C:\Users\Matias\source\repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\Quartz.pdb
+C:\Users\Matias\source\repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\Quartz.xml
+C:\Users\Matias\source\repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\MongoDB.Driver.Core.xml

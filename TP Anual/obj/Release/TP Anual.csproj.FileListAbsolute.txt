@@ -7,7 +7,6 @@ C:\Users\Matias\Source\Repos\DDS-Grupo-5\TP Anual\bin\Release\TP Anual.exe
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TP Anual\bin\Release\TP Anual.pdb
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TP Anual\bin\Release\EntityFramework.dll
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TP Anual\bin\Release\EntityFramework.SqlServer.dll
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TP Anual\bin\Release\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TP Anual\bin\Release\Microsoft.Identity.Client.dll
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TP Anual\bin\Release\MongoDB.Bson.dll
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TP Anual\bin\Release\MongoDB.Libmongocrypt.dll
@@ -23,7 +22,6 @@ C:\Users\Matias\Source\Repos\DDS-Grupo-5\TP Anual\bin\Release\System.Numerics.Ve
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TP Anual\bin\Release\System.Runtime.CompilerServices.Unsafe.dll
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TP Anual\bin\Release\EntityFramework.xml
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TP Anual\bin\Release\EntityFramework.SqlServer.xml
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TP Anual\bin\Release\Microsoft.Extensions.Logging.Abstractions.xml
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TP Anual\bin\Release\Microsoft.Identity.Client.xml
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TP Anual\bin\Release\MongoDB.Bson.xml
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TP Anual\bin\Release\MySql.Data.xml
@@ -40,8 +38,6 @@ C:\Users\Matias\Source\Repos\DDS-Grupo-5\TP Anual\obj\Release\TP Anual.csproj.Co
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TP Anual\obj\Release\TP Anual.csproj.CopyComplete
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TP Anual\obj\Release\TP Anual.exe
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TP Anual\obj\Release\TP Anual.pdb
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TP Anual\obj\Release\TP Anual.exe.config
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TP Anual\bin\Release\System.IO.dll
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TP Anual\bin\Release\System.Net.Http.dll
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TP Anual\bin\Release\System.Runtime.dll
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TP Anual\bin\Release\System.Runtime.InteropServices.RuntimeInformation.dll
@@ -488,3 +484,53 @@ C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\obj\Release\TP Anu
 C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\obj\Release\TP Anual.csproj.CopyComplete
 C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\obj\Release\TP Anual.exe
 C:\Users\Family C\source\repos\DDS-Grupo-5-copiarrrr\TP Anual\obj\Release\TP Anual.pdb
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\BouncyCastle.Crypto.dll
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\DnsClient.dll
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\Google.Protobuf.dll
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\K4os.Compression.LZ4.dll
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\K4os.Compression.LZ4.Legacy.dll
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\K4os.Compression.LZ4.Streams.dll
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\K4os.Hash.xxHash.dll
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\Microsoft.Data.SqlClient.dll
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\Microsoft.IdentityModel.Logging.dll
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\MongoDB.Driver.Core.dll
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\MongoDB.Driver.dll
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\Quartz.dll
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\Renci.SshNet.dll
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\Ubiety.Dns.Core.dll
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\Zstandard.Net.dll
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\DnsClient.xml
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\Google.Protobuf.pdb
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\Google.Protobuf.xml
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\K4os.Compression.LZ4.xml
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\K4os.Compression.LZ4.Legacy.xml
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\K4os.Compression.LZ4.Streams.xml
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\K4os.Hash.xxHash.xml
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\Microsoft.Data.SqlClient.pdb
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\Microsoft.Data.SqlClient.xml
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\Microsoft.IdentityModel.JsonWebTokens.xml
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\Microsoft.IdentityModel.Logging.xml
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\Microsoft.IdentityModel.Protocols.xml
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\Microsoft.IdentityModel.Protocols.OpenIdConnect.xml
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\Microsoft.IdentityModel.Tokens.xml
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\MongoDB.Driver.xml
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\MongoDB.Driver.Core.xml
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\Quartz.pdb
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\Quartz.xml
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\Renci.SshNet.xml
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\de\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\es\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\fr\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\it\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\ja\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\ko\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\pt-BR\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\ru\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\zh-Hans\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\zh-Hant\Microsoft.Data.SqlClient.resources.dll

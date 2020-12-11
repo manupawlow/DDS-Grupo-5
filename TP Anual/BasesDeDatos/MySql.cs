@@ -10,7 +10,7 @@ using TP_Anual.Administrador_Inicio_Sesion;
 namespace TP_Anual
 {
     [DbConfigurationType(typeof(MySqlEFConfiguration))]
-    public class BaseDeDatos : DbContext
+    public class MySql : DbContext
     {
         public DbSet<Egreso> egresos { get; set; }
         public DbSet<Ingreso> ingresos { get; set; }
@@ -21,7 +21,7 @@ namespace TP_Anual
         public DbSet<Criterio> criterios { get; set; }
         public DbSet<CriterioPorItem> criterios_por_item { get; set; }
         public DbSet<DocumentoComercial> documentos { get; set; }
-        public DbSet<EntidadBase> entidades_base  { get; set; }
+        public DbSet<EntidadBase> entidades_base { get; set; }
         public DbSet<EntidadJuridica> entidades_juridicas { get; set; }
         public DbSet<ItemPorPresupuesto> items_por_presupuesto { get; set; }
         public DbSet<ItemPorEgreso> items_por_egreso { get; set; }
@@ -30,11 +30,11 @@ namespace TP_Anual
         public DbSet<ProyectoDeFinanciamiento> proyectos { get; set; }
 
 
-        public BaseDeDatos() : base("dbConn")
+        public MySql() : base("dbConn")
         {
 
             // Deshabilita la inicializacion mágica del ORM
-            Database.SetInitializer<BaseDeDatos>(null);
+            Database.SetInitializer<MySql>(null);
 
         }
 
@@ -155,7 +155,7 @@ namespace TP_Anual
             modelBuilder.Entity<EntidadJuridica>()
                 .Property(j => j.promedioVentasAnuales)
                 .HasColumnName("promedio_ventas_anuales");
-           
+
 
             modelBuilder.Entity<EntidadBase>()
                 .Property(b => b.actividad)
@@ -178,7 +178,7 @@ namespace TP_Anual
                 .HasRequired<EntidadJuridica>(b => b.entidad_juridica)
                 .WithMany(j => j.entidades_base)
                 .HasForeignKey(b => b.id_juridica);
-            
+
 
             modelBuilder.Entity<TipoOrganizacion>()
                 .Map<MedianaTramo2>(m => m.Requires("discriminador").HasValue("Mediana Tramo - 2"))

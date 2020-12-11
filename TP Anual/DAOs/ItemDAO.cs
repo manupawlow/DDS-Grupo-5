@@ -28,7 +28,7 @@ namespace TP_Anual.DAOs
         #region Funciones
         public Item getItemByDescripcion(string descripcion)
         {
-            using (var context = new BaseDeDatos())
+            using (var context = new MySql())
             {
                 //TODO: Si no existe el item que lo cree en la BD
                 //return context.items.Single(i => i.descripcion == descripcion);
@@ -61,7 +61,7 @@ namespace TP_Anual.DAOs
 
         public ItemDAO AddItemPorEgreso(ItemPorEgreso i)
         {
-            using (var context = new BaseDeDatos())
+            using (var context = new MySql())
             {
                 //Cuando entra un nuevo item me lo carga dos veces aca ?)
                 context.items_por_egreso.Add(i);
@@ -72,7 +72,7 @@ namespace TP_Anual.DAOs
 
         public ItemDAO AddItemPorPresupuesto(ItemPorPresupuesto p)
         {
-            using (var context = new BaseDeDatos())
+            using (var context = new MySql())
             {
                 context.items_por_presupuesto.Add(p);
                 context.SaveChanges();
@@ -82,7 +82,7 @@ namespace TP_Anual.DAOs
 
         public ItemDAO AddItem(Item i)
         {
-            using (var context = new BaseDeDatos())
+            using (var context = new MySql())
             {
                 context.items.Add(i);
                 context.SaveChanges();
@@ -94,14 +94,14 @@ namespace TP_Anual.DAOs
 
         public List<ItemPorEgreso> getItemsDeEgreso(int id_egreso)
         {
-            using (var context = new BaseDeDatos())
+            using (var context = new MySql())
             {
                 return context.items_por_egreso.Where(i => i.id_egreso == id_egreso).ToList<ItemPorEgreso>();
             }
         }
         public List<ItemPorPresupuesto> getItemsPorPresupuesto(int id_presupuesto)
         {
-            using (var context = new BaseDeDatos())
+            using (var context = new MySql())
             {
                 return context.items_por_presupuesto.Where(i => i.id_presupuesto == id_presupuesto).ToList<ItemPorPresupuesto>();
             }

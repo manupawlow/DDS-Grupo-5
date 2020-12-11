@@ -28,7 +28,7 @@ namespace TP_Anual.DAOs
         #region Funciones
         public Presupuesto getPresupuestoById(int id)
         {
-            using (var context = new BaseDeDatos())
+            using (var context = new MySql())
             {
                 return context.presupuestos.Single(e => e.id_presupuesto == id);
             }
@@ -36,7 +36,7 @@ namespace TP_Anual.DAOs
 
         public List<Presupuesto> getAllPresupuesto()
         {
-            using (var context = new BaseDeDatos())
+            using (var context = new MySql())
             {
                 return context.presupuestos.ToList<Presupuesto>();
             }
@@ -44,7 +44,7 @@ namespace TP_Anual.DAOs
 
         public PresupuestoDAO Add(Presupuesto e)
         {
-            using (var context = new BaseDeDatos())
+            using (var context = new MySql())
             {
                 context.presupuestos.Add(e);
                 context.SaveChanges();
@@ -56,7 +56,7 @@ namespace TP_Anual.DAOs
 
         public PresupuestoDAO CalcularTotal(Presupuesto p)
         {
-            using (var context = new BaseDeDatos())
+            using (var context = new MySql())
             {
                 p.calcular_total();
                 context.SaveChanges();
@@ -66,7 +66,7 @@ namespace TP_Anual.DAOs
 
         public PresupuestoDAO cargarPresupuesto(int id_egreso, string CUIT, string[] items, string[] cantidades, string[] precios)
         {
-            using (var context = new BaseDeDatos())
+            using (var context = new MySql())
             {
 
                 var egreso = context.egresos.First(e => e.id_egreso == id_egreso);
@@ -119,7 +119,7 @@ namespace TP_Anual.DAOs
 
         public PresupuestoDAO elegirPresupuesto(int id_egreso, int id_presupuesto)
         {
-            using (var context = new BaseDeDatos())
+            using (var context = new MySql())
             {
                 var egreso = context.egresos
                                         .Include("items")

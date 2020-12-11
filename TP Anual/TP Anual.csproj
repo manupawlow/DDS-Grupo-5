@@ -195,7 +195,8 @@
     <Compile Include="APImercadolibre\Moneda.cs" />
     <Compile Include="APImercadolibre\Pais.cs" />
     <Compile Include="APImercadolibre\Provincia.cs" />
-    <Compile Include="BaseDeDatos.cs" />
+    <Compile Include="BasesDeDatos\MongoDB.cs" />
+    <Compile Include="BasesDeDatos\MySql.cs" />
     <Compile Include="DAOs\CriterioCategoriaDAO.cs" />
     <Compile Include="DAOs\EgresoDAO.cs" />
     <Compile Include="DAOs\IngresoDAO.cs" />
@@ -226,7 +227,6 @@
     <Compile Include="Egresos\SeleccionDePresupuestos\ICriterioDeSeleccion.cs" />
     <Compile Include="Egresos\SeleccionDePresupuestos\MenorValor.cs" />
     <Compile Include="Egresos\ValidadorDeEgreso.cs" />
-    <Compile Include="MongoDB.cs" />
     <Compile Include="Organizaciones\AsignarCategoria.cs" />
     <Compile Include="Organizaciones\DireccionPostal.cs" />
     <Compile Include="Organizaciones\Empresa.cs" />

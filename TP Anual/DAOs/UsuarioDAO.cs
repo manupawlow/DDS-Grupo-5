@@ -29,7 +29,7 @@ namespace TP_Anual.DAOs
         #region FUNCIONES
         public UsuarioDAO Add(Usuario user)
         {
-            using (var context = new BaseDeDatos())
+            using (var context = new MySql())
             {
                 context.usuarios.Add(user);
                 context.SaveChanges();
@@ -41,7 +41,7 @@ namespace TP_Anual.DAOs
 
         public Usuario getUsuarioById(int id)
         {
-            using (var context = new BaseDeDatos())
+            using (var context = new MySql())
             {
                 return context.usuarios.Single(p => p.id == id);
             }
@@ -49,7 +49,7 @@ namespace TP_Anual.DAOs
 
         public Usuario getUsuarioByUserName(string username)
         {
-            using (var context = new BaseDeDatos())
+            using (var context = new MySql())
             {
                 return context.usuarios.SingleOrDefault(p => p.nombre == username);
             }

@@ -27,8 +27,6 @@ namespace TP_Anual.Organizaciones
         public string tipo;
         public List<Egreso> egresos = new List<Egreso>();
         public List<Ingreso> ingresos = new List<Ingreso>();
-        public List<Egreso> egresosPrueba = new List<Egreso>();
-        public List<Ingreso> ingresosPrueba = new List<Ingreso>();
         public Vinculacion procesoDeVinculacion;
         public int criterio;
         public List<Condicion> condiciones = new List<Condicion>();
@@ -43,7 +41,7 @@ namespace TP_Anual.Organizaciones
         public void AsignarTipoOrganizacion()
         {
 
-            using( var context = new BaseDeDatos() ){
+            using( var context = new MySql() ){
                 tipoOrganizacion = AsignarCategoria.Asignar(this);               
                 context.tipos_organizacion.Add(tipoOrganizacion);
                 context.SaveChanges();
@@ -111,17 +109,17 @@ namespace TP_Anual.Organizaciones
                 case 1:
                     procesoDeVinculacion = new ValorPrimerEgreso();
                     procesoDeVinculacion.condiciones = condiciones;
-                    procesoDeVinculacion.vincular(ingresosPrueba, egresosPrueba);
+                    procesoDeVinculacion.vincular(ingresos, egresos);
                     break;
                 case 2:
                     procesoDeVinculacion = new ValorPrimerIngreso();
                     procesoDeVinculacion.condiciones = condiciones;
-                    procesoDeVinculacion.vincular(ingresosPrueba, egresosPrueba);
+                    procesoDeVinculacion.vincular(ingresos, egresos);
                     break;
                 case 3:
                     procesoDeVinculacion = new FechaPrimerEgreso();
                     procesoDeVinculacion.condiciones = condiciones;
-                    procesoDeVinculacion.vincular(ingresosPrueba, egresosPrueba);
+                    procesoDeVinculacion.vincular(ingresos, egresos);
                     break;
                 case 4:
                     int continuar = 1;

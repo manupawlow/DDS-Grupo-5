@@ -28,7 +28,7 @@ namespace TP_Anual.DAOs
         #region Funciones
         public Proveedor getProveedorById(int id)
         {
-            using (var context = new BaseDeDatos())
+            using (var context = new MySql())
             {
                 return context.proveedores.Single(e => e.id_prov == id);
             }
@@ -36,7 +36,7 @@ namespace TP_Anual.DAOs
 
         public Proveedor getProveedorByCUIT(string CUIT)
         {
-            using (var context = new BaseDeDatos())
+            using (var context = new MySql())
             {
                 return context.proveedores.First(e => e.CUIT == CUIT);
             }
@@ -44,7 +44,7 @@ namespace TP_Anual.DAOs
 
         public List<Proveedor> getAllProveedor()
         {
-            using (var context = new BaseDeDatos())
+            using (var context = new MySql())
             {
                 return context.proveedores.ToList<Proveedor>();
             }
@@ -52,7 +52,7 @@ namespace TP_Anual.DAOs
 
         public ProveedorDAO Add(Proveedor e)
         {
-            using (var context = new BaseDeDatos())
+            using (var context = new MySql())
             {
                 context.proveedores.Add(e);
                 context.SaveChanges();

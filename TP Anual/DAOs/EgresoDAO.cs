@@ -29,7 +29,7 @@ namespace TP_Anual.DAOs
         #region Funciones
         public Egreso getEgresoById(int id)
         {
-            using (var context = new BaseDeDatos())
+            using (var context = new MySql())
             {
                 return context.egresos
                     .Include("items")
@@ -40,7 +40,7 @@ namespace TP_Anual.DAOs
 
         public List<Egreso> getAllEgreso()
         {
-            using (var context = new BaseDeDatos())
+            using (var context = new MySql())
             {
                 return context.egresos
                     .Include("items")
@@ -53,7 +53,7 @@ namespace TP_Anual.DAOs
 
         //public Egreso Add(Egreso e)
         //{
-        //    using (var context = new BaseDeDatos())
+        //    using (var context = new MySql())
         //    {
         //        context.egresos.Add(e);
         //        context.SaveChanges();
@@ -63,7 +63,7 @@ namespace TP_Anual.DAOs
 
         //public Egreso agregarItemPorEgreso(Egreso e, ItemPorEgreso i)
         //{
-        //    using (var context = new BaseDeDatos())
+        //    using (var context = new MySql())
         //    {
         //        //getEgresoById(id).items.Add(i);
         //        e.items.Add(i);
@@ -75,7 +75,7 @@ namespace TP_Anual.DAOs
 
         public EgresoDAO cargarEgreso(string revisor, int cantPresup, string[] items = null, string[] cantidades = null)
         {
-            using (var context = new BaseDeDatos())
+            using (var context = new MySql())
             {
                 var user = UsuarioDAO.getInstancia().getUsuarioByUserName(revisor);
 
@@ -127,7 +127,7 @@ namespace TP_Anual.DAOs
 
         public void validarEgreso(int id_egreso)
         {
-            using (var context = new BaseDeDatos())
+            using (var context = new MySql())
             {
                 var egreso = context.egresos
                     .Include("items")
