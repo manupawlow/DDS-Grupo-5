@@ -3,6 +3,8 @@
     ViewBag.Title = "Mostrar";
 }
 
+@using TP_Anual;
+
 <!DOCTYPE html>
 <html lang="en">
 <meta name="viewport" content="width=device-width" />
@@ -71,30 +73,35 @@
                                     <p><b>PRESUPUESTOS REQUERIDOS: </b>@u.cantPresupuestos</p>
                                     if (@u.ingreso != null)
                                     {
-                                        <p><b>INGRESO VINCULADO: </b>@u.ingreso.id_ingreso</p>
+                                        <p><b>ID INGRESO VINCULADO: </b>@u.ingreso.id_ingreso</p>
                                     }
                                     if (@u.presupuestos != null)
                                     {
                                         <p><b>PRESUPUESTOS: </b>@u.presupuestos.Count</p>
                                     }
-                                    if (@u.medioDePago != null)
-                                    {
-                                        <p><b>MEDIO DE PAGO: </b>@u.medioDePago.nombre</p>
-                                    }
+
                                     if (@u.proveedorElegido != null)
                                     {
                                         <p><b>PROVEEDOR ELEGIDO: </b>@u.proveedorElegido.CUIT</p>
                                     }
 
 
-                                    <p><b>ITEMS: Descripcion | Cantidad | Precio</b></p>
-                                    foreach (var t in @u.items)
+                                    <p><b>ITEMS: Descripcion | Cantidad | Precio @u.items.Count</b></p>
+                                    
+                                    @*var a = TP_Anual.DAOs.ItemDAO.getInstancia().getItemsDeEgreso(u.id_egreso);
+                                    foreach (var i in a)
                                     {
-                                        <p>@t.item.descripcion | @t.cantidad | @t.valor</p>
+                                        <p>@i.item.descripcion | @i.cantidad | @i.valor </p>
                                     }
+                                        *@
+                                    @*foreach (var i in u.items)
+                                    {
+                                        <p>@i.item.descripcion | @i.cantidad | @i.valor </p>
+                                    }*@
 
-                                    <p><b>-----------------------------------------</b></p>
-                                }
+
+                                    < p >< b > -----------------------------------------</ b ></ p >
+                                            }
                             }
                             else
                             {
@@ -104,14 +111,10 @@
 
                         if (ViewBag.mostrar == "BANDEJA DE MENSAJES")
                         {
-                            if (ViewBag.bandeja != null)
-                            {
-                                //HABLAR CON GENARO PARA QUE MUESTRE TODO LO DE LA BANDEJA DE MENSAJES
-                            }
-                            else
-                            {
-                                <h2>@ViewBag.msg</h2>
-                            }
+                            //if (ViewBag.bandeja != null)
+                            //{
+                                <p>@ViewBag.mensajes</p>
+                            //}
                         }
 
                         if (ViewBag.mostrar == "INGRESOS")
@@ -132,6 +135,28 @@
                                 <p><h3>No hay ingresos actualmente</h3></p>
                             }
                         }
+
+                        if (ViewBag.mostrar == "PRESUPUESTOS DE EGRESO")
+                        {
+
+                            <p>ID EGRESO: @ViewBag.msg</p>
+
+                            if (ViewBag.presupuestos != null)
+                            {
+                                foreach (var p in ViewBag.presupuestos)
+                                {
+                                    <p><b>PRESUPUESTO ID: </b>@p.id_presupuesto</p>
+                                    <p><b>TOTAL: $</b>@p.valor_total</p>
+                                    //MOSTRAR ITEMS
+                                    <p><b>-----------------------------------------</b></p>
+                                }
+                            }
+                            else
+                            {
+                                <h2>NO TIENE PRESUPUETOS ASIGNADOS</h2>
+                            }
+                        }
+
                     }
 
 

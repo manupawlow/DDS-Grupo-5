@@ -141,7 +141,7 @@ $("#buscarIngreso").click(function () {
 
 
 
-$("#cargarProveedor").click(function () {
+$("#-cargarProveedor").click(function () {
 
     var CUIT = $("#CUIT").val();
     var razon = ParseInt($("#razon").val());

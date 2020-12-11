@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
   <parameter name="dbConn-Web.config Connection String" description="dbConn Cadena de conexión que usa la aplicación en web.config para obtener acceso a la base de datos." defaultValue="server=database-1.cicsy7iszpym.us-east-1.rds.amazonaws.com;port=3306;database=DDS_TP_ANUAL;uid=admin;password=pepepepe" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\Win10\\Desktop\\Repositorio\ DDS\\DDS-Grupo-5\\TpAnualWeb\\TpAnualWeb\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='dbConn']/@connectionString" />
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Matias\\source\\repos\\DDS-Grupo-5\\TpAnualWeb\\TpAnualWeb\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='dbConn']/@connectionString" />
   </parameter>
 </parameters>

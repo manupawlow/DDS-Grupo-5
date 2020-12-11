@@ -89,7 +89,7 @@ namespace TP_Anual.DAOs
 
                 nuevo.bandejaDeMensajes.id_egreso = nuevo.id_egreso;
 
-                var client = new MongoClient(/*"mongodb+srv://disenio2020:pepepepe@cluster0.unla6.mongodb.net/disenio2020?retryWrites=true&w=majority"*/);
+                var client = new MongoClient();
                 var database = client.GetDatabase("mydb");
                 MongoDB.getInstancia().registrarBandejaDeMensajes(database, user, nuevo);
                 MongoDB.getInstancia().agregarLogABitacora($"Se ha creado un egreso de id:{nuevo.id_egreso}");
@@ -137,7 +137,7 @@ namespace TP_Anual.DAOs
 
                 egreso.criterioDeSeleccion = new MenorValor();
 
-                var client = new MongoClient(/*"mongodb+srv://disenio2020:pepepepe@cluster0.unla6.mongodb.net/disenio2020?retryWrites=true&w=majority"*/);
+                var client = new MongoClient();
                 var database = client.GetDatabase("mydb");
                 var coleccionBandejaDeMensajes = database.GetCollection<BandejaDeMensajes>("coleccionBandejaDeMensajes");
                 var listaBandeja = coleccionBandejaDeMensajes.Find(bandeja => bandeja.id_egreso == egreso.id_egreso).ToList();

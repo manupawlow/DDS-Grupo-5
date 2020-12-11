@@ -34,7 +34,7 @@ namespace TP_Anual.DAOs
                 context.usuarios.Add(user);
                 context.SaveChanges();
 
-                MongoDB.getInstancia().agregarLogABitacora($"Se ha creado un usuario de id:{user.id}");
+                //MongoDB.getInstancia().agregarLogABitacora($"Se ha creado un usuario de id:{user.id}");
             }
             return this;
         }
