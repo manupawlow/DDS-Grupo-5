@@ -86,22 +86,10 @@
                                     }
 
 
-                                    <p><b>ITEMS: Descripcion | Cantidad | Precio @u.items.Count</b></p>
-                                    
-                                    @*var a = TP_Anual.DAOs.ItemDAO.getInstancia().getItemsDeEgreso(u.id_egreso);
-                                    foreach (var i in a)
-                                    {
-                                        <p>@i.item.descripcion | @i.cantidad | @i.valor </p>
-                                    }
-                                        *@
-                                    @*foreach (var i in u.items)
-                                    {
-                                        <p>@i.item.descripcion | @i.cantidad | @i.valor </p>
-                                    }*@
+                                    <p><b>CANTIDAD ITEMS: @u.items.Count</b></p>
 
-
-                                    < p >< b > -----------------------------------------</ b ></ p >
-                                            }
+                                    <p><b>-----------------------------------------</b></p>
+                                }
                             }
                             else
                             {
@@ -113,7 +101,7 @@
                         {
                             //if (ViewBag.bandeja != null)
                             //{
-                                <p>@ViewBag.mensajes</p>
+                            <p>@ViewBag.mensajes</p>
                             //}
                         }
 
@@ -154,6 +142,44 @@
                             else
                             {
                                 <h2>NO TIENE PRESUPUETOS ASIGNADOS</h2>
+                            }
+                        }
+
+
+                        if (ViewBag.mostrar == "EGRESO")
+                        {
+
+                            if (ViewBag.egreso != null)
+                            {
+                                <p><b>EGRESO ID: </b>@ViewBag.egreso.id_egreso</p>
+                                <p><b>FECHA: </b>@ViewBag.egreso.fecha</p>
+                                <p><b>DESCRIPCION: </b>@ViewBag.egreso.descripcion</p>
+                                <p><b>PRESUPUESTOS REQUERIDOS: </b>@ViewBag.egreso.cantPresupuestos</p>
+
+                                if (@ViewBag.egreso.ingreso != null)
+                                {
+                                    <p><b>ID INGRESO VINCULADO: </b>@ViewBag.egreso.ingreso.id_ingreso</p>
+                                }
+                                if (@ViewBag.egreso.presupuestos != null)
+                                {
+                                    <p><b>PRESUPUESTOS: </b>@ViewBag.egreso.presupuestos.Count</p>
+                                }
+
+                                if (@ViewBag.egreso.proveedorElegido != null)
+                                {
+                                    <p><b>PROVEEDOR ELEGIDO: </b>@ViewBag.egreso.proveedorElegido.CUIT</p>
+                                }
+
+                                foreach (var i in ViewBag.items)
+                                {
+                                    <p><b>ITEMS: DESCRIPCION | CANTIDAD </b></p>
+                                    <p><b>-</b>@i.item.descripcion | @@i.cantidad</p>
+                                }
+
+                            }
+                            else
+                            {
+                                <h2>NO EXISTE ESE EGRESO</h2>
                             }
                         }
 

@@ -25,12 +25,21 @@ namespace TpAnualWeb.Controllers
 
         #region Egresos
 
-        [HttpPost]
-        public JsonResult BuscarEgreso([FromBody] JsonEgreso jsonEgreso)
-        {
-            var egreso = EgresoDAO.getInstancia().getEgresoById(jsonEgreso.id_egreso);
+        //[HttpPost]
+        //public JsonResult BuscarEgreso([FromBody] JsonEgreso jsonEgreso)
+        //{
+        //    var egreso = EgresoDAO.getInstancia().getEgresoById(jsonEgreso.id_egreso);
 
-            return Json(JsonConvert.SerializeObject(egreso));
+        //    return Json(JsonConvert.SerializeObject(egreso));
+        //}
+
+        [HttpPost]
+        public ActionResult BuscarEgreso(int id_egreso)
+        {
+            ViewBag.mostrar = "EGRESO";
+            ViewBag.egreso = EgresoDAO.getInstancia().getEgresoById(id_egreso);
+            ViewBag.items = ItemDAO.getInstancia().getItemsDeEgreso(id_egreso);
+            return View("Mostrar");
         }
 
 
@@ -58,8 +67,7 @@ namespace TpAnualWeb.Controllers
         public ActionResult MostrarEgresos()
         {
             ViewBag.mostrar = "EGRESOS";
-            var a = EgresoDAO.getInstancia().getAllEgreso();
-            ViewBag.egresos = a;
+            ViewBag.egresos = EgresoDAO.getInstancia().getAllEgreso();
             return View("Mostrar");
         }
 
@@ -251,7 +259,31 @@ namespace TpAnualWeb.Controllers
             return Json(JsonConvert.SerializeObject(nuevo));
         }
 
+        [HttpPost]
+        public ActionResult CargarCriterio(string descripcion, int jerarquia)
+        {
+            var nuevo = new Criterio();
+            nuevo.descripcion = descripcion;
+            nuevo.jerarquia = jerarquia;
 
+            CriterioCategoriaDAO.getInstancia().AddCriterio(nuevo);
+
+            return View("Index");
+        }
+
+        [HttpPost]
+        public ActionResult CargarCategoria(string descripcionCat, string descripcionCrit)
+        {
+            var nuevo = new Categoria();
+            nuevo.descripcion = descripcionCat;
+
+            var criterio = CriterioCategoriaDAO.getInstancia().getCriterioByDescripcion(descripcionCrit);
+            nuevo.criterio = criterio;
+
+            CriterioCategoriaDAO.getInstancia().AddCategoria(nuevo);
+
+            return View("Index");
+        }
         #endregion
 
         #region Usuarios

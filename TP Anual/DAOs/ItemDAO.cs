@@ -96,7 +96,7 @@ namespace TP_Anual.DAOs
         {
             using (var context = new MySql())
             {
-                return context.items_por_egreso.Where(i => i.id_egreso == id_egreso).ToList<ItemPorEgreso>();
+                return context.items_por_egreso.Include("item").Where(i => i.id_egreso == id_egreso).ToList<ItemPorEgreso>();
             }
         }
         public List<ItemPorPresupuesto> getItemsPorPresupuesto(int id_presupuesto)

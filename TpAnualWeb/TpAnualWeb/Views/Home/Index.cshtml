@@ -74,12 +74,12 @@
 
                     <div id="1" style="display:none;">
                         <p>Busque egreso por id:</p>
-                        <div>
-                            <input type="text" id="id_egreso" placeholder="ID del egreso" class="button button3" />
-                            <button id="buscarEgreso" class="button button3">Buscar egreso</button>
+                        @using (Html.BeginForm("BuscarEgreso", "Home", FormMethod.Post))
+                        {
+                            <input type="number" id="id_egreso" placeholder="ID del egreso" class="button button3" />
+                            <input type="submit" value="Buscar egreso" class="button button3">
+                        }
 
-                            <div id="egresoInfo"></div>
-                        </div>
                         <p></p>
                         <p>Mostrar todos los egresos:</p>
                         <h4></h4>
@@ -154,9 +154,9 @@
                     <p class="lead">Seleccione una opcion:</p>
 
                     <h6></h6>
-                    <button onclick="myFunction(6)" target="_blank" class="button button2">Buscar Ingreso</button>
+                    <button onclick="myFunction(24)" target="_blank" class="button button2">Buscar Ingreso</button>
 
-                    <div id="6" style="display:none;">
+                    <div id="24" style="display:none;">
 
                         <input type="text" id="id_ingreso" placeholder="ID del ingreso" class="button button3" />
                         <button id="buscarIngreso" class="button button3">Buscar ingreso</button>
@@ -267,7 +267,7 @@
 
 
     
-    <section id="services">
+    <section id="services" class="bg-light">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto">
@@ -331,7 +331,7 @@
     </section>
 
 
-    <section id="registrar" class="bg-light">
+    <section id="registrar">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto">
@@ -350,7 +350,6 @@
                             <p><button id="registrarProveedor" class="button button3">Cargar proveedor</button></p>
                         }
 
-                        <div id="proveedorInfo"></div>
                     </div>
 
                     <h6></h6>
@@ -366,6 +365,34 @@
                         <div id="criterioInfo"></div>
 
                     </div>
+                    <h6></h6>
+
+                    <button onclick="myFunction(43)" target="_blank" class="button button2">Cargar criterio</button>
+                    <div id="43" style="display:none;">
+
+                        @using (Html.BeginForm("CargarCriterio", "Home", FormMethod.Post))
+                        {
+                            <p><input type="text" name="descripcion" placeholder="Descripcion" class="button button3"></p>
+                            <p><input type="number" name="jerarquia" placeholder="Jerarquia" class="button button3"></p>
+
+                            <p><input type="submit" value="Cargar criterio" class="button button3"></p>
+                        }
+                    </div>
+                    <h6></h6>
+
+                    <button onclick="myFunction(44)" target="_blank" class="button button2">Cargar categoria a criterio</button>
+                    <div id="44" style="display:none;">
+
+                        @using (Html.BeginForm("CargarCategoria", "Home", FormMethod.Post))
+                        {
+                            <p><input type="text" name="descripcionCat" placeholder="Descripcion categoria" class="button button3"></p>
+                            <p><input type="text" name="descripcionCrit" placeholder="Descripcion de criterio" class="button button3"></p>
+
+                            <p><input type="submit" value="Cargar categoria" class="button button3"></p>
+                        }
+                    </div>
+                    <h6></h6>
+
 
                 </div>
             </div>
@@ -373,7 +400,7 @@
     </section>
 
 
-    <section id="contact">
+    <section id="contact" class="bg-light">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto">
