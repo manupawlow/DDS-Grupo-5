@@ -124,6 +124,21 @@
                             }
                         }
 
+                        if (ViewBag.mostrar == "INGRESO")
+                        {
+                            if (ViewBag.ingreso != null)
+                            {
+                                <p><b>INGRESO ID: </b>@ViewBag.ingreso.id_ingreso</p>
+                                <p><b>DESCRIPCION: </b>@ViewBag.ingreso.descripcion</p>
+                                <p><b>TOTAL: </b>@ViewBag.ingreso.total</p>
+                                <p><b>EGRESOS ASIGNADOS: </b>@ViewBag.ingreso.egresos.Count</p>                        
+                            }
+                            else
+                            {
+                                <p><h3>No hay ingresos actualmente</h3></p>
+                            }
+                        }
+
                         if (ViewBag.mostrar == "PRESUPUESTOS DE EGRESO")
                         {
 
@@ -173,7 +188,7 @@
                                 foreach (var i in ViewBag.items)
                                 {
                                     <p><b>ITEMS: DESCRIPCION | CANTIDAD </b></p>
-                                    <p><b>-</b>@i.item.descripcion | @@i.cantidad</p>
+                                    <p><b>- </b>@i.item.descripcion | @i.cantidad</p>
                                 }
 
                             }

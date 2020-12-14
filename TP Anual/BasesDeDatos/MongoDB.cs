@@ -14,6 +14,7 @@ namespace TP_Anual
     public class MongoDB
     {
         public static MongoDB instancia = null;
+        public bool conectarMongo = false;
 
         private MongoDB()
         {
@@ -130,34 +131,48 @@ namespace TP_Anual
 
         public string mostrarBandejaDeMensajesDeEgreso(Egreso egreso)
         {
-            var client = new MongoClient();
+            
             //var listaDatabases = client.ListDatabaseNames().ToList();
             // var database = client.GetDatabase(listaDatabases[3]);
-            var database = client.GetDatabase("mydb");
+            if (conectarMongo)
+            {
+                var client = new MongoClient();
+                var database = client.GetDatabase("mydb");
 
-            var coleccionBandejaDeMensajes = database.GetCollection<BandejaDeMensajes>("coleccionBandejaDeMensajes");
-            //var filter = Builders<BandejaDeMensajes>.Filter.Eq(bandeja => bandeja.id_egreso, egreso.bandejaDeMensajes.id_egreso);
-            var bandejaDeMensajes = coleccionBandejaDeMensajes.Find(bandeja => bandeja.id_egreso == egreso.id_egreso).ToList();
+                var coleccionBandejaDeMensajes = database.GetCollection<BandejaDeMensajes>("coleccionBandejaDeMensajes");
+                //var filter = Builders<BandejaDeMensajes>.Filter.Eq(bandeja => bandeja.id_egreso, egreso.bandejaDeMensajes.id_egreso);
+                var bandejaDeMensajes = coleccionBandejaDeMensajes.Find(bandeja => bandeja.id_egreso == egreso.id_egreso).ToList();
 
-            //var listado = bandejaDeMensajes[0]["mensajes"].ToString();
+                //var listado = bandejaDeMensajes[0]["mensajes"].ToString();
 
-            //Console.WriteLine(listado);
+                //Console.WriteLine(listado);
 
-            return bandejaDeMensajes[0].mensajes;
+                return bandejaDeMensajes[0].mensajes;
+            }
+            else 
+            {
+                return "No se pudo acceder a MongoDB";
+            }
+
+           
         }
 
         public void agregarLogABitacora(string log)
-        {
+        { 
+            
+            if (conectarMongo) 
+            {
+                var client = new MongoClient(/*"mongodb+srv://disenio2020:pepepepe@cluster0.unla6.mongodb.net/disenio2020?retryWrites=true&w=majority"*/);
+                var database = client.GetDatabase("mydb");
 
-            var client = new MongoClient(/*"mongodb+srv://disenio2020:pepepepe@cluster0.unla6.mongodb.net/disenio2020?retryWrites=true&w=majority"*/);
-            var database = client.GetDatabase("mydb");
+                registrarBitacoraDeOperaciones(database);
 
+                GeneradorDeLogs.agregarLogABitacora(log);
 
-            registrarBitacoraDeOperaciones(database);
+                actualizarBitacoraNoSQL(database, GeneradorDeLogs.bitacora.ID);
+            }
 
-            GeneradorDeLogs.agregarLogABitacora(log);
-
-            actualizarBitacoraNoSQL(database, GeneradorDeLogs.bitacora.ID);
+            
         }
     }
 }

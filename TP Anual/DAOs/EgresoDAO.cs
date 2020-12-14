@@ -73,15 +73,16 @@ namespace TP_Anual.DAOs
         //}
 
 
-        public EgresoDAO cargarEgreso(string revisor, int cantPresup, string[] items = null, string[] cantidades = null)
+        public EgresoDAO cargarEgreso(string descripcion, string revisor, int cantPresup, string[] items = null, string[] cantidades = null)
         {
             using (var context = new MySql())
             {
                 var user = UsuarioDAO.getInstancia().getUsuarioByUserName(revisor);
 
                 Egreso nuevo = new Egreso();
-                nuevo.cantPresupuestos = 1;
+                nuevo.cantPresupuestos = cantPresup;
                 nuevo.fecha = DateTime.Today;
+                nuevo.descripcion = descripcion;
                 nuevo.bandejaDeMensajes = new BandejaDeMensajes(user);
 
                 context.egresos.Add(nuevo);
@@ -89,10 +90,13 @@ namespace TP_Anual.DAOs
 
                 nuevo.bandejaDeMensajes.id_egreso = nuevo.id_egreso;
 
-                var client = new MongoClient();
-                var database = client.GetDatabase("mydb");
-                MongoDB.getInstancia().registrarBandejaDeMensajes(database, user, nuevo);
-                MongoDB.getInstancia().agregarLogABitacora($"Se ha creado un egreso de id:{nuevo.id_egreso}");
+                if (MongoDB.getInstancia().conectarMongo)
+                {
+                    var client = new MongoClient();
+                    var database = client.GetDatabase("mydb");
+                    MongoDB.getInstancia().registrarBandejaDeMensajes(database, user, nuevo);
+                    MongoDB.getInstancia().agregarLogABitacora($"Se ha creado un egreso de id:{nuevo.id_egreso}");
+                }
 
                 try
                 {
@@ -129,25 +133,38 @@ namespace TP_Anual.DAOs
         {
             using (var context = new MySql())
             {
+
                 var egreso = context.egresos
+                    .Single(e => e.id_egreso == id_egreso);
+
+                if (egreso.id_proyecto != 0) 
+                {
+                     egreso = context.egresos
                     .Include("items")
                     .Include("presupuestos")
                     .Include("proyecto")
                     .Single(e => e.id_egreso == id_egreso);
 
-                egreso.criterioDeSeleccion = new MenorValor();
+                    egreso.criterioDeSeleccion = new MenorValor();
 
-                var client = new MongoClient();
-                var database = client.GetDatabase("mydb");
-                var coleccionBandejaDeMensajes = database.GetCollection<BandejaDeMensajes>("coleccionBandejaDeMensajes");
-                var listaBandeja = coleccionBandejaDeMensajes.Find(bandeja => bandeja.id_egreso == egreso.id_egreso).ToList();
-                egreso.bandejaDeMensajes = listaBandeja[0];
+                    if (MongoDB.getInstancia().conectarMongo)
+                    {
+                        var client = new MongoClient();
+                        var database = client.GetDatabase("mydb");
+                        var coleccionBandejaDeMensajes = database.GetCollection<BandejaDeMensajes>("coleccionBandejaDeMensajes");
+                        var listaBandeja = coleccionBandejaDeMensajes.Find(bandeja => bandeja.id_egreso == egreso.id_egreso).ToList();
+                        egreso.bandejaDeMensajes = listaBandeja[0];
 
-                ValidadorDeEgreso.egresoValido(egreso);
+                        ValidadorDeEgreso.egresoValido(egreso);
 
-                MongoDB.getInstancia().actualizarBandejaDeMensajesNoSQL(database, egreso);
+                        MongoDB.getInstancia().actualizarBandejaDeMensajesNoSQL(database, egreso);
 
-                context.SaveChanges();
+                    }
+
+                    context.SaveChanges();
+                }
+
+                
             }
         }
 

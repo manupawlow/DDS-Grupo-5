@@ -44,7 +44,7 @@ namespace TpAnualWeb.Controllers
 
 
         [HttpPost]
-        public ActionResult CargarEgreso(string revisor, int cantPresup, FormCollection inputs = null)
+        public ActionResult CargarEgreso(string descripcion, string revisor, int cantPresup, FormCollection inputs = null)
         {
             if(inputs["nuevoItem"] != null || inputs["cantidad"] != null)
             {
@@ -53,11 +53,11 @@ namespace TpAnualWeb.Controllers
 
                 //TODO: Siempre crea un nuevo item en la BD, hacer que se fije si ya existe ese item
 
-                EgresoDAO.getInstancia().cargarEgreso(revisor, cantPresup, items, cantidades);
+                EgresoDAO.getInstancia().cargarEgreso(descripcion, revisor, cantPresup, items, cantidades);
             }
             else
             {
-                EgresoDAO.getInstancia().cargarEgreso(revisor, cantPresup);
+                EgresoDAO.getInstancia().cargarEgreso(descripcion, revisor, cantPresup);
             }
 
             return View("Index");
@@ -112,10 +112,11 @@ namespace TpAnualWeb.Controllers
         }
 
         [HttpPost]
-        public JsonResult BuscarIngreso([FromBody] JsonEgreso jsonEgreso)
+        public ActionResult BuscarIngreso(int id_ingreso)
         {
-            var egreso = EgresoDAO.getInstancia().getEgresoById(jsonEgreso.id_egreso);
-            return Json(JsonConvert.SerializeObject(egreso));
+            ViewBag.mostrar = "INGRESO";
+            ViewBag.ingreso = IngresoDAO.getInstancia().getIngresoById(id_ingreso);
+            return View("Mostrar");
         }
 
         [HttpPost]

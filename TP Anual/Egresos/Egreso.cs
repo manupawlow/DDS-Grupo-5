@@ -50,7 +50,8 @@ namespace TP_Anual.Egresos
         [Column("valor_total")]
         public int valorTotal { get; set; }
 
-        public string descripcion;
+        [Column("descripcion")]
+        public string descripcion { get; set; }
 
         //Agregado para ORM
         [Column("id_entidad_base")]
