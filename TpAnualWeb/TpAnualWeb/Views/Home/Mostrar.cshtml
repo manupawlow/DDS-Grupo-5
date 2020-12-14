@@ -60,6 +60,8 @@
                     @{
                         <h2>@ViewBag.mostrar</h2>
 
+                        //<---------------------------------EGRESOS--------------------------------->
+
                         if (ViewBag.mostrar == "EGRESOS")
                         {
                             if (ViewBag.egresos != null)
@@ -97,70 +99,6 @@
                             }
                         }
 
-                        if (ViewBag.mostrar == "BANDEJA DE MENSAJES")
-                        {
-                            //if (ViewBag.bandeja != null)
-                            //{
-                            <p>@ViewBag.mensajes</p>
-                            //}
-                        }
-
-                        if (ViewBag.mostrar == "INGRESOS")
-                        {
-                            if (ViewBag.ingresos != null)
-                            {
-                                foreach (var i in ViewBag.ingresos)
-                                {
-                                    <p><b>INGRESO ID: </b>@i.id_ingreso</p>
-                                    <p><b>DESCRIPCION: </b>@i.descripcion</p>
-                                    <p><b>TOTAL: </b>@i.total</p>
-                                    <p><b>EGRESOS ASIGNADOS: </b>@i.egresos.Count</p>
-                                    <p><b>-----------------------------------------</b></p>
-                                }
-                            }
-                            else
-                            {
-                                <p><h3>No hay ingresos actualmente</h3></p>
-                            }
-                        }
-
-                        if (ViewBag.mostrar == "INGRESO")
-                        {
-                            if (ViewBag.ingreso != null)
-                            {
-                                <p><b>INGRESO ID: </b>@ViewBag.ingreso.id_ingreso</p>
-                                <p><b>DESCRIPCION: </b>@ViewBag.ingreso.descripcion</p>
-                                <p><b>TOTAL: </b>@ViewBag.ingreso.total</p>
-                                <p><b>EGRESOS ASIGNADOS: </b>@ViewBag.ingreso.egresos.Count</p>                        
-                            }
-                            else
-                            {
-                                <p><h3>No hay ingresos actualmente</h3></p>
-                            }
-                        }
-
-                        if (ViewBag.mostrar == "PRESUPUESTOS DE EGRESO")
-                        {
-
-                            <p>ID EGRESO: @ViewBag.msg</p>
-
-                            if (ViewBag.presupuestos != null)
-                            {
-                                foreach (var p in ViewBag.presupuestos)
-                                {
-                                    <p><b>PRESUPUESTO ID: </b>@p.id_presupuesto</p>
-                                    <p><b>TOTAL: $</b>@p.valor_total</p>
-                                    //MOSTRAR ITEMS
-                                    <p><b>-----------------------------------------</b></p>
-                                }
-                            }
-                            else
-                            {
-                                <h2>NO TIENE PRESUPUETOS ASIGNADOS</h2>
-                            }
-                        }
-
-
                         if (ViewBag.mostrar == "EGRESO")
                         {
 
@@ -197,6 +135,111 @@
                                 <h2>NO EXISTE ESE EGRESO</h2>
                             }
                         }
+
+                        if (ViewBag.mostrar == "BANDEJA DE MENSAJES")
+                        {
+                            //if (ViewBag.bandeja != null)
+                            //{
+                            <p>@ViewBag.mensajes</p>
+                            //}
+                        }
+
+                        //<---------------------------------INGRESOS--------------------------------->
+
+                        if (ViewBag.mostrar == "INGRESOS")
+                        {
+                            if (ViewBag.ingresos != null)
+                            {
+                                foreach (var i in ViewBag.ingresos)
+                                {
+                                    <p><b>INGRESO ID: </b>@i.id_ingreso</p>
+                                    <p><b>DESCRIPCION: </b>@i.descripcion</p>
+                                    <p><b>TOTAL: </b>@i.total</p>
+                                    <p><b>EGRESOS ASIGNADOS: </b>@i.egresos.Count</p>
+                                    <p><b>-----------------------------------------</b></p>
+                                }
+                            }
+                            else
+                            {
+                                <p><h3>No hay ingresos actualmente</h3></p>
+                            }
+                        }
+
+                        if (ViewBag.mostrar == "INGRESO")
+                        {
+                            if (ViewBag.ingreso != null)
+                            {
+                                <p><b>INGRESO ID: </b>@ViewBag.ingreso.id_ingreso</p>
+                                <p><b>DESCRIPCION: </b>@ViewBag.ingreso.descripcion</p>
+                                <p><b>TOTAL: </b>@ViewBag.ingreso.total</p>
+                                <p><b>EGRESOS ASIGNADOS: </b>@ViewBag.ingreso.egresos.Count</p>
+                            }
+                            else
+                            {
+                                <p><h3>No hay ingresos actualmente</h3></p>
+                            }
+                        }
+
+                        //<---------------------------------PRESUPUESTOS--------------------------------->
+
+                        if (ViewBag.mostrar == "PRESUPUESTOS")
+                        {
+                            if (ViewBag.presupuestos != null)
+                            {
+
+                                foreach (var u in ViewBag.presupuestos)
+                                {
+                                    <p><b>PRESUPUESTO ID: </b>@u.id_presupuesto</p>
+                                    <p><b>TOTAL: $</b>@u.valor_total</p>
+                                    <p><b>EGRESO ID: </b>@u.id_egreso</p>
+                                    <p><b>-----------------------------------------</b></p>
+                                }
+                            }
+                            else
+                            {
+                                <p><h3>No hay presupuestos actualmente</h3></p>
+                            }
+                        }
+
+                        if (ViewBag.mostrar == "PRESUPUESTO")
+                        {
+
+                            if (ViewBag.presupuesto != null)
+                            {
+                                <p><b>PRESUPUESTO ID: </b>@ViewBag.presupuesto.id_presupuesto</p>
+                                <p><b>TOTAL: $</b>@ViewBag.presupuesto.valor_total</p>
+                                <p><b>EGRESO ID: </b>@ViewBag.presupuesto.id_egreso</p>
+                                foreach (var i in ViewBag.items)
+                                {
+                                    <p><b>ITEMS: DESCRIPCION | CANTIDAD | PRECIO </b></p>
+                                    <p><b>- </b>@i.item.descripcion | @i.cantidad | @i.valor</p>
+                                }
+                            }
+                            else
+                            {
+                                <h2>NO EXISTE EL PRESUPUESTO</h2>
+                            }
+                        }
+
+                        if (ViewBag.mostrar == "PRESUPUESTOS DE EGRESO")
+                        {
+                            if (ViewBag.presupuestos != null)
+                            {
+
+                                foreach (var u in ViewBag.presupuestos)
+                                {
+                                    <p><b>PRESUPUESTO ID: </b>@u.id_presupuesto</p>
+                                    <p><b>TOTAL: $</b>@u.valor_total</p>
+                                    <p><b>EGRESO ID: </b>@u.id_egreso</p>
+                                    <p><b>-----------------------------------------</b></p>
+                                }
+                            }
+                            else
+                            {
+                                <p><h3>El egreso no tiene presupuestos</h3></p>
+                            }
+                        }
+
 
                     }
 

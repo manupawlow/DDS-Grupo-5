@@ -184,11 +184,27 @@ namespace TpAnualWeb.Controllers
         }
 
         [HttpPost]
-        public ActionResult MostrarPresupuestosDeEgreso(int id_egreso)
+        public ActionResult MostrarPresupuestos()
+        {
+            ViewBag.mostrar = "PRESUPUESTOS";
+            ViewBag.presupuestos = PresupuestoDAO.getInstancia().getAllPresupuesto();
+            return View("Mostrar");
+        }
+
+        [HttpPost]
+        public ActionResult MostrarPresupuestoConItems(int id_presupuesto)
+        {
+            ViewBag.mostrar = "PRESUPUESTO";
+            ViewBag.presupuesto = PresupuestoDAO.getInstancia().getPresupuestoById(id_presupuesto);
+            ViewBag.items = ItemDAO.getInstancia().getItemsPorPresupuesto(id_presupuesto);
+            return View("Mostrar");
+        }
+
+        [HttpPost]
+        public ActionResult MostrarPresupuestosPorEgreso(int id_egreso)
         {
             ViewBag.mostrar = "PRESUPUESTOS DE EGRESO";
-            var a = EgresoDAO.getInstancia().getEgresoById(id_egreso).presupuestos;
-            ViewBag.presupuestos = a;
+            ViewBag.presupuestos = EgresoDAO.getInstancia().getEgresoById(id_egreso).presupuestos;
             ViewBag.msg = id_egreso;
             return View("Mostrar");
         }

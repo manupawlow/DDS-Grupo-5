@@ -103,7 +103,7 @@ namespace TP_Anual.DAOs
         {
             using (var context = new MySql())
             {
-                return context.items_por_presupuesto.Where(i => i.id_presupuesto == id_presupuesto).ToList<ItemPorPresupuesto>();
+                return context.items_por_presupuesto.Include("item").Where(i => i.id_presupuesto == id_presupuesto).ToList<ItemPorPresupuesto>();
             }
         }
 
