@@ -30,7 +30,14 @@ namespace TP_Anual.DAOs
         {
             using (var context = new MySql())
             {
-                return context.proveedores.Single(e => e.id_prov == id);
+                try
+                {
+                    return context.proveedores.Single(e => e.id_prov == id);
+                }
+                catch (InvalidOperationException)
+                {
+                    return null;
+                }
             }
         }
 
@@ -38,7 +45,15 @@ namespace TP_Anual.DAOs
         {
             using (var context = new MySql())
             {
-                return context.proveedores.First(e => e.CUIT == CUIT);
+                try
+                {
+                    return context.proveedores.First(e => e.CUIT == CUIT);
+                }
+                catch (InvalidOperationException)
+                {
+                    return null;
+                }
+
             }
         }
 

@@ -31,7 +31,14 @@ namespace TP_Anual.DAOs
         {
             using (var context = new MySql())
             {
-                return context.ingresos.Single(e => e.id_ingreso == id);
+                try 
+                { 
+                    return context.ingresos.Single(e => e.id_ingreso == id);
+                }
+                catch (InvalidOperationException)
+                {
+                    return null;
+                }
             }
         }
 

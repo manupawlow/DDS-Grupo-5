@@ -22,46 +22,60 @@ namespace TpAnualWeb.Controllers
             return View();
         }
 
-
         #region Egresos
 
-        //[HttpPost]
-        //public JsonResult BuscarEgreso([FromBody] JsonEgreso jsonEgreso)
-        //{
-        //    var egreso = EgresoDAO.getInstancia().getEgresoById(jsonEgreso.id_egreso);
-
-        //    return Json(JsonConvert.SerializeObject(egreso));
-        //}
-
         [HttpPost]
-        public ActionResult BuscarEgreso(int id_egreso)
+        public ActionResult BuscarEgreso(int id_egreso = -1)
         {
-            ViewBag.mostrar = "EGRESO";
-            ViewBag.egreso = EgresoDAO.getInstancia().getEgresoById(id_egreso);
-            ViewBag.items = ItemDAO.getInstancia().getItemsDeEgreso(id_egreso);
+            if(id_egreso == -1)
+            {
+                ViewBag.mostrar = "ERROR";
+                ViewBag.error = "Debe ingresar un egreso";
+
+                return View("Mostrar");
+            }
+            else
+            {
+                ViewBag.mostrar = "EGRESO";
+                ViewBag.egreso = EgresoDAO.getInstancia().getEgresoById(id_egreso);
+                ViewBag.items = ItemDAO.getInstancia().getItemsDeEgreso(id_egreso);
             
-            return View("Mostrar");
+                return View("Mostrar");
+            }
+            
         }
 
 
         [HttpPost]
-        public ActionResult CargarEgreso(string descripcion, string revisor, int cantPresup, FormCollection inputs = null)
+        public ActionResult CargarEgreso(string descripcion = "", string revisor = "", int cantPresup = -1, FormCollection inputs = null)
         {
-            if(inputs["nuevoItem"] != null || inputs["cantidad"] != null)
+            if (descripcion == "" || revisor == "" || cantPresup == -1)
             {
-                var items = inputs["nuevoItem"].Split(',');
-                var cantidades = inputs["cantidad"].Split(',');
+                ViewBag.mostrar = "ERROR";
+                ViewBag.error = "Debe completar todos los campos";
 
-                //TODO: Siempre crea un nuevo item en la BD, hacer que se fije si ya existe ese item
-
-                EgresoDAO.getInstancia().cargarEgreso(descripcion, revisor, cantPresup, items, cantidades);
+                return View("Mostrar");
             }
             else
             {
-                EgresoDAO.getInstancia().cargarEgreso(descripcion, revisor, cantPresup);
+                if (inputs["nuevoItem"] != null || inputs["cantidad"] != null)
+                {
+                    var items = inputs["nuevoItem"].Split(',');
+                    var cantidades = inputs["cantidad"].Split(',');
+
+                    //TODO: Siempre crea un nuevo item en la BD, hacer que se fije si ya existe ese item
+
+                    EgresoDAO.getInstancia().cargarEgreso(descripcion, revisor, cantPresup, items, cantidades);
+                }
+                else
+                {
+                    EgresoDAO.getInstancia().cargarEgreso(descripcion, revisor, cantPresup);
+                }
+
+                return View("Index");
             }
 
-            return View("Index");
+            
         }
 
         [HttpPost]
@@ -85,73 +99,116 @@ namespace TpAnualWeb.Controllers
         }
 
         [HttpPost]
-        public ActionResult BandejaDeMensajesDeEgreso(int id_egreso)
+        public ActionResult BandejaDeMensajesDeEgreso(int id_egreso = -1)
         {
-            var egreso = EgresoDAO.getInstancia().getEgresoById(id_egreso);
-            
-            if (egreso != null)
+
+            if (id_egreso == -1)
             {
-                ViewBag.mostrar = "BANDEJA DE MENSAJES";
-                ViewBag.bandeja = egreso.bandejaDeMensajes;
-                ViewBag.mensajes = MongoDB.getInstancia().mostrarBandejaDeMensajesDeEgreso(egreso);
+                ViewBag.mostrar = "ERROR";
+                ViewBag.error = "Debe ingresar un egreso";
 
                 return View("Mostrar");
             }
             else
             {
+                var egreso = EgresoDAO.getInstancia().getEgresoById(id_egreso);
+            
+                if (egreso != null)
+                {
+                    ViewBag.mostrar = "BANDEJA DE MENSAJES";
+                    ViewBag.bandeja = egreso.bandejaDeMensajes;
+                    ViewBag.mensajes = MongoDB.getInstancia().mostrarBandejaDeMensajesDeEgreso(egreso);
+
+                    return View("Mostrar");
+                }
+                else
+                {
                 ViewBag.mostrar = "ERROR";
                 ViewBag.error = "No existe el egreso";
 
                 return View("Mostrar");
+                }
+                
             }
+
             
         }
 
         [HttpPost]
-        public ActionResult ValidarEgreso(int id_egreso)
+        public ActionResult ValidarEgreso(int id_egreso = -1)
         {
-            try
-            {
-                ViewBag.mostrar = "VALIDACION";
-                if (EgresoDAO.getInstancia().validarEgreso(id_egreso)) 
-                {
-                    ViewBag.validacion = "El egreso fue validado correctamente, para ver resultados ver bandeja de mensajes";
-                }
-                else 
-                {
-                    ViewBag.validacion = "El egreso fallo la validacion, para ver resultados ver bandeja de mensajes";
-                }
-
-            }
-            catch (InvalidOperationException)
+            if(id_egreso == -1)
             {
                 ViewBag.mostrar = "ERROR";
-                ViewBag.error = "No existe el egreso ingresado";
-            }
-            
+                ViewBag.error = "Debe ingresar un egreso";
 
-            return View("Mostrar");
+                return View("Mostrar");
+            }
+            else
+            {
+                try
+                {
+                    ViewBag.mostrar = "VALIDACION";
+                    if (EgresoDAO.getInstancia().validarEgreso(id_egreso))
+                    {
+                        ViewBag.validacion = "El egreso fue validado correctamente, para ver resultados ver bandeja de mensajes";
+                    }
+                    else
+                    {
+                        ViewBag.validacion = "El egreso fallo la validacion, para ver resultados ver bandeja de mensajes";
+                    }
+
+                }
+                catch (InvalidOperationException)
+                {
+                    ViewBag.mostrar = "ERROR";
+                    ViewBag.error = "No existe el egreso ingresado";
+                }
+
+                return View("Mostrar");
+            }
+
         }
         #endregion
 
         #region Ingresos
 
         [HttpPost]
-        public ActionResult CargarIngreso(string descripcion, int total)
+        public ActionResult CargarIngreso(string descripcion = "", int total = -1)
         {
-            Ingreso nuevo = new Ingreso(descripcion, total);
+            if (total == -1 || descripcion == "")
+            {
+                ViewBag.mostrar = "ERROR";
+                ViewBag.error = "Debe completar todos los campos";
 
-            IngresoDAO.getInstancia().Add(nuevo);
+                return View("Mostrar");
+            }
+            else
+            {
+                Ingreso nuevo = new Ingreso(descripcion, total);
+                IngresoDAO.getInstancia().Add(nuevo);
 
-            return View("Index");
+                return View("Index");
+            }
         }
 
         [HttpPost]
-        public ActionResult BuscarIngreso(int id_ingreso)
+        public ActionResult BuscarIngreso(int id_ingreso = -1)
         {
-            ViewBag.mostrar = "INGRESO";
-            ViewBag.ingreso = IngresoDAO.getInstancia().getIngresoById(id_ingreso);
-            return View("Mostrar");
+            if (id_ingreso == -1)
+            {
+                ViewBag.mostrar = "ERROR";
+                ViewBag.error = "Debe ingresar un ingreso";
+
+                return View("Mostrar");
+            }
+            else
+            {
+                ViewBag.mostrar = "INGRESO";
+                ViewBag.ingreso = IngresoDAO.getInstancia().getIngresoById(id_ingreso);
+                
+                return View("Mostrar");
+            }
         }
 
         [HttpPost]
@@ -190,32 +247,64 @@ namespace TpAnualWeb.Controllers
         #region Presupuestos
 
         [HttpPost]
-        public ActionResult AgregarPresupuesto(int id_egreso, string CUIT, FormCollection inputs)
+        public ActionResult AgregarPresupuesto(int id_egreso = -1, string CUIT ="", FormCollection inputs = null)
         {
-            //TODO: checkear que exista el proveedro y el egreso antes de cargarlo a la BD
-            //ViewBag.notificar = "No existe el egreso con ese id";
+            if (id_egreso == -1 || CUIT == "" || inputs["nuevoItemPresupuesto"] == null || inputs["cantidad"] == null || inputs["precio"] == null)
+            {
+                ViewBag.mostrar = "ERROR";
+                ViewBag.error = "Debe completar todos los campos";
+
+                return View("Mostrar");
+            }
+            else
+            {
+                var egreso = EgresoDAO.getInstancia().getEgresoById(id_egreso);
+                var proveedor = ProveedorDAO.getInstancia().getProveedorByCUIT(CUIT);
+
+                if(egreso == null || proveedor == null ) 
+                {
+                    ViewBag.mostrar = "ERROR";
+                    ViewBag.error = "Los datos ingresados no son validos";
+
+                    return View("Mostrar");
+                }
+                else
+                {
+                    var items = inputs["nuevoItemPresupuesto"].Split(',');
+                    var cantidades = inputs["cantidad"].Split(',');
+                    var precios = inputs["precio"].Split(',');
+
+                    PresupuestoDAO.getInstancia().cargarPresupuesto(id_egreso, CUIT, items, cantidades, precios);
+
+                    return View("Index");
+                }
 
 
-            var items = inputs["nuevoItemPresupuesto"].Split(',');
-            var cantidades = inputs["cantidad"].Split(',');
-            var precios = inputs["precio"].Split(',');
+            }
 
 
-            PresupuestoDAO.getInstancia().cargarPresupuesto(id_egreso, CUIT, items, cantidades, precios);
-
-            return View("Index");
         }
 
         [HttpPost]
-        public ActionResult CargarProveedor(string razon, string CUIT)
+        public ActionResult CargarProveedor(string razon = "", string CUIT = "")
         {
-            Proveedor nuevo = new Proveedor();
-            nuevo.CUIT = CUIT;
-            nuevo.razon_social = razon;
-            ProveedorDAO.getInstancia().Add(nuevo);
+            if (razon == "" || CUIT == "")
+            {
+                ViewBag.mostrar = "ERROR";
+                ViewBag.error = "Debe completar todos los campos";
 
+                return View("Mostrar");
+            }
+            else
+            {
+                Proveedor nuevo = new Proveedor();
+                nuevo.CUIT = CUIT;
+                nuevo.razon_social = razon;
+                ProveedorDAO.getInstancia().Add(nuevo);
 
-            return View("Index");
+                return View("Index");
+            }
+
         }
 
         [HttpPost]
@@ -227,29 +316,114 @@ namespace TpAnualWeb.Controllers
         }
 
         [HttpPost]
-        public ActionResult MostrarPresupuestoConItems(int id_presupuesto)
+        public ActionResult MostrarPresupuestoConItems(int id_presupuesto = -1)
         {
-            ViewBag.mostrar = "PRESUPUESTO";
-            ViewBag.presupuesto = PresupuestoDAO.getInstancia().getPresupuestoById(id_presupuesto);
-            ViewBag.items = ItemDAO.getInstancia().getItemsPorPresupuesto(id_presupuesto);
-            return View("Mostrar");
+            if (id_presupuesto == -1)
+            {
+                ViewBag.mostrar = "ERROR";
+                ViewBag.error = "Debe ingresar un presupuesto";
+
+                return View("Mostrar");
+            }
+            else
+            {
+                var presupuesto = PresupuestoDAO.getInstancia().getPresupuestoById(id_presupuesto);
+
+                if (presupuesto == null)
+                {
+                    ViewBag.mostrar = "ERROR";
+                    ViewBag.error = "No existe el presupuesto ingresado";
+
+                    return View("Mostrar");
+                }
+                else
+                {
+                    ViewBag.mostrar = "PRESUPUESTO";
+                    ViewBag.presupuesto = PresupuestoDAO.getInstancia().getPresupuestoById(id_presupuesto);
+                    ViewBag.items = ItemDAO.getInstancia().getItemsPorPresupuesto(id_presupuesto);
+                    
+                    return View("Mostrar");
+                }
+
+            }
+
         }
 
         [HttpPost]
-        public ActionResult MostrarPresupuestosPorEgreso(int id_egreso)
+        public ActionResult MostrarPresupuestosPorEgreso(int id_egreso = -1)
         {
-            ViewBag.mostrar = "PRESUPUESTOS DE EGRESO";
-            ViewBag.presupuestos = EgresoDAO.getInstancia().getEgresoById(id_egreso).presupuestos;
-            ViewBag.msg = id_egreso;
-            return View("Mostrar");
+
+            if (id_egreso == -1)
+            {
+                ViewBag.mostrar = "ERROR";
+                ViewBag.error = "Debe ingresar un egreso";
+
+                return View("Mostrar");
+            }
+            else
+            {
+                var egreso = EgresoDAO.getInstancia().getEgresoById(id_egreso);
+
+                if (egreso == null)
+                {
+                    ViewBag.mostrar = "ERROR";
+                    ViewBag.error = "No existe el egreso ingresado";
+
+                    return View("Mostrar");
+                }
+                else
+                {
+                    var presupuestos = EgresoDAO.getInstancia().getEgresoById(id_egreso).presupuestos.Count;
+
+                    if (presupuestos == 0)
+                    {
+                        ViewBag.mostrar = "ERROR";
+                        ViewBag.error = "El egreso no tiene presupuestos asociados";
+
+                        return View("Mostrar");
+                    }
+                    else
+                    {
+                        ViewBag.mostrar = "PRESUPUESTOS DE EGRESO";
+                        ViewBag.presupuestos = EgresoDAO.getInstancia().getEgresoById(id_egreso).presupuestos;
+                        ViewBag.msg = id_egreso;
+
+                        return View("Mostrar");
+                    }
+                }
+            }
+
         }
 
         [HttpPost]
-        public ActionResult ElegirPresupuesto(int id_egreso, int id_presupuesto)
+        public ActionResult ElegirPresupuesto(int id_egreso = -1, int id_presupuesto = -1)
         {
-            PresupuestoDAO.getInstancia().elegirPresupuesto(id_egreso, id_presupuesto);
+            if (id_egreso == -1 || id_presupuesto == -1)
+            {
+                ViewBag.mostrar = "ERROR";
+                ViewBag.error = "Debe completar todos los campos";
 
-            return View("Index");
+                return View("Mostrar");
+            }
+            else
+            {
+                var egreso = EgresoDAO.getInstancia().getEgresoById(id_egreso);
+                var presupuesto = PresupuestoDAO.getInstancia().getPresupuestoById(id_presupuesto);
+
+                if (egreso == null || presupuesto == null)
+                {
+                    ViewBag.mostrar = "ERROR";
+                    ViewBag.error = "Los datos ingresados no son validos";
+
+                    return View("Mostrar");
+                }
+                else
+                {
+                    PresupuestoDAO.getInstancia().elegirPresupuesto(id_egreso, id_presupuesto);
+
+                    return View("Index");
+                }
+            }
         }
 
         #endregion
@@ -257,35 +431,118 @@ namespace TpAnualWeb.Controllers
         #region Proyectos
 
         [HttpPost]
-        public ActionResult CargarProyecto(int monto, int cant_presupuestos, string usuario)
+        public ActionResult CargarProyecto(int monto =-1, int cant_presupuestos =-1, string usuario = "")
         {
-            ProyectoDAO.getInstancia().cargarProyecto(cant_presupuestos, monto, usuario);
+            if (monto == -1 || cant_presupuestos == -1 || usuario == "")
+            {
+                ViewBag.mostrar = "ERROR";
+                ViewBag.error = "Debe completar todos los campos";
 
-            return View("Index");
+                return View("Mostrar");
+            }
+            else
+            { 
+                ProyectoDAO.getInstancia().cargarProyecto(cant_presupuestos, monto, usuario);
+
+                return View("Index");
+            }
+
         }
 
         [HttpPost]
-        public ActionResult VincularIngresoConProyecto(int id_ingreso, int id_proyecto)
+        public ActionResult VincularIngresoConProyecto(int id_ingreso = -1, int id_proyecto = -1)
         {
-            ProyectoDAO.getInstancia().vincularIngresoConProyecto(id_proyecto, id_ingreso);
+            if (id_ingreso == -1 || id_proyecto == -1)
+            {
+                ViewBag.mostrar = "ERROR";
+                ViewBag.error = "Debe completar todos los campos";
 
-            return View("Index");
+                return View("Mostrar");
+            }
+            else
+            {
+                var ingreso = IngresoDAO.getInstancia().getIngresoById(id_ingreso);
+                var proyecto = ProyectoDAO.getInstancia().getProyectoById(id_proyecto);
+
+                if(ingreso == null || proyecto == null)
+                {
+                    ViewBag.mostrar = "ERROR";
+                    ViewBag.error = "Los datos ingresados no son validos";
+
+                    return View("Mostrar");
+                }
+                else
+                {
+                    ProyectoDAO.getInstancia().vincularIngresoConProyecto(id_proyecto, id_ingreso);
+
+                    return View("Index");
+
+                }
+                
+            }
+
         }
 
         [HttpPost]
         public ActionResult VincularEgresoConProyecto(int id_egreso, int id_proyecto)
         {
-            ProyectoDAO.getInstancia().vincularEgresoConProyecto(id_proyecto, id_egreso);
+            if (id_egreso == -1 || id_proyecto == -1)
+            {
+                ViewBag.mostrar = "ERROR";
+                ViewBag.error = "Debe completar todos los campos";
 
-            return View("Index");
+                return View("Mostrar");
+            }
+            else
+            {
+                var egreso = EgresoDAO.getInstancia().getEgresoById(id_egreso);
+                var proyecto = ProyectoDAO.getInstancia().getProyectoById(id_proyecto);
+
+                if (egreso == null || proyecto == null)
+                {
+                    ViewBag.mostrar = "ERROR";
+                    ViewBag.error = "Los datos ingresados no son validos";
+
+                    return View("Mostrar");
+                }
+                else
+                {
+                    ProyectoDAO.getInstancia().vincularEgresoConProyecto(id_proyecto, id_egreso);
+
+                    return View("Index");
+                }
+            }
         }
 
         [HttpPost]
         public ActionResult BajaProyecto(int id_proyecto)
         {
-            ProyectoDAO.getInstancia().bajaProyecto(id_proyecto);
 
-            return View("Index");
+            if (id_proyecto == -1)
+            {
+                ViewBag.mostrar = "ERROR";
+                ViewBag.error = "Debe ingresar un proyecto";
+
+                return View("Mostrar");
+            }
+            else
+            {
+                var proyecto = ProyectoDAO.getInstancia().getProyectoById(id_proyecto);
+
+                if (proyecto == null)
+                {
+                    ViewBag.mostrar = "ERROR";
+                    ViewBag.error = "No existe el proyecto ingresado";
+
+                    return View("Mostrar");
+                }
+                else
+                {
+                    ProyectoDAO.getInstancia().bajaProyecto(id_proyecto);
+
+                    return View("Index");
+                }
+            }
         }
 
         #endregion

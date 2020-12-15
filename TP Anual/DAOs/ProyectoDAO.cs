@@ -28,6 +28,21 @@ namespace TP_Anual.DAOs
         }
 
         #region Funciones
+        public ProyectoDeFinanciamiento getProyectoById(int id)
+        {
+            using (var context = new MySql())
+            {
+                try
+                {
+                    return context.proyectos.Single(p => p.id == id);
+                }
+                catch (InvalidOperationException)
+                {
+                    return null;
+                }
+            }
+        }
+
         public ProyectoDAO cargarProyecto(int cant, int monto, string usuario)
         {
             using (var context = new MySql())

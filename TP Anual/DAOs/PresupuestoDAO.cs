@@ -30,7 +30,14 @@ namespace TP_Anual.DAOs
         {
             using (var context = new MySql())
             {
-                return context.presupuestos.Single(e => e.id_presupuesto == id);
+                try
+                {
+                    return context.presupuestos.Single(e => e.id_presupuesto == id);
+                }
+                catch (InvalidOperationException)
+                {
+                    return null;
+                }
             }
         }
 
