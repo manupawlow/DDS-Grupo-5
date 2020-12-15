@@ -87,6 +87,10 @@ namespace TP_Anual
                 .WithMany()
                 .HasForeignKey(e => e.id_proyecto);
 
+            modelBuilder.Entity<Egreso>()
+                .HasRequired<Presupuesto>(e => e.presupuestoElegido)
+                .WithMany()
+                .HasForeignKey(p => p.id_presupuesto_elegido);
 
             #region ITEMS
 

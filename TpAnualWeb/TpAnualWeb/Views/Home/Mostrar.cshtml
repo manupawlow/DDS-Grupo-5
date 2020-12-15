@@ -64,39 +64,33 @@
 
                         if (ViewBag.mostrar == "EGRESOS")
                         {
-                            if (ViewBag.egresos != null)
+                            foreach (var u in ViewBag.egresos)
                             {
-
-                                foreach (var u in ViewBag.egresos)
+                                <p><b>EGRESO ID: </b>@u.id_egreso</p>
+                                <p><b>FECHA: </b>@u.fecha</p>
+                                <p><b>DESCRIPCION: </b>@u.descripcion</p>
+                                <p><b>PRESUPUESTOS REQUERIDOS: </b>@u.cantPresupuestos</p>
+                                if (@u.ingreso != null)
                                 {
-                                    <p><b>EGRESO ID: </b>@u.id_egreso</p>
-                                    <p><b>FECHA: </b>@u.fecha</p>
-                                    <p><b>DESCRIPCION: </b>@u.descripcion</p>
-                                    <p><b>PRESUPUESTOS REQUERIDOS: </b>@u.cantPresupuestos</p>
-                                    if (@u.ingreso != null)
-                                    {
-                                        <p><b>ID INGRESO VINCULADO: </b>@u.ingreso.id_ingreso</p>
-                                    }
-                                    if (@u.presupuestos != null)
-                                    {
-                                        <p><b>PRESUPUESTOS: </b>@u.presupuestos.Count</p>
-                                    }
-
-                                    if (@u.proveedorElegido != null)
-                                    {
-                                        <p><b>PROVEEDOR ELEGIDO: </b>@u.proveedorElegido.CUIT</p>
-                                    }
-
-
-                                    <p><b>CANTIDAD ITEMS: @u.items.Count</b></p>
-
-                                    <p><b>-----------------------------------------</b></p>
+                                    <p><b>ID INGRESO VINCULADO: </b>@u.ingreso.id_ingreso</p>
                                 }
+                                if (@u.presupuestos != null)
+                                {
+                                    <p><b>PRESUPUESTOS: </b>@u.presupuestos.Count</p>
+                                }
+
+                                if (@u.proveedorElegido != null)
+                                {
+                                    <p><b>PROVEEDOR ELEGIDO: </b>@u.proveedorElegido.CUIT</p>
+                                }
+
+
+                                <p><b>CANTIDAD ITEMS: @u.items.Count</b></p>
+
+                                <p><b>-----------------------------------------</b></p>
                             }
-                            else
-                            {
-                                <p><h3>No hay egresos actualmente</h3></p>
-                            }
+
+
                         }
 
                         if (ViewBag.mostrar == "EGRESO")
@@ -132,15 +126,23 @@
                             }
                             else
                             {
-                                <h2>NO EXISTE ESE EGRESO</h2>
+                                <h5>No existe ese egreso</h5>
                             }
+                        }
+
+                        if (ViewBag.mostrar == "VALIDACION")
+                        {
+                            <p>@ViewBag.validacion</p>
                         }
 
                         if (ViewBag.mostrar == "BANDEJA DE MENSAJES")
                         {
                             //if (ViewBag.bandeja != null)
                             //{
-                            <p>@ViewBag.mensajes</p>
+                            foreach (var mensaje in ViewBag.mensajes)
+                            {
+                                <p>@mensaje</p>
+                            }
                             //}
                         }
 
@@ -240,6 +242,12 @@
                             }
                         }
 
+                        //<---------------------------------ERROR--------------------------------->
+
+                        if (ViewBag.mostrar == "ERROR")
+                        {
+                            <p>@ViewBag.error</p>
+                        }
 
                     }
 

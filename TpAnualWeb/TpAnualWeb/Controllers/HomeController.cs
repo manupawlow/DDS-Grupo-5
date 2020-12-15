@@ -39,6 +39,7 @@ namespace TpAnualWeb.Controllers
             ViewBag.mostrar = "EGRESO";
             ViewBag.egreso = EgresoDAO.getInstancia().getEgresoById(id_egreso);
             ViewBag.items = ItemDAO.getInstancia().getItemsDeEgreso(id_egreso);
+            
             return View("Mostrar");
         }
 
@@ -66,9 +67,21 @@ namespace TpAnualWeb.Controllers
         [HttpPost]
         public ActionResult MostrarEgresos()
         {
-            ViewBag.mostrar = "EGRESOS";
+            
             ViewBag.egresos = EgresoDAO.getInstancia().getAllEgreso();
-            return View("Mostrar");
+            if (ViewBag.egresos.Count > 0) 
+            {
+                ViewBag.mostrar = "EGRESOS";
+                return View("Mostrar");
+            }
+                
+            else 
+            {
+                ViewBag.mostrar = "ERROR";
+                ViewBag.error = "No hay egresos actualmente";
+                return View("Mostrar");
+            }
+
         }
 
         [HttpPost]
@@ -85,7 +98,7 @@ namespace TpAnualWeb.Controllers
 
             ViewBag.bandeja = egreso.bandejaDeMensajes;
 
-            ViewBag.mensajes = EgresoDAO.getInstancia().mostrarBandejaDeMensajes(egreso);
+            ViewBag.mensajes = MongoDB.getInstancia().mostrarBandejaDeMensajesDeEgreso(egreso);
 
             return View("Mostrar");
         }
@@ -93,9 +106,27 @@ namespace TpAnualWeb.Controllers
         [HttpPost]
         public ActionResult ValidarEgreso(int id_egreso)
         {
-            EgresoDAO.getInstancia().validarEgreso(id_egreso);
+            try
+            {
+                ViewBag.mostrar = "VALIDACION";
+                if (EgresoDAO.getInstancia().validarEgreso(id_egreso)) 
+                {
+                    ViewBag.validacion = "El egreso fue validado correctamente, para ver resultados ver bandeja de mensajes";
+                }
+                else 
+                {
+                    ViewBag.validacion = "El egreso fallo la validacion, para ver resultados ver bandeja de mensajes";
+                }
 
-            return View("Index");
+            }
+            catch (InvalidOperationException)
+            {
+                ViewBag.mostrar = "ERROR";
+                ViewBag.error = "No existe el egreso ingresado";
+            }
+            
+
+            return View("Mostrar");
         }
         #endregion
 

@@ -14,7 +14,7 @@ namespace TP_Anual
     public class MongoDB
     {
         public static MongoDB instancia = null;
-        public bool conectarMongo = false;
+        public bool conectarMongo = true;
 
         private MongoDB()
         {
@@ -34,40 +34,49 @@ namespace TP_Anual
             return instancia;
         }
 
-        public void actualizarBandejaDeMensajesNoSQL(IMongoDatabase database, Egreso egreso)
+        public void actualizarBandejaDeMensajesNoSQL(Egreso egreso)
         {
-            // Construyo filtro de busqueda
-            var builder = Builders<BandejaDeMensajes>.Filter;
-            var filter = builder.Where(bandeja => bandeja.revisor.nombre == egreso.bandejaDeMensajes.revisor.nombre);
 
-            // Traigo la coleccion
-            var coleccionBandejaDeMensajes = database.GetCollection<BandejaDeMensajes>("coleccionBandejaDeMensajes");
+            if (conectarMongo)
+            {
+                var client = new MongoClient();
+                var database = client.GetDatabase("mydb");
 
-            // Busco usando el filtro y convierto los resultados a lista
-            var bandejasDeMensajesEncontradas = coleccionBandejaDeMensajes.Find<BandejaDeMensajes>(filter);
-            var listaBandejaDeMensajes = bandejasDeMensajesEncontradas.ToList<BandejaDeMensajes>();
-            var bandejaDeMensajes = listaBandejaDeMensajes[0];
-            egreso.bandejaDeMensajes.ID = bandejaDeMensajes.ID;
+                // Construyo filtro de busqueda
+                var builder = Builders<BandejaDeMensajes>.Filter;
+                var filter = builder.Where(bandeja => bandeja.id_egreso == egreso.id_egreso);
 
-            // Creo una bandeja de mensajes y la inserto
-            coleccionBandejaDeMensajes.ReplaceOne(filter, egreso.bandejaDeMensajes);
+                // Traigo la coleccion
+                var coleccionBandejaDeMensajes = database.GetCollection<BandejaDeMensajes>("coleccionBandejaDeMensajes");
+
+                // Busco usando el filtro y convierto los resultados a lista
+                var bandejasDeMensajesEncontradas = coleccionBandejaDeMensajes.Find<BandejaDeMensajes>(filter);
+                var listaBandejaDeMensajes = bandejasDeMensajesEncontradas.ToList<BandejaDeMensajes>();
+                var bandejaDeMensajes = listaBandejaDeMensajes[0];
+                egreso.bandejaDeMensajes.ID = bandejaDeMensajes.ID;
+
+                // Creo una bandeja de mensajes y la inserto
+                coleccionBandejaDeMensajes.ReplaceOne(filter, egreso.bandejaDeMensajes);
+            }
+                
         }
 
-        public void registrarBandejaDeMensajes(IMongoDatabase database, Usuario revisor, Egreso egreso)
+        public void registrarBandejaDeMensajes(Egreso egreso)
         {
-            // Agrego bandeja de mensajes a egreso
-            //egreso.bandejaDeMensajes = new BandejaDeMensajes(revisor);
+            if (conectarMongo) 
+            {
+                var client = new MongoClient();
+                var database = client.GetDatabase("mydb");
 
-            // Traigo la coleccion
-            var coleccionBandejaDeMensajes = database.GetCollection<BandejaDeMensajes>("coleccionBandejaDeMensajes");
-
-            // Creo una bandeja de mensajes y la inserto
-            //var bandejaDeMensajes = new BandejaDeMensajes(revisor);
-            coleccionBandejaDeMensajes.InsertOne(egreso.bandejaDeMensajes);
+                var coleccionBandejaDeMensajes = database.GetCollection<BandejaDeMensajes>("coleccionBandejaDeMensajes");
+                coleccionBandejaDeMensajes.InsertOne(egreso.bandejaDeMensajes);
+            }
+            
         }
 
         public void actualizarBitacoraNoSQL(IMongoDatabase database, ObjectId bitacoraID)
         {
+
             // Construyo filtro de busqueda
             var builder = Builders<BitacoraDeOperaciones>.Filter;
             var filter = builder.Eq(bitacora => bitacora.ID, bitacoraID);
@@ -111,11 +120,8 @@ namespace TP_Anual
 
         public void registrarBitacoraDeOperaciones(IMongoDatabase database)
         {
-            // Agrego BitacoraDeOperaciones a egreso
-
             var listaDocumentos = database.ListCollectionNames().ToList();
 
-            // Traigo la coleccion
             if (verificarSiContieneColeccion(listaDocumentos, "coleccionBitacoraDeOperaciones"))
             {
                 verificarSiExisteBitacoraPosterior(database);
@@ -125,11 +131,27 @@ namespace TP_Anual
                 traerBitacora(database);
             }
 
-            // Creo una BitacoraDeOperaciones y la inserto
-
         }
 
-        public string mostrarBandejaDeMensajesDeEgreso(Egreso egreso)
+        public void agregarBandejaAEgresoEnCasoQueNoLaTengaAsignada(Egreso egreso)
+        {
+            if (egreso.bandejaDeMensajes == null)
+            {
+                if (conectarMongo) 
+                {
+                    var client = new MongoClient();
+                    var database = client.GetDatabase("mydb");
+                    var coleccionBandejaDeMensajes = database.GetCollection<BandejaDeMensajes>("coleccionBandejaDeMensajes");
+                    var listaBandeja = coleccionBandejaDeMensajes.Find(bandeja => bandeja.id_egreso == egreso.id_egreso).ToList();
+                    egreso.bandejaDeMensajes = listaBandeja[0];
+                    
+                    
+                }
+                
+            }
+        }
+
+        public string[] mostrarBandejaDeMensajesDeEgreso(Egreso egreso)
         {
             
             //var listaDatabases = client.ListDatabaseNames().ToList();
@@ -147,11 +169,11 @@ namespace TP_Anual
 
                 //Console.WriteLine(listado);
 
-                return bandejaDeMensajes[0].mensajes;
+                return bandejaDeMensajes[0].mensajes.Split('\n');
             }
             else 
             {
-                return "No se pudo acceder a MongoDB";
+                return "No se pudo acceder a MongoDB".Split('\n');
             }
 
            

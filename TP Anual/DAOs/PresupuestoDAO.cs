@@ -129,7 +129,7 @@ namespace TP_Anual.DAOs
                 var presupuesto = context.presupuestos.Include("itemsDePresupuesto").Include("proveedor").Single(e => e.id_presupuesto == id_presupuesto);
 
                 egreso.proveedorElegido = presupuesto.proveedor;
-
+                egreso.presupuestoElegido = presupuesto;
                 egreso.valorTotal = presupuesto.valor_total;
 
                 context.SaveChanges();

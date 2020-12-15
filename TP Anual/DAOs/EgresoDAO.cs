@@ -27,14 +27,22 @@ namespace TP_Anual.DAOs
         }
 
         #region Funciones
+
         public Egreso getEgresoById(int id)
         {
             using (var context = new MySql())
             {
-                return context.egresos
-                    .Include("items")
-                    .Include("presupuestos")
-                    .Single(e => e.id_egreso == id);
+                try {
+                    return context.egresos
+                  .Include("items")
+                  .Include("presupuestos")
+                  .Single(e => e.id_egreso == id);
+                }
+                catch (InvalidOperationException)
+                {
+                    return null;
+                }
+                
             }
         }
 
@@ -90,13 +98,8 @@ namespace TP_Anual.DAOs
 
                 nuevo.bandejaDeMensajes.id_egreso = nuevo.id_egreso;
 
-                if (MongoDB.getInstancia().conectarMongo)
-                {
-                    var client = new MongoClient();
-                    var database = client.GetDatabase("mydb");
-                    MongoDB.getInstancia().registrarBandejaDeMensajes(database, user, nuevo);
-                    MongoDB.getInstancia().agregarLogABitacora($"Se ha creado un egreso de id:{nuevo.id_egreso}");
-                }
+                MongoDB.getInstancia().registrarBandejaDeMensajes(nuevo);
+                MongoDB.getInstancia().agregarLogABitacora($"Se ha creado un egreso de id:{nuevo.id_egreso}");
 
                 try
                 {
@@ -129,48 +132,40 @@ namespace TP_Anual.DAOs
             return this;
         }
 
-        public void validarEgreso(int id_egreso)
+        public bool validarEgreso(int id_egreso)
         {
             using (var context = new MySql())
             {
 
                 var egreso = context.egresos
                     .Single(e => e.id_egreso == id_egreso);
+                bool validacion;
 
-                if (egreso.id_proyecto != 0) 
+                if (egreso.id_proyecto != 0)
                 {
-                     egreso = context.egresos
-                    .Include("items")
-                    .Include("presupuestos")
-                    .Include("proyecto")
-                    .Single(e => e.id_egreso == id_egreso);
-
-                    egreso.criterioDeSeleccion = new MenorValor();
-
-                    if (MongoDB.getInstancia().conectarMongo)
-                    {
-                        var client = new MongoClient();
-                        var database = client.GetDatabase("mydb");
-                        var coleccionBandejaDeMensajes = database.GetCollection<BandejaDeMensajes>("coleccionBandejaDeMensajes");
-                        var listaBandeja = coleccionBandejaDeMensajes.Find(bandeja => bandeja.id_egreso == egreso.id_egreso).ToList();
-                        egreso.bandejaDeMensajes = listaBandeja[0];
-
-                        ValidadorDeEgreso.egresoValido(egreso);
-
-                        MongoDB.getInstancia().actualizarBandejaDeMensajesNoSQL(database, egreso);
-
-                    }
-
-                    context.SaveChanges();
+                    egreso = context.egresos
+                   .Include("items")
+                   .Include("presupuestos")
+                   .Include("proyecto")
+                   .Single(e => e.id_egreso == id_egreso);   
+                }
+                else 
+                {
+                    egreso = context.egresos
+                   .Include("items")
+                   .Include("presupuestos")
+                   .Single(e => e.id_egreso == id_egreso);    
                 }
 
-                
-            }
-        }
+                egreso.criterioDeSeleccion = new MenorValor();
 
-        public string mostrarBandejaDeMensajes(Egreso egreso)
-        {
-            return MongoDB.getInstancia().mostrarBandejaDeMensajesDeEgreso(egreso);
+                MongoDB.getInstancia().agregarBandejaAEgresoEnCasoQueNoLaTengaAsignada(egreso);
+                validacion = ValidadorDeEgreso.egresoValido(egreso);
+                MongoDB.getInstancia().actualizarBandejaDeMensajesNoSQL(egreso);
+
+                return validacion;
+
+            }
         }
         #endregion
 

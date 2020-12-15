@@ -34,8 +34,10 @@ namespace TP_Anual.Egresos
         public List<ItemPorEgreso> items { get; set; }
 
         public MedioDePago medioDePago;
-
-        public Presupuesto presupuestoElegido;
+        
+        public Presupuesto presupuestoElegido { get; set; }
+        [Column("id_presupuesto_elegido")]
+        public int id_presupuesto_elegido { get; set; }
 
         [Column("id_proyecto")]
         public int id_proyecto { get; set; }
@@ -82,9 +84,5 @@ namespace TP_Anual.Egresos
             valorTotal = Presupuesto.valor_total;
         }
 
-        public string mostrarBandejaDeMensajes()
-        {
-            return MongoDB.getInstancia().mostrarBandejaDeMensajesDeEgreso(this);
-        }
     }
 }

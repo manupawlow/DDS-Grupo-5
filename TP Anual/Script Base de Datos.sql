@@ -19,6 +19,7 @@ CREATE TABLE IF NOT EXISTS egreso(
     fecha DATETIME NOT NULL,
     valor_total INT NULL,
 	id_prov INT NULL,
+    id_presupuesto_elegido INT NULL,
     id_entidad_base INT NULL,
     id_entidad_juridica INT NULL,
 #    id_bandeja INT NOT NULL,
