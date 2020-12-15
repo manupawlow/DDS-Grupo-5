@@ -39,7 +39,7 @@ namespace TP_Anual
 
             if (conectarMongo)
             {
-                var client = new MongoClient();
+                var client = new MongoClient("mongodb+srv://gesoc:dds@clustergesoc.80hrr.mongodb.net/mydb?retryWrites=true&w=majority");
                 var database = client.GetDatabase("mydb");
 
                 // Construyo filtro de busqueda
@@ -65,7 +65,7 @@ namespace TP_Anual
         {
             if (conectarMongo)
             {
-                var client = new MongoClient();
+                var client = new MongoClient("mongodb+srv://gesoc:dds@clustergesoc.80hrr.mongodb.net/mydb?retryWrites=true&w=majority");
                 var database = client.GetDatabase("mydb");
 
                 var coleccionBandejaDeMensajes = database.GetCollection<BandejaDeMensajes>("coleccionBandejaDeMensajes");
@@ -139,7 +139,7 @@ namespace TP_Anual
             {
                 if (conectarMongo)
                 {
-                    var client = new MongoClient();
+                    var client = new MongoClient("mongodb+srv://gesoc:dds@clustergesoc.80hrr.mongodb.net/mydb?retryWrites=true&w=majority");
                     var database = client.GetDatabase("mydb");
                     var coleccionBandejaDeMensajes = database.GetCollection<BandejaDeMensajes>("coleccionBandejaDeMensajes");
                     var listaBandeja = coleccionBandejaDeMensajes.Find(bandeja => bandeja.id_egreso == egreso.id_egreso).ToList();
@@ -158,7 +158,7 @@ namespace TP_Anual
             // var database = client.GetDatabase(listaDatabases[3]);
             if (conectarMongo)
             {
-                var client = new MongoClient();
+                var client = new MongoClient("mongodb+srv://gesoc:dds@clustergesoc.80hrr.mongodb.net/mydb?retryWrites=true&w=majority");
                 var database = client.GetDatabase("mydb");
 
                 var coleccionBandejaDeMensajes = database.GetCollection<BandejaDeMensajes>("coleccionBandejaDeMensajes");
@@ -184,8 +184,8 @@ namespace TP_Anual
 
             if (conectarMongo)
             {
-                MongoClient client = new MongoClient("mongodb+srv://gesoc:dds@clustergesoc.80hrr.mongodb.net/mydb?retryWrites=true&w=majority");
-                IMongoDatabase database = client.GetDatabase("mydb");
+                var client = new MongoClient("mongodb+srv://gesoc:dds@clustergesoc.80hrr.mongodb.net/mydb?retryWrites=true&w=majority");
+                var database = client.GetDatabase("mydb");
 
                 registrarBitacoraDeOperaciones(database);
 
@@ -201,7 +201,7 @@ namespace TP_Anual
         {
             if (conectarMongo)
             {
-                var client = new MongoClient();
+                var client = new MongoClient("mongodb+srv://gesoc:dds@clustergesoc.80hrr.mongodb.net/mydb?retryWrites=true&w=majority");
                 var database = client.GetDatabase("mydb");
 
                 var coleccionBitacoraDeOperaciones = database.GetCollection<BitacoraDeOperaciones>("coleccionBitacoraDeOperaciones");
@@ -218,11 +218,11 @@ namespace TP_Anual
 
         public string logToString(List<Log> logs)
         {
-            string cadena = logs[0].accion + "   Fecha: " + logs[0].fecha.ToString(); 
+            string cadena = logs[0].accion + "   -------------->Fecha: " + logs[0].fecha.ToString(); 
         
             for(int i=1; i < logs.Count; i++) 
             {
-                cadena = cadena + "\n" + logs[i].accion + "   Fecha: " + logs[i].fecha.ToString();
+                cadena = cadena + "\n" + logs[i].accion + "   -------------->Fecha: " + logs[i].fecha.ToString();
             }
 
             return cadena;
