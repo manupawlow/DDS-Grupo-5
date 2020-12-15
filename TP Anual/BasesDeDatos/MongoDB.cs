@@ -184,8 +184,8 @@ namespace TP_Anual
 
             if (conectarMongo)
             {
-                var client = new MongoClient(/*"mongodb+srv://disenio2020:pepepepe@cluster0.unla6.mongodb.net/disenio2020?retryWrites=true&w=majority"*/);
-                var database = client.GetDatabase("mydb");
+                MongoClient client = new MongoClient("mongodb+srv://gesoc:dds@clustergesoc.80hrr.mongodb.net/mydb?retryWrites=true&w=majority");
+                IMongoDatabase database = client.GetDatabase("mydb");
 
                 registrarBitacoraDeOperaciones(database);
 

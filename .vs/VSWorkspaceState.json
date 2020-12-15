@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\TP Anual",
+    "\\TpAnualWeb"
   ],
-  "SelectedNode": "\\TP Anual.sln",
+  "SelectedNode": "\\TpAnualWeb\\TpAnualWeb.sln",
   "PreviewInSolutionExplorer": false
 }

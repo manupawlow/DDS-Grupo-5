@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using TP_Anual.Egresos;
-using MySql.Data.Entity;
+using MySql.Data.EntityFramework;
 using System.Data.Entity;
 using TP_Anual.Organizaciones;
 using TP_Anual.Administrador_Inicio_Sesion;

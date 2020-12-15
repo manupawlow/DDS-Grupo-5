@@ -117,7 +117,7 @@ namespace TpAnualWeb.Controllers
                 {
                     ViewBag.mostrar = "BANDEJA DE MENSAJES";
                     ViewBag.bandeja = egreso.bandejaDeMensajes;
-                    ViewBag.mensajes = MongoDB.getInstancia().mostrarBandejaDeMensajesDeEgreso(egreso);
+                    ViewBag.mensajes = TP_Anual.MongoDB.getInstancia().mostrarBandejaDeMensajesDeEgreso(egreso);
 
                     return View("Mostrar");
                 }
@@ -603,7 +603,7 @@ namespace TpAnualWeb.Controllers
             if (usuario.esAdministrador) 
             {
                 ViewBag.mostrar = "BITACORA";
-                ViewBag.bitacora = MongoDB.getInstancia().mostrarBitacora();
+                ViewBag.bitacora = TP_Anual.MongoDB.getInstancia().mostrarBitacora();
                 return View("Mostrar");
             }
             else 
