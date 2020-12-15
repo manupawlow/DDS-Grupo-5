@@ -134,7 +134,7 @@ namespace TP_Anual.DAOs
 
                 context.SaveChanges();
 
-                MongoDB.getInstancia().agregarLogABitacora($"Se ha seleccionado un proveedorElegido de id:{egreso.proveedorElegido.id_prov} al egreso de id:{egreso.id_egreso}");
+                MongoDB.getInstancia().agregarLogABitacora($"Se ha seleccionado el presupuesto de id:{egreso.presupuestoElegido.id_presupuesto} al egreso de id:{egreso.id_egreso}");
             }
             return this;
         }

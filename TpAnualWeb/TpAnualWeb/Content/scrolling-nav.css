@@ -51,12 +51,19 @@ section {
 
 .button3 {
     background-color: white;
+    color: slategray;
+    border-radius: 24px;
+    border: 2px solid rgb(150, 224, 106);
+}
+
+.button4 {
+    background-color: white;
     color: rgb(150, 224, 106);
     border-radius: 24px;
     border: 2px solid rgb(150, 224, 106);
 }
 
-    .button3:hover {
+    .button4:hover {
         background-color: rgb(150, 224, 106);
         color: white;
     }

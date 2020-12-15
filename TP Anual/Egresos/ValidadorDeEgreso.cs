@@ -82,8 +82,13 @@ namespace TP_Anual.Egresos
         }
         static private bool presupuestoCoincidente(Egreso egreso)
         {
-            Presupuesto presupuesto_elegido = egreso.presupuestoElegido;
-            return egreso.presupuestos.Any(Presupuesto => presupuesto_elegido.id_presupuesto == Presupuesto.id_presupuesto);
+            if (egreso.presupuestoElegido == null)
+                return false;
+            else
+            {
+                Presupuesto presupuesto_elegido = egreso.presupuestoElegido;
+                return egreso.presupuestos.Any(Presupuesto => presupuesto_elegido.id_presupuesto == Presupuesto.id_presupuesto);
+            }
             
         }
         static private bool criterioDeSeleccion(Egreso egreso)

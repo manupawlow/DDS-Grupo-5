@@ -218,11 +218,11 @@ namespace TP_Anual
 
         public string logToString(List<Log> logs)
         {
-            string cadena = logs[0].accion + "          " + logs[0].fecha.ToString(); 
+            string cadena = logs[0].accion + "   Fecha: " + logs[0].fecha.ToString(); 
         
             for(int i=1; i < logs.Count; i++) 
             {
-                cadena = cadena + "\n" + logs[i].accion + "          " + logs[i].fecha.ToString();
+                cadena = cadena + "\n" + logs[i].accion + "   Fecha: " + logs[i].fecha.ToString();
             }
 
             return cadena;

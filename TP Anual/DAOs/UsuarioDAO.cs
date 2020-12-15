@@ -51,7 +51,14 @@ namespace TP_Anual.DAOs
         {
             using (var context = new MySql())
             {
-                return context.usuarios.SingleOrDefault(p => p.nombre == username);
+                try
+                {
+                    return context.usuarios.Single(p => p.nombre == username);
+                }
+                catch (InvalidOperationException)
+                {
+                    return null;
+                }
             }
         }
 

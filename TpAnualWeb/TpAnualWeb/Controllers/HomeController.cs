@@ -88,19 +88,23 @@ namespace TpAnualWeb.Controllers
         public ActionResult BandejaDeMensajesDeEgreso(int id_egreso)
         {
             var egreso = EgresoDAO.getInstancia().getEgresoById(id_egreso);
-            ViewBag.mostrar = "BANDEJA DE MENSAJES";
+            
+            if (egreso != null)
+            {
+                ViewBag.mostrar = "BANDEJA DE MENSAJES";
+                ViewBag.bandeja = egreso.bandejaDeMensajes;
+                ViewBag.mensajes = MongoDB.getInstancia().mostrarBandejaDeMensajesDeEgreso(egreso);
 
-            //ViewBag.msg = "No existe el egreso";
+                return View("Mostrar");
+            }
+            else
+            {
+                ViewBag.mostrar = "ERROR";
+                ViewBag.error = "No existe el egreso";
 
-            //TODO: ver como agarrar la bandeja de mensajes de un egreso con genaro
-            //if (Session["UserName"].ToString() != egreso.bandejaDeMensajes.revisor.nombre)
-            //    ViewBag.msg = "No esta configurado como revisor de la bandeja de mensajes";
-
-            ViewBag.bandeja = egreso.bandejaDeMensajes;
-
-            ViewBag.mensajes = MongoDB.getInstancia().mostrarBandejaDeMensajesDeEgreso(egreso);
-
-            return View("Mostrar");
+                return View("Mostrar");
+            }
+            
         }
 
         [HttpPost]
@@ -337,10 +341,20 @@ namespace TpAnualWeb.Controllers
         #region Usuarios
         public ActionResult verBitacora()
         {
-            ViewBag.mostrar = "BITACORA";
-            ViewBag.bitacora = MongoDB.getInstancia().mostrarBitacora();
+            var usuario = UsuarioDAO.getInstancia().getUsuarioByUserName(Session["UserName"].ToString());
 
-            return View("Mostrar");
+            if (usuario.esAdministrador) 
+            {
+                ViewBag.mostrar = "BITACORA";
+                ViewBag.bitacora = MongoDB.getInstancia().mostrarBitacora();
+                return View("Mostrar");
+            }
+            else 
+            {
+                ViewBag.mostrar = "ERROR";
+                ViewBag.error = "Solo los usuarios administradores pueden ver la bitacora";
+                return View("Mostrar");
+            } 
         }
 
         #endregion
@@ -356,15 +370,20 @@ namespace TpAnualWeb.Controllers
         {
             var obj = UsuarioDAO.getInstancia().getUsuarioByUserName(usuario);
 
-            if (obj != null && obj.contrasenia == contrasenia)
+            if (obj == null)
             {
-                Session["UserID"] = obj.id.ToString();
-                Session["UserName"] = obj.nombre;
-                return RedirectToAction("UserDashBoard");
+                ViewBag.msg = "No existe el usuario";
+                return View("Login");
+            }
+            else if (obj.contrasenia != contrasenia)
+            {
+                ViewBag.msg = "Contraseña incorrecta";
+                return View("Login");
             }
 
-
-            return View("Login");
+            Session["UserID"] = obj.id.ToString();
+            Session["UserName"] = obj.nombre;
+            return RedirectToAction("UserDashBoard");
         }
 
         public ActionResult UserDashBoard()
@@ -383,25 +402,19 @@ namespace TpAnualWeb.Controllers
         [HttpPost]
         public ActionResult RegisterTry(string username, string password, string esAdmin)
         {
-            /*if (UsuarioDAO.getInstancia().getUsuarioByUserName(username) != null)
-                ViewBag.msg = "Ya existe un usuario con ese nombre";
-            else if (!Validador.validarContrasenia(password))
+            if (UsuarioDAO.getInstancia().getUsuarioByUserName(username) != null)
             {
-                ViewBag.msg = "Esa contraseña es insegura, intentelo denuevo";
+                ViewBag.msg = "Ya existe un usuario con ese nombre";
                 return View("Register");
             }
-            else*/
-            if (esAdmin == "grupo5")
-                UsuarioDAO.getInstancia().Add(new Usuario(username, password, true));
             else
-                UsuarioDAO.getInstancia().Add(new Usuario(username, password, false));
-
-            return View("Login");
+            {
+                UsuarioDAO.getInstancia().Add(new Usuario(username, password, esAdmin == "grupo5"));
+                return View("Login");
+            }
         }
 
         #endregion
-
-        //------------------------------------------------------------------------------------
 
         #region JsonClass
         public class JsonProveedor

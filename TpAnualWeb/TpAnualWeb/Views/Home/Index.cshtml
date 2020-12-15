@@ -79,13 +79,13 @@
                         <h4></h4>
                         @using (Html.BeginForm("MostrarEgresos", "Home", FormMethod.Post))
                         {
-                            <input type="submit" value="Mostrar todos los egresos" class="button button3">
+                            <input type="submit" value="Mostrar todos los egresos" class="button button4">
                         }
                         <p>Buscar egreso por id:</p>
                         @using (Html.BeginForm("BuscarEgreso", "Home", FormMethod.Post))
                         {
                             <input type="number" name="id_egreso" placeholder="ID del Egreso" class="button button3" />
-                            <input type="submit" value="Buscar" class="button button3">
+                            <input type="submit" value="Buscar" class="button button4">
                         }
                         <p></p>
 
@@ -102,7 +102,7 @@
                             <p><input type="text" name="descripcion" placeholder="Descripcion" class="button button3"></p>
                             <p><input type="text" name="revisor" placeholder="Usuario revisor" class="button button3"></p>
                             <p><input type="number" name="cantPresup" placeholder="Cantidad de presupuestos requeridos" class="button button3"></p>
-                            <p><input type="submit" id="cargarEgreso" value="Cargar egreso" class="button button3"></p>
+                            <p><input type="submit" id="cargarEgreso" value="Cargar egreso" class="button button4"></p>
                         }
 
                     </div>
@@ -115,7 +115,7 @@
                         {
                             <p>
                                 <input type="number" name="id_egreso" placeholder="ID del Egreso" class="button button3">
-                                <input type="submit" value="Validar" class="button button3">
+                                <input type="submit" value="Validar" class="button button4">
                             </p>
                         }
 
@@ -129,7 +129,7 @@
                         {
                             <p>
                                 <input type="number" name="id_egreso" placeholder="ID del Egreso" class="button button3">
-                                <input type="submit" value="Mostrar bandeja" class="button button3">
+                                <input type="submit" value="Mostrar bandeja" class="button button4">
                             </p>
                         }
 
@@ -164,7 +164,7 @@
                         @using (Html.BeginForm("BuscarIngreso", "Home", FormMethod.Post))
                         {
                             <input type="text" name="id_ingreso" placeholder="ID del ingreso" class="button button3" />
-                            <input type="submit" value="Buscar" class="button button3">
+                            <input type="submit" value="Buscar" class="button button4">
                         }
                         <p></p>
 
@@ -179,7 +179,7 @@
                             <p><input type="text" name="descripcion" placeholder="Descripcion" class="button button3"></p>
                             <p><input type="text" name="total" placeholder="Total" class="button button3"></p>
 
-                            <p><button id="cargarIngreso" class="button button3">Cargar ingreso</button></p>
+                            <p><button id="cargarIngreso" class="button button4">Cargar ingreso</button></p>
 
                             <div id="ingresoInfo"></div>
                         }
@@ -193,15 +193,15 @@
                         <!--Mirar con juan-->
                         @using (Html.BeginForm("FechaPrimerEgreso", "Home", FormMethod.Post))
                         {
-                            <button id="fechaPrimerEgreso" class="button button3">Fecha primer egreso</button>
+                            <button id="fechaPrimerEgreso" class="button button4">Fecha primer egreso</button>
                         }
                         @using (Html.BeginForm("ValorPrimerEgreso", "Home", FormMethod.Post))
                         {
-                            <button id="fechaPrimerEgreso" class="button button3">Valor primer egreso</button>
+                            <button id="fechaPrimerEgreso" class="button button4">Valor primer egreso</button>
                         }
                         @using (Html.BeginForm("ValorPrimerIngreso", "Home", FormMethod.Post))
                         {
-                            <button id="fechaPrimerEgreso" class="button button3">Valor primer ingreso</button>
+                            <button id="fechaPrimerEgreso" class="button button4">Valor primer ingreso</button>
                         }
 
 
@@ -234,13 +234,13 @@
                         @using (Html.BeginForm("MostrarPresupuestoConItems", "Home", FormMethod.Post))
                         {
                             <input type="text" name="id_presupuesto" placeholder="ID del Presupuesto" class="button button3" />
-                            <input type="submit" value="Buscar" class="button button3">
+                            <input type="submit" value="Buscar" class="button button4">
                         }
                         <p>Buscar presupuesto por egreso:</p>
                         @using (Html.BeginForm("MostrarPresupuestosPorEgreso", "Home", FormMethod.Post))
                         {
                             <input type="number" name="id_egreso" placeholder="ID del Egreso" class="button button3">
-                            <input type="submit" value="Buscar" class="button button3">
+                            <input type="submit" value="Buscar" class="button button4">
                         }
                     </div>
                     <p></p>
@@ -253,7 +253,7 @@
                             <div id="itemsInputPresupuesto"></div>
                             <p><input type="number" name="id_egreso" placeholder="ID del Egreso" class="button button3"></p>
                             <p><input type="text" name="CUIT" placeholder="CUIT Proveedor" class="button button3"></p>
-                            <p><input type="submit" id="agregarPresupuesto" value="Cargar presupuesto" class="button button3"></p>
+                            <p><input type="submit" id="agregarPresupuesto" value="Cargar presupuesto" class="button button4"></p>
 
                         }
                     </div>
@@ -264,7 +264,7 @@
                         {
                             <input type="number" name="id_egreso" placeholder="ID del Egreso" class="button button3">
                             <input type="number" name="id_presupuesto" placeholder="ID del Presupuesto" class="button button3">
-                            <input type="submit" value="Elegir" class="button button3">
+                            <input type="submit" value="Elegir" class="button button4">
                         }
 
                     </div>
@@ -293,7 +293,7 @@
                             <input type="number" name="monto" placeholder="Monto" class="button button3">
                             <input type="number" name="cant_presupuestos" placeholder="Cantidad presupuestos minimos" class="button button3">
                             <input type="text" name="usuario" placeholder="Director de proyecto" class="button button3">
-                            <input type="submit" value="Cargar" class="button button3">
+                            <input type="submit" value="Cargar" class="button button4">
                         }
 
                     </div>
@@ -305,7 +305,7 @@
                         {
                             <input type="number" name="id_ingreso" placeholder="ID Ingreso" class="button button3">
                             <input type="number" name="id_proyecto" placeholder="ID Proyecto" class="button button3">
-                            <input type="submit" value="Vincular" class="button button3">
+                            <input type="submit" value="Vincular" class="button button4">
                         }
 
                     </div>
@@ -318,7 +318,7 @@
                         {
                             <input type="number" name="id_egreso" placeholder="ID Egreso" class="button button3">
                             <input type="number" name="id_proyecto" placeholder="ID Proyecto" class="button button3">
-                            <input type="submit" value="Vincular" class="button button3">
+                            <input type="submit" value="Vincular" class="button button4">
                         }
 
                     </div>
@@ -330,7 +330,7 @@
                         @using (Html.BeginForm("BajaProyecto", "Home", FormMethod.Post))
                         {
                             <input type="number" name="id_proyecto" placeholder="ID Proyecto" class="button button3">
-                            <input type="submit" value="Borrar" class="button button3">
+                            <input type="submit" value="Borrar" class="button button4">
                         }
 
                     </div>
@@ -358,7 +358,7 @@
                             <p><input type="text" name="CUIT" placeholder="CUIT" class="button button3"></p>
                             <p><input type="text" name="razon" placeholder="Razon Social" class="button button3"></p>
 
-                            <p><button id="registrarProveedor" class="button button3">Cargar proveedor</button></p>
+                            <p><button id="registrarProveedor" class="button button4">Cargar proveedor</button></p>
                         }
 
                     </div>
@@ -371,7 +371,7 @@
                         <p><input type="text" id="criterio" placeholder="Criterio" class="button button3"></p>
                         <p><input type="text" id="categoria" placeholder="Categoria" class="button button3"></p>
 
-                        <p><button id="asignarCriterio" class="button button3">Asignar</button></p>
+                        <p><button id="asignarCriterio" class="button button4">Asignar</button></p>
 
                         <div id="criterioInfo"></div>
 
@@ -386,7 +386,7 @@
                             <p><input type="text" name="descripcion" placeholder="Descripcion" class="button button3"></p>
                             <p><input type="number" name="jerarquia" placeholder="Jerarquia" class="button button3"></p>
 
-                            <p><input type="submit" value="Cargar criterio" class="button button3"></p>
+                            <p><input type="submit" value="Cargar criterio" class="button button4"></p>
                         }
                     </div>
                     <h6></h6>
@@ -399,7 +399,7 @@
                             <p><input type="text" name="descripcionCat" placeholder="Descripcion categoria" class="button button3"></p>
                             <p><input type="text" name="descripcionCrit" placeholder="Descripcion de criterio" class="button button3"></p>
 
-                            <p><input type="submit" value="Cargar categoria" class="button button3"></p>
+                            <p><input type="submit" value="Cargar categoria" class="button button4"></p>
                         }
                     </div>
                     <h6></h6>
@@ -422,7 +422,7 @@
 
                         @using (Html.BeginForm("verBitacora", "Home", FormMethod.Post))
                         {
-                        <p><input type="submit" value="Ver" class="button button3"></p>
+                        <p><input type="submit" value="Ver" class="button button4"></p>
                         }
                     </div>
                     <h6></h6>
