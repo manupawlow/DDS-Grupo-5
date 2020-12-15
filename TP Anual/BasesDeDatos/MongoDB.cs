@@ -58,12 +58,12 @@ namespace TP_Anual
                 // Creo una bandeja de mensajes y la inserto
                 coleccionBandejaDeMensajes.ReplaceOne(filter, egreso.bandejaDeMensajes);
             }
-                
+
         }
 
         public void registrarBandejaDeMensajes(Egreso egreso)
         {
-            if (conectarMongo) 
+            if (conectarMongo)
             {
                 var client = new MongoClient();
                 var database = client.GetDatabase("mydb");
@@ -71,7 +71,7 @@ namespace TP_Anual
                 var coleccionBandejaDeMensajes = database.GetCollection<BandejaDeMensajes>("coleccionBandejaDeMensajes");
                 coleccionBandejaDeMensajes.InsertOne(egreso.bandejaDeMensajes);
             }
-            
+
         }
 
         public void actualizarBitacoraNoSQL(IMongoDatabase database, ObjectId bitacoraID)
@@ -137,23 +137,23 @@ namespace TP_Anual
         {
             if (egreso.bandejaDeMensajes == null)
             {
-                if (conectarMongo) 
+                if (conectarMongo)
                 {
                     var client = new MongoClient();
                     var database = client.GetDatabase("mydb");
                     var coleccionBandejaDeMensajes = database.GetCollection<BandejaDeMensajes>("coleccionBandejaDeMensajes");
                     var listaBandeja = coleccionBandejaDeMensajes.Find(bandeja => bandeja.id_egreso == egreso.id_egreso).ToList();
                     egreso.bandejaDeMensajes = listaBandeja[0];
-                    
-                    
+
+
                 }
-                
+
             }
         }
 
         public string[] mostrarBandejaDeMensajesDeEgreso(Egreso egreso)
         {
-            
+
             //var listaDatabases = client.ListDatabaseNames().ToList();
             // var database = client.GetDatabase(listaDatabases[3]);
             if (conectarMongo)
@@ -171,18 +171,18 @@ namespace TP_Anual
 
                 return bandejaDeMensajes[0].mensajes.Split('\n');
             }
-            else 
+            else
             {
                 return "No se pudo acceder a MongoDB".Split('\n');
             }
 
-           
+
         }
 
         public void agregarLogABitacora(string log)
-        { 
-            
-            if (conectarMongo) 
+        {
+
+            if (conectarMongo)
             {
                 var client = new MongoClient(/*"mongodb+srv://disenio2020:pepepepe@cluster0.unla6.mongodb.net/disenio2020?retryWrites=true&w=majority"*/);
                 var database = client.GetDatabase("mydb");
@@ -194,7 +194,40 @@ namespace TP_Anual
                 actualizarBitacoraNoSQL(database, GeneradorDeLogs.bitacora.ID);
             }
 
-            
+
         }
+
+        public string[] mostrarBitacora()
+        {
+            if (conectarMongo)
+            {
+                var client = new MongoClient();
+                var database = client.GetDatabase("mydb");
+
+                var coleccionBitacoraDeOperaciones = database.GetCollection<BitacoraDeOperaciones>("coleccionBitacoraDeOperaciones");
+                var bitacoraDeOperaciones = coleccionBitacoraDeOperaciones.Find(bitacora => bitacora.ID != null).ToList();
+
+                return logToString(bitacoraDeOperaciones[0].logs).Split('\n');
+            }
+            else
+            { 
+                return "No se pudo acceder a MongoDB".Split('\n');
+            }
+
+        }
+
+        public string logToString(List<Log> logs)
+        {
+            string cadena = logs[0].accion + "          " + logs[0].fecha.ToString(); 
+        
+            for(int i=1; i < logs.Count; i++) 
+            {
+                cadena = cadena + "\n" + logs[i].accion + "          " + logs[i].fecha.ToString();
+            }
+
+            return cadena;
+
+        }
+
     }
 }

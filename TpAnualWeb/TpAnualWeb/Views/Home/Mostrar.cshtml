@@ -242,6 +242,18 @@
                             }
                         }
 
+
+                        //<---------------------------------BITACORA--------------------------------->
+
+                        if (ViewBag.mostrar == "BITACORA")
+                        {
+                            foreach (var log in ViewBag.bitacora)
+                            {
+                                <p>@log</p>
+                            }
+
+                        }
+
                         //<---------------------------------ERROR--------------------------------->
 
                         if (ViewBag.mostrar == "ERROR")

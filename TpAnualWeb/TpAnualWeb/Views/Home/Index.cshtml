@@ -340,6 +340,7 @@
         </div>
     </section>
 
+    <!---------------------------------REGISTRAR--------------------------------->
 
     <section id="registrar">
         <div class="container">
@@ -409,8 +410,30 @@
         </div>
     </section>
 
+    <!---------------------------------BITACORA DE OPERACIONES--------------------------------->
+    <section id="bitacora de operaciones" class="bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2>BITACORA DE OPERACIONES</h2>
 
-    <section id="contact" class="bg-light">
+                    <button onclick="myFunction(45)" target="_blank" class="button button2">Ver bitacora de operaciones</button>
+                    <div id="45" style="display:none;">
+
+                        @using (Html.BeginForm("verBitacora", "Home", FormMethod.Post))
+                        {
+                        <p><input type="submit" value="Ver" class="button button3"></p>
+                        }
+                    </div>
+                    <h6></h6>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" >
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto">

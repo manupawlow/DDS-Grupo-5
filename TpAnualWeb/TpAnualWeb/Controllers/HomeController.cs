@@ -335,6 +335,14 @@ namespace TpAnualWeb.Controllers
         #endregion
 
         #region Usuarios
+        public ActionResult verBitacora()
+        {
+            ViewBag.mostrar = "BITACORA";
+            ViewBag.bitacora = MongoDB.getInstancia().mostrarBitacora();
+
+            return View("Mostrar");
+        }
+
         #endregion
 
         #region Login/Register
@@ -373,7 +381,7 @@ namespace TpAnualWeb.Controllers
         }
 
         [HttpPost]
-        public ActionResult RegisterTry(string username, string password)// bool esAdmin)
+        public ActionResult RegisterTry(string username, string password, string esAdmin)
         {
             /*if (UsuarioDAO.getInstancia().getUsuarioByUserName(username) != null)
                 ViewBag.msg = "Ya existe un usuario con ese nombre";
@@ -383,7 +391,10 @@ namespace TpAnualWeb.Controllers
                 return View("Register");
             }
             else*/
-            UsuarioDAO.getInstancia().Add(new Usuario(username, password, true));//, esAdmin));
+            if (esAdmin == "grupo5")
+                UsuarioDAO.getInstancia().Add(new Usuario(username, password, true));
+            else
+                UsuarioDAO.getInstancia().Add(new Usuario(username, password, false));
 
             return View("Login");
         }
