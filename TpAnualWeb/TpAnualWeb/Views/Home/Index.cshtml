@@ -40,17 +40,27 @@
                         <a class="nav-link js-scroll-trigger" href="#services">INGRESOS</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#presupuestos">PRESUPUESTOS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#proyectos">PROYECTOS</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="#registrar">REGISTRAR</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#bitacora_de_operaciones">BITACORA</a>
+                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="#contact">GitHub</a>
                     </li>
                     <li class="nav-item">
                         <a onclick="myFunction(0)" class="nav-link js-scroll-trigger">@Session["UserName"]</a>
                     </li>
-                        <div id="0">
-                            <a href="@Url.Action("Login", "Home")" class="nav-link js-scroll-trigger" style="display:block; color:firebrick">Cerrar sesion</a>
-                        </div>
+                    <div id="0">
+                        <a href="@Url.Action("Login", "Home")" class="nav-link js-scroll-trigger" style="display:block; color:firebrick">Cerrar sesion</a>
+                    </div>
                 </ul>
             </div>
         </div>
@@ -215,7 +225,7 @@
 
     <!---------------------------------PRESUPUESTOS--------------------------------->
 
-    <section id="services">
+    <section id="presupuestos">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto">
@@ -278,7 +288,7 @@
 
     <!---------------------------------PROYECTOS--------------------------------->
 
-    <section id="services" class="bg-light">
+    <section id="proyectos" class="bg-light">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto">
@@ -300,7 +310,7 @@
                     </div>
 
                     <p></p>
-                    <button onclick="myFunction(32)" target="_blank" class="button button2">Vincular ingreso a proyecto:</button>
+                    <button onclick="myFunction(32)" target="_blank" class="button button2">Vincular ingreso a proyecto</button>
                     <div id="32" style="display:none;">
                         @using (Html.BeginForm("VincularIngresoConProyecto", "Home", FormMethod.Post))
                         {
@@ -313,7 +323,7 @@
 
 
                     <p></p>
-                    <button onclick="myFunction(34)" target="_blank" class="button button2">Vincular egreso a proyecto:</button>
+                    <button onclick="myFunction(34)" target="_blank" class="button button2">Vincular egreso a proyecto</button>
                     <div id="34" style="display:none;">
                         @using (Html.BeginForm("VincularEgresoConProyecto", "Home", FormMethod.Post))
                         {
@@ -326,7 +336,7 @@
 
 
                     <p></p>
-                    <button onclick="myFunction(33)" target="_blank" class="button button2">Dar de baja proyecto:</button>
+                    <button onclick="myFunction(33)" target="_blank" class="button button2">Dar de baja proyecto</button>
                     <div id="33" style="display:none;">
                         @using (Html.BeginForm("BajaProyecto", "Home", FormMethod.Post))
                         {
@@ -412,21 +422,18 @@
     </section>
 
     <!---------------------------------BITACORA DE OPERACIONES--------------------------------->
-    <section id="bitacora de operaciones" class="bg-light">
+    <section id="bitacora_de_operaciones" class="bg-light">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto">
                     <h2>BITACORA DE OPERACIONES</h2>
-
-                    <button onclick="myFunction(45)" target="_blank" class="button button2">Ver bitacora de operaciones</button>
-                    <div id="45" style="display:none;">
-
                         @using (Html.BeginForm("verBitacora", "Home", FormMethod.Post))
                         {
-                        <p><input type="submit" value="Ver" class="button button4"></p>
+                            <button  target="_blank" class="button button2">Ver bitacora de operaciones</button>
                         }
-                    </div>
-                    <h6></h6>
+
+                </div>
+                <h6></h6>
 
 
                 </div>

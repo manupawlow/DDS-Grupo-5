@@ -259,7 +259,6 @@ C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\Sy
 C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\System.Web.WebPages.Razor.dll
 C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\TP Anual.exe
 C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\WebGrease.dll
-C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\MySql.Data.Entity.EF6.dll
 C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\EntityFramework.dll
 C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\MongoDB.Bson.dll
 C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\RestSharp.dll
@@ -276,7 +275,6 @@ C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\Sy
 C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\Newtonsoft.Json.xml
 C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\Antlr3.Runtime.pdb
 C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\MySql.Data.Entity.EF6.xml
 C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\EntityFramework.xml
 C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\MongoDB.Bson.xml
 C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\RestSharp.xml
@@ -756,3 +754,37 @@ C:\Users\Usuario\source\repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\EntityFramew
 C:\Users\Usuario\source\repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\EntityFramework.SqlServer.xml
 C:\Users\Usuario\source\repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\MySql.Data.EntityFramework.dll
 C:\Users\Usuario\source\repos\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\MySql.Data.EntityFramework.xml
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\BouncyCastle.Crypto.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\DnsClient.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\EntityFramework.SqlServer.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\Google.Protobuf.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\K4os.Compression.LZ4.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\K4os.Compression.LZ4.Streams.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\K4os.Hash.xxHash.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\Microsoft.Identity.Client.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\MySql.Data.EntityFramework.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\Renci.SshNet.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\SharpCompress.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\System.Buffers.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\System.Memory.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\System.Net.Http.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\System.Security.Cryptography.Algorithms.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\System.Security.Cryptography.Encoding.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\System.Security.Cryptography.Primitives.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\Ubiety.Dns.Core.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\Zstandard.Net.dll
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\DnsClient.xml
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\EntityFramework.SqlServer.xml
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\Google.Protobuf.pdb
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\Google.Protobuf.xml
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\K4os.Compression.LZ4.xml
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\K4os.Compression.LZ4.Streams.xml
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\K4os.Hash.xxHash.xml
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\Microsoft.Identity.Client.xml
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\MySql.Data.EntityFramework.xml
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\Renci.SshNet.xml
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\System.Buffers.xml
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\System.Memory.xml
+C:\Users\Manuel\Desktop\REPOSITORIO DDS\DDS-Grupo-5\TpAnualWeb\TpAnualWeb\bin\System.Runtime.CompilerServices.Unsafe.xml
