@@ -296,6 +296,25 @@
                     <h2>PROYECTOS</h2>
                     <p class="lead">Seleccione una opcion:</p>
 
+                    <div id="50" style="display:none;">
+
+                        <h4></h4>
+                        @using (Html.BeginForm("MostrarProyectos", "Home", FormMethod.Post))
+                        {
+                            <input type="submit" value="Mostrar todos los proyectos" class="button button4">
+                        }
+                        <p>Buscar proyecto por id:</p>
+                        @using (Html.BeginForm("BuscarProyecto", "Home", FormMethod.Post))
+                        {
+                            <input type="number" name="id_proyecto" placeholder="ID del Proyecto" class="button button3" />
+                            <input type="submit" value="Buscar" class="button button4">
+                        }
+                        <p></p>
+
+                    </div>
+                    
+                    
+                    
                     <p></p>
                     <button onclick="myFunction(31)" target="_blank" class="button button2">Cargar proyecto</button>
                     <div id="31" style="display:none;">
@@ -405,7 +424,7 @@
                     <button onclick="myFunction(44)" target="_blank" class="button button2">Cargar categoria a criterio</button>
                     <div id="44" style="display:none;">
 
-                        @using (Html.BeginForm("CargarCategoria", "Home", FormMethod.Post))
+                        @using (Html.BeginForm("CargarCategoriaAcriterio", "Home", FormMethod.Post))
                         {
                             <p><input type="text" name="descripcionCat" placeholder="Descripcion categoria" class="button button3"></p>
                             <p><input type="text" name="descripcionCrit" placeholder="Descripcion de criterio" class="button button3"></p>
@@ -425,6 +444,7 @@
     <section id="bitacora_de_operaciones" class="bg-light">
         <div class="container">
             <div class="row">
+                
                 <div class="col-lg-8 mx-auto">
                     <h2>BITACORA DE OPERACIONES</h2>
                         @using (Html.BeginForm("verBitacora", "Home", FormMethod.Post))
@@ -435,8 +455,6 @@
                 </div>
                 <h6></h6>
 
-
-                </div>
             </div>
         </div>
     </section>

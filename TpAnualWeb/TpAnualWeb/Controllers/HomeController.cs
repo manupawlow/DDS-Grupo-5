@@ -431,6 +431,47 @@ namespace TpAnualWeb.Controllers
         #region Proyectos
 
         [HttpPost]
+        public ActionResult BuscarProyecto(int id_proyecto = -1)
+        {
+            if (id_proyecto == -1)
+            {
+                ViewBag.mostrar = "ERROR";
+                ViewBag.error = "Debe ingresar un proyecto";
+
+                return View("Mostrar");
+            }
+            else
+            {
+                ViewBag.mostrar = "PROYECTO";
+                ViewBag.egreso = ProyectoDAO.getInstancia().getProyectoById(id_proyecto);
+
+                return View("Mostrar");
+            }
+
+        }
+
+        [HttpPost]
+        public ActionResult MostrarProyectos()
+        {
+
+            ViewBag.proyectos = ProyectoDAO.getInstancia().getAllProyectos();
+            if (ViewBag.proyectos.Count > 0)
+            {
+                ViewBag.mostrar = "PROYECTOS";
+                return View("Mostrar");
+            }
+
+            else
+            {
+                ViewBag.mostrar = "ERROR";
+                ViewBag.error = "No hay proyectos actualmente";
+                return View("Mostrar");
+            }
+
+        }
+
+
+        [HttpPost]
         public ActionResult CargarProyecto(int monto =-1, int cant_presupuestos =-1, string usuario = "")
         {
             if (monto == -1 || cant_presupuestos == -1 || usuario == "")
@@ -484,7 +525,7 @@ namespace TpAnualWeb.Controllers
         }
 
         [HttpPost]
-        public ActionResult VincularEgresoConProyecto(int id_egreso, int id_proyecto)
+        public ActionResult VincularEgresoConProyecto(int id_egreso = -1, int id_proyecto = -1)
         {
             if (id_egreso == -1 || id_proyecto == -1)
             {
@@ -515,7 +556,7 @@ namespace TpAnualWeb.Controllers
         }
 
         [HttpPost]
-        public ActionResult BajaProyecto(int id_proyecto)
+        public ActionResult BajaProyecto(int id_proyecto = -1)
         {
 
             if (id_proyecto == -1)
@@ -569,29 +610,58 @@ namespace TpAnualWeb.Controllers
         }
 
         [HttpPost]
-        public ActionResult CargarCriterio(string descripcion, int jerarquia)
+        public ActionResult CargarCriterio(string descripcion = "", int jerarquia = -1)
         {
-            var nuevo = new Criterio();
-            nuevo.descripcion = descripcion;
-            nuevo.jerarquia = jerarquia;
+            if (descripcion == "" || jerarquia == -1)
+            {
+                ViewBag.mostrar = "ERROR";
+                ViewBag.error = "Debe completar todos los campos";
 
-            CriterioCategoriaDAO.getInstancia().AddCriterio(nuevo);
+                return View("Mostrar");
+            }
+            else
+            { 
+                var nuevo = new Criterio();
+                nuevo.descripcion = descripcion;
+                nuevo.jerarquia = jerarquia;
 
-            return View("Index");
+                CriterioCategoriaDAO.getInstancia().AddCriterio(nuevo);
+
+                return View("Index");
+
+            }
+
         }
 
         [HttpPost]
-        public ActionResult CargarCategoria(string descripcionCat, string descripcionCrit)
+        public ActionResult CargarCategoriaAcriterio(string descripcionCat = "", string descripcionCrit = "")
         {
-            var nuevo = new Categoria();
-            nuevo.descripcion = descripcionCat;
+            if (descripcionCat == "" || descripcionCrit == "")
+            {
+                ViewBag.mostrar = "ERROR";
+                ViewBag.error = "Debe completar todos los campos";
 
-            var criterio = CriterioCategoriaDAO.getInstancia().getCriterioByDescripcion(descripcionCrit);
-            nuevo.criterio = criterio;
+                return View("Mostrar");
+            }
+            else if(CriterioCategoriaDAO.getInstancia().getCriterioByDescripcion(descripcionCrit) == null)
+            {
+                ViewBag.mostrar = "ERROR";
+                ViewBag.error = "No existe el criterio ingresado";
 
-            CriterioCategoriaDAO.getInstancia().AddCategoria(nuevo);
+                return View("Mostrar");
+            }
+            else
+            {
+                var nuevo = new Categoria();
+                nuevo.descripcion = descripcionCat;
 
-            return View("Index");
+                var criterio = CriterioCategoriaDAO.getInstancia().getCriterioByDescripcion(descripcionCrit);
+                nuevo.criterio = criterio;
+
+                CriterioCategoriaDAO.getInstancia().AddCategoria(nuevo);
+
+                return View("Index");
+            }
         }
         #endregion
 

@@ -242,6 +242,37 @@
                             }
                         }
 
+                        //<---------------------------------PROYECTOS--------------------------------->
+
+                        if (ViewBag.mostrar == "PROYECTO")
+                        {
+
+                            if (ViewBag.proyecto != null)
+                            {
+                                <p><b>PROYECTO ID: </b>@ViewBag.proyecto.id</p>
+                                <p><b>DIRECTOR: </b>@ViewBag.proyecto.director.nombre</p>
+                                <p><b>MONTO TOTAL: </b>@ViewBag.proyecto.montoTotal</p>
+                                <p><b>PRESUPUESTOS EXIGIBLES: </b>@ViewBag.proyecto.cantPresupuestosExigibles</p>
+
+                            }
+                            else
+                            {
+                                <p>No existe ese proyecto</p>
+                            }
+                        }
+
+                        if (ViewBag.mostrar == "PROYECTOS")
+                        {
+                            foreach (var u in ViewBag.proyectos)
+                            {
+                                <p><b>PROYECTO ID: </b>@u.id</p>
+                                <p><b>DIRECTOR: </b>@u.director.nombre</p>
+                                <p><b>MONTO TOTAL: </b>@u.montoTotal</p>
+                                <p><b>PRESUPUESTOS EXIGIBLES: </b>@u.cantPresupuestosExigibles</p>
+                            }
+
+                        }
+
 
                         //<---------------------------------BITACORA--------------------------------->
 

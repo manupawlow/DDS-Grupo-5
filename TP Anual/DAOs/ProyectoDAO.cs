@@ -34,12 +34,21 @@ namespace TP_Anual.DAOs
             {
                 try
                 {
-                    return context.proyectos.Single(p => p.id == id);
+                    return context.proyectos.Include("director").Single(p => p.id == id);
                 }
                 catch (InvalidOperationException)
                 {
                     return null;
                 }
+            }
+        }
+
+        public List<ProyectoDeFinanciamiento> getAllProyectos()
+        {
+            using (var context = new MySql())
+            {
+                return context.proyectos
+                    .ToList<ProyectoDeFinanciamiento>();
             }
         }
 

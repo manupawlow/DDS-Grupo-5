@@ -30,7 +30,16 @@ namespace TP_Anual.DAOs
         {
             using (var context = new MySql())
             {
-                return context.criterios.Single(e => e.descripcion == descripcion);
+
+                try
+                {
+                    return context.criterios.Single(e => e.descripcion == descripcion);
+                }
+                catch (InvalidOperationException)
+                {
+                    return null;
+                }
+
             }
         }
 
@@ -38,7 +47,14 @@ namespace TP_Anual.DAOs
         {
             using (var context = new MySql())
             {
-                return context.categorias.Single(e => e.descripcion == descripcion);
+                try
+                {
+                    return context.categorias.Single(e => e.descripcion == descripcion);
+                }
+                catch (InvalidOperationException)
+                {
+                    return null;
+                }
             }
         }
 
@@ -58,6 +74,8 @@ namespace TP_Anual.DAOs
             {
                 context.categorias.Add(e);
                 context.SaveChanges();
+
+                MongoDB.getInstancia().agregarLogABitacora($"Se ha creado una nueva categoria para items de id:{e.id_categoria}");
             }
             return this;
         }
@@ -69,7 +87,7 @@ namespace TP_Anual.DAOs
                 context.criterios_por_item.Add(e);
                 context.SaveChanges();
 
-                MongoDB.getInstancia().agregarLogABitacora($"Se ha creado un criterio_por_item de id:{e.id_crit_por_item}");
+                MongoDB.getInstancia().agregarLogABitacora($"Se ha creado un nuevo criterio para items de id:{e.id_crit_por_item}");
             }
             return this;
         }
