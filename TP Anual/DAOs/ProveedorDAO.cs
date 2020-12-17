@@ -57,6 +57,15 @@ namespace TP_Anual.DAOs
             }
         }
 
+        public List<Proveedor> getAllProveedores()
+        {
+            using (var context = new MySql())
+            {
+                return context.proveedores
+                    .ToList<Proveedor>();
+            }
+        }
+
         public List<Proveedor> getAllProveedor()
         {
             using (var context = new MySql())

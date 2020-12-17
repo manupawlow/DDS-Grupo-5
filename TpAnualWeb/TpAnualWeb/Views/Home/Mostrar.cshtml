@@ -266,9 +266,49 @@
                             foreach (var u in ViewBag.proyectos)
                             {
                                 <p><b>PROYECTO ID: </b>@u.id</p>
-                                <p><b>DIRECTOR: </b>@u.director.nombre</p>
                                 <p><b>MONTO TOTAL: </b>@u.montoTotal</p>
                                 <p><b>PRESUPUESTOS EXIGIBLES: </b>@u.cantPresupuestosExigibles</p>
+                                <p><b>-----------------------------------------</b></p>
+                            }
+
+                        }
+
+                        //<---------------------------------PROVEEDORES--------------------------------->
+
+                        if (ViewBag.mostrar == "PROVEEDORES")
+                        {
+                            foreach (var u in ViewBag.proveedores)
+                            {
+                                <p><b>PROVEEDOR ID: </b>@u.id_prov</p>
+                                <p><b>CUIT: </b>@u.CUIT</p>
+                                <p><b>RAZON SOCIAL: </b>@u.razon_social</p>
+                                <p><b>-----------------------------------------</b></p>
+                            }
+
+                        }
+
+                        //<---------------------------------CATEGORIAS Y CRITERIOS--------------------------------->
+
+                        if (ViewBag.mostrar == "CATEGORIAS")
+                        {
+                            foreach (var u in ViewBag.categorias)
+                            {
+                                <p><b>CATEGORIA ID: </b>@u.id_categoria</p>
+                                <p><b>CRITERIO ID: </b>@u.id_criterio</p>
+                                <p><b>DESCRIPCION: </b>@u.descripcion</p>
+                                <p><b>-----------------------------------------</b></p>
+                            }
+
+                        }
+
+                        if (ViewBag.mostrar == "CRITERIOS")
+                        {
+                            foreach (var u in ViewBag.criterios)
+                            {
+                                <p><b>CRITERIO ID: </b>@u.id_criterio</p>
+                                <p><b>DESCRIPCION: </b>@u.descripcion</p>
+                                <p><b>JERARQUIA: </b>@u.jerarquia</p>
+                                <p><b>-----------------------------------------</b></p>
                             }
 
                         }

@@ -58,6 +58,24 @@ namespace TP_Anual.DAOs
             }
         }
 
+        public List<Criterio> getAllCriterios()
+        {
+            using (var context = new MySql())
+            {
+                return context.criterios
+                    .ToList<Criterio>();
+            }
+        }
+
+        public List<Categoria> getAllCategorias()
+        {
+            using (var context = new MySql())
+            {
+                return context.categorias
+                    .ToList<Categoria>();
+            }
+        }
+
         public CriterioCategoriaDAO AddCriterio(Criterio e)
         {
             using (var context = new MySql())

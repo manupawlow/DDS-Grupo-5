@@ -286,28 +286,6 @@ namespace TpAnualWeb.Controllers
         }
 
         [HttpPost]
-        public ActionResult CargarProveedor(string razon = "", string CUIT = "")
-        {
-            if (razon == "" || CUIT == "")
-            {
-                ViewBag.mostrar = "ERROR";
-                ViewBag.error = "Debe completar todos los campos";
-
-                return View("Mostrar");
-            }
-            else
-            {
-                Proveedor nuevo = new Proveedor();
-                nuevo.CUIT = CUIT;
-                nuevo.razon_social = razon;
-                ProveedorDAO.getInstancia().Add(nuevo);
-
-                return View("Index");
-            }
-
-        }
-
-        [HttpPost]
         public ActionResult MostrarPresupuestos()
         {
             ViewBag.mostrar = "PRESUPUESTOS";
@@ -481,12 +459,23 @@ namespace TpAnualWeb.Controllers
 
                 return View("Mostrar");
             }
-            else
-            { 
-                ProyectoDAO.getInstancia().cargarProyecto(cant_presupuestos, monto, usuario);
+            else 
+            {
+                if (UsuarioDAO.getInstancia().getUsuarioByUserName(usuario) == null)
+                {
+                    ViewBag.mostrar = "ERROR";
+                    ViewBag.error = "No existe el usuario ingresado";
 
-                return View("Index");
-            }
+                    return View("Mostrar");
+                }
+                else
+                {
+                    ProyectoDAO.getInstancia().cargarProyecto(cant_presupuestos, monto, usuario);
+
+                    return View("Index");
+
+                }
+            }      
 
         }
 
@@ -588,7 +577,94 @@ namespace TpAnualWeb.Controllers
 
         #endregion
 
+        #region Proveedores
+        [HttpPost]
+        public ActionResult CargarProveedor(string razon = "", string CUIT = "")
+        {
+            if (razon == "" || CUIT == "")
+            {
+                ViewBag.mostrar = "ERROR";
+                ViewBag.error = "Debe completar todos los campos";
+
+                return View("Mostrar");
+            }
+            else
+            {
+                Proveedor nuevo = new Proveedor();
+                nuevo.CUIT = CUIT;
+                nuevo.razon_social = razon;
+                ProveedorDAO.getInstancia().Add(nuevo);
+
+                return View("Index");
+            }
+
+        }
+
+
+        [HttpPost]
+        public ActionResult MostrarProveedores()
+        {
+
+            ViewBag.proveedores = ProveedorDAO.getInstancia().getAllProveedores();
+            if (ViewBag.proveedores.Count > 0)
+            {
+                ViewBag.mostrar = "PROVEEDORES";
+                return View("Mostrar");
+            }
+
+            else
+            {
+                ViewBag.mostrar = "ERROR";
+                ViewBag.error = "No hay proveedores actualmente";
+                return View("Mostrar");
+            }
+
+        }
+
+        #endregion
+
         #region Criterios y Categorias
+        
+        [HttpPost]
+        public ActionResult MostrarCriterios()
+        {
+
+            ViewBag.criterios = CriterioCategoriaDAO.getInstancia().getAllCriterios();
+            if (ViewBag.criterios.Count > 0)
+            {
+                ViewBag.mostrar = "CRITERIOS";
+                return View("Mostrar");
+            }
+
+            else
+            {
+                ViewBag.mostrar = "ERROR";
+                ViewBag.error = "No hay criterios actualmente";
+                return View("Mostrar");
+            }
+
+        }
+
+        [HttpPost]
+        public ActionResult MostrarCategorias()
+        {
+
+            ViewBag.categorias = CriterioCategoriaDAO.getInstancia().getAllCategorias();
+            if (ViewBag.categorias.Count > 0)
+            {
+                ViewBag.mostrar = "CATEGORIAS";
+                return View("Mostrar");
+            }
+
+            else
+            {
+                ViewBag.mostrar = "ERROR";
+                ViewBag.error = "No hay categorias actualmente";
+                return View("Mostrar");
+            }
+
+        }
+
 
         [HttpPost]
         public JsonResult AsignarCriterio([FromBody] JsonItem jsonItem)
@@ -663,6 +739,7 @@ namespace TpAnualWeb.Controllers
                 return View("Index");
             }
         }
+        
         #endregion
 
         #region Usuarios
