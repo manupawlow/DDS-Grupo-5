@@ -58,21 +58,34 @@ namespace TpAnualWeb.Controllers
             }
             else
             {
-                if (inputs["nuevoItem"] != null || inputs["cantidad"] != null)
+                var usuario = UsuarioDAO.getInstancia().getUsuarioByUserName(revisor);
+
+                if(usuario == null)
                 {
-                    var items = inputs["nuevoItem"].Split(',');
-                    var cantidades = inputs["cantidad"].Split(',');
+                    ViewBag.mostrar = "ERROR";
+                    ViewBag.error = "No existe el usuario ingresado";
 
-                    //TODO: Siempre crea un nuevo item en la BD, hacer que se fije si ya existe ese item
-
-                    EgresoDAO.getInstancia().cargarEgreso(descripcion, revisor, cantPresup, items, cantidades);
+                    return View("Mostrar");
                 }
                 else
                 {
-                    EgresoDAO.getInstancia().cargarEgreso(descripcion, revisor, cantPresup);
+                    if (inputs["nuevoItem"] != null || inputs["cantidad"] != null)
+                    {
+                        var items = inputs["nuevoItem"].Split(',');
+                        var cantidades = inputs["cantidad"].Split(',');
+
+                        //TODO: Siempre crea un nuevo item en la BD, hacer que se fije si ya existe ese item
+
+                        EgresoDAO.getInstancia().cargarEgreso(descripcion, revisor, cantPresup, items, cantidades);
+                    }
+                    else
+                    {
+                        EgresoDAO.getInstancia().cargarEgreso(descripcion, revisor, cantPresup);
+                    }
+
+                    return View("Index");
                 }
 
-                return View("Index");
             }
 
             
@@ -111,28 +124,56 @@ namespace TpAnualWeb.Controllers
             }
             else
             {
+                var usuario = UsuarioDAO.getInstancia().getUsuarioByUserName(Session["UserName"].ToString()).id;
                 var egreso = EgresoDAO.getInstancia().getEgresoById(id_egreso);
-            
-                if (egreso != null)
+                TP_Anual.MongoDB.getInstancia().agregarBandejaAEgresoEnCasoQueNoLaTengaAsignada(egreso);
+                var revisor = egreso.bandejaDeMensajes.revisor.id;           
+
+                if (usuario != revisor)
                 {
-                    ViewBag.mostrar = "BANDEJA DE MENSAJES";
-                    ViewBag.bandeja = egreso.bandejaDeMensajes;
-                    ViewBag.mensajes = TP_Anual.MongoDB.getInstancia().mostrarBandejaDeMensajesDeEgreso(egreso);
+                    ViewBag.mostrar = "ERROR";
+                    ViewBag.error = "Solo el usuario revisor del egreso puede ver la bandeja de mensajes";
 
                     return View("Mostrar");
                 }
                 else
                 {
-                ViewBag.mostrar = "ERROR";
-                ViewBag.error = "No existe el egreso";
+                    if(egreso.bandejaDeMensajes.mensajes == null)
+                    {
+                        ViewBag.mostrar = "ERROR";
+                        ViewBag.error = "El egreso aun no fue validado";
 
-                return View("Mostrar");
+                        return View("Mostrar");
+                    }
+                    else
+                    {
+                        if (egreso != null)
+                        {
+                            ViewBag.mostrar = "BANDEJA DE MENSAJES";
+                            ViewBag.bandeja = egreso.bandejaDeMensajes;
+                            ViewBag.mensajes = TP_Anual.MongoDB.getInstancia().mostrarBandejaDeMensajesDeEgreso(egreso);
+
+                            return View("Mostrar");
+                        }
+                        else
+                        {
+                        ViewBag.mostrar = "ERROR";
+                        ViewBag.error = "No existe el egreso";
+
+                        return View("Mostrar");
+                        }
+
+                    }
+
                 }
                 
+
             }
 
-            
+
         }
+
+            
 
         [HttpPost]
         public ActionResult ValidarEgreso(int id_egreso = -1)
@@ -146,26 +187,44 @@ namespace TpAnualWeb.Controllers
             }
             else
             {
-                try
-                {
-                    ViewBag.mostrar = "VALIDACION";
-                    if (EgresoDAO.getInstancia().validarEgreso(id_egreso))
-                    {
-                        ViewBag.validacion = "El egreso fue validado correctamente, para ver resultados ver bandeja de mensajes";
-                    }
-                    else
-                    {
-                        ViewBag.validacion = "El egreso fallo la validacion, para ver resultados ver bandeja de mensajes";
-                    }
+                var usuario = UsuarioDAO.getInstancia().getUsuarioByUserName(Session["UserName"].ToString()).id;
+                var egreso = EgresoDAO.getInstancia().getEgresoById(id_egreso);
+                TP_Anual.MongoDB.getInstancia().agregarBandejaAEgresoEnCasoQueNoLaTengaAsignada(egreso);
+                var revisor = egreso.bandejaDeMensajes.revisor.id;
 
-                }
-                catch (InvalidOperationException)
+                if (usuario != revisor)
                 {
                     ViewBag.mostrar = "ERROR";
-                    ViewBag.error = "No existe el egreso ingresado";
-                }
+                    ViewBag.error = "Solo el usuario revisor del egreso puede validarlo";
 
-                return View("Mostrar");
+                    return View("Mostrar");
+                }
+                else
+                {
+                    try
+                    {
+                        ViewBag.mostrar = "VALIDACION";
+                        if (EgresoDAO.getInstancia().validarEgreso(id_egreso))
+                        {
+                            ViewBag.validacion = "El egreso fue validado correctamente, para ver resultados ver bandeja de mensajes";
+                        }
+                        else
+                        {
+                            ViewBag.validacion = "El egreso fallo la validacion, para ver resultados ver bandeja de mensajes";
+                        }
+
+                    }
+                    catch (InvalidOperationException)
+                    {
+                        ViewBag.mostrar = "ERROR";
+                        ViewBag.error = "No existe el egreso ingresado";
+                    }
+
+                    return View("Mostrar");
+                }
+             
+
+
             }
 
         }
@@ -421,7 +480,7 @@ namespace TpAnualWeb.Controllers
             else
             {
                 ViewBag.mostrar = "PROYECTO";
-                ViewBag.egreso = ProyectoDAO.getInstancia().getProyectoById(id_proyecto);
+                ViewBag.proyecto = ProyectoDAO.getInstancia().getProyectoById(id_proyecto);
 
                 return View("Mostrar");
             }
@@ -667,22 +726,46 @@ namespace TpAnualWeb.Controllers
 
 
         [HttpPost]
-        public JsonResult AsignarCriterio([FromBody] JsonItem jsonItem)
+        public ActionResult AsignarCriterio(string item_desc = "", string criterio = "", string categoria = "")
         {
-            var item = ItemDAO.getInstancia().getItemByDescripcion(jsonItem.descripcion);
-            var criterio = CriterioCategoriaDAO.getInstancia().getCriterioByDescripcion(jsonItem.criterio);
-            var categoria = CriterioCategoriaDAO.getInstancia().getCategoriaByDescripcion(jsonItem.categoria);
 
-            //TODO: si no existe el item que notifique, si no existe criterio o categoria que la cree
+            if (item_desc == "" || criterio == "" || categoria == "")
+            {
+                ViewBag.mostrar = "ERROR";
+                ViewBag.error = "Debe completar todos los campos";
 
-            var nuevo = new CriterioPorItem();
-            nuevo.item = item;
-            nuevo.criterio = criterio;
-            nuevo.categoria_item = categoria;
+                return View("Mostrar");
+            }
+            else
+            {
+                var item = ItemDAO.getInstancia().getItemByDescripcion(item_desc);
+                var cri = CriterioCategoriaDAO.getInstancia().getCriterioByDescripcion(criterio);
+                var cat = CriterioCategoriaDAO.getInstancia().getCategoriaByDescripcion(categoria);
 
-            CriterioCategoriaDAO.getInstancia().AddCriterioPorItem(nuevo);
+                if (item == null || cri == null || cat == null)
+                {
+                    ViewBag.mostrar = "ERROR";
+                    ViewBag.error = "Los datos ingresados no son validos";
 
-            return Json(JsonConvert.SerializeObject(nuevo));
+                    return View("Mostrar");
+
+                }
+                else
+                {
+                    var nuevo = new CriterioPorItem();
+                    nuevo.item = item;
+                    nuevo.criterio = cri;
+                    nuevo.categoria_item = cat;
+
+                    CriterioCategoriaDAO.getInstancia().AddCriterioPorItem(nuevo);
+
+                    return View("Index");
+
+                }
+            }
+
+
+
         }
 
         [HttpPost]
@@ -719,24 +802,29 @@ namespace TpAnualWeb.Controllers
 
                 return View("Mostrar");
             }
-            else if(CriterioCategoriaDAO.getInstancia().getCriterioByDescripcion(descripcionCrit) == null)
-            {
-                ViewBag.mostrar = "ERROR";
-                ViewBag.error = "No existe el criterio ingresado";
-
-                return View("Mostrar");
-            }
             else
             {
-                var nuevo = new Categoria();
-                nuevo.descripcion = descripcionCat;
+                var critero = CriterioCategoriaDAO.getInstancia().getCriterioByDescripcion(descripcionCrit);
 
-                var criterio = CriterioCategoriaDAO.getInstancia().getCriterioByDescripcion(descripcionCrit);
-                nuevo.criterio = criterio;
+                if (critero == null)
+                {
+                    ViewBag.mostrar = "ERROR";
+                    ViewBag.error = "No existe el criterio ingresado";
 
-                CriterioCategoriaDAO.getInstancia().AddCategoria(nuevo);
+                    return View("Mostrar");
+                }
+                else
+                {
+                    var nuevo = new Categoria();
+                    nuevo.descripcion = descripcionCat;
 
-                return View("Index");
+                    var criterio = CriterioCategoriaDAO.getInstancia().getCriterioByDescripcion(descripcionCrit);
+                    nuevo.criterio = criterio;
+
+                    CriterioCategoriaDAO.getInstancia().AddCategoria(nuevo);
+
+                    return View("Index");
+                }
             }
         }
         

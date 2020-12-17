@@ -29,7 +29,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="#page-top">GeSoc</a>
+            <a class="navbar-brand js-scroll-trigger" href="@Url.Action("Index", "Home")">GeSoc</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -60,62 +60,112 @@
                     @{
                         <h2>@ViewBag.mostrar</h2>
 
+                        //<---------------------------------EGRESOS--------------------------------->
+
                         if (ViewBag.mostrar == "EGRESOS")
                         {
-                            if (ViewBag.egresos != null)
+                            foreach (var u in ViewBag.egresos)
                             {
-
-                                foreach (var u in ViewBag.egresos)
+                                <p><b>EGRESO ID: </b>@u.id_egreso</p>
+                                <p><b>FECHA: </b>@u.fecha</p>
+                                <p><b>DESCRIPCION: </b>@u.descripcion</p>
+                                <p><b>PRESUPUESTOS REQUERIDOS: </b>@u.cantPresupuestos</p>
+                                if (@u.ingreso != null)
                                 {
-                                    <p><b>EGRESO ID: </b>@u.id_egreso</p>
-                                    <p><b>FECHA: </b>@u.fecha</p>
-                                    <p><b>DESCRIPCION: </b>@u.descripcion</p>
-                                    <p><b>PRESUPUESTOS REQUERIDOS: </b>@u.cantPresupuestos</p>
-                                    if (@u.ingreso != null)
-                                    {
-                                        <p><b>ID INGRESO VINCULADO: </b>@u.ingreso.id_ingreso</p>
-                                    }
-                                    if (@u.presupuestos != null)
-                                    {
-                                        <p><b>PRESUPUESTOS: </b>@u.presupuestos.Count</p>
-                                    }
+                                    <p><b>ID INGRESO VINCULADO: </b>@u.ingreso.id_ingreso</p>
+                                }
+                                if (@u.presupuestos != null)
+                                {
+                                    <p><b>PRESUPUESTOS: </b>@u.presupuestos.Count</p>
+                                }
 
-                                    if (@u.proveedorElegido != null)
-                                    {
-                                        <p><b>PROVEEDOR ELEGIDO: </b>@u.proveedorElegido.CUIT</p>
-                                    }
+                                if (@u.proveedorElegido != null)
+                                {
+                                    <p><b>PROVEEDOR ELEGIDO: </b>@u.proveedorElegido.CUIT</p>
+                                }
 
-
-                                    <p><b>ITEMS: Descripcion | Cantidad | Precio @u.items.Count</b></p>
-                                    
-                                    @*var a = TP_Anual.DAOs.ItemDAO.getInstancia().getItemsDeEgreso(u.id_egreso);
-                                    foreach (var i in a)
-                                    {
-                                        <p>@i.item.descripcion | @i.cantidad | @i.valor </p>
-                                    }
-                                        *@
-                                    @*foreach (var i in u.items)
-                                    {
-                                        <p>@i.item.descripcion | @i.cantidad | @i.valor </p>
-                                    }*@
+                                if (@u.id_ingreso != null)
+                                {
+                                    <p><b>ID INGRESO ASOCIADO: </b>@u.id_ingreso</p>
+                                }
+                                else
+                                {
+                                    <p><b>ID INGRESO ASOCIADO: </b>No se asocio a ningun ingreso</p>
+                                }
 
 
-                                    < p >< b > -----------------------------------------</ b ></ p >
-                                            }
+                                <p><b>CANTIDAD ITEMS: @u.items.Count</b></p>
+
+                                <p><b>-----------------------------------------</b></p>
+                            }
+
+
+                        }
+
+                        if (ViewBag.mostrar == "EGRESO")
+                        {
+
+                            if (ViewBag.egreso != null)
+                            {
+                                <p><b>EGRESO ID: </b>@ViewBag.egreso.id_egreso</p>
+                                <p><b>FECHA: </b>@ViewBag.egreso.fecha</p>
+                                <p><b>DESCRIPCION: </b>@ViewBag.egreso.descripcion</p>
+                                <p><b>PRESUPUESTOS REQUERIDOS: </b>@ViewBag.egreso.cantPresupuestos</p>
+
+                                if (@ViewBag.egreso.ingreso != null)
+                                {
+                                    <p><b>ID INGRESO VINCULADO: </b>@ViewBag.egreso.ingreso.id_ingreso</p>
+                                }
+                                if (@ViewBag.egreso.presupuestos != null)
+                                {
+                                    <p><b>PRESUPUESTOS: </b>@ViewBag.egreso.presupuestos.Count</p>
+                                }
+
+                                if (@ViewBag.egreso.proveedorElegido != null)
+                                {
+                                    <p><b>PROVEEDOR ELEGIDO: </b>@ViewBag.egreso.proveedorElegido.CUIT</p>
+                                }
+
+                                if (@ViewBag.egreso.id_ingreso != null)
+                                {
+                                    <p><b>ID INGRESO ASOCIADO: </b>@ViewBag.egreso.id_ingreso</p>
+                                }
+                                else
+                                {
+                                    <p><b>ID INGRESO ASOCIADO: </b>No se asocio a ningun ingreso</p>
+                                }
+
+
+                                foreach (var i in ViewBag.items)
+                                {
+                                    <p><b>ITEMS: DESCRIPCION | CANTIDAD </b></p>
+                                    <p><b>- </b>@i.item.descripcion | @i.cantidad</p>
+                                }
+
                             }
                             else
                             {
-                                <p><h3>No hay egresos actualmente</h3></p>
+                                <p>No existe ese egreso</p>
                             }
+                        }
+
+                        if (ViewBag.mostrar == "VALIDACION")
+                        {
+                            <p>@ViewBag.validacion</p>
                         }
 
                         if (ViewBag.mostrar == "BANDEJA DE MENSAJES")
                         {
                             //if (ViewBag.bandeja != null)
                             //{
-                                <p>@ViewBag.mensajes</p>
+                            foreach (var mensaje in ViewBag.mensajes)
+                            {
+                                <p>@mensaje</p>
+                            }
                             //}
                         }
+
+                        //<---------------------------------INGRESOS--------------------------------->
 
                         if (ViewBag.mostrar == "INGRESOS")
                         {
@@ -132,29 +182,173 @@
                             }
                             else
                             {
-                                <p><h3>No hay ingresos actualmente</h3></p>
+                                <p>No hay ingresos actualmente</p>
                             }
                         }
 
-                        if (ViewBag.mostrar == "PRESUPUESTOS DE EGRESO")
+                        if (ViewBag.mostrar == "INGRESO")
                         {
+                            if (ViewBag.ingreso != null)
+                            {
+                                <p><b>INGRESO ID: </b>@ViewBag.ingreso.id_ingreso</p>
+                                <p><b>DESCRIPCION: </b>@ViewBag.ingreso.descripcion</p>
+                                <p><b>TOTAL: </b>@ViewBag.ingreso.total</p>
+                                <p><b>EGRESOS ASIGNADOS: </b>@ViewBag.ingreso.egresos.Count</p>
+                            }
+                            else
+                            {
+                                <p>No existe ese ingreso</p>
+                            }
+                        }
 
-                            <p>ID EGRESO: @ViewBag.msg</p>
+                        //<---------------------------------PRESUPUESTOS--------------------------------->
 
+                        if (ViewBag.mostrar == "PRESUPUESTOS")
+                        {
                             if (ViewBag.presupuestos != null)
                             {
-                                foreach (var p in ViewBag.presupuestos)
+
+                                foreach (var u in ViewBag.presupuestos)
                                 {
-                                    <p><b>PRESUPUESTO ID: </b>@p.id_presupuesto</p>
-                                    <p><b>TOTAL: $</b>@p.valor_total</p>
-                                    //MOSTRAR ITEMS
+                                    <p><b>PRESUPUESTO ID: </b>@u.id_presupuesto</p>
+                                    <p><b>TOTAL: $</b>@u.valor_total</p>
+                                    <p><b>EGRESO ID: </b>@u.id_egreso</p>
                                     <p><b>-----------------------------------------</b></p>
                                 }
                             }
                             else
                             {
-                                <h2>NO TIENE PRESUPUETOS ASIGNADOS</h2>
+                                <p>No hay presupuestos actualmente</p>
                             }
+                        }
+
+                        if (ViewBag.mostrar == "PRESUPUESTO")
+                        {
+
+                            if (ViewBag.presupuesto != null)
+                            {
+                                <p><b>PRESUPUESTO ID: </b>@ViewBag.presupuesto.id_presupuesto</p>
+                                <p><b>TOTAL: $</b>@ViewBag.presupuesto.valor_total</p>
+                                <p><b>EGRESO ID: </b>@ViewBag.presupuesto.id_egreso</p>
+                                foreach (var i in ViewBag.items)
+                                {
+                                    <p><b>ITEMS: DESCRIPCION | CANTIDAD | PRECIO </b></p>
+                                    <p><b>- </b>@i.item.descripcion | @i.cantidad | @i.valor</p>
+                                }
+                            }
+                            else
+                            {
+                                <p>No existe el presupuesto</p>
+                            }
+                        }
+
+                        if (ViewBag.mostrar == "PRESUPUESTOS DE EGRESO")
+                        {
+                            if (ViewBag.presupuestos != null)
+                            {
+
+                                foreach (var u in ViewBag.presupuestos)
+                                {
+                                    <p><b>PRESUPUESTO ID: </b>@u.id_presupuesto</p>
+                                    <p><b>TOTAL: $</b>@u.valor_total</p>
+                                    <p><b>EGRESO ID: </b>@u.id_egreso</p>
+                                    <p><b>-----------------------------------------</b></p>
+                                }
+                            }
+                            else
+                            {
+                                <p>El egreso no tiene presupuestos</p>
+                            }
+                        }
+
+                        //<---------------------------------PROYECTOS--------------------------------->
+
+                        if (ViewBag.mostrar == "PROYECTO")
+                        {
+
+                            if (ViewBag.proyecto != null)
+                            {
+                                <p><b>PROYECTO ID: </b>@ViewBag.proyecto.id</p>
+                                <p><b>DIRECTOR: </b>@ViewBag.proyecto.director.nombre</p>
+                                <p><b>MONTO TOTAL: </b>@ViewBag.proyecto.montoTotal</p>
+                                <p><b>PRESUPUESTOS EXIGIBLES: </b>@ViewBag.proyecto.cantPresupuestosExigibles</p>
+
+                            }
+                            else
+                            {
+                                <p>No existe ese proyecto</p>
+                            }
+                        }
+
+                        if (ViewBag.mostrar == "PROYECTOS")
+                        {
+                            foreach (var u in ViewBag.proyectos)
+                            {
+                                <p><b>PROYECTO ID: </b>@u.id</p>
+                                <p><b>MONTO TOTAL: </b>@u.montoTotal</p>
+                                <p><b>PRESUPUESTOS EXIGIBLES: </b>@u.cantPresupuestosExigibles</p>
+                                <p><b>-----------------------------------------</b></p>
+                            }
+
+                        }
+
+                        //<---------------------------------PROVEEDORES--------------------------------->
+
+                        if (ViewBag.mostrar == "PROVEEDORES")
+                        {
+                            foreach (var u in ViewBag.proveedores)
+                            {
+                                <p><b>PROVEEDOR ID: </b>@u.id_prov</p>
+                                <p><b>CUIT: </b>@u.CUIT</p>
+                                <p><b>RAZON SOCIAL: </b>@u.razon_social</p>
+                                <p><b>-----------------------------------------</b></p>
+                            }
+
+                        }
+
+                        //<---------------------------------CATEGORIAS Y CRITERIOS--------------------------------->
+
+                        if (ViewBag.mostrar == "CATEGORIAS")
+                        {
+                            foreach (var u in ViewBag.categorias)
+                            {
+                                <p><b>CATEGORIA ID: </b>@u.id_categoria</p>
+                                <p><b>CRITERIO ID: </b>@u.id_criterio</p>
+                                <p><b>DESCRIPCION: </b>@u.descripcion</p>
+                                <p><b>-----------------------------------------</b></p>
+                            }
+
+                        }
+
+                        if (ViewBag.mostrar == "CRITERIOS")
+                        {
+                            foreach (var u in ViewBag.criterios)
+                            {
+                                <p><b>CRITERIO ID: </b>@u.id_criterio</p>
+                                <p><b>DESCRIPCION: </b>@u.descripcion</p>
+                                <p><b>JERARQUIA: </b>@u.jerarquia</p>
+                                <p><b>-----------------------------------------</b></p>
+                            }
+
+                        }
+
+
+                        //<---------------------------------BITACORA--------------------------------->
+
+                        if (ViewBag.mostrar == "BITACORA")
+                        {
+                            foreach (var log in ViewBag.bitacora)
+                            {
+                                <p>@log</p>
+                            }
+
+                        }
+
+                        //<---------------------------------ERROR--------------------------------->
+
+                        if (ViewBag.mostrar == "ERROR")
+                        {
+                            <p>@ViewBag.error</p>
                         }
 
                     }

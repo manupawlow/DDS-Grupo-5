@@ -30,32 +30,14 @@ namespace TP_Anual.DAOs
         {
             using (var context = new MySql())
             {
-                //TODO: Si no existe el item que lo cree en la BD
-                //return context.items.Single(i => i.descripcion == descripcion);
-                var nn = context.items.Any(i => i.descripcion == descripcion);
-                if (nn) {
-                    var jj =  context.items.First(i => i.descripcion == descripcion);
-                    return jj;
-                }
-                else
+                try
                 {
-                    var item = new Item();
-                    item.descripcion = descripcion;
-                    ItemDAO.getInstancia().AddItem(item);
-                    return context.items.First(i => i.descripcion == item.descripcion);
-                }
-
-                /*try
-                {
-                    var item = context.items.First(i => i.descripcion == descripcion);
-                    return item;
+                    return context.items.First(i => i.descripcion == descripcion);
                 }
                 catch (InvalidOperationException)
                 {
-                    var item = new Item(descripcion);
-                    ItemDAO.getInstancia().AddItem(item);
-                    return item;
-                }*/
+                    return null;       
+                }
             }
         }
 

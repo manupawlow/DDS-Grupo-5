@@ -84,6 +84,15 @@
                                     <p><b>PROVEEDOR ELEGIDO: </b>@u.proveedorElegido.CUIT</p>
                                 }
 
+                                if (@u.id_ingreso != null)
+                                {
+                                    <p><b>ID INGRESO ASOCIADO: </b>@u.id_ingreso</p>
+                                }
+                                else
+                                {
+                                    <p><b>ID INGRESO ASOCIADO: </b>No se asocio a ningun ingreso</p>
+                                }
+
 
                                 <p><b>CANTIDAD ITEMS: @u.items.Count</b></p>
 
@@ -116,6 +125,16 @@
                                 {
                                     <p><b>PROVEEDOR ELEGIDO: </b>@ViewBag.egreso.proveedorElegido.CUIT</p>
                                 }
+
+                                if (@ViewBag.egreso.id_ingreso != null)
+                                {
+                                    <p><b>ID INGRESO ASOCIADO: </b>@ViewBag.egreso.id_ingreso</p>
+                                }
+                                else
+                                {
+                                    <p><b>ID INGRESO ASOCIADO: </b>No se asocio a ningun ingreso</p>
+                                }
+
 
                                 foreach (var i in ViewBag.items)
                                 {

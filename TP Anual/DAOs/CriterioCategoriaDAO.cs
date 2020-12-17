@@ -33,7 +33,41 @@ namespace TP_Anual.DAOs
 
                 try
                 {
-                    return context.criterios.Single(e => e.descripcion == descripcion);
+                    return context.criterios.First(e => e.descripcion.ToString() == descripcion);
+                }
+                catch (InvalidOperationException)
+                {
+                    return null;
+                }
+
+            }
+        }
+
+        public Criterio getCriterioByID(int id_criterio)
+        {
+            using (var context = new MySql())
+            {
+
+                try
+                {
+                    return context.criterios.First(c => c.id_criterio == id_criterio);
+                }
+                catch (InvalidOperationException)
+                {
+                    return null;
+                }
+
+            }
+        }
+
+        public Categoria getCategoriaByID(int id_categoria)
+        {
+            using (var context = new MySql())
+            {
+
+                try
+                {
+                    return context.categorias.First(c => c.id_categoria == id_categoria);
                 }
                 catch (InvalidOperationException)
                 {
@@ -49,7 +83,7 @@ namespace TP_Anual.DAOs
             {
                 try
                 {
-                    return context.categorias.Single(e => e.descripcion == descripcion);
+                    return context.categorias.Single(e => e.descripcion.ToString() == descripcion);
                 }
                 catch (InvalidOperationException)
                 {

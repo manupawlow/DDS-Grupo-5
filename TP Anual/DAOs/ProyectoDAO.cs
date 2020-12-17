@@ -34,7 +34,7 @@ namespace TP_Anual.DAOs
             {
                 try
                 {
-                    return context.proyectos.Include("director").Single(p => p.id == id);
+                    return context.proyectos.Include("director").First(p => p.id == id);
                 }
                 catch (InvalidOperationException)
                 {

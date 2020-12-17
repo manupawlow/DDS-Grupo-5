@@ -46,10 +46,10 @@
                         <a class="nav-link js-scroll-trigger" href="#proveedores">PROVEEDORES</a>
                     </li>
                     <li class="nav-item">
-                    <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="#presupuestos">PRESUPUESTOS</a>
                     </li>
-                        <a class="nav-link js-scroll-trigger" href="#criterios y categorias">CRITERIOS Y CATEGORIAS</a>
+                    <li>
+                        <a class="nav-link js-scroll-trigger" href="#criterios_y_categorias">CRITERIOS Y CATEGORIAS</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="#bitacora_de_operaciones">BITACORA</a>
@@ -418,7 +418,7 @@
     </section>
 
     <!---------------------------------CRITERIOS Y CATEGORIAS--------------------------------->
-    <section id="criterios y categorias" class="bg-light">
+    <section id="criterios_y_categorias" class="bg-light">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto">
@@ -454,13 +454,14 @@
                     <button onclick="myFunction(52)" target="_blank" class="button button2">Agregar criterio a item</button>
                     <div id="52" style="display:none;">
 
-                        <p><input type="text" id="descripcion" placeholder="Descripcion item" class="button button3"></p>
-                        <p><input type="text" id="criterio" placeholder="Criterio" class="button button3"></p>
-                        <p><input type="text" id="categoria" placeholder="Categoria" class="button button3"></p>
+                        @using (Html.BeginForm("AsignarCriterio", "Home", FormMethod.Post))
+                        {
+                            <p><input type="text" name="item_desc" placeholder="Descripcion item" class="button button3"></p>
+                            <p><input type="text" name="criterio" placeholder="Criterio" class="button button3"></p>
+                            <p><input type="text" name="categoria" placeholder="Categoria" class="button button3"></p>
 
-                        <p><button id="asignarCriterio" class="button button4">Asignar</button></p>
-
-                        <div id="criterioInfo"></div>
+                            <p><button id="asignarCriterio" class="button button4">Asignar</button></p>
+                        }
 
                     </div>
                     <h6></h6>
@@ -484,8 +485,7 @@
                         @using (Html.BeginForm("CargarCategoriaAcriterio", "Home", FormMethod.Post))
                         {
                             <p><input type="text" name="descripcionCat" placeholder="Descripcion categoria" class="button button3"></p>
-                            <p><input type="text" name="descripcionCrit" placeholder="Descripcion de criterio" class="button button3"></p>
-
+                            <p><input type="text" name="descripcionCrit" placeholder="Descripcion criterio" class="button button3"></p>
                             <p><input type="submit" value="Cargar categoria" class="button button4"></p>
                         }
                     </div>
@@ -516,7 +516,7 @@
         </div>
     </section>
 
-    <section id="contact">
+    <section id="contact" class="bg-light">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto">
