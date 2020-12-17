@@ -1,9 +1,6 @@
 DROP DATABASE IF EXISTS DDS_TP_ANUAL;
 
 CREATE DATABASE DDS_TP_ANUAL;
-select * from usuario
-select * from criterio
-select * from proyecto_financiamiento
 
 USE DDS_TP_ANUAL;
 

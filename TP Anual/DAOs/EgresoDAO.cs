@@ -89,7 +89,7 @@ namespace TP_Anual.DAOs
 
                 Egreso nuevo = new Egreso();
                 nuevo.cantPresupuestos = cantPresup;
-                nuevo.fecha = DateTime.Today;
+                nuevo.fecha = DateTime.Now;
                 nuevo.descripcion = descripcion;
                 nuevo.bandejaDeMensajes = new BandejaDeMensajes(user);
 

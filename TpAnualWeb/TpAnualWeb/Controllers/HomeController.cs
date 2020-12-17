@@ -60,16 +60,16 @@ namespace TpAnualWeb.Controllers
             {
                 var usuario = UsuarioDAO.getInstancia().getUsuarioByUserName(revisor);
 
-                if(usuario == null)
+                if(usuario == null || cantPresup < 0)
                 {
                     ViewBag.mostrar = "ERROR";
-                    ViewBag.error = "No existe el usuario ingresado";
+                    ViewBag.error = "Los datos ingresados no son validos";
 
                     return View("Mostrar");
                 }
                 else
                 {
-                    if (inputs["nuevoItem"] != null || inputs["cantidad"] != null)
+                    if (inputs["nuevoItem"] != null && inputs["cantidad"] != null)
                     {
                         var items = inputs["nuevoItem"].Split(',');
                         var cantidades = inputs["cantidad"].Split(',');
@@ -80,7 +80,18 @@ namespace TpAnualWeb.Controllers
                     }
                     else
                     {
+                        if (inputs["nuevoItem"] != null || inputs["cantidad"] != null)
+                        {
+                            ViewBag.mostrar = "ERROR";
+                            ViewBag.error = "Debe completar todos los campos";
+
+                            return View("Mostrar");
+                        }
+                        else
+                        {
                         EgresoDAO.getInstancia().cargarEgreso(descripcion, revisor, cantPresup);
+                        }
+
                     }
 
                     return View("Index");
@@ -244,10 +255,20 @@ namespace TpAnualWeb.Controllers
             }
             else
             {
-                Ingreso nuevo = new Ingreso(descripcion, total);
-                IngresoDAO.getInstancia().Add(nuevo);
+                if(total < 0)
+                {
+                    ViewBag.mostrar = "ERROR";
+                    ViewBag.error = "El total debe ser mayor que 0";
 
-                return View("Index");
+                    return View("Mostrar");
+                }
+                else
+                {
+                    Ingreso nuevo = new Ingreso(descripcion, total);
+                    IngresoDAO.getInstancia().Add(nuevo);
+
+                    return View("Index");
+                }
             }
         }
 
@@ -520,10 +541,10 @@ namespace TpAnualWeb.Controllers
             }
             else 
             {
-                if (UsuarioDAO.getInstancia().getUsuarioByUserName(usuario) == null)
+                if (UsuarioDAO.getInstancia().getUsuarioByUserName(usuario) == null || monto < 0)
                 {
                     ViewBag.mostrar = "ERROR";
-                    ViewBag.error = "No existe el usuario ingresado";
+                    ViewBag.error = "Los datos ingresados no son validos";
 
                     return View("Mostrar");
                 }
