@@ -213,7 +213,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CriterioCategoriaController.cs" />
+    <Compile Include="Controllers\EgresoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IngresoController.cs" />
+    <Compile Include="Controllers\ProveedoresController.cs" />
+    <Compile Include="Controllers\ProyectoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -395,10 +400,20 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Home\Ingreso.cshtml" />
+    <Content Include="Views\Home\Proyecto.cshtml" />
+    <Content Include="Views\Home\Egreso.cshtml" />
+    <Content Include="Views\Home\CriteriosCategorias.cshtml" />
+    <Content Include="Views\Home\Proveedores.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\CriterioCategoria\" />
+    <Folder Include="Views\Egreso\" />
+    <Folder Include="Views\Ingreso\" />
+    <Folder Include="Views\Proveedor\" />
+    <Folder Include="Views\Proyecto\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

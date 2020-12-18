@@ -13,30 +13,25 @@ namespace TP_Anual.Egresos
         [Key]
         [Column("id_presupuesto")]
         public int id_presupuesto { get; set; }
-
-        [Column("id_documento_comercial")]
-        public int id_documento_comercial { get; set; }
-        public DocumentoComercial documentoComercial { get; set; }
-        public List<ItemPorPresupuesto> itemsDePresupuesto { get; set; }
-
-        [Column("id_prov")]
-        public int id_prov { get; set; }
-        public Proveedor proveedor { get; set; }
-        
         [Column("valor_total")]
         public int valor_total { get; set; }
 
+        public DocumentoComercial documentoComercial { get; set; }
+        public List<Item> itemsDePresupuesto { get; set; }
+        public Proveedor proveedor { get; set; }
+        public Egreso egreso { get; set; }
         
         //Agregado para ORM
         [Column("id_egreso")]
         public int id_egreso { get; set; }
-        public Egreso egreso { get; set; }
-
-     
+        [Column("id_documento_comercial")]
+        public int id_documento_comercial { get; set; }
+        [Column("id_prov")]
+        public int id_prov { get; set; }
 
         public Presupuesto()
         {
-            itemsDePresupuesto = new List<ItemPorPresupuesto>();
+            itemsDePresupuesto = new List<Item>();
         }
 
         public void calcular_total()
@@ -44,9 +39,9 @@ namespace TP_Anual.Egresos
             valor_total = itemsDePresupuesto.Sum(item => item.valor * item.cantidad);
         }
 
-        public void agregar_item(ItemPorPresupuesto Item)
+        public void agregar_item(Item item)
         {
-            itemsDePresupuesto.Add(Item);
+            itemsDePresupuesto.Add(item);
             valor_total = itemsDePresupuesto.Sum(items => items.valor);
         }
     }

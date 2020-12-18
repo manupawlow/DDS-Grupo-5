@@ -41,22 +41,22 @@ namespace TP_Anual.DAOs
             }
         }
 
-        public ItemDAO AddItemPorEgreso(ItemPorEgreso i)
+        public ItemDAO AddItemPorEgreso(Item i)
         {
             using (var context = new MySql())
             {
                 //Cuando entra un nuevo item me lo carga dos veces aca ?)
-                context.items_por_egreso.Add(i);
+                context.items.Add(i);
                 context.SaveChanges();
             }
             return this;
         }
 
-        public ItemDAO AddItemPorPresupuesto(ItemPorPresupuesto p)
+        public ItemDAO AddItemPorPresupuesto(Item p)
         {
             using (var context = new MySql())
             {
-                context.items_por_presupuesto.Add(p);
+                context.items.Add(p);
                 context.SaveChanges();
             }
             return this;
@@ -74,18 +74,18 @@ namespace TP_Anual.DAOs
             return this;
         }
 
-        public List<ItemPorEgreso> getItemsDeEgreso(int id_egreso)
+        public List<Item> getItemsDeEgreso(int id_egreso)
         {
             using (var context = new MySql())
             {
-                return context.items_por_egreso.Include("item").Where(i => i.id_egreso == id_egreso).ToList<ItemPorEgreso>();
+                return context.items.Where(i => i.id_egreso == id_egreso).ToList<Item>();
             }
         }
-        public List<ItemPorPresupuesto> getItemsPorPresupuesto(int id_presupuesto)
+        public List<Item> getItemsPorPresupuesto(int id_presupuesto)
         {
             using (var context = new MySql())
             {
-                return context.items_por_presupuesto.Include("item").Where(i => i.id_presupuesto == id_presupuesto).ToList<ItemPorPresupuesto>();
+                return context.items.Where(i => i.id_presupuesto == id_presupuesto).ToList<Item>();
             }
         }
 

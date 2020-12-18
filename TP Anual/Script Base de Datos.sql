@@ -132,32 +132,16 @@ CREATE TABLE IF NOT EXISTS entidad_base(
 
 CREATE TABLE IF NOT EXISTS item(
 	id_item INT NOT NULL AUTO_INCREMENT,
+    id_egreso INT NULL,
+    id_proveedor INT NULL,
+    id_presupuesto INT NULL,
+    valor INT NULL,
+    cantidad INT NULL,
     descripcion VARCHAR(90) NOT NULL,
     #valor INT NOT NULL,
     
     PRIMARY KEY(id_item)
 )ENGINE=INNODB;
-
-CREATE TABLE IF NOT EXISTS item_por_egreso(
-	id_item_por_egreso INT NOT NULL AUTO_INCREMENT,
-    id_egreso INT NOT NULL,
-    id_item INT NOT NULL,
-    valor INT NULL,
-    cantidad INT NULL,
-    
-    PRIMARY KEY(id_item_por_egreso)
-)ENGINE=INNODB;
-
-CREATE TABLE IF NOT EXISTS item_por_presupuesto(
-	id_item_por_presupuesto INT NOT NULL AUTO_INCREMENT,
-    id_presupuesto INT NOT NULL,
-    id_item INT NOT NULL,
-    valor INT NOT NULL,
-    cantidad INT NULL,
-    
-    PRIMARY KEY(id_item_por_presupuesto)
-)ENGINE=INNODB;
-
 
 CREATE TABLE IF NOT EXISTS criterio(
 	id_criterio INT NOT NULL AUTO_INCREMENT,
@@ -167,21 +151,28 @@ CREATE TABLE IF NOT EXISTS criterio(
     PRIMARY KEY(id_criterio)
 )ENGINE=INNODB;
 
-CREATE TABLE IF NOT EXISTS criterio_por_item(
-	id_criterio_por_item INT NOT NULL AUTO_INCREMENT,
-    id_item INT NOT NULL,
-    id_criterio INT NOT NULL,
-    id_categoria_item INT NOT NULL,
-    
-    PRIMARY KEY(id_criterio_por_item)
-)ENGINE=INNODB;
-
 CREATE TABLE IF NOT EXISTS categoria(
 	id_categoria INT NOT NULL AUTO_INCREMENT,
     descripcion VARCHAR(90) NULL,
     id_criterio INT NULL,
     
     PRIMARY KEY(id_categoria)
+)ENGINE=INNODB;
+
+CREATE TABLE IF NOT EXISTS criterio_por_item(
+	id_criterio_por_item INT NOT NULL AUTO_INCREMENT,
+    id_item INT NOT NULL,
+    id_criterio INT NOT NULL,
+    
+    PRIMARY KEY(id_criterio_por_item)
+)ENGINE=INNODB;
+
+CREATE TABLE IF NOT EXISTS categoria_por_item(
+	id_categoria_por_item INT NOT NULL AUTO_INCREMENT,
+    id_item INT NOT NULL,
+    id_categoria INT NOT NULL,
+    
+    PRIMARY KEY(id_criterio_por_item)
 )ENGINE=INNODB;
 
 CREATE TABLE IF NOT EXISTS proyecto_financiamiento(

@@ -14,11 +14,14 @@ namespace TP_Anual.Egresos
         [Column("id_categoria")]
         public int id_categoria { get; set; }
 
-        [Column("id_criterio")]
-        public int id_criterio { get; set; }
-        public Criterio criterio { get; set; }
-
         [Column("descripcion")]
         public string descripcion { get; set; }
+        
+        public Criterio criterio { get; set; }
+
+        //Agregado para ORM
+        [Column("id_criterio")]
+        public int id_criterio { get; set; }
+
     }
 }

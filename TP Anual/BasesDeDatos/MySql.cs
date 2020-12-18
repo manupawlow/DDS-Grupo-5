@@ -19,12 +19,9 @@ namespace TP_Anual
         public DbSet<Proveedor> proveedores { get; set; }
         public DbSet<Categoria> categorias { get; set; }
         public DbSet<Criterio> criterios { get; set; }
-        public DbSet<CriterioPorItem> criterios_por_item { get; set; }
         public DbSet<DocumentoComercial> documentos { get; set; }
         public DbSet<EntidadBase> entidades_base { get; set; }
         public DbSet<EntidadJuridica> entidades_juridicas { get; set; }
-        public DbSet<ItemPorPresupuesto> items_por_presupuesto { get; set; }
-        public DbSet<ItemPorEgreso> items_por_egreso { get; set; }
         public DbSet<TipoOrganizacion> tipos_organizacion { get; set; }
         public DbSet<Usuario> usuarios { get; set; }
         public DbSet<ProyectoDeFinanciamiento> proyectos { get; set; }
@@ -52,6 +49,21 @@ namespace TP_Anual
                  .WithMany()
                  .HasForeignKey(e => e.id_prov);
 
+            modelBuilder.Entity<Egreso>()
+                .HasRequired<DocumentoComercial>(e => e.documentoComercial)
+                .WithMany()
+                .HasForeignKey(e => e.id_documento_comercial);
+
+            modelBuilder.Entity<Egreso>()
+                .HasRequired<ProyectoDeFinanciamiento>(e => e.proyecto)
+                .WithMany()
+                .HasForeignKey(e => e.id_proyecto);
+
+            modelBuilder.Entity<Egreso>()
+                .HasRequired<Presupuesto>(e => e.presupuestoElegido)
+                .WithMany()
+                .HasForeignKey(p => p.id_presupuesto_elegido);
+
             modelBuilder.Entity<Presupuesto>()
                  .HasRequired<Egreso>(p => p.egreso)
                  .WithMany(e => e.presupuestos)
@@ -67,11 +79,6 @@ namespace TP_Anual
                 .WithMany()
                 .HasForeignKey(p => p.id_documento_comercial);
 
-            modelBuilder.Entity<Egreso>()
-                .HasRequired<DocumentoComercial>(e => e.documentoComercial)
-                .WithMany()
-                .HasForeignKey(e => e.id_documento_comercial);
-
             modelBuilder.Entity<Ingreso>()
                 .HasRequired<ProyectoDeFinanciamiento>(i => i.proyecto)
                 .WithMany()
@@ -82,49 +89,36 @@ namespace TP_Anual
                 .WithMany()
                 .HasForeignKey(p => p.id_director);
 
-            modelBuilder.Entity<Egreso>()
-                .HasRequired<ProyectoDeFinanciamiento>(e => e.proyecto)
-                .WithMany()
-                .HasForeignKey(e => e.id_proyecto);
-
-            modelBuilder.Entity<Egreso>()
-                .HasRequired<Presupuesto>(e => e.presupuestoElegido)
-                .WithMany()
-                .HasForeignKey(p => p.id_presupuesto_elegido);
-
+            
             #region ITEMS
-
-            modelBuilder.Entity<ItemPorEgreso>()
-                .HasRequired<Item>(ie => ie.item)
+            
+            modelBuilder.Entity<Item>()
+                .HasRequired<Egreso>(i => i.egreso)
                 .WithMany()
-                .HasForeignKey(ie => ie.id_item);
+                .HasForeignKey(i => i.id_egreso);
 
-            modelBuilder.Entity<ItemPorEgreso>()
-                .HasRequired<Egreso>(ie => ie.egreso)
-                .WithMany(e => e.items)
-                .HasForeignKey(ie => ie.id_egreso);
-
-
-            modelBuilder.Entity<ItemPorPresupuesto>()
-                .HasRequired<Item>(ip => ip.item)
+            modelBuilder.Entity<Item>()
+                .HasRequired<Proveedor>(i => i.prov)
                 .WithMany()
-                .HasForeignKey(ip => ip.id_item);
+                .HasForeignKey(i => i.id_proveedor);
 
-            modelBuilder.Entity<ItemPorPresupuesto>()
-                .HasRequired<Presupuesto>(ip => ip.presupuesto)
-                .WithMany(p => p.itemsDePresupuesto)
-                .HasForeignKey(ip => ip.id_presupuesto);
 
+            modelBuilder.Entity<Item>()
+                .HasRequired<Presupuesto>(i => i.presupuesto)
+                .WithMany()
+                .HasForeignKey(i => i.id_presupuesto);
 
             #endregion
-
+            
+            /*
             #region CRITERIOS Y CATEGORIAS
 
             modelBuilder.Entity<Categoria>()
                 .HasRequired<Criterio>(cat => cat.criterio)
-                .WithMany(crit => crit.categorias)
+                .WithMany()
                 .HasForeignKey(cat => cat.id_criterio);
 
+            
             modelBuilder.Entity<CriterioPorItem>()
                 .HasRequired<Criterio>(ci => ci.criterio)
                 .WithMany()
@@ -141,6 +135,7 @@ namespace TP_Anual
                 .HasForeignKey(ci => ci.id_categoria_item);
 
             #endregion
+            */
 
             #region ORGANIZACIONES
 

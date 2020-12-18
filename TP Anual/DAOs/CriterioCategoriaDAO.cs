@@ -132,14 +132,14 @@ namespace TP_Anual.DAOs
             return this;
         }
 
-        public CriterioCategoriaDAO AddCriterioPorItem(CriterioPorItem e)
+        public CriterioCategoriaDAO AddCriterioPorItem(Criterio e)
         {
             using (var context = new MySql())
             {
-                context.criterios_por_item.Add(e);
+                context.criterios.Add(e);
                 context.SaveChanges();
 
-                MongoDB.getInstancia().agregarLogABitacora($"Se ha creado un nuevo criterio para items de id:{e.id_crit_por_item}");
+                MongoDB.getInstancia().agregarLogABitacora($"Se ha creado un nuevo criterio: {e.descripcion}");
             }
             return this;
         }

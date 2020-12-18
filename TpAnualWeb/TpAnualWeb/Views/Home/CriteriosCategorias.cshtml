@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "CriteriosCategorias";
+}
+
+<section id="criterios_y_categorias" class="bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+
+                <h2>CRITERIOS Y CATEGORIAS</h2>
+
+                <button onclick="myFunction(1)" target="_blank" class="button button2">Cargar criterio</button>
+                <div id="1" style="display:none;">
+
+                    @using (Html.BeginForm("CargarCriterio", "CriterioCategoria", FormMethod.Post))
+                    {
+                        <p><input type="text" name="descripcion" placeholder="Descripcion" class="button button3"></p>
+                        <p><input type="number" name="jerarquia" placeholder="Jerarquia" class="button button3"></p>
+
+                        <p><input type="submit" value="Cargar criterio" class="button button4"></p>
+                    }
+                </div>
+                <h6></h6>
+
+                <button onclick="myFunction(2)" target="_blank" class="button button2">Cargar categoria a criterio</button>
+                <div id="2" style="display:none;">
+
+                    @using (Html.BeginForm("CargarCategoriaAcriterio", "CriterioCategoria", FormMethod.Post))
+                    {
+                        <p><input type="text" name="descripcionCat" placeholder="Descripcion categoria" class="button button3"></p>
+                        <p><input type="text" name="descripcionCrit" placeholder="Descripcion criterio" class="button button3"></p>
+                        <p><input type="submit" value="Cargar categoria" class="button button4"></p>
+                    }
+                </div>
+                <h6></h6>
+
+
+            </div>
+        </div>
+    </div>
+</section>

@@ -51,9 +51,9 @@ section {
 
 .button3 {
     background-color: white;
-    color: slategray;
-    border-radius: 24px;
-    border: 2px solid rgb(150, 224, 106);
+    color: rgb(155, 155, 155);
+    border-radius: 1px;
+    border: 2px solid rgb(155, 155, 155);
 }
 
 .button4 {

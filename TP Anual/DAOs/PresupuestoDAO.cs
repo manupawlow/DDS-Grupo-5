@@ -96,21 +96,13 @@ namespace TP_Anual.DAOs
                         //var item = ItemDAO.getInstancia().getItemByDescripcion(items[i]);
                         Item item = new Item();
                         item.descripcion = items[i];
+                        item.cantidad = Int32.Parse(cantidades[i]);
+                        item.valor = Int32.Parse(precios[i]);
+                        //item.presupuesto 
                         context.items.Add(item);
                         context.SaveChanges();
 
                         MongoDB.getInstancia().agregarLogABitacora($"Se ha agregado un item de id:{item.id_item} al presupuesto de id:{nuevo.id_egreso}");
-
-                        //ItemDAO.getInstancia().AddItemPorEgreso(ie);
-                        ItemPorPresupuesto ip = new ItemPorPresupuesto();
-                        ip.item = item;
-                        ip.cantidad = Int32.Parse(cantidades[i]);
-                        ip.valor = Int32.Parse(precios[i]);
-                        context.items_por_presupuesto.Add(ip);
-                        context.SaveChanges();
-
-                        nuevo.itemsDePresupuesto.Add(ip);
-                        context.SaveChanges();
 
                     }
 

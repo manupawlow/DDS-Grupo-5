@@ -218,13 +218,10 @@
     <Compile Include="Egresos\ProyectoDeFinanciamiento.cs" />
     <Compile Include="Egresos\Log.cs" />
     <Compile Include="Egresos\Criterio.cs" />
-    <Compile Include="Egresos\CriterioPorItem.cs" />
     <Compile Include="Egresos\DocumentoComercial.cs" />
     <Compile Include="Egresos\Egreso.cs" />
     <Compile Include="Egresos\Ingreso.cs" />
     <Compile Include="Egresos\Item.cs" />
-    <Compile Include="Egresos\ItemPorEgreso.cs" />
-    <Compile Include="Egresos\ItemPorPresupuesto.cs" />
     <Compile Include="Egresos\JobValidadorEgresos.cs" />
     <Compile Include="Egresos\MedioDePago.cs" />
     <Compile Include="Egresos\Presupuesto.cs" />

@@ -59,28 +59,6 @@ namespace TP_Anual.DAOs
             }
         }
 
-        //public Egreso Add(Egreso e)
-        //{
-        //    using (var context = new MySql())
-        //    {
-        //        context.egresos.Add(e);
-        //        context.SaveChanges();
-        //        return e;
-        //    }
-        //}
-
-        //public Egreso agregarItemPorEgreso(Egreso e, ItemPorEgreso i)
-        //{
-        //    using (var context = new MySql())
-        //    {
-        //        //getEgresoById(id).items.Add(i);
-        //        e.items.Add(i);
-        //        context.SaveChanges();
-        //        return e;
-        //    }
-        //}
-
-
         public EgresoDAO cargarEgreso(string descripcion, string revisor, int cantPresup, string[] items = null, string[] cantidades = null)
         {
             using (var context = new MySql())
@@ -100,33 +78,7 @@ namespace TP_Anual.DAOs
 
                 MongoDB.getInstancia().registrarBandejaDeMensajes(nuevo);
                 MongoDB.getInstancia().agregarLogABitacora($"Se ha creado un egreso de id:{nuevo.id_egreso}");
-
-                try
-                {
-                    if(items != null && cantidades != null)
-                        for (int i = 0; i < items.Length; i++)
-                        {
-                            //var item = ItemDAO.getInstancia().getItemByDescripcion(items[i]);
-                            Item item = new Item();
-                            item.descripcion = items[i];
-                            context.items.Add(item);
-                            context.SaveChanges();
-
-                            MongoDB.getInstancia().agregarLogABitacora($"Se ha agregado un item de id:{item.id_item} al egreso de id:{nuevo.id_egreso}");
-
-                            //ItemDAO.getInstancia().AddItemPorEgreso(ie);
-                            ItemPorEgreso ie = new ItemPorEgreso();
-                            ie.item = item;
-                            ie.cantidad = Int32.Parse(cantidades[i]);
-                            context.items_por_egreso.Add(ie);
-                            context.SaveChanges();
-
-                            nuevo.items.Add(ie);
-                            context.SaveChanges();
-
-                        }
-                }
-                catch (NullReferenceException) { }
+    
             }
 
             return this;
@@ -167,6 +119,8 @@ namespace TP_Anual.DAOs
 
             }
         }
+
+
         #endregion
 
 

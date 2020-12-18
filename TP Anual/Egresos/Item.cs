@@ -15,20 +15,38 @@ namespace TP_Anual.Egresos
         [Column("id_item")]
         public int id_item { get; set; }
 
+        [Column("valor")]
+        public int valor { get; set; }
+
+        [Column("cantidad")]
+        public int cantidad { get; set; }
+
         [Column("descripcion")]
         public string descripcion { get; set; }
 
-        public List<CriterioPorItem> criteriosDeItem { get; set; }
-        
+        public Egreso egreso { get; set; }
+
+        public Proveedor prov { get; set; }
+
+        public Presupuesto presupuesto { get; set; }
+
+        public List<Criterio> criterios { get; set; }
+
+        public List<Categoria> categorias { get; set; }
+
+        [Column("id_egreso")]
+        public int id_egreso { get; set; }
+
+        [Column("id_proveedor")]
+        public int id_proveedor { get; set; }
+
+        [Column("id_presupuesto")]
+        public int id_presupuesto { get; set; }
+
+
         public Item() 
         {
-           criteriosDeItem = new List<CriterioPorItem>();
-        }
 
-        public Item(string _descripcion)
-        {
-            criteriosDeItem = new List<CriterioPorItem>();
-            descripcion = _descripcion;
         }
 
     }
