@@ -59,7 +59,7 @@ section {
 .button4 {
     background-color: white;
     color: rgb(150, 224, 106);
-    border-radius: 24px;
+    border-radius: 4px;
     border: 2px solid rgb(150, 224, 106);
 }
 
@@ -72,11 +72,13 @@ input[type=text] {
     background: transparent;
     border: none;
     border-bottom: 2px solid rgb(155, 155, 155);
+    outline: none;
 }
 input[type=number] {
     background: transparent;
     border: none;
     border-bottom: 2px solid rgb(155, 155, 155);
+    outline: none;
 }
 @import "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.0/css/bootstrap.min.css";
 

@@ -51,6 +51,26 @@ namespace TpAnualWeb.Controllers
 
         }
 
+        [HttpPost]
+        public ActionResult MostrarEgresos()
+        {
+
+            ViewBag.egresos = EgresoDAO.getInstancia().getAllEgreso();
+            if (ViewBag.egresos.Count > 0)
+            {
+                ViewBag.mostrar = "EGRESOS";
+                return View("Mostrar");
+            }
+
+            else
+            {
+                ViewBag.mostrar = "ERROR";
+                ViewBag.error = "No hay egresos actualmente";
+                return View("Mostrar");
+            }
+
+        }
+
 
         #endregion
 
