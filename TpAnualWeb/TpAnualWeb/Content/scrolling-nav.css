@@ -68,6 +68,16 @@ section {
         color: white;
     }
 
+input[type=text] {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgb(155, 155, 155);
+}
+input[type=number] {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgb(155, 155, 155);
+}
 @import "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.0/css/bootstrap.min.css";
 
 .funkyradio div {

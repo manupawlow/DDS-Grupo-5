@@ -94,22 +94,23 @@
                     <div id="1" style="display:none;">
 
                         <h6></h6>
-                        @using (Html.BeginForm("MostrarEgresos", "Home", FormMethod.Post))
+                        @using (Html.BeginForm("MostrarEgresos", "Egreso", FormMethod.Post))
                         {
-                            <input type="submit" value="Mostrar todos los egresos" class="button button4">
+                            <input style="margin-left:40px;" type="submit" value="Mostrar todos los egresos" class="button button4" style="margin-left:40px;">
                         }
-                        <p>Buscar egreso por id:</p>
-                        @using (Html.BeginForm("BuscarEgreso", "Home", FormMethod.Post))
+                        
+                        <p style="margin-left:40px;">Buscar egreso por id:</p>
+                        @using (Html.BeginForm("BuscarEgreso", "Egreso", FormMethod.Post))
                         {
-                            <input type="text" name="id_ingreso" placeholder="ID del ingreso" class="button button3" />
-                            <input type="submit" value="Buscar" class="button button4">
+                            <input style="margin-left:40px;" type="text" name="id_ingreso" placeholder="ID del ingreso" class="button button3" />
+                            <input style="margin-left:40px;" type="submit" value="Buscar" class="button button4">
                         }
                         <p></p>
 
 
                     </div>
                 </div>
-        </div>
+            </div>
     </section>
 
     <!---------------------------------INGRESOS--------------------------------->
@@ -136,13 +137,13 @@
                         <h6></h6>
                         @using (Html.BeginForm("MostrarIngresos", "Home", FormMethod.Post))
                         {
-                            <input type="submit" value="Mostrar todos los ingresos" class="button button4">
+                            <input style="margin-left:40px;" type="submit" value="Mostrar todos los ingresos" class="button button4">
                         }
-                        <p>Buscar ingreso por id:</p>
+                        <p style="margin-left:40px;">Buscar ingreso por id:</p>
                         @using (Html.BeginForm("BuscarIngreso", "Home", FormMethod.Post))
                         {
-                            <input type="text" name="id_ingreso" placeholder="ID del ingreso" class="button button3" />
-                            <input type="submit" value="Buscar" class="button button4">
+                            <input style="margin-left:40px;" type="text" name="id_ingreso" placeholder="ID del ingreso" class="button button3" />
+                            <input style="margin-left:40px;" type="submit" value="Buscar" class="button button4">
                         }
                         <p></p>
 
@@ -177,13 +178,13 @@
                         <h4></h4>
                         @using (Html.BeginForm("MostrarProyectos", "Home", FormMethod.Post))
                         {
-                            <input type="submit" value="Mostrar todos los proyectos" class="button button4">
+                            <input style="margin-left:40px;" type="submit" value="Mostrar todos los proyectos" class="button button4">
                         }
-                        <p>Buscar proyecto por id:</p>
+                        <p style="margin-left:40px;">Buscar proyecto por id:</p>
                         @using (Html.BeginForm("BuscarProyecto", "Home", FormMethod.Post))
                         {
-                            <input type="number" name="id_proyecto" placeholder="ID del Proyecto" class="button button3" />
-                            <input type="submit" value="Buscar" class="button button4">
+                            <input style="margin-left:40px;" type="number" name="id_proyecto" placeholder="ID del Proyecto" class="button button3" />
+                            <input style="margin-left:40px;" type="submit" value="Buscar" class="button button4">
                         }
                         <p></p>
 
@@ -222,7 +223,7 @@
         </div>
     </section>
 
-   
+
     <!---------------------------------CRITERIOS Y CATEGORIAS--------------------------------->
     <section id="criterios_y_categorias" class="bg-light">
         <div class="container">
@@ -235,7 +236,7 @@
                     <h4></h4>
                     @using (Html.BeginForm("CargarCriteriosCategorias", "Home", FormMethod.Post))
                     {
-                        <input type="submit" value="Cargar criterios y categorias" class="button button2">
+                        <input  type="submit" value="Cargar criterios y categorias" class="button button2">
                     }
 
                     <h4></h4>
@@ -258,7 +259,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> 
 
     <!---------------------------------BITACORA DE OPERACIONES--------------------------------->
     <section id="bitacora_de_operaciones">
