@@ -5,6 +5,8 @@
 
 @using TP_Anual;
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 <meta name="viewport" content="width=device-width" />
@@ -24,23 +26,59 @@
 
 </head>
 
+<!-- Bootstrap core JavaScript -->
+<script src="~/Scripts/vendor/jquery/jquery.min.js"></script>
+<script src="~/Scripts/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="~/Scripts/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom JavaScript for this theme -->
+<script src="~/Scripts/scrolling-nav.js"></script>
+
+
+<script src="~/Scripts/ajax.js"></script>
+
+
 <body id="page-top">
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="@Url.Action("Index", "Home")">GeSoc</a>
+            <a href="@Url.Action("Index", "Home")" class="navbar-brand js-scroll-trigger" href="#page-top">GeSoc</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a onclick="myFunction(0)" class="nav-link js-scroll-trigger">@Session["UserName"]</a>
-                        <div id="0">
-                            <a class="nav-link js-scroll-trigger" style="display:none;">Cerrar sesion</a>
-                        </div>
+                        <a href="@Url.Action("Egreso", "Egreso")" class="nav-link js-scroll-trigger" href="#about">EGRESOS</a>
                     </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("Ingreso", "Ingreso")" class="nav-link js-scroll-trigger" href="#services">INGRESOS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("Proyecto", "Proyecto")" class="nav-link js-scroll-trigger" href="#proyectos">PROYECTOS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("Proveedores", "Proveedores")" class="nav-link js-scroll-trigger" href="#proveedores">PROVEEDORES</a>
+                    </li>
+                    @*<li>
+                            <a href="@Url.Action("CrteriosCategorias", "CriterioCategoria")" class="nav-link js-scroll-trigger" href="#criterios_y_categorias">CRITERIOS Y CATEGORIAS</a>
+                        </li>*@
+                    <li class="nav-item">
+                        <a href="@Url.Action("verBitacora", "Home")" class="nav-link js-scroll-trigger" href="#bitacora_de_operaciones">BITACORA</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#contact">GitHub</a>
+                    </li>
+                    <li class="nav-item">
+                        <a onclick="myFunction(0)" class="nav-link js-scroll-trigger">@Session["UserName"]</a>
+                    </li>
+                    <div id="0">
+                        <a href="@Url.Action("Login", "Home")" class="nav-link js-scroll-trigger" style="display:block; color:firebrick">Cerrar sesion</a>
+                    </div>
                 </ul>
             </div>
         </div>
@@ -58,7 +96,18 @@
             <div class="row">
                 <div class="col-lg-8 mx-auto">
                     @{
-                        <h2>@ViewBag.mostrar</h2>
+
+                        //<---------------------------------SUCCESS--------------------------------->
+                        if (ViewBag.mostrar == "SUCCESS")
+                        {
+                            <h3>@ViewBag.success</h3>
+                        }
+                        else
+                        {
+                            <h2>@ViewBag.mostrar</h2>
+
+                        }
+
 
                         //<---------------------------------EGRESOS--------------------------------->
 
@@ -349,6 +398,9 @@
                             <p>@ViewBag.error</p>
                         }
 
+
+
+
                     }
 
 
@@ -366,19 +418,6 @@
         </div>
         <!-- /.container -->
     </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="~/Scripts/vendor/jquery/jquery.min.js"></script>
-    <script src="~/Scripts/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="~/Scripts/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom JavaScript for this theme -->
-    <script src="~/Scripts/scrolling-nav.js"></script>
-
-
-    <script src="~/Scripts/ajax.js"></script>
 
 </body>
 

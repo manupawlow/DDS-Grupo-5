@@ -11,7 +11,7 @@ namespace TpAnualWeb.Controllers
     public class IngresoController : Controller
     {
         // GET: Ingreso
-        public ActionResult Index()
+        public ActionResult Ingreso()
         {
             return View();
         }
@@ -40,7 +40,10 @@ namespace TpAnualWeb.Controllers
                     Ingreso nuevo = new Ingreso(descripcion, total);
                     IngresoDAO.getInstancia().Add(nuevo);
 
-                    return View("Index");
+                    ViewBag.mostrar = "SUCCESS";
+                    ViewBag.success = "Se cargo el ingreso correctamente!";
+
+                    return View("Mostrar");
                 }
             }
         }
@@ -50,21 +53,21 @@ namespace TpAnualWeb.Controllers
         public ActionResult FechaPrimerEgreso()
         {
             IngresoDAO.getInstancia().asociarFechaPrimerEgreso();
-            return View("Index");
+            return View("Ingreso");
         }
 
         [HttpPost]
         public ActionResult ValorPrimerEgreso()
         {
             IngresoDAO.getInstancia().asociarValorPrimerEgreso();
-            return View("Index");
+            return View("Ingreso");
         }
 
         [HttpPost]
         public ActionResult ValorPrimerIngreso()
         {
             IngresoDAO.getInstancia().asociarValorPrimerIngreso();
-            return View("Index");
+            return View("Ingreso");
         }
 
 

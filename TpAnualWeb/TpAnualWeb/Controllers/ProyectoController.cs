@@ -13,7 +13,7 @@ namespace TpAnualWeb.Controllers
     public class ProyectoController : Controller
     {
         // GET: Proyecto
-        public ActionResult Index()
+        public ActionResult Proyecto()
         {
             return View();
         }

@@ -400,16 +400,16 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Home\Ingreso.cshtml" />
-    <Content Include="Views\Home\Proyecto.cshtml" />
-    <Content Include="Views\Home\Egreso.cshtml" />
-    <Content Include="Views\Home\CriteriosCategorias.cshtml" />
-    <Content Include="Views\Home\Proveedores.cshtml" />
+    <Content Include="Views\Shared\Ingreso.cshtml" />
+    <Content Include="Views\Shared\Proyecto.cshtml" />
+    <Content Include="Views\Shared\Egreso.cshtml" />
+    <Content Include="Views\Shared\CriteriosCategorias.cshtml" />
+    <Content Include="Views\Shared\Proveedores.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\CriterioCategoria\" />
+    <Folder Include="Views\CriteriosCategorias\" />
     <Folder Include="Views\Egreso\" />
     <Folder Include="Views\Ingreso\" />
     <Folder Include="Views\Proveedor\" />
@@ -417,7 +417,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <Content Include="Views\Home\Mostrar.cshtml" />
+    <Content Include="Views\Shared\Mostrar.cshtml" />
     <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
     <Content Include="Scripts\vendor\bootstrap\css\bootstrap-grid.css.map" />
     <Content Include="Scripts\vendor\bootstrap\css\bootstrap-grid.min.css.map" />

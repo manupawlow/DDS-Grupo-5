@@ -1,0 +1,152 @@
+﻿@{
+    ViewBag.Title = "Proyecto";
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<meta name="viewport" content="width=device-width" />
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>TP ANUAL DDS 2020 GRUPO 5</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/boostrap/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="~/Content/scrolling-nav.css" rel="stylesheet">
+
+</head>
+
+<!-- Bootstrap core JavaScript -->
+<script src="~/Scripts/vendor/jquery/jquery.min.js"></script>
+<script src="~/Scripts/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="~/Scripts/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom JavaScript for this theme -->
+<script src="~/Scripts/scrolling-nav.js"></script>
+
+
+<script src="~/Scripts/ajax.js"></script>
+
+
+<body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a href="@Url.Action("Index", "Home")" class="navbar-brand js-scroll-trigger" href="#page-top">GeSoc</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="@Url.Action("Egreso", "Egreso")" class="nav-link js-scroll-trigger" href="#about">EGRESOS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("Ingreso", "Ingreso")" class="nav-link js-scroll-trigger" href="#services">INGRESOS</a>
+                    </li>
+                    @*<li class="nav-item">
+                        <a href="@Url.Action("Proyecto", "Proyecto")" class="nav-link js-scroll-trigger" href="#proyectos">PROYECTOS</a>
+                    </li>*@
+                    <li class="nav-item">
+                        <a href="@Url.Action("Proveedores", "Proveedores")" class="nav-link js-scroll-trigger" href="#proveedores">PROVEEDORES</a>
+                    </li>
+                    <li>
+                            <a href="@Url.Action("CriteriosCategorias", "CriterioCategoria")" class="nav-link js-scroll-trigger" href="#criterios_y_categorias">CRITERIOS Y CATEGORIAS</a>
+                        </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("verBitacora", "Home")" class="nav-link js-scroll-trigger" href="#bitacora_de_operaciones">BITACORA</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#contact">GitHub</a>
+                    </li>
+                    <li class="nav-item">
+                        <a onclick="myFunction(0)" class="nav-link js-scroll-trigger">@Session["UserName"]</a>
+                    </li>
+                    <div id="0">
+                        <a href="@Url.Action("Login", "Home")" class="nav-link js-scroll-trigger" style="display:block; color:firebrick">Cerrar sesion</a>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-primary text-white">
+        <div class="container text-center">
+            <h1>GeSoc</h1>
+            <p class="lead">Gestion de Proyectos Sociales</p>
+        </div>
+    </header>
+
+
+    <section id="proyectos">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+
+                    <h2>PROYECTOS</h2>
+
+                    <p></p>
+                    <button onclick="myFunction(31)" target="_blank" class="button button2">Cargar proyecto</button>
+                    <div id="31" style="display:none;">
+                        @using (Html.BeginForm("CargarProyecto", "Proyecto", FormMethod.Post))
+                        {
+                            <input type="number" name="monto" placeholder="Monto" class="button button3">
+                            <input type="number" name="cant_presupuestos" placeholder="Cantidad presupuestos minimos" class="button button3">
+                            <input type="text" name="usuario" placeholder="Director de proyecto" class="button button3">
+                            <input type="submit" value="Cargar" class="button button4">
+                        }
+
+                    </div>
+
+                    <p></p>
+                    <button onclick="myFunction(32)" target="_blank" class="button button2">Vincular ingreso a proyecto</button>
+                    <div id="32" style="display:none;">
+                        @using (Html.BeginForm("VincularIngresoConProyecto", "Proyecto", FormMethod.Post))
+                        {
+                            <input type="number" name="id_ingreso" placeholder="ID Ingreso" class="button button3">
+                            <input type="number" name="id_proyecto" placeholder="ID Proyecto" class="button button3">
+                            <input type="submit" value="Vincular" class="button button4">
+                        }
+
+                    </div>
+
+
+                    <p></p>
+                    <button onclick="myFunction(33)" target="_blank" class="button button2">Vincular egreso a proyecto</button>
+                    <div id="33" style="display:none;">
+                        @using (Html.BeginForm("VincularEgresoConProyecto", "Proyecto", FormMethod.Post))
+                        {
+                            <input type="number" name="id_egreso" placeholder="ID Egreso" class="button button3">
+                            <input type="number" name="id_proyecto" placeholder="ID Proyecto" class="button button3">
+                            <input type="submit" value="Vincular" class="button button4">
+                        }
+
+                    </div>
+
+
+                    <p></p>
+                    <button onclick="myFunction(34)" target="_blank" class="button button2">Dar de baja proyecto</button>
+                    <div id="34" style="display:none;">
+                        @using (Html.BeginForm("BajaProyecto", "Proyecto", FormMethod.Post))
+                        {
+                            <input type="number" name="id_proyecto" placeholder="ID Proyecto" class="button button3">
+                            <input type="submit" value="Borrar" class="button button4">
+                        }
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>

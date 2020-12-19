@@ -11,7 +11,7 @@ namespace TpAnualWeb.Controllers
     public class ProveedoresController : Controller
     {
         // GET: Proveedor
-        public ActionResult Index()
+        public ActionResult Proveedores()
         {
             return View();
         }

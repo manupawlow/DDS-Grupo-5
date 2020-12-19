@@ -11,7 +11,7 @@ namespace TpAnualWeb.Controllers
     public class CriterioCategoriaController : Controller
     {
         // GET: CriterioCategoria
-        public ActionResult Index()
+        public ActionResult CriteriosCategorias()
         {
             return View();
         }
@@ -34,7 +34,10 @@ namespace TpAnualWeb.Controllers
 
                 CriterioCategoriaDAO.getInstancia().AddCriterio(nuevo);
 
-                return View("Index");
+                ViewBag.mostrar = "SUCCESS";
+                ViewBag.succes = "Se cargo el criterio correctamente";
+
+                return View("Mostrar");
 
             }
 
@@ -71,7 +74,10 @@ namespace TpAnualWeb.Controllers
 
                     CriterioCategoriaDAO.getInstancia().AddCategoria(nuevo);
 
-                    return View("Index");
+                    ViewBag.mostrar = "SUCCESS";
+                    ViewBag.succes = "Se agrego la categoria " + nuevo.descripcion + " al criterio " + criterio.descripcion + ".";
+
+                    return View("Mostrar");
                 }
             }
         }

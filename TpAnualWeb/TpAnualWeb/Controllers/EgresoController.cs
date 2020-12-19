@@ -12,7 +12,7 @@ namespace TpAnualWeb.Controllers
     public class EgresoController : Controller
     {
         // GET: Egreso
-        public ActionResult Index()
+        public ActionResult Egreso()
         {
             return View();
         }
@@ -41,7 +41,10 @@ namespace TpAnualWeb.Controllers
                     var revisor = UsuarioDAO.getInstancia().getUsuarioByUserName(Session["UserName"].ToString()).nombre;
                     EgresoDAO.getInstancia().cargarEgreso(descripcion, revisor, cantPresup);
 
-                    return View("Index");
+                    ViewBag.mostrar = "SUCCESS";
+                    ViewBag.success = "Se cargo el egreso correctamente";
+
+                    return View("Mostrar");
                 }
 
             }

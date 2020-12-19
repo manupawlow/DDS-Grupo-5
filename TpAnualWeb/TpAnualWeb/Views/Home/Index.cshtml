@@ -94,13 +94,13 @@
                     <div id="1" style="display:none;">
 
                         <h6></h6>
-                        @using (Html.BeginForm("MostrarEgresos", "Egreso", FormMethod.Post))
+                        @using (Html.BeginForm("MostrarEgresos", "Home", FormMethod.Post))
                         {
                             <input style="margin-left:40px;" type="submit" value="Mostrar todos los egresos" class="button button4" style="margin-left:40px;">
                         }
                         <p></p>
                         <p style="margin-left:40px;">Buscar egreso por id:</p>
-                        @using (Html.BeginForm("BuscarEgreso", "Egreso", FormMethod.Post))
+                        @using (Html.BeginForm("BuscarEgreso", "Home", FormMethod.Post))
                         {
                             <input style="margin-left:40px;" type="text" name="id_ingreso" placeholder="ID del ingreso" class="button button3" />
                             <input style="margin-left:40px;" type="submit" value="Buscar" class="button button4">
