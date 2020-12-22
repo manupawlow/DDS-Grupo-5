@@ -113,6 +113,18 @@
                     </div>
                     <h6></h6>
 
+                    <button onclick="myFunction(3)" target="_blank" class="button button2">Asociar categoria a item</button>
+                    <div id="3" style="display:none;">
+
+                        @using (Html.BeginForm("AsignarCategoria", "CriterioCategoria", FormMethod.Post))
+                        {
+                            <p><input type="text" name="categoria" placeholder="Descripcion categoria" class="button button3"></p>
+                            <p><input type="text" name="item_desc" placeholder="Descripcion item" class="button button3"></p>
+                            <p><input type="submit" value="Asociar" class="button button4"></p>
+                        }
+                    </div>
+                    <h6></h6>
+
 
                 </div>
             </div>

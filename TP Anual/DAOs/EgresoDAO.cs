@@ -36,6 +36,8 @@ namespace TP_Anual.DAOs
                     return context.egresos
                   .Include("items")
                   .Include("presupuestos")
+                  //.Include("ingreso")
+                  //.Include("proveedorElegido")
                   .Single(e => e.id_egreso == id);
                 }
                 catch (InvalidOperationException)
@@ -59,7 +61,7 @@ namespace TP_Anual.DAOs
             }
         }
 
-        public EgresoDAO cargarEgreso(string descripcion, string revisor, int cantPresup, string[] items = null, string[] cantidades = null)
+        public Egreso cargarEgreso(string descripcion, string revisor, int cantPresup, string[] items = null, string[] cantidades = null)
         {
             using (var context = new MySql())
             {
@@ -79,9 +81,8 @@ namespace TP_Anual.DAOs
                 MongoDB.getInstancia().registrarBandejaDeMensajes(nuevo);
                 MongoDB.getInstancia().agregarLogABitacora($"Se ha creado un egreso de id:{nuevo.id_egreso}");
     
+                return nuevo;
             }
-
-            return this;
         }
 
         public bool validarEgreso(int id_egreso)

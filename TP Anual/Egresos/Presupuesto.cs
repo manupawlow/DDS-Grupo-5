@@ -16,8 +16,8 @@ namespace TP_Anual.Egresos
         [Column("valor_total")]
         public int valor_total { get; set; }
 
-        public DocumentoComercial documentoComercial { get; set; }
         public List<Item> itemsDePresupuesto { get; set; }
+        public DocumentoComercial documentoComercial { get; set; }
         public Proveedor proveedor { get; set; }
         public Egreso egreso { get; set; }
         

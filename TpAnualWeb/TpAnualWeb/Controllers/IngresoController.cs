@@ -38,10 +38,10 @@ namespace TpAnualWeb.Controllers
                 else
                 {
                     Ingreso nuevo = new Ingreso(descripcion, total);
-                    IngresoDAO.getInstancia().Add(nuevo);
+                    var ingreso = IngresoDAO.getInstancia().Add(nuevo);
 
                     ViewBag.mostrar = "SUCCESS";
-                    ViewBag.success = "Se cargo el ingreso correctamente!";
+                    ViewBag.success = ($"Se creo el ingreso {ingreso.descripcion} de id: {ingreso.id_ingreso} correctamente!");
 
                     return View("Mostrar");
                 }
@@ -50,24 +50,71 @@ namespace TpAnualWeb.Controllers
 
 
         [HttpPost]
-        public ActionResult FechaPrimerEgreso()
+        public ActionResult FechaPrimerEgreso(string id_egresos, string id_ingresos)
         {
-            IngresoDAO.getInstancia().asociarFechaPrimerEgreso();
-            return View("Ingreso");
+
+            var egresos = id_egresos.Split('-');
+            var ingresos = id_ingresos.Split('-');
+
+            if(IngresoDAO.getInstancia().asociarFechaPrimerEgreso(egresos, ingresos))
+            {
+                ViewBag.mostrar = "SUCCESS";
+                ViewBag.success = ($"Se realizo la asociacion correctamente!");
+
+                return View("Mostrar");
+            }
+            else
+            {
+                ViewBag.mostrar = "ERROR";
+                ViewBag.error = "Los datos ingresados no son validos";
+
+                return View("Mostrar");
+            }
         }
 
         [HttpPost]
-        public ActionResult ValorPrimerEgreso()
+        public ActionResult ValorPrimerEgreso(string id_egresos, string id_ingresos)
         {
-            IngresoDAO.getInstancia().asociarValorPrimerEgreso();
-            return View("Ingreso");
+            var egresos = id_egresos.Split('-');
+            var ingresos = id_ingresos.Split('-');
+
+            if (IngresoDAO.getInstancia().asociarValorPrimerEgreso(egresos, ingresos))
+            {
+                ViewBag.mostrar = "SUCCESS";
+                ViewBag.success = ($"Se realizo la asociacion correctamente!");
+
+                return View("Mostrar");
+            }
+            else
+            {
+                ViewBag.mostrar = "ERROR";
+                ViewBag.error = "Los datos ingresados no son validos";
+
+                return View("Mostrar");
+            }
+
         }
 
         [HttpPost]
-        public ActionResult ValorPrimerIngreso()
+        public ActionResult ValorPrimerIngreso(string id_egresos, string id_ingresos)
         {
-            IngresoDAO.getInstancia().asociarValorPrimerIngreso();
-            return View("Ingreso");
+            var egresos = id_egresos.Split('-');
+            var ingresos = id_ingresos.Split('-');
+
+            if (IngresoDAO.getInstancia().asociarValorPrimerIngreso(egresos, ingresos))
+            {
+                ViewBag.mostrar = "SUCCESS";
+                ViewBag.success = ($"Se realizo la asociacion correctamente!");
+
+                return View("Mostrar");
+            }
+            else
+            {
+                ViewBag.mostrar = "ERROR";
+                ViewBag.error = "Los datos ingresados no son validos";
+
+                return View("Mostrar");
+            }
         }
 
 

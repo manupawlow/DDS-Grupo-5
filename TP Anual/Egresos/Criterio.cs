@@ -20,10 +20,7 @@ namespace TP_Anual.Egresos
         [Column("jerarquia")]
         public int jerarquia { get; set; }
 
-        //[Column("id_categoria")]
-        //public int id_categoria { get; set; }
-
-        public List<Categoria> categorias { get; set; }
+        public List<Categoria> categorias;
 
         public Criterio()
         {

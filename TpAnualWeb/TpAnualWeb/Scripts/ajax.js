@@ -63,7 +63,7 @@ var j = 0;
 var nuevosItemsPresupuesto = ""
 $("#addInputPresupuesto").click(function () {
     j++;
-    nuevosItemsPresupuesto += "" + '<input style="margin-left:40px;" type="text" name="nuevoItemPresupuesto" placeholder="Descripcion de item' + j + '" class="button button3"><input type="number" id="precio" name="precio" placeholder="Precio unitario" class="button button3"><input type="number" id="cantidad" name="cantidad" placeholder="Cantidad" class="button button3"><input type="text" name="criterio" placeholder="Criterio" class="button button3"><input type="text" name="categoria" placeholder="Categoria" class="button button3"><h6></h6><hr />' + ""
+    nuevosItemsPresupuesto += "" + '<input style="margin-left:40px;" type="text" name="nuevoItemPresupuesto" placeholder="Descripcion de item' + j + '" class="button button3"><input type="number" id="precio" name="precio" placeholder="Precio unitario" class="button button3"><input type="number" id="cantidad" name="cantidad" placeholder="Cantidad" class="button button3"><h6></h6><hr />' + ""
     $("#itemsInputPresupuesto").html(nuevosItemsPresupuesto);
 });
 

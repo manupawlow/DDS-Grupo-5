@@ -23,5 +23,10 @@ namespace TP_Anual.Egresos
         [Column("id_criterio")]
         public int id_criterio { get; set; }
 
+        public Categoria()
+        {
+
+        }
+
     }
 }

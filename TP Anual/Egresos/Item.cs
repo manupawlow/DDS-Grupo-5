@@ -30,9 +30,7 @@ namespace TP_Anual.Egresos
 
         public Presupuesto presupuesto { get; set; }
 
-        public List<Criterio> criterios { get; set; }
-
-        public List<Categoria> categorias { get; set; }
+        public List<CriterioCategoriaPorItem> criteriosCategorias;
 
         [Column("id_egreso")]
         public int id_egreso { get; set; }

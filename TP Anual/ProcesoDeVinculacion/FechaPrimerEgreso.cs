@@ -30,21 +30,6 @@ namespace TP_Anual.ProcesoDeVinculacion
 				}
 
 			}
-
-			for (int j = 0; j < ingresosFinal.Count(); j++)
-			{
-				Console.Out.WriteLine("El ingreso:\n");
-				Console.Out.WriteLine(ingresosFinal[j].descripcion);
-				Console.Out.WriteLine("Posee los siguientes egresos:\n");
-				for (int l = 0; l < ingresosFinal[j].egresos.Count; l++)
-				{
-					Console.Out.WriteLine(ingresosFinal[j].egresos[l].descripcion);
-
-				}
-
-
-			}
 		}
-
 	}
 }

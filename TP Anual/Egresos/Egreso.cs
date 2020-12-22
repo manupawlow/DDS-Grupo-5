@@ -29,12 +29,13 @@ namespace TP_Anual.Egresos
         public BandejaDeMensajes bandejaDeMensajes;
         public ICriterioDeSeleccion criterioDeSeleccion;
         public MedioDePago medioDePago;
+        
+        public List<Presupuesto> presupuestos { get; set; }
         public DocumentoComercial documentoComercial { get; set; }
         public Ingreso ingreso { get; set; }
         public List<Item> items { get; set; }
         public Presupuesto presupuestoElegido { get; set; }
         public ProyectoDeFinanciamiento proyecto { get; set; }
-        public List<Presupuesto> presupuestos { get; set; }
         public Proveedor proveedorElegido { get; set; }
 
 

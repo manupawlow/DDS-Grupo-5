@@ -71,7 +71,7 @@ namespace TP_Anual.DAOs
             return this;
         }
 
-        public PresupuestoDAO cargarPresupuesto(int id_egreso, string CUIT, string[] items, string[] cantidades, string[] precios)
+        public Presupuesto cargarPresupuesto(int id_egreso, string CUIT, string[] items, string[] cantidades, string[] precios)
         {
             using (var context = new MySql())
             {
@@ -93,16 +93,17 @@ namespace TP_Anual.DAOs
 
                     for (int i = 0; i < items.Length; i++)
                     {
-                        //var item = ItemDAO.getInstancia().getItemByDescripcion(items[i]);
-                        Item item = new Item();
+
+                        var item = new Item();
                         item.descripcion = items[i];
                         item.cantidad = Int32.Parse(cantidades[i]);
                         item.valor = Int32.Parse(precios[i]);
-                        //item.presupuesto 
+                        item.presupuesto = nuevo;
+                        item.prov = proveedor;
                         context.items.Add(item);
                         context.SaveChanges();
 
-                        MongoDB.getInstancia().agregarLogABitacora($"Se ha agregado un item de id:{item.id_item} al presupuesto de id:{nuevo.id_egreso}");
+                        MongoDB.getInstancia().agregarLogABitacora($"Se ha agregado un item de id: {item.id_item} al presupuesto de id:{nuevo.id_egreso}");
 
                     }
 
@@ -111,9 +112,10 @@ namespace TP_Anual.DAOs
 
                 }
                 catch (NullReferenceException) { }
+
+                return nuevo;
             }
 
-            return this;
         }
 
         public PresupuestoDAO elegirPresupuesto(int id_egreso, int id_presupuesto)
@@ -127,9 +129,7 @@ namespace TP_Anual.DAOs
 
                 var presupuesto = context.presupuestos.Include("itemsDePresupuesto").Include("proveedor").Single(e => e.id_presupuesto == id_presupuesto);
 
-                egreso.proveedorElegido = presupuesto.proveedor;
-                egreso.presupuestoElegido = presupuesto;
-                egreso.valorTotal = presupuesto.valor_total;
+                egreso.elegirPresupuesto(presupuesto);
 
                 context.SaveChanges();
 

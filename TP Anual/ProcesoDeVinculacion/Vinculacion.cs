@@ -14,8 +14,15 @@ namespace TP_Anual.ProcesoDeVinculacion
 
 		public void asociar(Ingreso ingreso, Egreso egreso)
 		{
-			ingreso.egresos.Add(egreso);
-			egreso.ingreso = ingreso;
+
+			using (var context = new MySql())
+			{ 
+				ingreso.egresos.Add(egreso);
+				egreso.ingreso = ingreso;
+				egreso.descripcion = "daleee";
+				
+				context.SaveChanges();
+			}
 		}
 
 		public Boolean cumplirCondiciones(Ingreso ingreso, Egreso egreso)

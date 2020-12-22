@@ -41,6 +41,21 @@ namespace TP_Anual.DAOs
             }
         }
 
+        //public List<Item> getItemsByDescripcion(string descripcion)
+        //{
+        //    using (var context = new MySql())
+        //    {
+        //        try
+        //        {
+        //            return context.items.Where(i => i.descripcion == descripcion);
+        //        }
+        //        catch (InvalidOperationException)
+        //        {
+        //            return null;
+        //        }
+        //    }
+        //}
+
         public ItemDAO AddItemPorEgreso(Item i)
         {
             using (var context = new MySql())
@@ -73,6 +88,26 @@ namespace TP_Anual.DAOs
             }
             return this;
         }
+
+        public ItemDAO AgregarCriterioItem(Item item, Categoria categoria, Criterio criterio)
+        {
+            using (var context = new MySql())
+            {
+                
+                var item_cc = new CriterioCategoriaPorItem();
+                item_cc.item = item;
+                item_cc.categoria_item = categoria;
+                item_cc.criterio_item = criterio;
+                
+                context.item_categoria_criterio.Add(item_cc);
+                context.SaveChanges();
+
+                MongoDB.getInstancia().agregarLogABitacora($"Se ha ascodiado la categoria {categoria.descripcion} al item {item.descripcion}");
+            }
+            return this;
+        }
+
+
 
         public List<Item> getItemsDeEgreso(int id_egreso)
         {

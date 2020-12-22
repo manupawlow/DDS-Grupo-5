@@ -16,17 +16,17 @@ CREATE TABLE IF NOT EXISTS usuario(
 CREATE TABLE IF NOT EXISTS egreso(
 	id_egreso INT NOT NULL AUTO_INCREMENT,
     cant_presupuestos_requeridos INT NOT NULL,
-    fecha DATETIME NOT NULL,
     valor_total INT NULL,
+	descripcion VARCHAR(90) NULL,
+	fecha DATETIME NOT NULL,
 	id_prov INT NULL,
     id_presupuesto_elegido INT NULL,
     id_entidad_base INT NULL,
     id_entidad_juridica INT NULL,
-#    id_bandeja INT NOT NULL,
     id_ingreso INT NULL,
     id_documento_comercial INT NULL,
     id_proyecto INT NULL,
-    descripcion VARCHAR(90) NULL,
+
     
     PRIMARY KEY(id_egreso)
 )ENGINE=INNODB;
@@ -115,19 +115,6 @@ CREATE TABLE IF NOT EXISTS entidad_base(
 
 #-----FIN ORGANIZACIONES-----
 
-#CREATE TABLE IF NOT EXISTS bandeja_de_mensajes(
-#	#Como es singleton no agrego auto_incremental
-#   id_bandeja INT NOT NULL,
-#    mensaje VARCHAR(500) NULL,
-#    revisor VARCHAR(45) NOT NULL,
-#    
-#    PRIMARY KEY(id_bandeja)
-#)ENGINE=INNODB;
-
-#ALTER TABLE egreso
-#ADD CONSTRAINT fkEgresoBandeja FOREIGN KEY(id_bandeja) REFERENCES bandeja_de_mensajes(id_bandeja);
-
-
 #-----CREACION ITEMS-----
 
 CREATE TABLE IF NOT EXISTS item(
@@ -138,7 +125,6 @@ CREATE TABLE IF NOT EXISTS item(
     valor INT NULL,
     cantidad INT NULL,
     descripcion VARCHAR(90) NOT NULL,
-    #valor INT NOT NULL,
     
     PRIMARY KEY(id_item)
 )ENGINE=INNODB;
@@ -159,20 +145,13 @@ CREATE TABLE IF NOT EXISTS categoria(
     PRIMARY KEY(id_categoria)
 )ENGINE=INNODB;
 
-CREATE TABLE IF NOT EXISTS criterio_por_item(
-	id_criterio_por_item INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS criterio_categoria_por_item(
+	id_criterio_categoria_por_item INT NOT NULL AUTO_INCREMENT,
     id_item INT NOT NULL,
     id_criterio INT NOT NULL,
-    
-    PRIMARY KEY(id_criterio_por_item)
-)ENGINE=INNODB;
-
-CREATE TABLE IF NOT EXISTS categoria_por_item(
-	id_categoria_por_item INT NOT NULL AUTO_INCREMENT,
-    id_item INT NOT NULL,
     id_categoria INT NOT NULL,
     
-    PRIMARY KEY(id_criterio_por_item)
+    PRIMARY KEY(id_criterio_categoria_por_item)
 )ENGINE=INNODB;
 
 CREATE TABLE IF NOT EXISTS proyecto_financiamiento(

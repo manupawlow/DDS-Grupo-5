@@ -102,13 +102,28 @@
                         <p style="margin-left:40px;">Buscar egreso por id:</p>
                         @using (Html.BeginForm("BuscarEgreso", "Home", FormMethod.Post))
                         {
-                            <input style="margin-left:40px;" type="text" name="id_ingreso" placeholder="ID del ingreso" class="button button3" />
+                            <input style="margin-left:40px;" type="text" name="id_egreso" placeholder="ID del egreso" class="button button3" />
                             <input style="margin-left:40px;" type="submit" value="Buscar" class="button button4">
                         }
                         <p></p>
 
 
                     </div>
+
+                    <h6></h6>
+                    <button onclick="myFunction(2)" target="_blank" class="button button2">Buscar presupuestos</button>
+
+                    <div id="2" style="display:none;">
+
+                        <h6></h6>
+                        @using (Html.BeginForm("MostrarPresupuestos", "Home", FormMethod.Post))
+                        {
+                            <input style="margin-left:40px;" type="submit" value="Mostrar todos los presupuestos" class="button button4" style="margin-left:40px;">
+                        }
+                        <p></p>
+
+                    </div>
+
                 </div>
             </div>
     </section>
@@ -236,7 +251,7 @@
                     <h4></h4>
                     @using (Html.BeginForm("CargarCriteriosCategorias", "Home", FormMethod.Post))
                     {
-                        <input  type="submit" value="Cargar criterios y categorias" class="button button2">
+                        <input  type="submit" value="Cargar y asociar" class="button button2">
                     }
 
                     <h4></h4>

@@ -50,62 +50,110 @@ namespace TP_Anual.DAOs
             }
         }
 
-        public IngresoDAO Add(Ingreso e)
+        public Ingreso Add(Ingreso ingreso)
         {
             using (var context = new MySql())
             {
-                context.ingresos.Add(e);
+                context.ingresos.Add(ingreso);
                 context.SaveChanges();
 
-                MongoDB.getInstancia().agregarLogABitacora($"Se ha creado un ingreso de id:{e.id_ingreso}");
+                MongoDB.getInstancia().agregarLogABitacora($"Se ha creado un ingreso de id:{ingreso.id_ingreso}");
             }
-            return this;
+            return ingreso;
         }
 
-        public IngresoDAO asociarFechaPrimerEgreso()
+        public bool asociarFechaPrimerEgreso(string[] e, string [] i)
         {
             using (var context = new MySql())
             {
-                var ingresos = context.ingresos.ToList<Ingreso>();
-                var egresos = context.egresos.ToList<Egreso>();
 
-                new FechaPrimerEgreso().vincular(ingresos, egresos);
+                var egresos = new List<Egreso>();
+                var ingresos = new List<Ingreso>();
+
+                for(int j=0; j<e.Length; j++)
+                {
+                    egresos.Add(EgresoDAO.getInstancia().getEgresoById(Int32.Parse(e[j])));
+                }
+
+                for (int j = 0; j < i.Length; j++)
+                {
+                    ingresos.Add(IngresoDAO.getInstancia().getIngresoById(Int32.Parse(i[j])));
+                }
                 
-                context.SaveChanges();
+                if (egresos.Count == 0 || ingresos.Count == 0)
+                {
+                    return false;
+                }else
+                {
+                    new FechaPrimerEgreso().vincular(ingresos, egresos);
+                    return true;
+                }
 
             }
-            return this;
 
         }
 
-        public IngresoDAO asociarValorPrimerEgreso()
+        public bool asociarValorPrimerEgreso(string[] e, string[] i)
         {
             using (var context = new MySql())
             {
-                var ingresos = context.ingresos.ToList<Ingreso>();
-                var egresos = context.egresos.ToList<Egreso>();
 
-                new ValorPrimerEgreso().vincular(ingresos, egresos);
+                var egresos = new List<Egreso>();
+                var ingresos = new List<Ingreso>();
 
-                context.SaveChanges();
+                for (int j = 0; j < e.Length; j++)
+                {
+                    egresos.Add(EgresoDAO.getInstancia().getEgresoById(Int32.Parse(e[j])));
+                }
+
+                for (int j = 0; j < i.Length; j++)
+                {
+                    ingresos.Add(IngresoDAO.getInstancia().getIngresoById(Int32.Parse(i[j])));
+                }
+
+                if (egresos.Count == 0 || ingresos.Count == 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    new ValorPrimerEgreso().vincular(ingresos, egresos);
+                    return true;
+                }
+
             }
-            return this;
 
         }
 
-        public IngresoDAO asociarValorPrimerIngreso()
+        public bool asociarValorPrimerIngreso(string[] e, string[] i)
         {
             using (var context = new MySql())
             {
-                var ingresos = context.ingresos.ToList<Ingreso>();
-                var egresos = context.egresos.ToList<Egreso>();
 
-                new ValorPrimerIngreso().vincular(ingresos, egresos);
+                var egresos = new List<Egreso>();
+                var ingresos = new List<Ingreso>();
 
-                context.SaveChanges();
+                for (int j = 0; j < e.Length; j++)
+                {
+                    egresos.Add(EgresoDAO.getInstancia().getEgresoById(Int32.Parse(e[j])));
+                }
+
+                for (int j = 0; j < i.Length; j++)
+                {
+                    ingresos.Add(IngresoDAO.getInstancia().getIngresoById(Int32.Parse(i[j])));
+                }
+
+                if (egresos.Count == 0 || ingresos.Count == 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    new ValorPrimerIngreso().vincular(ingresos, egresos);
+                    return true;
+                }
+
             }
-            return this;
-
         }
 
 

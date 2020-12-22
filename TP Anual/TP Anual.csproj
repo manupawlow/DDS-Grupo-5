@@ -214,6 +214,7 @@
     <Compile Include="Egresos\BandejaDeMensajes.cs" />
     <Compile Include="Egresos\Categoria.cs" />
     <Compile Include="Egresos\BitacoraDeOperaciones.cs" />
+    <Compile Include="Egresos\CriterioCategoriaPorItem.cs" />
     <Compile Include="Egresos\GeneradorDeLogs.cs" />
     <Compile Include="Egresos\ProyectoDeFinanciamiento.cs" />
     <Compile Include="Egresos\Log.cs" />

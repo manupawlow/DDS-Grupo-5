@@ -71,6 +71,26 @@ namespace TpAnualWeb.Controllers
 
         }
 
+        [HttpPost]
+        public ActionResult MostrarPresupuestos()
+        {
+
+            ViewBag.presupuestos = PresupuestoDAO.getInstancia().getAllPresupuesto();
+
+            if (ViewBag.presupuestos.Count != 0)
+            { 
+                ViewBag.mostrar = "PRESUPUESTOS";
+                return View("Mostrar");
+            }
+            else
+            {
+                ViewBag.mostrar = "ERROR";
+                ViewBag.error = "No hay presupuestos actualmente";
+                return View("Mostrar");
+            }
+            
+        }
+
 
         #endregion
 

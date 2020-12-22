@@ -110,13 +110,13 @@
                     <div id="3" style="display:none;">
                         @using (Html.BeginForm("ElegirPresupuesto", "Egreso", FormMethod.Post))
                         {
-                            <input style="margin-left:40px;" type="number" name="istyle=" margin-left:40px;"style="margin-left:40px;" d_egreso" placeholder="ID del Egreso" class="button button3">
+                            <input type="number" name="id_egreso" placeholder="ID del Egreso" class="button button3">
                             <input type="number" name="id_presupuesto" placeholder="ID del Presupuesto" class="button button3">
                             <input type="submit" value="Elegir" class="button button4">
                         }
 
                     </div>
-
+                    <p></p>
 
                     <h6></h6>
                     <button onclick="myFunction(4)" target="_blank" class="button button2">Validar Egreso</button>
@@ -132,6 +132,7 @@
                         }
 
                     </div>
+                    <p></p>
 
                     <h6></h6>
                     <button onclick="myFunction(5)" target="_blank" class="button button2">Bandeja de Mensajes de Egreso</button>
@@ -148,44 +149,44 @@
                     </div>
                     <!--
 
-                    <h6></h6>
-                    <button onclick="myFunction(52)" target="_blank" class="button button2">Agregar criterio a item</button>
-                    <div id="52" style="display:none;">
+    <h6></h6>
+    <button onclick="myFunction(52)" target="_blank" class="button button2">Agregar criterio a item</button>
+    <div id="52" style="display:none;">
 
-                        @using (Html.BeginForm("AsignarCriterio", "Home", FormMethod.Post))
-                        {
-                            <p><input type="text" name="item_desc" placeholder="Descripcion item" class="button button3"></p>
-
-
-                            <p><button id="asignarCriterio" class="button button4">Asignar</button></p>
-                        }
-
-                    </div>
-                    <h6></h6>
+        @using (Html.BeginForm("AsignarCriterio", "Home", FormMethod.Post))
+        {
+            <p><input type="text" name="item_desc" placeholder="Descripcion item" class="button button3"></p>
 
 
-                    <p></p>
-                    <button onclick="myFunction(20)" target="_blank" class="button button2">Buscar presupuesto</button>
-                    <div id="20" style="display:none;">
-                        <h6></h6>
-                        @using (Html.BeginForm("MostrarPresupuestos", "Home", FormMethod.Post))
-                        {
-                            <input type="submit" value="Mostrar todos los presupuestos" class="button button4">
-                        }
-                        <p>Buscar presupuesto por id:</p>
-                        @using (Html.BeginForm("MostrarPresupuestoConItems", "Home", FormMethod.Post))
-                        {
-                            <input type="text" name="id_presupuesto" placeholder="ID del Presupuesto" class="button button3" />
-                            <input type="submit" value="Buscar" class="button button4">
-                        }
-                        <p>Buscar presupuesto por egreso:</p>
-                        @using (Html.BeginForm("MostrarPresupuestosPorEgreso", "Home", FormMethod.Post))
-                        {
-                            <input type="number" name="id_egreso" placeholder="ID del Egreso" class="button button3">
-                            <input type="submit" value="Buscar" class="button button4">
-                        }
-                    </div>
-                    -->
+            <p><button id="asignarCriterio" class="button button4">Asignar</button></p>
+        }
+
+    </div>
+    <h6></h6>
+
+
+    <p></p>
+    <button onclick="myFunction(20)" target="_blank" class="button button2">Buscar presupuesto</button>
+    <div id="20" style="display:none;">
+        <h6></h6>
+        @using (Html.BeginForm("MostrarPresupuestos", "Home", FormMethod.Post))
+        {
+            <input type="submit" value="Mostrar todos los presupuestos" class="button button4">
+        }
+        <p>Buscar presupuesto por id:</p>
+        @using (Html.BeginForm("MostrarPresupuestoConItems", "Home", FormMethod.Post))
+        {
+            <input type="text" name="id_presupuesto" placeholder="ID del Presupuesto" class="button button3" />
+            <input type="submit" value="Buscar" class="button button4">
+        }
+        <p>Buscar presupuesto por egreso:</p>
+        @using (Html.BeginForm("MostrarPresupuestosPorEgreso", "Home", FormMethod.Post))
+        {
+            <input type="number" name="id_egreso" placeholder="ID del Egreso" class="button button3">
+            <input type="submit" value="Buscar" class="button button4">
+        }
+    </div>
+    -->
 
 
 

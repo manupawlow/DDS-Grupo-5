@@ -109,23 +109,47 @@
 
                     <div id="2" style="display:none;">
                         <p>Seleccione el proceso de vinculacion</p>
-                        @using (Html.BeginForm("FechaPrimerEgreso", "Ingreso", FormMethod.Post))
-                        {
-                            <button style="margin-left:40px;" id="fechaPrimerEgreso" class="button button4">Fecha primer egreso</button>
-                        }
-                        @using (Html.BeginForm("ValorPrimerEgreso", "Ingreso", FormMethod.Post))
-                        {
-                            <button style="margin-left:40px;" id="fechaPrimerEgreso" class="button button4">Valor primer egreso</button>
-                        }
-                        @using (Html.BeginForm("ValorPrimerIngreso", "Ingreso", FormMethod.Post))
-                        {
-                            <button style="margin-left:40px;" id="fechaPrimerEgreso" class="button button4">Valor primer ingreso</button>
-                        }
 
+                        <button onclick="myFunction(3)" target="_blank" class="button button2">Fecha primer egreso</button>
+                        <div id="3" style="display:none;">
+                            @using (Html.BeginForm("FechaPrimerEgreso", "Ingreso", FormMethod.Post))
+                            {
+                                <p>Ingrese los ID de los egresos separados por -</p>
+                                <p style="margin-left:40px;"><input type="text" name="id_egresos" placeholder="ID egresos" class="button button3"></p>
+                                <p>Ingrese los ID de los ingresos separados por -</p>
+                                <p style="margin-left:40px;"><input type="text" name="id_ingresos" placeholder="ID ingresos" class="button button3"></p>
+                                <button style="margin-left:40px;" id="fechaPrimerEgreso" class="button button4">Asociar</button>
+                            }
+                        </div>
+                        <p></p>
+                        <button onclick="myFunction(4)" target="_blank" class="button button2">Valor primer egreso</button>
+                        <div id="4" style="display:none;">
+                            @using (Html.BeginForm("ValorPrimerEgreso", "Ingreso", FormMethod.Post))
+                            {
+                                <p>Ingrese los ID de los egresos separados por -</p>
+                                <p style="margin-left:40px;"><input type="text" name="id_egresos" placeholder="ID egresos" class="button button3"></p>
+                                <p>Ingrese los ID de los ingresos separados por -</p>
+                                <p style="margin-left:40px;"><input type="text" name="id_ingresos" placeholder="ID ingresos" class="button button3"></p>
+                                <button style="margin-left:40px;" id="valorPrimerEgreso" class="button button4">Asociar</button>
+                            }
+                        </div>
+                        <p></p>
+                        <button onclick="myFunction(5)" target="_blank" class="button button2">Valor primer ingreso</button>
+                        <div id="5" style="display:none;">
+
+                            @using (Html.BeginForm("ValorPrimerIngreso", "Ingreso", FormMethod.Post))
+                            {
+                                <p>Ingrese los ID de los egresos separados por -</p>
+                                <p style="margin-left:40px;"><input type="text" name="id_egresos" placeholder="ID egresos" class="button button3"></p>
+                                <p>Ingrese los ID de los ingresos separados por -</p>
+                                <p style="margin-left:40px;"><input type="text" name="id_ingresos" placeholder="ID ingresos" class="button button3"></p>
+                                <button style="margin-left:40px;" id="valorPrimerIngreso" class="button button4">Asociar</button>
+                            }
+                        </div>
 
                     </div>
 
-                </div>
+                    </div>
             </div>
         </div>
     </section>

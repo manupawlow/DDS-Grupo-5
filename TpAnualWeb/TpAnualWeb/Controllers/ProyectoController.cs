@@ -40,9 +40,12 @@ namespace TpAnualWeb.Controllers
                 }
                 else
                 {
-                    ProyectoDAO.getInstancia().cargarProyecto(cant_presupuestos, monto, usuario);
+                    var proyecto = ProyectoDAO.getInstancia().cargarProyecto(cant_presupuestos, monto, usuario);
 
-                    return View("Index");
+                    ViewBag.mostrar = "SUCCESS";
+                    ViewBag.success = ($"Se creo el proyecto de id: {proyecto.id} correctamente!");
+
+                    return View("Mostrar");
 
                 }
             }
@@ -75,7 +78,10 @@ namespace TpAnualWeb.Controllers
                 {
                     ProyectoDAO.getInstancia().vincularIngresoConProyecto(id_proyecto, id_ingreso);
 
-                    return View("Index");
+                    ViewBag.mostrar = "SUCCESS";
+                    ViewBag.success = ($"Se vinculo el ingreso {ingreso.descripcion} con el proyecto de id: {proyecto.id} correctamente!");
+
+                    return View("Mostrar");
 
                 }
 
@@ -109,7 +115,10 @@ namespace TpAnualWeb.Controllers
                 {
                     ProyectoDAO.getInstancia().vincularEgresoConProyecto(id_proyecto, id_egreso);
 
-                    return View("Index");
+                    ViewBag.mostrar = "SUCCESS";
+                    ViewBag.success = ($"Se vinculo el egreso {egreso.descripcion} con el proyecto de id: {proyecto.id} correctamente!");
+
+                    return View("Mostrar");
                 }
             }
         }
@@ -140,7 +149,10 @@ namespace TpAnualWeb.Controllers
                 {
                     ProyectoDAO.getInstancia().bajaProyecto(id_proyecto);
 
-                    return View("Index");
+                    ViewBag.mostrar = "SUCCESS";
+                    ViewBag.success = ($"Se elimino el proyecto de id: {proyecto.id} correctamente!");
+
+                    return View("Mostrar");
                 }
             }
         }

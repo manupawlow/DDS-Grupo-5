@@ -35,7 +35,7 @@ namespace TpAnualWeb.Controllers
                 CriterioCategoriaDAO.getInstancia().AddCriterio(nuevo);
 
                 ViewBag.mostrar = "SUCCESS";
-                ViewBag.succes = "Se cargo el criterio correctamente";
+                ViewBag.success = "Se cargo el criterio " + nuevo.descripcion + " correctamente!";
 
                 return View("Mostrar");
 
@@ -75,9 +75,48 @@ namespace TpAnualWeb.Controllers
                     CriterioCategoriaDAO.getInstancia().AddCategoria(nuevo);
 
                     ViewBag.mostrar = "SUCCESS";
-                    ViewBag.succes = "Se agrego la categoria " + nuevo.descripcion + " al criterio " + criterio.descripcion + ".";
+                    ViewBag.success = "Se agrego la categoria " + nuevo.descripcion + " al criterio " + criterio.descripcion + "!";
 
                     return View("Mostrar");
+                }
+            }
+        }
+
+        [HttpPost]
+        public ActionResult AsignarCategoria(string item_desc = "", string categoria = "")
+        {
+
+            if (item_desc == "" || categoria == "")
+            {
+                ViewBag.mostrar = "ERROR";
+                ViewBag.error = "Debe completar todos los campos";
+
+                return View("Mostrar");
+            }
+            else
+            {
+                var item = ItemDAO.getInstancia().getItemByDescripcion(item_desc);
+                var cat = CriterioCategoriaDAO.getInstancia().getCategoriaByDescripcion(categoria);
+                var cri = CriterioCategoriaDAO.getInstancia().getCriterioByID(cat.id_criterio);
+
+                if (item == null || cat == null)
+                {
+                    ViewBag.mostrar = "ERROR";
+                    ViewBag.error = "Los datos ingresados no son validos";
+
+                    return View("Mostrar");
+
+                }
+                else
+                {
+
+                    ItemDAO.getInstancia().AgregarCriterioItem(item, cat, cri);
+
+                    ViewBag.mostrar = "SUCCESS";
+                    ViewBag.success = ($"Se ha asociado la categoria {cat.descripcion} al item {item.descripcion}");
+
+                    return View("Mostrar");
+
                 }
             }
         }

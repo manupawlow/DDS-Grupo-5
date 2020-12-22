@@ -39,10 +39,10 @@ namespace TpAnualWeb.Controllers
                 else
                 {
                     var revisor = UsuarioDAO.getInstancia().getUsuarioByUserName(Session["UserName"].ToString()).nombre;
-                    EgresoDAO.getInstancia().cargarEgreso(descripcion, revisor, cantPresup);
+                    var egreso = EgresoDAO.getInstancia().cargarEgreso(descripcion, revisor, cantPresup);
 
                     ViewBag.mostrar = "SUCCESS";
-                    ViewBag.success = "Se cargo el egreso correctamente";
+                    ViewBag.success = ($"Se creo el egreso {egreso.descripcion} de id: {egreso.id_egreso} correctamente!");
 
                     return View("Mostrar");
                 }
@@ -75,53 +75,17 @@ namespace TpAnualWeb.Controllers
                 }
                 else
                 {
+
                     var items = inputs["nuevoItemPresupuesto"].Split(',');
                     var cantidades = inputs["cantidad"].Split(',');
                     var precios = inputs["precio"].Split(',');
 
-                    PresupuestoDAO.getInstancia().cargarPresupuesto(id_egreso, CUIT, items, cantidades, precios);
+                    var presupuesto = PresupuestoDAO.getInstancia().cargarPresupuesto(id_egreso, CUIT, items, cantidades, precios);
 
-                    return View("Index");
-                }
-            }
-        }
-
-        [HttpPost]
-        public ActionResult AsignarCriterio(string item_desc = "", string criterio = "", string categoria = "")
-        {
-
-            if (item_desc == "" || criterio == "" || categoria == "")
-            {
-                ViewBag.mostrar = "ERROR";
-                ViewBag.error = "Debe completar todos los campos";
-
-                return View("Mostrar");
-            }
-            else
-            {
-                var item = ItemDAO.getInstancia().getItemByDescripcion(item_desc);
-                var cri = CriterioCategoriaDAO.getInstancia().getCriterioByDescripcion(criterio);
-                var cat = CriterioCategoriaDAO.getInstancia().getCategoriaByDescripcion(categoria);
-
-                if (item == null || cri == null || cat == null)
-                {
-                    ViewBag.mostrar = "ERROR";
-                    ViewBag.error = "Los datos ingresados no son validos";
+                    ViewBag.mostrar = "SUCCESS";
+                    ViewBag.success = ($"Se creo el presupuesto de id: {presupuesto.id_presupuesto} correctamente!");
 
                     return View("Mostrar");
-
-                }
-                else
-                {
-                    var nuevo = new Criterio();
-                    //nuevo.item = item;
-                    //nuevo.criterio = cri;
-                    //nuevo.categoria_item = cat;
-
-                    CriterioCategoriaDAO.getInstancia().AddCriterioPorItem(nuevo);
-
-                    return View("Index");
-
                 }
             }
         }
@@ -152,7 +116,10 @@ namespace TpAnualWeb.Controllers
                 {
                     PresupuestoDAO.getInstancia().elegirPresupuesto(id_egreso, id_presupuesto);
 
-                    return View("Index");
+                    ViewBag.mostrar = "SUCCESS";
+                    ViewBag.success = ($"Se creo eligio el presupuesto de id: {id_presupuesto} para el egreso {egreso.descripcion}");
+
+                    return View("Mostrar");
                 }
             }
         }
@@ -177,7 +144,7 @@ namespace TpAnualWeb.Controllers
                 if (usuario != revisor)
                 {
                     ViewBag.mostrar = "ERROR";
-                    ViewBag.error = "Solo el usuario revisor del egreso puede validarlo";
+                    ViewBag.error = "Solo el usuario que creo el egreso puede validarlo";
 
                     return View("Mostrar");
                 }
@@ -267,14 +234,6 @@ namespace TpAnualWeb.Controllers
         }
 
         /*
-        [HttpPost]
-        public ActionResult MostrarPresupuestos()
-        {
-            ViewBag.mostrar = "PRESUPUESTOS";
-            ViewBag.presupuestos = PresupuestoDAO.getInstancia().getAllPresupuesto();
-            return View("Mostrar");
-        }
-
         [HttpPost]
         public ActionResult MostrarPresupuestoConItems(int id_presupuesto = -1)
         {

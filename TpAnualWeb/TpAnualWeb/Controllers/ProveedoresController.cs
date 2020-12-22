@@ -33,7 +33,10 @@ namespace TpAnualWeb.Controllers
                 nuevo.razon_social = razon;
                 ProveedorDAO.getInstancia().Add(nuevo);
 
-                return View("Index");
+                ViewBag.mostrar = "SUCCESS";
+                ViewBag.success = "Se cargo el proveedor correctamente!";
+
+                return View("Mostrar");
             }
 
         }

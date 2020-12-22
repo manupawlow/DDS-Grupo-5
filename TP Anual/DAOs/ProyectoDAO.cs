@@ -52,7 +52,7 @@ namespace TP_Anual.DAOs
             }
         }
 
-        public ProyectoDAO cargarProyecto(int cant, int monto, string usuario)
+        public ProyectoDeFinanciamiento cargarProyecto(int cant, int monto, string usuario)
         {
             using (var context = new MySql())
             {
@@ -66,10 +66,8 @@ namespace TP_Anual.DAOs
 
                 MongoDB.getInstancia().agregarLogABitacora($"Se ha creado un proyecto de financiamiento de id:{nuevo.id}");
 
+                return nuevo;
             }
-
-
-            return this;
         }
 
         public ProyectoDAO vincularIngresoConProyecto(int id_proyecto, int id_ingreso)

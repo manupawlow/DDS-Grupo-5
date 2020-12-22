@@ -31,13 +31,11 @@ C:\Users\Matias\Source\Repos\DDS-Grupo-5\TP Anual\bin\Release\System.Diagnostics
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TP Anual\bin\Release\System.Memory.xml
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TP Anual\bin\Release\System.Numerics.Vectors.xml
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TP Anual\bin\Release\System.Runtime.CompilerServices.Unsafe.xml
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TP Anual\obj\Release\TP Anual.csprojAssemblyReference.cache
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TP Anual\obj\Release\TP Anual.csproj.CoreCompileInputs.cache
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TP Anual\obj\Release\TP Anual.csproj.CopyComplete
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TP Anual\obj\Release\TP Anual.exe
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TP Anual\obj\Release\TP Anual.pdb
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TP Anual\bin\Release\System.Net.Http.dll
-C:\Users\Matias\Source\Repos\DDS-Grupo-5\TP Anual\bin\Release\System.Runtime.dll
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TP Anual\bin\Release\System.Runtime.InteropServices.RuntimeInformation.dll
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TP Anual\bin\Release\System.Security.Cryptography.Algorithms.dll
 C:\Users\Matias\Source\Repos\DDS-Grupo-5\TP Anual\bin\Release\System.Security.Cryptography.Encoding.dll
