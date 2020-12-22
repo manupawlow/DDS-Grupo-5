@@ -52,44 +52,38 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a href="@Url.Action("Egreso", "Egreso")" class="nav-link js-scroll-trigger" href="#about">EGRESOS</a>
+                        <a href="@Url.Action("Index", "Home")#about" class="nav-link js-scroll-trigger">EGRESOS</a>
                     </li>
                     <li class="nav-item">
-                        <a href="@Url.Action("Ingreso", "Ingreso")" class="nav-link js-scroll-trigger" href="#services">INGRESOS</a>
+                        <a href="@Url.Action("Index", "Home")#services" class="nav-link js-scroll-trigger">INGRESOS</a>
                     </li>
                     <li class="nav-item">
-                        <a href="@Url.Action("Proyecto", "Proyecto")" class="nav-link js-scroll-trigger" href="#proyectos">PROYECTOS</a>
+                        <a href="@Url.Action("Index", "Home")#proyectos" class="nav-link js-scroll-trigger">PROYECTOS</a>
                     </li>
                     <li class="nav-item">
-                        <a href="@Url.Action("Proveedores", "Proveedores")" class="nav-link js-scroll-trigger" href="#proveedores">PROVEEDORES</a>
+                        <a href="@Url.Action("Index", "Home")#proveedores" class="nav-link js-scroll-trigger">PROVEEDORES</a>
                     </li>
-                    @*<li>
-                            <a href="@Url.Action("CrteriosCategorias", "CriterioCategoria")" class="nav-link js-scroll-trigger" href="#criterios_y_categorias">CRITERIOS Y CATEGORIAS</a>
-                        </li>*@
+                    <li>
+                        <a href="@Url.Action("Index", "Home")#criterios_y_categorias" class="nav-link js-scroll-trigger">CRITERIOS Y CATEGORIAS</a>
+                    </li>
                     <li class="nav-item">
-                        <a href="@Url.Action("verBitacora", "Home")" class="nav-link js-scroll-trigger" href="#bitacora_de_operaciones">BITACORA</a>
+                        <a href="@Url.Action("Index", "Home")#bitacora_de_operaciones" class="nav-link js-scroll-trigger">BITACORA</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#contact">GitHub</a>
+                        <a class="nav-link js-scroll-trigger" href="@Url.Action("Index", "Home")#contact">GitHub</a>
                     </li>
                     <li class="nav-item">
                         <a onclick="myFunction(0)" class="nav-link js-scroll-trigger">@Session["UserName"]</a>
                     </li>
-                    <div id="0">
+                    <li id="0">
                         <a href="@Url.Action("Login", "Home")" class="nav-link js-scroll-trigger" style="display:block; color:firebrick">Cerrar sesion</a>
-                    </div>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <header class="bg-primary text-white">
-        <div class="container text-center">
-            <h1>GeSoc</h1>
-            <p class="lead">Gestion de Proyectos Sociales</p>
-        </div>
-    </header>
 
     <section id="about">
         <div class="container">
