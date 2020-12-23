@@ -33,7 +33,7 @@ namespace TP_Anual.DAOs
             {
                 try 
                 { 
-                    return context.ingresos.Single(e => e.id_ingreso == id);
+                    return context.ingresos.Include("egresos").Single(e => e.id_ingreso == id);
                 }
                 catch (InvalidOperationException)
                 {
@@ -46,7 +46,7 @@ namespace TP_Anual.DAOs
         {
             using (var context = new MySql())
             {
-                return context.ingresos.ToList<Ingreso>();
+                return context.ingresos.Include("egresos").ToList<Ingreso>();
             }
         }
 
@@ -154,6 +154,17 @@ namespace TP_Anual.DAOs
                 }
 
             }
+        }
+
+        public IngresoDAO agregarEgreso(Ingreso ingreso, Egreso egreso)
+        {
+            using (var context = new MySql())
+            {
+                ingreso.egresos.Add(egreso);
+                context.SaveChanges();
+            }
+
+            return this;
         }
 
 

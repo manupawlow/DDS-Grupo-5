@@ -26,6 +26,17 @@ namespace TP_Anual.DAOs
             return instancia;
         }
 
+        public EgresoDAO pepe(Egreso egreso)
+        {
+            using (var context = new MySql())
+            {
+                egreso.descripcion = "pepeee";
+                context.SaveChanges();
+            }
+
+                return this;
+        }
+
         #region Funciones
 
         public Egreso getEgresoById(int id)

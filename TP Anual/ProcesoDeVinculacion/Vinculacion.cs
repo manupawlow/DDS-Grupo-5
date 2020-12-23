@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using TP_Anual.Egresos;
+using TP_Anual.DAOs;
 
 namespace TP_Anual.ProcesoDeVinculacion
 {
@@ -15,15 +16,17 @@ namespace TP_Anual.ProcesoDeVinculacion
 		public void asociar(Ingreso ingreso, Egreso egreso)
 		{
 
-			using (var context = new MySql())
-			{ 
-				ingreso.egresos.Add(egreso);
-				egreso.ingreso = ingreso;
-				egreso.descripcion = "daleee";
-				
-				context.SaveChanges();
-			}
-		}
+            using (var context = new MySql())
+            {
+                //var a = EgresoDAO.getInstancia().pepe(egreso);
+                //var b = IngresoDAO.getInstancia().agregarEgreso(ingreso, egreso);
+                ingreso.egresos.Add(egreso);
+                egreso.ingreso = ingreso;
+                egreso.descripcion = "daleee";
+
+                context.SaveChanges();
+            }
+        }
 
 		public Boolean cumplirCondiciones(Ingreso ingreso, Egreso egreso)
 		{
