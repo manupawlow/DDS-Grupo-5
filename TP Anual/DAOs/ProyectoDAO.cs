@@ -46,9 +46,8 @@ namespace TP_Anual.DAOs
         public List<ProyectoDeFinanciamiento> getAllProyectos()
         {
             using (var context = new MySql())
-            {
-                return context.proyectos
-                    .ToList<ProyectoDeFinanciamiento>();
+            {   
+                return context.proyectos.Include("director").ToList<ProyectoDeFinanciamiento>();
             }
         }
 

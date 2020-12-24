@@ -55,16 +55,24 @@ var i = 0;
 var nuevosItems = ""
 $("#addInput").click(function () {
     i++;
-    nuevosItems += "" + '<input style="margin-left:40px;" type="text" id="nuevoItem' + i + '" name="nuevoItem" placeholder="Descripcion de item' + i + '" class="button button3"><input type="number" id="cantidad" name="cantidad" placeholder="Cantidad" class="button button3"><h6></h6><hr />' +  ""
-    $("#itemsInput").html(nuevosItems);
+    nuevosItems += "" + '<input style="margin-left:40px;" type="text" id="nuevoItem' + i + '" name="nuevoItem" placeholder="Descripcion de item' + i + '" class="button button3"><input type="number" id="cantidad" name="cantidad" placeholder="Cantidad" class="button button3"><h6></h6><hr />' + ""
+    $("#itemsInput").append(nuevosItems);
 });
 
-var j = 0;
+
 var nuevosItemsPresupuesto = ""
 $("#addInputPresupuesto").click(function () {
-    j++;
-    nuevosItemsPresupuesto += "" + '<input style="margin-left:40px;" type="text" name="nuevoItemPresupuesto" placeholder="Descripcion de item' + j + '" class="button button3"><input type="number" id="precio" name="precio" placeholder="Precio unitario" class="button button3"><input type="number" id="cantidad" name="cantidad" placeholder="Cantidad" class="button button3"><h6></h6><hr />' + ""
-    $("#itemsInputPresupuesto").html(nuevosItemsPresupuesto);
+    if ($("#descripcion").val() != '' && $("#precio").val() != '' && $("#cantidad").val() != '')
+    {
+        nuevosItemsPresupuesto = "<input style='margin-left: 40px;' type='text' name='nuevoItemPresupuesto' value='" + $("#descripcion").val() + "'class='button button3'>" + 
+                                 "<input type='number' name = 'precio' value='" + $("#precio").val()  + "'class='button button3' >" +
+                                 "<input type='number' name = 'cantidad' value='" + $("#cantidad").val() + "' class='button button3' ><h6></h6><hr />"
+        $("#itemsInputPresupuesto").append(nuevosItemsPresupuesto);
+        $("#descripcion").val('');
+        $("#precio").val('');
+        $("#cantidad").val('');
+    }
+
 });
 
 /*

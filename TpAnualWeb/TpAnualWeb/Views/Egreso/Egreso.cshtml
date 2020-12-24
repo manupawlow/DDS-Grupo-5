@@ -1,0 +1,98 @@
+﻿@{
+    ViewBag.Title = "Egreso";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<body id="page-top">
+    <section id="egresos">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2>EGRESOS</h2>
+
+                    <h6></h6>
+                    <button onclick="myFunction(1)" target="_blank" class="button button2">Cargar nuevo egreso</button>
+                    <div id="1" style="display:none;">
+
+                        @using (Html.BeginForm("CargarEgreso", "Egreso", FormMethod.Post))
+                        {
+                            <div id="itemsInput"></div>
+                            <p><input style="margin-left:40px;" type="text" name="descripcion" placeholder="Descripcion" class="button button3"></p>
+                            <p><input style="margin-left:40px;" type="number" name="cantPresup" placeholder="Cantidad de presupuestos requeridos" class="button button3"></p>
+                            <p><input style="margin-left:40px;" type="submit" id="cargarEgreso" value="Cargar egreso" class="button button4"></p>
+                        }
+
+                    </div>
+
+                    <p></p>
+                    <h6></h6>
+                    <button onclick="myFunction(2)" target="_blank" class="button button2">Agregar presupuesto</button>
+                    <div id="2" style="display:none;">
+                        
+                        <p><button style="margin-left:40px;" id="addInputPresupuesto" class="button button3"> Agregar mas items </button></p>
+                        @using (Html.BeginForm("AgregarPresupuesto", "Egreso", FormMethod.Post))
+                        {
+                            <div id="itemsInputPresupuesto"></div>
+                            <input style="margin-left:40px;" type="text" name="nuevoItemPresupuesto" id="descripcion" placeholder="Descripcion" class="button button3">
+                            <input type="number" name="precio" id="precio" placeholder="Precio unitario" class="button button3">
+                            <input type="number" name="cantidad" id="cantidad" placeholder="Cantidad" class="button button3"><h6></h6><hr />
+                        
+                            <p><input style="margin-left:40px;" type="number" name="id_egreso" placeholder="ID del Egreso" class="button button3"></p>
+                            <p><input style="margin-left:40px;" type="text" name="CUIT" placeholder="CUIT Proveedor" class="button button3"></p>
+                            <p><input style="margin-left:40px;" type="submit" id="agregarPresupuesto" value="Cargar presupuesto" class="button button4"></p>
+
+                        }
+                    </div>
+                    <p></p>
+
+                    <button onclick="myFunction(3)" target="_blank" class="button button2">Elegir presupuesto</button>
+                    <div id="3" style="display:none;">
+                        @using (Html.BeginForm("ElegirPresupuesto", "Egreso", FormMethod.Post))
+                        {
+                            <input type="number" name="id_egreso" placeholder="ID del Egreso" class="button button3">
+                            <input type="number" name="id_presupuesto" placeholder="ID del Presupuesto" class="button button3">
+                            <input type="submit" value="Elegir" class="button button4">
+                        }
+
+                    </div>
+                    <p></p>
+
+                    <h6></h6>
+                    <button onclick="myFunction(4)" target="_blank" class="button button2">Validar Egreso</button>
+                    <div id="4" style="display:none;">
+
+                        <h4></h4>
+                        @using (Html.BeginForm("ValidarEgreso", "Egreso", FormMethod.Post))
+                        {
+                            <input style="margin-left:40px;" type="number" name="id_egreso" placeholder="ID del Egreso" class="button button3">
+                            <p style="margin-left:40px;">Seleccionar criterio de validacion:</p>
+                            <input style="margin-left:40px;" type="submit" value="Menor valor" class="button button4">
+                            <p></p>
+                        }
+
+                    </div>
+                    <p></p>
+
+                    <h6></h6>
+                    <button onclick="myFunction(5)" target="_blank" class="button button2">Bandeja de Mensajes de Egreso</button>
+                    <div id="5" style="display:none;">
+
+                        @using (Html.BeginForm("BandejaDeMensajesDeEgreso", "Egreso", FormMethod.Post))
+                        {
+                            <p>
+                                <input style="margin-left:40px;" type="number" name="id_egreso" placeholder="ID del Egreso" class="button button3">
+                                <input type="submit" value="Mostrar bandeja" class="button button4">
+                            </p>
+                        }
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

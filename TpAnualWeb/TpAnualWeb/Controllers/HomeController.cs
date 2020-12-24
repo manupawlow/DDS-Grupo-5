@@ -23,12 +23,6 @@ namespace TpAnualWeb.Controllers
         }
 
         #region Egresos
-        
-        [HttpPost]
-        public ActionResult CargarValidar()
-        {
-            return View("Egreso");
-        }
 
         [HttpPost]
         public ActionResult BuscarEgreso(int id_egreso = -1)
@@ -97,12 +91,6 @@ namespace TpAnualWeb.Controllers
         #region Ingresos
 
         [HttpPost]
-        public ActionResult CargarAsociar()
-        {
-            return View("Ingreso");
-        }
-
-        [HttpPost]
         public ActionResult BuscarIngreso(int id_ingreso = -1)
         {
             if (id_ingreso == -1)
@@ -144,12 +132,6 @@ namespace TpAnualWeb.Controllers
         #endregion
 
         #region Proyectos
-
-        [HttpPost]
-        public ActionResult CargarVincular()
-        {
-            return View("Proyecto");
-        }
 
         [HttpPost]
         public ActionResult BuscarProyecto(int id_proyecto = -1)
@@ -196,12 +178,6 @@ namespace TpAnualWeb.Controllers
         #region Proveedores
 
         [HttpPost]
-        public ActionResult RegistrarProveedores()
-        {
-            return View("Proveedores");
-        }
-
-        [HttpPost]
         public ActionResult MostrarProveedores()
         {
 
@@ -224,12 +200,6 @@ namespace TpAnualWeb.Controllers
         #endregion
 
         #region Criterios y Categorias
-
-        [HttpPost]
-        public ActionResult CargarCriteriosCategorias()
-        {
-            return View("CriteriosCategorias");
-        }
         
         [HttpPost]
         public ActionResult MostrarCriterios()

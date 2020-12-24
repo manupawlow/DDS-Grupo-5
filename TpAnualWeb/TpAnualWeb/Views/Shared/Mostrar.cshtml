@@ -5,86 +5,10 @@
 
 @using TP_Anual;
 
-
-
 <!DOCTYPE html>
 <html lang="en">
-<meta name="viewport" content="width=device-width" />
-<head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>TP ANUAL DDS 2020 GRUPO 5</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="~/Content/boostrap/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="~/Content/scrolling-nav.css" rel="stylesheet">
-
-</head>
-
-<!-- Bootstrap core JavaScript -->
-<script src="~/Scripts/vendor/jquery/jquery.min.js"></script>
-<script src="~/Scripts/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-<!-- Plugin JavaScript -->
-<script src="~/Scripts/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-<!-- Custom JavaScript for this theme -->
-<script src="~/Scripts/scrolling-nav.js"></script>
-
-
-<script src="~/Scripts/ajax.js"></script>
-
 
 <body id="page-top">
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-        <div class="container">
-            <a href="@Url.Action("Index", "Home")" class="navbar-brand js-scroll-trigger" href="#page-top">GeSoc</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a href="@Url.Action("Index", "Home")#about" class="nav-link js-scroll-trigger">EGRESOS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="@Url.Action("Index", "Home")#services" class="nav-link js-scroll-trigger">INGRESOS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="@Url.Action("Index", "Home")#proyectos" class="nav-link js-scroll-trigger">PROYECTOS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="@Url.Action("Index", "Home")#proveedores" class="nav-link js-scroll-trigger">PROVEEDORES</a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("Index", "Home")#criterios_y_categorias" class="nav-link js-scroll-trigger">CRITERIOS Y CATEGORIAS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="@Url.Action("Index", "Home")#bitacora_de_operaciones" class="nav-link js-scroll-trigger">BITACORA</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="@Url.Action("Index", "Home")#contact">GitHub</a>
-                    </li>
-                    <li class="nav-item">
-                        <a onclick="myFunction(0)" class="nav-link js-scroll-trigger">@Session["UserName"]</a>
-                    </li>
-                    <li id="0">
-                        <a href="@Url.Action("Login", "Home")" class="nav-link js-scroll-trigger" style="display:block; color:firebrick">Cerrar sesion</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-
     <section id="about">
         <div class="container">
             <div class="row">
@@ -96,7 +20,6 @@
                         {
                             <p>@ViewBag.success</p>
                         }
-
 
                         //<---------------------------------EGRESOS--------------------------------->
 
@@ -128,10 +51,26 @@
                                     <p><b>ID INGRESO ASOCIADO: </b>No se asocio a ningun ingreso</p>
                                 }
 
+                                if (@u.id_proyecto != 0)
+                                {
+                                    <p><b>ID PROYECTO ASOCIADO: </b>@u.id_proyecto</p>
+                                }
+                                else
+                                {
+                                    <p><b>ID PROYECTO ASOCIADO: </b>No se asocio a ningun proyecto</p>
+                                }
+
+                                if (u.items != null)
+                                {
+                                    <p><b>ITEMS: DESCRIPCION | CANTIDAD | PRECIO POR UNIDAD</b></p>
+                                    foreach (var i in u.items)
+                                    {
+                                        <p><b>- </b>@i.descripcion | @i.cantidad | @i.valor </p>
+                                    }
+                                }
+
                                 <hr />
                             }
-
-
                         }
 
                         if (ViewBag.mostrar == "EGRESO")
@@ -163,12 +102,24 @@
                                     <p><b>ID INGRESO ASOCIADO: </b>No se asocio a ningun ingreso</p>
                                 }
 
+                                if (@ViewBag.egreso.id_proyecto != 0)
+                                {
+                                    <p><b>ID PROYECTO ASOCIADO: </b>@ViewBag.egreso.id_proyecto</p>
+                                }
+                                else
+                                {
+                                    <p><b>ID PROYECTO ASOCIADO: </b>No se asocio a ningun proyecto</p>
+                                }
 
-                                foreach (var i in ViewBag.items)
+                                if (ViewBag.items != null)
                                 {
                                     <p><b>ITEMS: DESCRIPCION | CANTIDAD | PRECIO POR UNIDAD</b></p>
-                                    <p><b>- </b>@i.descripcion | @i.cantidad | @i.valor </p>
+                                    foreach (var i in ViewBag.items)
+                                    {
+                                        <p><b>- </b>@i.descripcion | @i.cantidad | @i.valor </p>
+                                    }
                                 }
+
 
                             }
                             else
@@ -205,6 +156,14 @@
                                     <p><b>DESCRIPCION: </b>@i.descripcion</p>
                                     <p><b>TOTAL: </b>@i.total</p>
                                     <p><b>EGRESOS ASIGNADOS: </b>@i.egresos.Count</p>
+                                    if (@i.id_proyecto != 0)
+                                    {
+                                        <p><b>ID PROYECTO ASOCIADO: </b>@i.id_proyecto</p>
+                                    }
+                                    else
+                                    {
+                                        <p><b>ID PROYECTO ASOCIADO: </b>No se asocio a ningun proyecto</p>
+                                    }
                                     <hr />
                                 }
                             }
@@ -219,6 +178,15 @@
                                 <p><b>DESCRIPCION: </b>@ViewBag.ingreso.descripcion</p>
                                 <p><b>TOTAL: </b>@ViewBag.ingreso.total</p>
                                 <p><b>EGRESOS ASIGNADOS: </b>@ViewBag.ingreso.egresos.Count</p>
+                                if (@ViewBag.ingreso.id_proyecto != 0)
+                                {
+                                    <p><b>ID PROYECTO ASOCIADO: </b>@ViewBag.ingreso.id_proyecto</p>
+                                }
+                                else
+                                {
+                                    <p><b>ID PROYECTO ASOCIADO: </b>No se asocio a ningun proyecto</p>
+                                }
+
                             }
                             else
                             {
@@ -234,48 +202,15 @@
                             {
                                 <p><b>PRESUPUESTO ID: </b>@u.id_presupuesto</p>
                                 <p><b>TOTAL: $</b>@u.valor_total</p>
-                                <p><b>EGRESO ID: </b>@u.id_egreso</p>
+                                <p><b>ID EGRESO: </b>@u.id_egreso</p>
+                                <p><b>ID PROVEEDOR: </b>@u.id_prov</p>
+                                <p><b>ITEMS: DESCRIPCION | CANTIDAD | PRECIO POR UNIDAD</b></p>
+                                foreach (var i in u.itemsDePresupuesto)
+                                {
+                                    <p><b>- </b>@i.descripcion | @i.cantidad | @i.valor </p>
+                                }
+
                                 <hr />
-                            }
-                        }
-
-                        if (ViewBag.mostrar == "PRESUPUESTO")
-                        {
-
-                            if (ViewBag.presupuesto != null)
-                            {
-                                <p><b>PRESUPUESTO ID: </b>@ViewBag.presupuesto.id_presupuesto</p>
-                                <p><b>TOTAL: $</b>@ViewBag.presupuesto.valor_total</p>
-                                <p><b>EGRESO ID: </b>@ViewBag.presupuesto.id_egreso</p>
-                                foreach (var i in ViewBag.items)
-                                {
-                                    <p><b>ITEMS: DESCRIPCION | CANTIDAD | PRECIO </b></p>
-                                    <p><b>- </b>@i.item.descripcion | @i.cantidad | @i.valor</p>
-                                    <hr />
-                                }
-                            }
-                            else
-                            {
-                                <p>No existe el presupuesto</p>
-                            }
-                        }
-
-                        if (ViewBag.mostrar == "PRESUPUESTOS DE EGRESO")
-                        {
-                            if (ViewBag.presupuestos != null)
-                            {
-
-                                foreach (var u in ViewBag.presupuestos)
-                                {
-                                    <p><b>PRESUPUESTO ID: </b>@u.id_presupuesto</p>
-                                    <p><b>TOTAL: $</b>@u.valor_total</p>
-                                    <p><b>EGRESO ID: </b>@u.id_egreso</p>
-                                    <hr />
-                                }
-                            }
-                            else
-                            {
-                                <p>El egreso no tiene presupuestos</p>
                             }
                         }
 
@@ -303,6 +238,7 @@
                             foreach (var u in ViewBag.proyectos)
                             {
                                 <p><b>PROYECTO ID: </b>@u.id</p>
+                                <p><b>DIRECTOR: </b>@u.director.nombre</p>
                                 <p><b>MONTO TOTAL: </b>@u.montoTotal</p>
                                 <p><b>PRESUPUESTOS EXIGIBLES: </b>@u.cantPresupuestosExigibles</p>
                                 <hr />
@@ -369,9 +305,6 @@
                             <p>@ViewBag.error</p>
                         }
 
-
-
-
                     }
 
 
@@ -379,17 +312,6 @@
             </div>
         </div>
     </section>
-
-
-    <!-- Footer -->
-    <footer class="py-5 bg-dark">
-        <div class="container">
-            <p class="m-0 text-center text-white">Integrantes: Manuel Pawlow - Matias Goñi - Genaro Ciruzzi - Juan Manuel Brea</p>
-            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
-        </div>
-        <!-- /.container -->
-    </footer>
-
 </body>
 
 </html>

@@ -3,68 +3,9 @@
 }
 
 <!DOCTYPE html>
-<html lang="en">
-<meta name="viewport" content="width=device-width" />
-<head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>TP ANUAL DDS 2020 GRUPO 5</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="~/Content/boostrap/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="~/Content/scrolling-nav.css" rel="stylesheet">
-
-</head>
-
-<body id="page-top">
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="#page-top">GeSoc</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#about">EGRESOS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#services">INGRESOS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#proyectos">PROYECTOS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#proveedores">PROVEEDORES</a>
-                    </li>
-                    <li>
-                        <a class="nav-link js-scroll-trigger" href="#criterios_y_categorias">CRITERIOS Y CATEGORIAS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#bitacora_de_operaciones">BITACORA</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#contact">GitHub</a>
-                    </li>
-                    <li class="nav-item">
-                        <a onclick="myFunction(0)" class="nav-link js-scroll-trigger">@Session["UserName"]</a>
-                    </li>
-                    <div id="0">
-                        <a href="@Url.Action("Login", "Home")" class="nav-link js-scroll-trigger" style="display:block; color:firebrick">Cerrar sesion</a>
-                    </div>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
+<html>
+<body>
+    <!---------------------------------EGRESOS--------------------------------->
     <header class="bg-primary text-white">
         <div class="container text-center">
             <h1>GeSoc</h1>
@@ -72,31 +13,23 @@
         </div>
     </header>
 
-    <!---------------------------------EGRESOS--------------------------------->
-
-    <section id="about">
+    <section id="egresos">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto">
                     <h2>EGRESOS</h2>
 
                     <p class="lead">Seleccione una opcion:</p>
+                    @Html.ActionLink("Cargar y validar", "Egreso", "Egreso", null, new { @class = "button button2" })
+                    <p></p>
 
-                    <h4></h4>
-                    @using (Html.BeginForm("CargarValidar", "Home", FormMethod.Post))
-                    {
-                        <input type="submit" value="Cargar y validar" class="button button2">
-                    }
-
-                    <h6></h6>
                     <button onclick="myFunction(1)" target="_blank" class="button button2">Buscar egresos</button>
-
                     <div id="1" style="display:none;">
 
                         <h6></h6>
                         @using (Html.BeginForm("MostrarEgresos", "Home", FormMethod.Post))
                         {
-                            <input style="margin-left:40px;" type="submit" value="Mostrar todos los egresos" class="button button4" style="margin-left:40px;">
+                            <input style="margin-left:40px;" type="submit" value="Mostrar todos los egresos" class="button button4">
                         }
                         <p></p>
                         <p style="margin-left:40px;">Buscar egreso por id:</p>
@@ -109,16 +42,15 @@
 
 
                     </div>
+                    <p></p>
 
-                    <h6></h6>
                     <button onclick="myFunction(2)" target="_blank" class="button button2">Buscar presupuestos</button>
-
                     <div id="2" style="display:none;">
 
                         <h6></h6>
                         @using (Html.BeginForm("MostrarPresupuestos", "Home", FormMethod.Post))
                         {
-                            <input style="margin-left:40px;" type="submit" value="Mostrar todos los presupuestos" class="button button4" style="margin-left:40px;">
+                            <input style="margin-left:40px;" type="submit" value="Mostrar todos los presupuestos" class="button button4">
                         }
                         <p></p>
 
@@ -126,11 +58,12 @@
 
                 </div>
             </div>
+        </div>
     </section>
 
     <!---------------------------------INGRESOS--------------------------------->
 
-    <section id="services" class="bg-light">
+    <section id="ingresos" class="bg-light">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto">
@@ -138,15 +71,10 @@
                     <h2>INGRESOS</h2>
                     <p class="lead">Seleccione una opcion:</p>
 
-                    <h4></h4>
-                    @using (Html.BeginForm("CargarAsociar", "Home", FormMethod.Post))
-                    {
-                        <input type="submit" value="Cargar y asociar" class="button button2">
-                    }
+                    @Html.ActionLink("Cargar y asociar", "Ingreso", "Ingreso", null, new { @class = "button button2" })
+                    <p></p>
 
-                    <h6></h6>
                     <button onclick="myFunction(10)" target="_blank" class="button button2">Buscar Ingresos</button>
-
                     <div id="10" style="display:none;">
 
                         <h6></h6>
@@ -179,14 +107,9 @@
                     <h2>PROYECTOS</h2>
                     <p class="lead">Seleccione una opcion:</p>
 
-                    <h4></h4>
-                    @using (Html.BeginForm("CargarVincular", "Home", FormMethod.Post))
-                    {
-                        <input type="submit" value="Cargar y vincular" class="button button2">
-                    }
-                    <h4></h4>
+                    @Html.ActionLink("Cargar y vincular", "Proyecto", "Proyecto", null, new { @class = "button button2" })
+                    <p></p>
 
-                    <h6></h6>
                     <button onclick="myFunction(30)" target="_blank" class="button button2">Buscar Proyectos</button>
                     <div id="30" style="display:none;">
 
@@ -220,18 +143,13 @@
                     <h2>PROVEEDORES</h2>
                     <p class="lead">Seleccione una opcion:</p>
 
-                    <h4></h4>
-                    @using (Html.BeginForm("RegistrarProveedores", "Home", FormMethod.Post))
-                    {
-                        <input type="submit" value="Registrar" class="button button2">
-                    }
-                    <h4></h4>
+                    @Html.ActionLink("Registrar", "Proveedores", "Proveedores", null, new { @class = "button button2" })
+                    <p></p>
+
                     @using (Html.BeginForm("MostrarProveedores", "Home", FormMethod.Post))
                     {
                         <input type="submit" value="Mostrar todos los proveedores" class="button button2">
                     }
-
-
 
                 </div>
             </div>
@@ -248,19 +166,16 @@
                     <h2>CRITERIOS Y CATEGORIAS</h2>
                     <p class="lead">Seleccione una opcion:</p>
 
-                    <h4></h4>
-                    @using (Html.BeginForm("CargarCriteriosCategorias", "Home", FormMethod.Post))
-                    {
-                        <input  type="submit" value="Cargar y asociar" class="button button2">
-                    }
+                    @Html.ActionLink("Cargar y asociar", "CriteriosCategorias", "CriteriosCategorias", null, new { @class = "button button2" })
+                    <p></p>
 
-                    <h4></h4>
+                    <p></p>
                     @using (Html.BeginForm("MostrarCategorias", "Home", FormMethod.Post))
                     {
                         <input type="submit" value="Mostrar todas las categorias" class="button button2">
                     }
 
-                    <h4></h4>
+                    <p></p>
                     @using (Html.BeginForm("MostrarCriterios", "Home", FormMethod.Post))
                     {
                         <input type="submit" value="Mostrar todos los criterios" class="button button2">
@@ -274,7 +189,7 @@
                 </div>
             </div>
         </div>
-    </section> 
+    </section>
 
     <!---------------------------------BITACORA DE OPERACIONES--------------------------------->
     <section id="bitacora_de_operaciones" class="bg-light">
@@ -307,28 +222,5 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="py-5 bg-dark">
-        <div class="container">
-            <p class="m-0 text-center text-white">Integrantes: Manuel Pawlow - Matias Goñi - Genaro Ciruzzi - Juan Manuel Brea</p>
-            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
-        </div>
-        <!-- /.container -->
-    </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="~/Scripts/vendor/jquery/jquery.min.js"></script>
-    <script src="~/Scripts/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="~/Scripts/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom JavaScript for this theme -->
-    <script src="~/Scripts/scrolling-nav.js"></script>
-
-
-    <script src="~/Scripts/ajax.js"></script>
-
 </body>
-
 </html>

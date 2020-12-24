@@ -55,8 +55,8 @@ namespace TpAnualWeb.Controllers
 
             var egresos = id_egresos.Split('-');
             var ingresos = id_ingresos.Split('-');
-            var a = IngresoDAO.getInstancia().asociarFechaPrimerEgreso(egresos, ingresos);
-            if (a)
+
+            if (IngresoDAO.getInstancia().asociarFechaPrimerEgreso(egresos, ingresos))
             {
                 ViewBag.mostrar = "SUCCESS";
                 ViewBag.success = ($"Se realizo la asociacion correctamente!");

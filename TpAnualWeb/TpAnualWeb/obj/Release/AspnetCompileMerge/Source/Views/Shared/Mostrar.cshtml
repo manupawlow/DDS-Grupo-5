@@ -1,0 +1,395 @@
+﻿
+@{
+    ViewBag.Title = "Mostrar";
+}
+
+@using TP_Anual;
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<meta name="viewport" content="width=device-width" />
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>TP ANUAL DDS 2020 GRUPO 5</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/boostrap/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="~/Content/scrolling-nav.css" rel="stylesheet">
+
+</head>
+
+<!-- Bootstrap core JavaScript -->
+<script src="~/Scripts/vendor/jquery/jquery.min.js"></script>
+<script src="~/Scripts/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="~/Scripts/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom JavaScript for this theme -->
+<script src="~/Scripts/scrolling-nav.js"></script>
+
+
+<script src="~/Scripts/ajax.js"></script>
+
+
+<body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a href="@Url.Action("Index", "Home")" class="navbar-brand js-scroll-trigger" href="#page-top">GeSoc</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="@Url.Action("Index", "Home")#about" class="nav-link js-scroll-trigger">EGRESOS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("Index", "Home")#services" class="nav-link js-scroll-trigger">INGRESOS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("Index", "Home")#proyectos" class="nav-link js-scroll-trigger">PROYECTOS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("Index", "Home")#proveedores" class="nav-link js-scroll-trigger">PROVEEDORES</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index", "Home")#criterios_y_categorias" class="nav-link js-scroll-trigger">CRITERIOS Y CATEGORIAS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("Index", "Home")#bitacora_de_operaciones" class="nav-link js-scroll-trigger">BITACORA</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="@Url.Action("Index", "Home")#contact">GitHub</a>
+                    </li>
+                    <li class="nav-item">
+                        <a onclick="myFunction(0)" class="nav-link js-scroll-trigger">@Session["UserName"]</a>
+                    </li>
+                    <li id="0">
+                        <a href="@Url.Action("Login", "Home")" class="nav-link js-scroll-trigger" style="display:block; color:firebrick">Cerrar sesion</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <section id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    @{
+
+                        //<---------------------------------SUCCESS--------------------------------->
+                        if (ViewBag.mostrar == "SUCCESS")
+                        {
+                            <p>@ViewBag.success</p>
+                        }
+
+
+                        //<---------------------------------EGRESOS--------------------------------->
+
+                        if (ViewBag.mostrar == "EGRESOS")
+                        {
+                            foreach (var u in ViewBag.egresos)
+                            {
+                                <p><b>EGRESO ID: </b>@u.id_egreso</p>
+                                <p><b>FECHA: </b>@u.fecha</p>
+                                <p><b>DESCRIPCION: </b>@u.descripcion</p>
+                                <p><b>PRESUPUESTOS REQUERIDOS: </b>@u.cantPresupuestos</p>
+
+                                if (@u.presupuestos != null)
+                                {
+                                    <p><b>PRESUPUESTOS: </b>@u.presupuestos.Count</p>
+                                }
+
+                                if (@u.proveedorElegido != null)
+                                {
+                                    <p><b>PROVEEDOR ELEGIDO: </b>@u.proveedorElegido.CUIT</p>
+                                }
+
+                                if (@u.id_ingreso != 0)
+                                {
+                                    <p><b>ID INGRESO ASOCIADO: </b>@u.id_ingreso</p>
+                                }
+                                else
+                                {
+                                    <p><b>ID INGRESO ASOCIADO: </b>No se asocio a ningun ingreso</p>
+                                }
+
+                                <hr />
+                            }
+
+
+                        }
+
+                        if (ViewBag.mostrar == "EGRESO")
+                        {
+
+                            if (ViewBag.egreso != null)
+                            {
+                                <p><b>EGRESO ID: </b>@ViewBag.egreso.id_egreso</p>
+                                <p><b>FECHA: </b>@ViewBag.egreso.fecha</p>
+                                <p><b>DESCRIPCION: </b>@ViewBag.egreso.descripcion</p>
+                                <p><b>PRESUPUESTOS REQUERIDOS: </b>@ViewBag.egreso.cantPresupuestos</p>
+
+                                if (@ViewBag.egreso.presupuestos != null)
+                                {
+                                    <p><b>PRESUPUESTOS: </b>@ViewBag.egreso.presupuestos.Count</p>
+                                }
+
+                                if (@ViewBag.egreso.proveedorElegido != null)
+                                {
+                                    <p><b>PROVEEDOR ELEGIDO: </b>@ViewBag.egreso.proveedorElegido.CUIT</p>
+                                }
+
+                                if (@ViewBag.egreso.id_ingreso != 0)
+                                {
+                                    <p><b>ID INGRESO ASOCIADO: </b>@ViewBag.egreso.id_ingreso</p>
+                                }
+                                else
+                                {
+                                    <p><b>ID INGRESO ASOCIADO: </b>No se asocio a ningun ingreso</p>
+                                }
+
+
+                                foreach (var i in ViewBag.items)
+                                {
+                                    <p><b>ITEMS: DESCRIPCION | CANTIDAD | PRECIO POR UNIDAD</b></p>
+                                    <p><b>- </b>@i.descripcion | @i.cantidad | @i.valor </p>
+                                }
+
+                            }
+                            else
+                            {
+                                <p>No existe ese egreso</p>
+                            }
+                        }
+
+                        if (ViewBag.mostrar == "VALIDACION")
+                        {
+                            <p>@ViewBag.validacion</p>
+                        }
+
+                        if (ViewBag.mostrar == "BANDEJA DE MENSAJES")
+                        {
+                            //if (ViewBag.bandeja != null)
+                            //{
+                            foreach (var mensaje in ViewBag.mensajes)
+                            {
+                                <p>@mensaje</p>
+                            }
+                            //}
+                        }
+
+                        //<---------------------------------INGRESOS--------------------------------->
+
+                        if (ViewBag.mostrar == "INGRESOS")
+                        {
+                            if (ViewBag.ingresos != null)
+                            {
+                                foreach (var i in ViewBag.ingresos)
+                                {
+                                    <p><b>INGRESO ID: </b>@i.id_ingreso</p>
+                                    <p><b>DESCRIPCION: </b>@i.descripcion</p>
+                                    <p><b>TOTAL: </b>@i.total</p>
+                                    <p><b>EGRESOS ASIGNADOS: </b>@i.egresos.Count</p>
+                                    <hr />
+                                }
+                            }
+
+                        }
+
+                        if (ViewBag.mostrar == "INGRESO")
+                        {
+                            if (ViewBag.ingreso != null)
+                            {
+                                <p><b>INGRESO ID: </b>@ViewBag.ingreso.id_ingreso</p>
+                                <p><b>DESCRIPCION: </b>@ViewBag.ingreso.descripcion</p>
+                                <p><b>TOTAL: </b>@ViewBag.ingreso.total</p>
+                                <p><b>EGRESOS ASIGNADOS: </b>@ViewBag.ingreso.egresos.Count</p>
+                            }
+                            else
+                            {
+                                <p>No existe ese ingreso</p>
+                            }
+                        }
+
+                        //<---------------------------------PRESUPUESTOS--------------------------------->
+
+                        if (ViewBag.mostrar == "PRESUPUESTOS")
+                        {
+                            foreach (var u in ViewBag.presupuestos)
+                            {
+                                <p><b>PRESUPUESTO ID: </b>@u.id_presupuesto</p>
+                                <p><b>TOTAL: $</b>@u.valor_total</p>
+                                <p><b>EGRESO ID: </b>@u.id_egreso</p>
+                                <hr />
+                            }
+                        }
+
+                        if (ViewBag.mostrar == "PRESUPUESTO")
+                        {
+
+                            if (ViewBag.presupuesto != null)
+                            {
+                                <p><b>PRESUPUESTO ID: </b>@ViewBag.presupuesto.id_presupuesto</p>
+                                <p><b>TOTAL: $</b>@ViewBag.presupuesto.valor_total</p>
+                                <p><b>EGRESO ID: </b>@ViewBag.presupuesto.id_egreso</p>
+                                foreach (var i in ViewBag.items)
+                                {
+                                    <p><b>ITEMS: DESCRIPCION | CANTIDAD | PRECIO </b></p>
+                                    <p><b>- </b>@i.item.descripcion | @i.cantidad | @i.valor</p>
+                                    <hr />
+                                }
+                            }
+                            else
+                            {
+                                <p>No existe el presupuesto</p>
+                            }
+                        }
+
+                        if (ViewBag.mostrar == "PRESUPUESTOS DE EGRESO")
+                        {
+                            if (ViewBag.presupuestos != null)
+                            {
+
+                                foreach (var u in ViewBag.presupuestos)
+                                {
+                                    <p><b>PRESUPUESTO ID: </b>@u.id_presupuesto</p>
+                                    <p><b>TOTAL: $</b>@u.valor_total</p>
+                                    <p><b>EGRESO ID: </b>@u.id_egreso</p>
+                                    <hr />
+                                }
+                            }
+                            else
+                            {
+                                <p>El egreso no tiene presupuestos</p>
+                            }
+                        }
+
+                        //<---------------------------------PROYECTOS--------------------------------->
+
+                        if (ViewBag.mostrar == "PROYECTO")
+                        {
+
+                            if (ViewBag.proyecto != null)
+                            {
+                                <p><b>PROYECTO ID: </b>@ViewBag.proyecto.id</p>
+                                <p><b>DIRECTOR: </b>@ViewBag.proyecto.director.nombre</p>
+                                <p><b>MONTO TOTAL: </b>@ViewBag.proyecto.montoTotal</p>
+                                <p><b>PRESUPUESTOS EXIGIBLES: </b>@ViewBag.proyecto.cantPresupuestosExigibles</p>
+
+                            }
+                            else
+                            {
+                                <p>No existe ese proyecto</p>
+                            }
+                        }
+
+                        if (ViewBag.mostrar == "PROYECTOS")
+                        {
+                            foreach (var u in ViewBag.proyectos)
+                            {
+                                <p><b>PROYECTO ID: </b>@u.id</p>
+                                <p><b>MONTO TOTAL: </b>@u.montoTotal</p>
+                                <p><b>PRESUPUESTOS EXIGIBLES: </b>@u.cantPresupuestosExigibles</p>
+                                <hr />
+                            }
+
+                        }
+
+                        //<---------------------------------PROVEEDORES--------------------------------->
+
+                        if (ViewBag.mostrar == "PROVEEDORES")
+                        {
+                            foreach (var u in ViewBag.proveedores)
+                            {
+                                <p><b>PROVEEDOR ID: </b>@u.id_prov</p>
+                                <p><b>CUIT: </b>@u.CUIT</p>
+                                <p><b>RAZON SOCIAL: </b>@u.razon_social</p>
+                                <hr />
+                            }
+
+                        }
+
+                        //<---------------------------------CATEGORIAS Y CRITERIOS--------------------------------->
+
+                        if (ViewBag.mostrar == "CATEGORIAS")
+                        {
+                            foreach (var u in ViewBag.categorias)
+                            {
+                                <p><b>CATEGORIA ID: </b>@u.id_categoria</p>
+                                <p><b>CRITERIO ID: </b>@u.id_criterio</p>
+                                <p><b>DESCRIPCION: </b>@u.descripcion</p>
+                                <hr />
+                            }
+
+                        }
+
+                        if (ViewBag.mostrar == "CRITERIOS")
+                        {
+                            foreach (var u in ViewBag.criterios)
+                            {
+                                <p><b>CRITERIO ID: </b>@u.id_criterio</p>
+                                <p><b>DESCRIPCION: </b>@u.descripcion</p>
+                                <p><b>JERARQUIA: </b>@u.jerarquia</p>
+                                <hr />
+                            }
+
+                        }
+
+
+                        //<---------------------------------BITACORA--------------------------------->
+
+                        if (ViewBag.mostrar == "BITACORA")
+                        {
+                            foreach (var log in ViewBag.bitacora)
+                            {
+                                <p>@log</p>
+                            }
+
+                        }
+
+                        //<---------------------------------ERROR--------------------------------->
+
+                        if (ViewBag.mostrar == "ERROR")
+                        {
+                            <p>@ViewBag.error</p>
+                        }
+
+
+
+
+                    }
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Integrantes: Manuel Pawlow - Matias Goñi - Genaro Ciruzzi - Juan Manuel Brea</p>
+            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
+        </div>
+        <!-- /.container -->
+    </footer>
+
+</body>
+
+</html>

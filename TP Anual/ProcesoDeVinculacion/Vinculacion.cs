@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using TP_Anual.Egresos;
-using TP_Anual.DAOs;
 
 namespace TP_Anual.ProcesoDeVinculacion
 {
@@ -18,11 +17,10 @@ namespace TP_Anual.ProcesoDeVinculacion
 
             using (var context = new MySql())
             {
-                //var a = EgresoDAO.getInstancia().pepe(egreso);
-                //var b = IngresoDAO.getInstancia().agregarEgreso(ingreso, egreso);
-                ingreso.egresos.Add(egreso);
-                egreso.ingreso = ingreso;
-                egreso.descripcion = "daleee";
+				var egreso_ = context.egresos.Single(e => e.id_egreso == egreso.id_egreso);
+                var ingreso_ = context.ingresos.Single(i => i.id_ingreso == ingreso.id_ingreso);
+
+				egreso_.ingreso = ingreso_;
 
                 context.SaveChanges();
             }

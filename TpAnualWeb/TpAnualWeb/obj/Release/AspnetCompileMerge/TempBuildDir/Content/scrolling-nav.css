@@ -51,23 +51,35 @@ section {
 
 .button3 {
     background-color: white;
-    color: slategray;
-    border-radius: 24px;
-    border: 2px solid rgb(150, 224, 106);
+    color: rgb(155, 155, 155);
+    border-radius: 1px;
+    border: 2px solid rgb(155, 155, 155);
+}
+
+input[type=text] {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgb(155, 155, 155);
+    outline: none;
+}
+input[type=number] {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgb(155, 155, 155);
+    outline: none;
 }
 
 .button4 {
     background-color: white;
-    color: rgb(150, 224, 106);
-    border-radius: 24px;
-    border: 2px solid rgb(150, 224, 106);
+    color: black;
+    border-radius: 4px;
+    border: 2px solid rgb(57, 191, 128);
 }
 
     .button4:hover {
-        background-color: rgb(150, 224, 106);
+        background-color: rgb(57, 191, 128);
         color: white;
     }
-
 @import "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.0/css/bootstrap.min.css";
 
 .funkyradio div {

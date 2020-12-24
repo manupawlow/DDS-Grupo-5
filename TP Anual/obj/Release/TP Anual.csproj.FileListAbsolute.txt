@@ -787,3 +787,4 @@ C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\MySql.Data.EntityF
 C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\Antlr3.Runtime.pdb
 C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\bin\Release\MySql.Data.EntityFramework.xml
+C:\Users\Matias\source\repos\DDS-Grupo-5\TP Anual\obj\Release\TP Anual.csprojAssemblyReference.cache

@@ -213,7 +213,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\CriterioCategoriaController.cs" />
+    <Compile Include="Controllers\CriteriosCategoriasController.cs" />
     <Compile Include="Controllers\EgresoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IngresoController.cs" />
@@ -385,7 +385,6 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
@@ -400,20 +399,15 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Shared\Ingreso.cshtml" />
-    <Content Include="Views\Shared\Proyecto.cshtml" />
-    <Content Include="Views\Shared\Egreso.cshtml" />
-    <Content Include="Views\Shared\CriteriosCategorias.cshtml" />
-    <Content Include="Views\Shared\Proveedores.cshtml" />
+    <Content Include="Views\Ingreso\Ingreso.cshtml" />
+    <Content Include="Views\Proyecto\Proyecto.cshtml" />
+    <Content Include="Views\Egreso\Egreso.cshtml" />
+    <Content Include="Views\CriteriosCategorias\CriteriosCategorias.cshtml" />
+    <Content Include="Views\Proveedores\Proveedores.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\CriteriosCategorias\" />
-    <Folder Include="Views\Egreso\" />
-    <Folder Include="Views\Ingreso\" />
-    <Folder Include="Views\Proveedor\" />
-    <Folder Include="Views\Proyecto\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -433,16 +427,16 @@
     <Content Include="Scripts\vendor\jquery\jquery.slim.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\TP Anual\TP Anual.csproj">
-      <Project>{39ca7744-3bbb-4fea-ac8f-6ef71fb33da6}</Project>
-      <Name>TP Anual</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\TP Anual\TP Anual.csproj">
+      <Project>{39ca7744-3bbb-4fea-ac8f-6ef71fb33da6}</Project>
+      <Name>TP Anual</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -45,7 +45,7 @@ namespace TP_Anual.DAOs
         {
             using (var context = new MySql())
             {
-                return context.presupuestos.ToList<Presupuesto>();
+                return context.presupuestos.Include("itemsDePresupuesto").ToList<Presupuesto>();
             }
         }
 

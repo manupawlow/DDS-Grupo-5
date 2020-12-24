@@ -75,15 +75,16 @@ namespace TP_Anual.DAOs
                     egresos.Add(EgresoDAO.getInstancia().getEgresoById(Int32.Parse(e[j])));
                 }
 
-                for (int j = 0; j < i.Length; j++)
+                for (int k = 0; k < i.Length; k++)
                 {
-                    ingresos.Add(IngresoDAO.getInstancia().getIngresoById(Int32.Parse(i[j])));
+                    ingresos.Add(IngresoDAO.getInstancia().getIngresoById(Int32.Parse(i[k])));
                 }
                 
                 if (egresos.Count == 0 || ingresos.Count == 0)
                 {
                     return false;
-                }else
+                }
+                else
                 {
                     new FechaPrimerEgreso().vincular(ingresos, egresos);
                     return true;

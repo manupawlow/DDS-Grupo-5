@@ -39,7 +39,8 @@ namespace TP_Anual
 
             if (conectarMongo)
             {
-                var client = new MongoClient("mongodb+srv://gesoc:dds@clustergesoc.80hrr.mongodb.net/mydb?retryWrites=true&w=majority");
+
+                var client = new MongoClient("mongodb+srv://disenio2020:pepepepe@cluster0.unla6.mongodb.net/mydb?retryWrites=true&w=majority");
                 var database = client.GetDatabase("mydb");
 
                 // Construyo filtro de busqueda
@@ -65,7 +66,7 @@ namespace TP_Anual
         {
             if (conectarMongo)
             {
-                var client = new MongoClient("mongodb+srv://gesoc:dds@clustergesoc.80hrr.mongodb.net/mydb?retryWrites=true&w=majority");
+                var client = new MongoClient("mongodb+srv://disenio2020:pepepepe@cluster0.unla6.mongodb.net/mydb?retryWrites=true&w=majority");
                 var database = client.GetDatabase("mydb");
 
                 var coleccionBandejaDeMensajes = database.GetCollection<BandejaDeMensajes>("coleccionBandejaDeMensajes");
@@ -139,7 +140,7 @@ namespace TP_Anual
             {
                 if (conectarMongo)
                 {
-                    var client = new MongoClient("mongodb+srv://gesoc:dds@clustergesoc.80hrr.mongodb.net/mydb?retryWrites=true&w=majority");
+                    var client = new MongoClient("mongodb+srv://disenio2020:pepepepe@cluster0.unla6.mongodb.net/mydb?retryWrites=true&w=majority");
                     var database = client.GetDatabase("mydb");
                     var coleccionBandejaDeMensajes = database.GetCollection<BandejaDeMensajes>("coleccionBandejaDeMensajes");
                     var listaBandeja = coleccionBandejaDeMensajes.Find(bandeja => bandeja.id_egreso == egreso.id_egreso).ToList();
@@ -158,7 +159,7 @@ namespace TP_Anual
             // var database = client.GetDatabase(listaDatabases[3]);
             if (conectarMongo)
             {
-                var client = new MongoClient("mongodb+srv://gesoc:dds@clustergesoc.80hrr.mongodb.net/mydb?retryWrites=true&w=majority");
+                var client = new MongoClient("mongodb+srv://disenio2020:pepepepe@cluster0.unla6.mongodb.net/mydb?retryWrites=true&w=majority");
                 var database = client.GetDatabase("mydb");
 
                 var coleccionBandejaDeMensajes = database.GetCollection<BandejaDeMensajes>("coleccionBandejaDeMensajes");
@@ -184,7 +185,7 @@ namespace TP_Anual
 
             if (conectarMongo)
             {
-                var client = new MongoClient("mongodb+srv://gesoc:dds@clustergesoc.80hrr.mongodb.net/mydb?retryWrites=true&w=majority");
+                var client = new MongoClient("mongodb+srv://disenio2020:pepepepe@cluster0.unla6.mongodb.net/mydb?retryWrites=true&w=majority");
                 var database = client.GetDatabase("mydb");
 
                 registrarBitacoraDeOperaciones(database);
@@ -201,7 +202,7 @@ namespace TP_Anual
         {
             if (conectarMongo)
             {
-                var client = new MongoClient("mongodb+srv://gesoc:dds@clustergesoc.80hrr.mongodb.net/mydb?retryWrites=true&w=majority");
+                var client = new MongoClient("mongodb+srv://disenio2020:pepepepe@cluster0.unla6.mongodb.net/mydb?retryWrites=true&w=majority");
                 var database = client.GetDatabase("mydb");
 
                 var coleccionBitacoraDeOperaciones = database.GetCollection<BitacoraDeOperaciones>("coleccionBitacoraDeOperaciones");

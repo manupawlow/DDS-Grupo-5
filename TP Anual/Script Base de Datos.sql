@@ -4,6 +4,8 @@ CREATE DATABASE DDS_TP_ANUAL;
 
 USE DDS_TP_ANUAL;
 
+#USE db_a6c969_disenio;
+
 CREATE TABLE IF NOT EXISTS usuario(
     usuario_id INT NOT NULL AUTO_INCREMENT,
     usuario_nombre varchar(50) NULL,
@@ -16,7 +18,7 @@ CREATE TABLE IF NOT EXISTS usuario(
 CREATE TABLE IF NOT EXISTS egreso(
 	id_egreso INT NOT NULL AUTO_INCREMENT,
     cant_presupuestos_requeridos INT NOT NULL,
-    valor_total INT NULL,
+    valor_total INT NOT NULL,
 	descripcion VARCHAR(90) NULL,
 	fecha DATETIME NOT NULL,
 	id_prov INT NULL,

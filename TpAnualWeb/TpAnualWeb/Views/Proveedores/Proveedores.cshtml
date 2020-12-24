@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Proveedores";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<body id="page-top">
+    <section id="proveedores" class="bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2>PROVEEDORES</h2>
+                    <p></p>
+                    <button onclick="myFunction(41)" target="_blank" class="button button2">Registrar Proveedor</button>
+                    <div id="41" style="display:none;">
+
+
+                        @using (Html.BeginForm("CargarProveedor", "Proveedores", FormMethod.Post))
+                        {
+                            <p><input type="text" name="CUIT" placeholder="CUIT" class="button button3"></p>
+                            <p><input type="text" name="razon" placeholder="Razon Social" class="button button3"></p>
+
+                            <p><button id="registrarProveedor" class="button button4">Cargar proveedor</button></p>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
